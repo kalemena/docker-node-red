@@ -1,0 +1,17 @@
+version: '2'
+services:  
+  nodered:
+    image: kalemena/node-red
+    build: .
+    restart: always
+    ports:
+     - "1880:1880"
+     - "1883:1883"
+    volumes:
+     - ./data:/data
+#    devices:
+#     - "/dev/ttyUSB0:/dev/ttyCurrenCost"
+#     - "/dev/ttyUSB1:/dev/ttyJeeLink"
+#     - "/dev/ttyUSB2:/dev/ttyRfxTrx"
+    environment:
+     - FLOWS=/data/flows.json
