@@ -1,19 +1,25 @@
-FROM ubuntu:16.04
+FROM centos:7
 
-ARG NODERED_VERSION=0.15.2
+MAINTAINER Kalemena
 
+ARG NODERED_VERSION=0.16.2
+
+# TOOLS
 RUN \
-  apt-get update; apt-get upgrade -y; \
-  apt-get install -y \
+  yum install -y epel-release; \
+  yum update -y; \
+  yum install -y \
     nodejs npm \
     mosquitto \
     git-core \
-    python-software-properties python \
-    g++ make software-properties-common \
-    wget unzip; \
-  ln -s /usr/bin/nodejs /usr/bin/node; \
-  npm install -g grunt-cli;
-  
+    python \
+    wget \
+    unzip \
+    which; \
+  yum groupinstall -y "Development Tools"; \
+  npm install -g grunt-cli;  
+
+# NODE RED
 RUN \
   mkdir -p /home; cd /home; \
   wget https://github.com/node-red/node-red/releases/download/${NODERED_VERSION}/node-red-${NODERED_VERSION}.zip; \
@@ -22,14 +28,35 @@ RUN \
   mv /home/node-red-${NODERED_VERSION} /home/node-red; \
   cd /home/node-red; \
   npm install --production;
-
+  
 WORKDIR /home/node-red
   
+# NODE RED MODULES
 RUN \
   npm install node-red-contrib-rfxcom; \
   npm install node-red-node-openweathermap; \
-  npm install node-red-node-ping;
-        
+  npm install node-red-node-ping; \
+  npm install node-red-contrib-influxdb;
+# node-red-node-smooth 
+# node-red-node-pidcontrol
+# node-red-node-random
+# node-red-node-mdns
+# node-red-node-nma node-red-node-pushbullet
+# node-red-node-suncalc
+# node-red-node-daemon
+
+# NODE RED Z-WAVE
+# RUN \
+#  yum install -y http://mirror.my-ho.st/Downloads/OpenZWave/CentOS_7/x86_64/libopenzwave-1.4.164-2.1.x86_64.rpm; \
+#  yum install -y http://mirror.my-ho.st/Downloads/OpenZWave/CentOS_7/x86_64/openzwave-1.4.164-2.1.x86_64.rpm; \
+#  cd /home; \
+#  wget https://github.com/OpenZWave/open-zwave/archive/V1.5.zip; unzip V1.5.zip; rm V1.5.zip; \
+#  cd open-zwave-1.5; \
+#  yum install -y libudev-devel net-tools; \
+#  make && make install; \
+#  cd /home/node-red; \
+#  npm install node-red-contrib-openzwave;
+  
 EXPOSE 1880 1883
 
 ENV TZ=Europe/Paris
