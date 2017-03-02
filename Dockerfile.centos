@@ -33,10 +33,12 @@ WORKDIR /home/node-red
   
 # NODE RED MODULES
 RUN \
+  npm install node-red-node-serialport; \
   npm install node-red-contrib-rfxcom; \
   npm install node-red-node-openweathermap; \
   npm install node-red-node-ping; \
-  npm install node-red-contrib-influxdb;
+  npm install node-red-contrib-influxdb; \
+  npm install node-red-node-twilio;
 # node-red-node-smooth 
 # node-red-node-pidcontrol
 # node-red-node-random
