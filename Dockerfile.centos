@@ -2,15 +2,19 @@ FROM centos:7
 
 MAINTAINER Kalemena
 
-ARG NODERED_VERSION=0.16.2
+ARG NODERED_VERSION=0.17.5
 
 # TOOLS
 RUN \
   yum install -y epel-release; \
   yum update -y; \
+  yum install -y mosquitto; \
+# workaround for https://bugs.centos.org/view.php?id=13669&nbn=1
+  rpm -ivh https://kojipkgs.fedoraproject.org//packages/http-parser/2.7.1/3.el7/x86_64/http-parser-2.7.1-3.el7.x86_64.rpm; \
+# NodeJS
+  yum install -y nodejs npm; \
+# build tools
   yum install -y \
-    nodejs npm \
-    mosquitto \
     git-core \
     python \
     wget \
@@ -20,7 +24,7 @@ RUN \
   npm install -g grunt-cli;  
 
 # NODE RED
-RUN \
+ RUN \
   mkdir -p /home; cd /home; \
   wget https://github.com/node-red/node-red/releases/download/${NODERED_VERSION}/node-red-${NODERED_VERSION}.zip; \
   unzip node-red-${NODERED_VERSION}.zip; \
@@ -33,12 +37,13 @@ WORKDIR /home/node-red
   
 # NODE RED MODULES
 RUN \
-  npm install node-red-node-serialport; \
-  npm install node-red-contrib-rfxcom; \
-  npm install node-red-node-openweathermap; \
-  npm install node-red-node-ping; \
-  npm install node-red-contrib-influxdb; \
-  npm install node-red-node-twilio;
+  npm i node-red-node-serialport; \
+  npm i node-red-contrib-rfxcom; \
+  npm i node-red-node-openweathermap; \
+  npm i node-red-node-ping; \
+  npm i node-red-contrib-influxdb; \
+  npm i node-red-node-twilio;
+#  npm i node-red-dashboard;
 # node-red-node-smooth 
 # node-red-node-pidcontrol
 # node-red-node-random
