@@ -32,20 +32,36 @@ Run with opening 1880 and 1883 ports, and map your flows into /data directory.
 Optionaly, map USB devices used in flows.
 
 
-  version: '2'
-  services:  
-    nodered:
-      image: kalemena/node-red
-      build: .
-      restart: always
-      ports:
-       - "1880:1880"
-       - "1883:1883"
-      volumes:
-       - ./data:/data
-      devices:
-       - "/dev/ttyUSB0:/dev/ttyCurrenCost"
-       - "/dev/ttyUSB1:/dev/ttyJeeLink"
-       - "/dev/ttyUSB2:/dev/ttyRfxTrx"
-      environment:
-       - FLOWS=/data/flows.json
+>  version: '2'
+>  services:  
+>    nodered:
+>      image: kalemena/node-red
+>      build: .
+>      restart: always
+>      ports:
+>       - "1880:1880"
+>       - "1883:1883"
+>      volumes:
+>       - ./data:/data
+>      devices:
+>       - "/dev/ttyUSB0:/dev/ttyCurrenCost"
+>       - "/dev/ttyUSB1:/dev/ttyJeeLink"
+>       - "/dev/ttyUSB2:/dev/ttyRfxTrx"
+>      environment:
+>       - FLOWS=/data/flows.json
+
+
+### Start node-red
+
+> docker-compose up -d
+
+Now you can connect on http://<you host>:1880
+
+### Stop node-red
+
+> docker-compose stop
+
+### Remove container node-red
+
+> docker-compose down
+
