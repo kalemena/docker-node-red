@@ -24,3 +24,28 @@ Attach your USB devices using --device.
 	--device=/dev/ttyUSB2:/dev/ttyCurrenCost \
 	-e FLOWS=/data/flows.json \
 	kalemena/node-red
+
+## Run with compose
+
+Run with opening 1880 and 1883 ports, and map your flows into /data directory.
+
+Optionaly, map USB devices used in flows.
+
+
+  version: '2'
+  services:  
+    nodered:
+      image: kalemena/node-red
+      build: .
+      restart: always
+      ports:
+       - "1880:1880"
+       - "1883:1883"
+      volumes:
+       - ./data:/data
+      devices:
+       - "/dev/ttyUSB0:/dev/ttyCurrenCost"
+       - "/dev/ttyUSB1:/dev/ttyJeeLink"
+       - "/dev/ttyUSB2:/dev/ttyRfxTrx"
+      environment:
+       - FLOWS=/data/flows.json
