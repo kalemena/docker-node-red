@@ -1,8 +1,8 @@
 version: '2'
 services:  
   nodered:
-    image: kalemena/node-red
-    build: .
+    image: kalemena/node-red:0.18.4
+#    build: .
     restart: always
     ports:
      - "1880:1880"
