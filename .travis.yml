@@ -3,8 +3,30 @@ sudo: required
 services:
   - docker
 
+env:
+  global:
+    - REGISTRY_USER=kalemena
+    - secure: "axK9W31O4wuWW9Hd/smMmgRiqykbeOnGiOV2+QIFfvJoBbIhdXcMCmvaWMfgCvNX2D8wFLwC20t5301HoQgSJ1hM8MUX4x9PhhurXxhD4PXgQotoBQm/4IEwiMe5UtnuioHD61MxJVxHn1w0fsecfEz8PpCOxyP8ECdXkke1ASFHddVmAYaD8HbCmrqG8U3LAdpdBlmCi9kB3Sfsq/Fwok9Ilzj+YiFPSbRjpl40+tI3MZSQgwimLLimrYxXWyG192nzUmaVdWjXginu7uoa3b6hbAQZjwI/AX23E39bdHqVkKRQY9oQNOqQ7oQiJyW192dMULGYeZW+Z6YFazLiO5JLjAWfyNNk2ePhfXbzPbN+q2iFU4r1zkurOPQCN7CXeA7ntUJzVxKOUgQZMZ4RHdPmARB7eK0I0zVIalivoE/3yzXPY5xy8QvsMFo/APjkqtYLOplNvwoFNn4UrN8PFyK/6M4Sw+UyMKHc7CKD6EObD3gun7rYSvjpdSKEAVjLyMeMercZZ0WWTHPPbu1YjnFeIUUaJAoZh6BWTLAQkqnMQ3eFL4ze7TcKnQr7YAdOlBoG6ESBNPc6Dig2GnLfDzVSgoq/qFdzEFzBITJEzCdvmUrJ9ochmOsOtbl7cJEUiGGvBu1seIYnNXdy5+4WVhQO6z/gBCYJKyMwY3jWCQ0="
+  matrix:
+    - IMAGE="kalemena/node-red" VERSION="0.18.7" REPO="kalemena/docker-node-red"
+
+before_script:
+  - docker pull centos:7
+  - docker pull ${IMAGE}:${VERSION} || true
+
 script:
-- docker --version
-- docker pull centos:7
-- docker build -t kalemena/node-red -f Dockerfile.centos .
-- docker ps -a
+  - docker build --pull --cache-from ${IMAGE}:${VERSION} -t ${IMAGE}:${VERSION} -f Dockerfile.centos --build-arg NODERED_VERSION=${VERSION} .
+
+after_script:
+  - docker ps -a
+  - docker tag ${IMAGE}:${VERSION} ${IMAGE}:latest
+  - docker images
+
+before_deploy:
+  - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
+
+deploy:
+  provider: script
+  script: docker push ${IMAGE}:${VERSION}; docker push ${IMAGE}:latest
+  on:
+    branch: master
