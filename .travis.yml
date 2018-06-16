@@ -1,0 +1,10 @@
+sudo: required
+
+services:
+  - docker
+
+script:
+- docker --version
+- docker pull centos:7
+- docker build -t kalemena/node-red -f Dockerfile.centos .
+- docker ps -a

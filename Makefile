@@ -10,4 +10,5 @@ run: build
 		kalemena/node-red
 	
 build: Dockerfile.centos
+	docker pull centos:7
 	docker build -t kalemena/node-red -f Dockerfile.centos .
