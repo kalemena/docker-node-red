@@ -15,7 +15,8 @@ before_script:
   - docker pull ${IMAGE}:${VERSION} || true
 
 script:
-  - docker build --pull --cache-from ${IMAGE}:${VERSION} \
+  - |
+    docker build --pull --cache-from ${IMAGE}:${VERSION} \
       -t ${IMAGE}:${VERSION} \
       -f Dockerfile.centos \
       --build-arg NODERED_VERSION=${VERSION} \
