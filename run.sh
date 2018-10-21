@@ -1,6 +1,7 @@
-    #!/bin/bash
+#!/bin/bash
 
 cd /home/node-red
-mosquitto&
+# mosquitto&
+
 # nodejs red.js
 node $NODE_OPTIONS red.js -v $FLOWS

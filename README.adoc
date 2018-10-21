@@ -10,7 +10,7 @@ endif::[]
 
 Packaged Node-Red for use in home automation.
 
-Runs both mosquitto as MQTT bus and node-red with few plugins like rfxtrx com.
+Runs node-red with few plugins like rfxtrx com.
 
 == Build
 
@@ -21,7 +21,7 @@ $ docker build -t kalemena/node-red .
 
 == Run
 
-Expose ports 1880 (node-red) and 1883 (mqtt).
+Expose ports 1880 (node-red).
 
 Mount volumes for your flows into /data using -v, and environment variable FLOWS pointing to the flows.json file. 
 
@@ -41,7 +41,7 @@ $ docker run --restart=always --name nodered --hostname nodered \
 
 == Run with compose
 
-Run with opening 1880 and 1883 ports, and map your flows into /data directory.
+Run with opening 1880 port, and map your flows into /data directory.
 
 Optionaly, map USB devices used in flows.
 
