@@ -3,7 +3,7 @@ version: '3.7'
 services:  
 
   nodered:
-    image: kalemena/node-red:0.19.4
+    image: kalemena/node-red:0.19.6
 #    build: .
     restart: always
     ports:

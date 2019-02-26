@@ -8,7 +8,7 @@ env:
     - REGISTRY_USER=kalemena
     - secure: "uR2m1FrxHDlqz+9BB2p2Jwa2mr1tOG04IQvpkyZ0gK/H0/tcXIBxcUNSboY+3GEAFs+jJbXsf8dU8iNyBl9F/9We0KxYRcHHglH46UQdSD7IZKe7rJ+mmvctMGRK+bPvujNDHLmjT/Ef/QiLZt/DQsJxmbhiBbtKF7LGyAtfkBXNW09JTF4n05+e7Il/1tm40ANjgiJgT5lqNGUjO05m1qS3HQ7eKXcM8kIM7t5xRnblMpzTvgkMpgCOndNh/Z3PAk27YPiJrkK13mZbeYjfvHH0Ah5ZNLQwZMWcE2GWxUNOZisFHa9ntppZYCZThmhVX1EOmwuJ1f0cOtgtJdcXVSRCiX5cU0HSURVhdOZc0zhjGCyNQCMyBwv9Z/DV/XfU/Vefj8ckpHHqnAQigsE7cgrlHBb9ckZ+BG8kJGvOuIPsI8dPmpczy5tHnWDRr/xzBYc8O65IZhN9ZXqpQ/kBtFitfKtvhy/2JuFK6httb+6acHybrBZIx9RHj0QsPXYndy+L8EHRuLYa/IgxHQPFXjJpg8eL1m3GWD2bvpsgxL1peTwpVPM7EjL8Mtn7JN8Vxe9E+5C0MtBrzdVmzH/wWpdgmD0nxJV8NUNmQAKjT6zwHZ4aR7aUGaxG8zY4JUNaLo2QwAAraFPW8NOjh20rD6zUrT/5Ph+ynJZshi/wKFQ="
   matrix:
-    - IMAGE="kalemena/node-red" VERSION="0.19.5" REPO="kalemena/docker-node-red"
+    - IMAGE="kalemena/node-red" VERSION="0.19.6" REPO="kalemena/docker-node-red"
 
 before_script:
   - docker pull centos:7
