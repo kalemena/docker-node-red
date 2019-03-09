@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-ARG NODERED_VERSION=0.19.3
+ARG NODERED_VERSION=0.19.6
 
 RUN \
   apt-get update; apt-get upgrade -y; \
