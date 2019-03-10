@@ -55,7 +55,8 @@ RUN \
   npm i node-red-node-openweathermap; \
   npm i node-red-node-ping; \
   npm i node-red-contrib-influxdb; \
-  npm i node-red-dashboard;
+  npm i node-red-dashboard; \
+  npm i node-red-contrib-telegrambot; 
 # npm i node-red-node-twilio;
 # npm i node-red-node-smooth 
 # npm i node-red-node-pidcontrol
