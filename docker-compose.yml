@@ -7,9 +7,10 @@ services:
 #    build: .
     restart: always
     ports:
-     - "1880:1880"
+     - "2880:1880"
     volumes:
      - ./data:/data
+     - ./etc/node-red/settings.js:/home/node-red/settings.js
 #    devices:
 #     - "/dev/ttyUSB0:/dev/ttyCurrenCost"
 #     - "/dev/ttyUSB1:/dev/ttyJeeLink"

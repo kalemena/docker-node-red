@@ -1,1 +1,38 @@
-[{"id":"b9afddb.4a0a82","type":"tab","label":"Flow 1"},{"id":"cd3259a2.b33fb8","type":"inject","z":"b9afddb.4a0a82","name":"","topic":"","payload":"","payloadType":"date","repeat":"","crontab":"","once":false,"x":286,"y":171,"wires":[["123752a5.01877d"]]},{"id":"123752a5.01877d","type":"debug","z":"b9afddb.4a0a82","name":"","active":true,"console":"false","complete":"false","x":570,"y":173,"wires":[]}]
+[
+    {
+        "id": "b9afddb.4a0a82",
+        "type": "tab",
+        "label": "Flow 1"
+    },
+    {
+        "id": "cd3259a2.b33fb8",
+        "type": "inject",
+        "z": "b9afddb.4a0a82",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 240,
+        "y": 120,
+        "wires": [
+            [
+                "123752a5.01877d"
+            ]
+        ]
+    },
+    {
+        "id": "123752a5.01877d",
+        "type": "debug",
+        "z": "b9afddb.4a0a82",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 570,
+        "y": 120,
+        "wires": []
+    }
+]
