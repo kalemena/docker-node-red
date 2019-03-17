@@ -11,6 +11,7 @@ services:
     volumes:
      - ./data:/data
      - ./etc/node-red/settings.js:/home/node-red/settings.js
+     - ./etc/my-app:/etc/my-app
 #    devices:
 #     - "/dev/ttyUSB0:/dev/ttyCurrenCost"
 #     - "/dev/ttyUSB1:/dev/ttyJeeLink"

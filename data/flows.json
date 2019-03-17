@@ -29,10 +29,64 @@
         "z": "b9afddb.4a0a82",
         "name": "",
         "active": true,
-        "console": "false",
-        "complete": "false",
-        "x": 570,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 790,
         "y": 120,
         "wires": []
+    },
+    {
+        "id": "cbd01821.07acd",
+        "type": "watch",
+        "z": "b9afddb.4a0a82",
+        "name": "contacts.csv",
+        "files": "/etc/my-app/contacts.csv",
+        "recursive": "",
+        "x": 190,
+        "y": 200,
+        "wires": [
+            [
+                "14a6f751.eccf11"
+            ]
+        ]
+    },
+    {
+        "id": "14a6f751.eccf11",
+        "type": "file in",
+        "z": "b9afddb.4a0a82",
+        "name": "",
+        "filename": "/etc/my-app/contacts.csv",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "x": 410,
+        "y": 200,
+        "wires": [
+            [
+                "2944a907.6654c6"
+            ]
+        ]
+    },
+    {
+        "id": "2944a907.6654c6",
+        "type": "csv",
+        "z": "b9afddb.4a0a82",
+        "name": "",
+        "sep": ",",
+        "hdrin": true,
+        "hdrout": "",
+        "multi": "one",
+        "ret": "\\n",
+        "temp": "",
+        "skip": "0",
+        "x": 610,
+        "y": 200,
+        "wires": [
+            [
+                "123752a5.01877d"
+            ]
+        ]
     }
 ]
