@@ -135,5 +135,72 @@
                 "123752a5.01877d"
             ]
         ]
+    },
+    {
+        "id": "e78b5728.8aa78",
+        "type": "file",
+        "z": "b9afddb.4a0a82",
+        "name": "/etc/my-app/contacts.csv",
+        "filename": "/etc/my-app/contacts.csv",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "false",
+        "encoding": "utf8",
+        "x": 610,
+        "y": 340,
+        "wires": [
+            [
+                "d9dc3ad7.7390d"
+            ]
+        ]
+    },
+    {
+        "id": "fa38add9.6dba5",
+        "type": "inject",
+        "z": "b9afddb.4a0a82",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 160,
+        "y": 340,
+        "wires": [
+            [
+                "a249f3ac.fd8d58"
+            ]
+        ]
+    },
+    {
+        "id": "a249f3ac.fd8d58",
+        "type": "function",
+        "z": "b9afddb.4a0a82",
+        "name": "Create Birthdate",
+        "func": "var res = {}\nres.payload = \"Tutu,TUTU,02-03-2004\"\nreturn res;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 370,
+        "y": 340,
+        "wires": [
+            [
+                "e78b5728.8aa78"
+            ]
+        ]
+    },
+    {
+        "id": "d9dc3ad7.7390d",
+        "type": "debug",
+        "z": "b9afddb.4a0a82",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 870,
+        "y": 340,
+        "wires": []
     }
 ]
