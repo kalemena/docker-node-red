@@ -1,0 +1,27 @@
+[
+    {
+        "id": "8c0bf6c8.3070a8",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "f1065fdf.f962b",
+        "type": "inject",
+        "z": "8c0bf6c8.3070a8",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 360,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    }
+]
