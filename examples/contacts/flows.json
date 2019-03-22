@@ -18,10 +18,111 @@
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
-        "x": 360,
+        "x": 240,
+        "y": 120,
+        "wires": [
+            [
+                "eb4b05c9.d2e9e"
+            ]
+        ]
+    },
+    {
+        "id": "58590358.894f04",
+        "type": "http in",
+        "z": "8c0bf6c8.3070a8",
+        "name": "GET /contacts/:id",
+        "url": "/contacts/:id",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 220,
         "y": 160,
         "wires": [
-            []
+            [
+                "eb4b05c9.d2e9e",
+                "540af128.378f18"
+            ]
         ]
+    },
+    {
+        "id": "ffc79591.ae7c2",
+        "type": "http in",
+        "z": "8c0bf6c8.3070a8",
+        "name": "POST /contacts",
+        "url": "/contacts",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 220,
+        "y": 200,
+        "wires": [
+            [
+                "eb4b05c9.d2e9e",
+                "540af128.378f18"
+            ]
+        ]
+    },
+    {
+        "id": "d8ca890f.453708",
+        "type": "http in",
+        "z": "8c0bf6c8.3070a8",
+        "name": "PUT /contacts/:id",
+        "url": "/contacts/:id",
+        "method": "put",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 220,
+        "y": 240,
+        "wires": [
+            [
+                "eb4b05c9.d2e9e",
+                "540af128.378f18"
+            ]
+        ]
+    },
+    {
+        "id": "e0dd56fb.759c7",
+        "type": "http in",
+        "z": "8c0bf6c8.3070a8",
+        "name": "DELETE /contacts/:id",
+        "url": "/contacts/:id",
+        "method": "delete",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 240,
+        "y": 280,
+        "wires": [
+            [
+                "eb4b05c9.d2e9e",
+                "540af128.378f18"
+            ]
+        ]
+    },
+    {
+        "id": "eb4b05c9.d2e9e",
+        "type": "debug",
+        "z": "8c0bf6c8.3070a8",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 610,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "540af128.378f18",
+        "type": "http response",
+        "z": "8c0bf6c8.3070a8",
+        "name": "echo response",
+        "statusCode": "200",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "x": 620,
+        "y": 180,
+        "wires": []
     }
 ]

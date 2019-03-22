@@ -1,0 +1,10 @@
+
+= Summary
+
+This is an example of creating a microservice.
+
+Here this is a simple Contact storage API, storing in MongoDB.
+
+== POST contact
+
+$ curl -v -X POST -H "Content-Type: application/json" -d '{ "FirstName": "FNTest", "LastName": "LNTest" }' http://localhost:2880/contacts
