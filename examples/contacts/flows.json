@@ -7,6 +7,15 @@
         "info": ""
     },
     {
+        "id": "fbe7c387.18fa78",
+        "type": "mongodb-config",
+        "z": "",
+        "hostname": "mongo",
+        "port": "27017",
+        "db": "contacts",
+        "name": "contacts"
+    },
+    {
         "id": "f1065fdf.f962b",
         "type": "inject",
         "z": "8c0bf6c8.3070a8",
@@ -58,7 +67,7 @@
         "wires": [
             [
                 "eb4b05c9.d2e9e",
-                "540af128.378f18"
+                "45dea7a4.43b12"
             ]
         ]
     },
@@ -121,8 +130,26 @@
         "headers": {
             "Content-Type": "application/json"
         },
-        "x": 620,
-        "y": 180,
+        "x": 840,
+        "y": 360,
         "wires": []
+    },
+    {
+        "id": "45dea7a4.43b12",
+        "type": "mongodb-node",
+        "z": "8c0bf6c8.3070a8",
+        "mongodb": "fbe7c387.18fa78",
+        "name": "Save Contacts",
+        "collection": "Contacts",
+        "operation": "insert",
+        "upsert": false,
+        "multi": false,
+        "x": 620,
+        "y": 160,
+        "wires": [
+            [
+                "540af128.378f18"
+            ]
+        ]
     }
 ]
