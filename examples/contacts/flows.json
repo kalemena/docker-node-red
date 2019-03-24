@@ -16,40 +16,19 @@
         "name": "contacts"
     },
     {
-        "id": "f1065fdf.f962b",
-        "type": "inject",
-        "z": "8c0bf6c8.3070a8",
-        "name": "",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "x": 240,
-        "y": 120,
-        "wires": [
-            [
-                "eb4b05c9.d2e9e"
-            ]
-        ]
-    },
-    {
         "id": "58590358.894f04",
         "type": "http in",
         "z": "8c0bf6c8.3070a8",
-        "name": "GET /contacts/:id",
-        "url": "/contacts/:id",
+        "name": "GET /contacts",
+        "url": "/contacts",
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 220,
-        "y": 160,
+        "x": 230,
+        "y": 140,
         "wires": [
             [
-                "eb4b05c9.d2e9e",
-                "540af128.378f18"
+                "9cc746f9.ae4d5"
             ]
         ]
     },
@@ -63,10 +42,9 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 220,
-        "y": 200,
+        "y": 60,
         "wires": [
             [
-                "eb4b05c9.d2e9e",
                 "45dea7a4.43b12"
             ]
         ]
@@ -81,10 +59,9 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 220,
-        "y": 240,
+        "y": 300,
         "wires": [
             [
-                "eb4b05c9.d2e9e",
                 "540af128.378f18"
             ]
         ]
@@ -98,11 +75,10 @@
         "method": "delete",
         "upload": false,
         "swaggerDoc": "",
-        "x": 240,
-        "y": 280,
+        "x": 200,
+        "y": 420,
         "wires": [
             [
-                "eb4b05c9.d2e9e",
                 "540af128.378f18"
             ]
         ]
@@ -112,13 +88,14 @@
         "type": "debug",
         "z": "8c0bf6c8.3070a8",
         "name": "",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
-        "x": 610,
-        "y": 220,
+        "complete": "true",
+        "targetType": "full",
+        "x": 830,
+        "y": 60,
         "wires": []
     },
     {
@@ -130,8 +107,8 @@
         "headers": {
             "Content-Type": "application/json"
         },
-        "x": 840,
-        "y": 360,
+        "x": 900,
+        "y": 240,
         "wires": []
     },
     {
@@ -145,11 +122,113 @@
         "upsert": false,
         "multi": false,
         "x": 620,
-        "y": 160,
+        "y": 60,
+        "wires": [
+            [
+                "540af128.378f18",
+                "eb4b05c9.d2e9e"
+            ]
+        ]
+    },
+    {
+        "id": "98e6bce4.82f77",
+        "type": "mongodb-node",
+        "z": "8c0bf6c8.3070a8",
+        "mongodb": "fbe7c387.18fa78",
+        "name": "Get All Contacts",
+        "collection": "Contacts",
+        "operation": "find",
+        "upsert": false,
+        "multi": false,
+        "x": 620,
+        "y": 140,
         "wires": [
             [
                 "540af128.378f18"
             ]
         ]
+    },
+    {
+        "id": "9cc746f9.ae4d5",
+        "type": "function",
+        "z": "8c0bf6c8.3070a8",
+        "name": "",
+        "func": "msg.limit = 100;\nmsg.skip = 0;\nmsg.sort = {\"date\":-1}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 430,
+        "y": 140,
+        "wires": [
+            [
+                "98e6bce4.82f77"
+            ]
+        ]
+    },
+    {
+        "id": "eb18a8e7.c7ecf",
+        "type": "http in",
+        "z": "8c0bf6c8.3070a8",
+        "name": "GET /contacts/:id",
+        "url": "/contacts/:id",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 220,
+        "y": 220,
+        "wires": [
+            [
+                "d997b8df.e987d",
+                "279107ae.a4c448"
+            ]
+        ]
+    },
+    {
+        "id": "d997b8df.e987d",
+        "type": "function",
+        "z": "8c0bf6c8.3070a8",
+        "name": "",
+        "func": "msg.query = {}\nmsg.query._id = msg.req.params.id;\nmsg.limit = 5;\nmsg.skip = 0;\nmsg.sort = {\"date\":-1}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 430,
+        "y": 220,
+        "wires": [
+            [
+                "32d52951.042a96"
+            ]
+        ]
+    },
+    {
+        "id": "32d52951.042a96",
+        "type": "mongodb-node",
+        "z": "8c0bf6c8.3070a8",
+        "mongodb": "fbe7c387.18fa78",
+        "name": "Get Contact By Id",
+        "collection": "Contacts",
+        "operation": "find",
+        "upsert": false,
+        "multi": false,
+        "x": 630,
+        "y": 220,
+        "wires": [
+            [
+                "540af128.378f18"
+            ]
+        ]
+    },
+    {
+        "id": "279107ae.a4c448",
+        "type": "debug",
+        "z": "8c0bf6c8.3070a8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 430,
+        "y": 260,
+        "wires": []
     }
 ]
