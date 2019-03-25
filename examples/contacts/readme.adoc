@@ -7,4 +7,14 @@ Here this is a simple Contact storage API, storing in MongoDB.
 
 == POST contact
 
+[source,bash]
+----
 $ curl -v -X POST -H "Content-Type: application/json" -d '{ "FirstName": "FNTest", "LastName": "LNTest" }' http://localhost:2880/contacts
+----
+
+== Query Contacts
+
+[source,bash]
+----
+$ curl -v -X GET http://localhost:2880/contacts?FirstName=FNTest
+----

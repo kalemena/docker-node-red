@@ -7,13 +7,13 @@
         "info": ""
     },
     {
-        "id": "fbe7c387.18fa78",
-        "type": "mongodb-config",
+        "id": "27cbe166.1bdcbe",
+        "type": "mongodb2",
         "z": "",
-        "hostname": "mongo",
-        "port": "27017",
-        "db": "contacts",
-        "name": "contacts"
+        "uri": "mongodb://mongo:27017/contacts",
+        "name": "Contacts",
+        "options": "",
+        "parallelism": "-1"
     },
     {
         "id": "58590358.894f04",
@@ -28,7 +28,7 @@
         "y": 140,
         "wires": [
             [
-                "9cc746f9.ae4d5"
+                "2d4a6c46.b51fb4"
             ]
         ]
     },
@@ -42,44 +42,10 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 220,
-        "y": 60,
+        "y": 220,
         "wires": [
             [
-                "45dea7a4.43b12"
-            ]
-        ]
-    },
-    {
-        "id": "d8ca890f.453708",
-        "type": "http in",
-        "z": "8c0bf6c8.3070a8",
-        "name": "PUT /contacts/:id",
-        "url": "/contacts/:id",
-        "method": "put",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 220,
-        "y": 300,
-        "wires": [
-            [
-                "540af128.378f18"
-            ]
-        ]
-    },
-    {
-        "id": "e0dd56fb.759c7",
-        "type": "http in",
-        "z": "8c0bf6c8.3070a8",
-        "name": "DELETE /contacts/:id",
-        "url": "/contacts/:id",
-        "method": "delete",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 200,
-        "y": 420,
-        "wires": [
-            [
-                "540af128.378f18"
+                "9cc746f9.ae4d5"
             ]
         ]
     },
@@ -95,34 +61,49 @@
         "complete": "true",
         "targetType": "full",
         "x": 830,
-        "y": 60,
+        "y": 220,
         "wires": []
     },
     {
         "id": "540af128.378f18",
         "type": "http response",
         "z": "8c0bf6c8.3070a8",
-        "name": "echo response",
+        "name": "response",
         "statusCode": "200",
         "headers": {
             "Content-Type": "application/json"
         },
-        "x": 900,
-        "y": 240,
+        "x": 840,
+        "y": 140,
         "wires": []
     },
     {
-        "id": "45dea7a4.43b12",
-        "type": "mongodb-node",
+        "id": "9cc746f9.ae4d5",
+        "type": "function",
         "z": "8c0bf6c8.3070a8",
-        "mongodb": "fbe7c387.18fa78",
-        "name": "Save Contacts",
+        "name": "",
+        "func": "msg.payload = msg.req.body;  \nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 390,
+        "y": 220,
+        "wires": [
+            [
+                "e5ccda8c.b31b68"
+            ]
+        ]
+    },
+    {
+        "id": "2d4a6c46.b51fb4",
+        "type": "mongodb2 in",
+        "z": "8c0bf6c8.3070a8",
+        "service": "_ext_",
+        "configNode": "27cbe166.1bdcbe",
+        "name": "Find Contacts",
         "collection": "Contacts",
-        "operation": "insert",
-        "upsert": false,
-        "multi": false,
-        "x": 620,
-        "y": 60,
+        "operation": "find.toArray",
+        "x": 460,
+        "y": 140,
         "wires": [
             [
                 "540af128.378f18",
@@ -131,104 +112,21 @@
         ]
     },
     {
-        "id": "98e6bce4.82f77",
-        "type": "mongodb-node",
+        "id": "e5ccda8c.b31b68",
+        "type": "mongodb2 in",
         "z": "8c0bf6c8.3070a8",
-        "mongodb": "fbe7c387.18fa78",
-        "name": "Get All Contacts",
+        "service": "_ext_",
+        "configNode": "27cbe166.1bdcbe",
+        "name": "Insert Contact",
         "collection": "Contacts",
-        "operation": "find",
-        "upsert": false,
-        "multi": false,
-        "x": 620,
-        "y": 140,
-        "wires": [
-            [
-                "540af128.378f18"
-            ]
-        ]
-    },
-    {
-        "id": "9cc746f9.ae4d5",
-        "type": "function",
-        "z": "8c0bf6c8.3070a8",
-        "name": "",
-        "func": "msg.limit = 100;\nmsg.skip = 0;\nmsg.sort = {\"date\":-1}\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 430,
-        "y": 140,
-        "wires": [
-            [
-                "98e6bce4.82f77"
-            ]
-        ]
-    },
-    {
-        "id": "eb18a8e7.c7ecf",
-        "type": "http in",
-        "z": "8c0bf6c8.3070a8",
-        "name": "GET /contacts/:id",
-        "url": "/contacts/:id",
-        "method": "get",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 220,
+        "operation": "insert",
+        "x": 560,
         "y": 220,
         "wires": [
             [
-                "d997b8df.e987d",
-                "279107ae.a4c448"
+                "540af128.378f18",
+                "eb4b05c9.d2e9e"
             ]
         ]
-    },
-    {
-        "id": "d997b8df.e987d",
-        "type": "function",
-        "z": "8c0bf6c8.3070a8",
-        "name": "",
-        "func": "msg.query = {}\nmsg.query._id = msg.req.params.id;\nmsg.limit = 5;\nmsg.skip = 0;\nmsg.sort = {\"date\":-1}\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 430,
-        "y": 220,
-        "wires": [
-            [
-                "32d52951.042a96"
-            ]
-        ]
-    },
-    {
-        "id": "32d52951.042a96",
-        "type": "mongodb-node",
-        "z": "8c0bf6c8.3070a8",
-        "mongodb": "fbe7c387.18fa78",
-        "name": "Get Contact By Id",
-        "collection": "Contacts",
-        "operation": "find",
-        "upsert": false,
-        "multi": false,
-        "x": 630,
-        "y": 220,
-        "wires": [
-            [
-                "540af128.378f18"
-            ]
-        ]
-    },
-    {
-        "id": "279107ae.a4c448",
-        "type": "debug",
-        "z": "8c0bf6c8.3070a8",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "x": 430,
-        "y": 260,
-        "wires": []
     }
 ]
