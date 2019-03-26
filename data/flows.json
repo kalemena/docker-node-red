@@ -15,11 +15,12 @@
         "repeat": "",
         "crontab": "",
         "once": false,
-        "x": 240,
-        "y": 120,
+        "x": 160,
+        "y": 100,
         "wires": [
             [
-                "123752a5.01877d"
+                "123752a5.01877d",
+                "732ae3fe.5c7704"
             ]
         ]
     },
@@ -44,8 +45,8 @@
         "name": "contacts.csv",
         "files": "/etc/my-app/contacts.csv",
         "recursive": "",
-        "x": 190,
-        "y": 200,
+        "x": 150,
+        "y": 240,
         "wires": [
             [
                 "14a6f751.eccf11"
@@ -86,6 +87,37 @@
         "wires": [
             [
                 "123752a5.01877d"
+            ]
+        ]
+    },
+    {
+        "id": "732ae3fe.5c7704",
+        "type": "simpletime",
+        "z": "b9afddb.4a0a82",
+        "name": "",
+        "x": 570,
+        "y": 60,
+        "wires": [
+            [
+                "123752a5.01877d"
+            ]
+        ]
+    },
+    {
+        "id": "488d34dd.04068c",
+        "type": "sunrise",
+        "z": "b9afddb.4a0a82",
+        "name": "",
+        "lat": "",
+        "lon": "",
+        "start": "sunrise",
+        "end": "sunset",
+        "x": 150,
+        "y": 180,
+        "wires": [
+            [],
+            [
+                "14a6f751.eccf11"
             ]
         ]
     }

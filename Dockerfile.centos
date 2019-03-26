@@ -51,13 +51,14 @@ WORKDIR /home/node-red
 # NODE RED MODULES
 RUN \
   npm i node-red-node-serialport; \
-  npm i node-red-contrib-rfxcom; \
+#  npm i node-red-contrib-rfxcom; \
   npm i node-red-node-openweathermap; \
   npm i node-red-node-ping; \
-  npm i node-red-contrib-influxdb; \
+#  npm i node-red-contrib-influxdb; \
 #  npm i node-red-dashboard; \
   npm i node-red-contrib-telegrambot; \
-  npm i node-red-node-suncalc;
+  npm i node-red-node-suncalc; \
+  node-red-contrib-simpletime;
 # npm i node-red-node-twilio;
 # npm i node-red-node-smooth 
 # npm i node-red-node-pidcontrol
