@@ -128,5 +128,106 @@
                 "eb4b05c9.d2e9e"
             ]
         ]
+    },
+    {
+        "id": "149aab74.5e7915",
+        "type": "http in",
+        "z": "8c0bf6c8.3070a8",
+        "name": "PUT /contacts",
+        "url": "/contacts",
+        "method": "put",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 210,
+        "y": 280,
+        "wires": [
+            [
+                "b905365b.368868"
+            ]
+        ]
+    },
+    {
+        "id": "b905365b.368868",
+        "type": "function",
+        "z": "8c0bf6c8.3070a8",
+        "name": "",
+        "func": "msg.payload = msg.req.body;  \nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 390,
+        "y": 280,
+        "wires": [
+            [
+                "5e5f3d03.33d364"
+            ]
+        ]
+    },
+    {
+        "id": "5e5f3d03.33d364",
+        "type": "mongodb2 in",
+        "z": "8c0bf6c8.3070a8",
+        "service": "_ext_",
+        "configNode": "27cbe166.1bdcbe",
+        "name": "Update Contact",
+        "collection": "Contacts",
+        "operation": "update",
+        "x": 560,
+        "y": 280,
+        "wires": [
+            [
+                "540af128.378f18",
+                "eb4b05c9.d2e9e"
+            ]
+        ]
+    },
+    {
+        "id": "c047b72a.4c79b8",
+        "type": "http in",
+        "z": "8c0bf6c8.3070a8",
+        "name": "DELETE /contacts/:id",
+        "url": "/contacts/:id",
+        "method": "delete",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 240,
+        "y": 340,
+        "wires": [
+            [
+                "bb5dfed8.e626d8"
+            ]
+        ]
+    },
+    {
+        "id": "bb5dfed8.e626d8",
+        "type": "function",
+        "z": "8c0bf6c8.3070a8",
+        "name": "",
+        "func": "msg.payload = msg.req.params;  \nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 430,
+        "y": 340,
+        "wires": [
+            [
+                "eee28c80.a627b8"
+            ]
+        ]
+    },
+    {
+        "id": "eee28c80.a627b8",
+        "type": "mongodb2 in",
+        "z": "8c0bf6c8.3070a8",
+        "service": "_ext_",
+        "configNode": "27cbe166.1bdcbe",
+        "name": "Delete Contact",
+        "collection": "Contacts",
+        "operation": "deleteOne",
+        "x": 600,
+        "y": 340,
+        "wires": [
+            [
+                "540af128.378f18"
+            ]
+        ]
     }
 ]
