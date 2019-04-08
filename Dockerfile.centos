@@ -86,6 +86,9 @@ EXPOSE 1880
 ENV TZ=Europe/Paris
 ENV FLOWS=/data/flows.json
 
+RUN sed -i 's+//flowFilePretty: .*+flowFilePretty: true+g' settings.js
+# ADD etc/node-red/settings.js /home/node-red/settings.js
+
 ADD run.sh /run.sh
 
 CMD ["bash", "/run.sh"]
