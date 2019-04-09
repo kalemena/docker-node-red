@@ -3,14 +3,14 @@ version: '3.7'
 services:  
 
   nodered:
-    image: kalemena/node-red:0.20.3
+    image: kalemena/node-red:latest
 #    build: .
     restart: always
     ports:
      - "2880:1880"
     volumes:
      - ./data:/data
-     - ./etc/node-red/settings.js:/home/node-red/settings.js
+#     - ./etc/node-red/settings.js:/home/node-red/settings.js
      - ./etc/my-app:/etc/my-app
 #    devices:
 #     - "/dev/ttyUSB0:/dev/ttyCurrenCost"

@@ -2,7 +2,7 @@ FROM centos:7
 
 MAINTAINER Kalemena
 
-ARG NODERED_VERSION=0.20.3
+ARG NODERED_VERSION=0.20.5
 
  # Build-time metadata as defined at http://label-schema.org
 ARG BUILD_DATE
@@ -86,7 +86,7 @@ EXPOSE 1880
 ENV TZ=Europe/Paris
 ENV FLOWS=/data/flows.json
 
-RUN sed -i 's+//flowFilePretty: .*+flowFilePretty: true+g' settings.js
+RUN sed -i 's+//flowFilePretty: .*+flowFilePretty: true,+g' settings.js
 # ADD etc/node-red/settings.js /home/node-red/settings.js
 
 ADD run.sh /run.sh
