@@ -47,9 +47,9 @@ Optionaly, map USB devices used in flows.
 
 [source,bash]
 .docker-compose.yml
-----
+====
 include::docker-compose.yml[]
-----
+====
 
 === Start node-red
 
