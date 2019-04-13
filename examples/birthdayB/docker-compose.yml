@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:  
+
+  nodered:
+    image: kalemena/node-red:latest
+    restart: always
+    ports:
+     - "2880:1880"
+    volumes:
+     - .:/data
+    environment:
+     - FLOWS=/data/flows.json

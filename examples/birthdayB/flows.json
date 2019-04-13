@@ -1,0 +1,208 @@
+[
+    {
+        "id": "552a74b7.7ce90c",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "76a68a66.a6003c",
+        "type": "inject",
+        "z": "552a74b7.7ce90c",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 180,
+        "y": 100,
+        "wires": [
+            [
+                "efc102b3.03304"
+            ]
+        ]
+    },
+    {
+        "id": "3aaadf55.525878",
+        "type": "debug",
+        "z": "552a74b7.7ce90c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 1150,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "f60f9a48.7d1de",
+        "type": "watch",
+        "z": "552a74b7.7ce90c",
+        "name": "contacts.csv",
+        "files": "/etc/my-app/contacts.csv",
+        "recursive": "",
+        "x": 170,
+        "y": 220,
+        "wires": [
+            [
+                "efc102b3.03304"
+            ]
+        ]
+    },
+    {
+        "id": "efc102b3.03304",
+        "type": "file in",
+        "z": "552a74b7.7ce90c",
+        "name": "",
+        "filename": "/data/contacts.csv",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "x": 410,
+        "y": 180,
+        "wires": [
+            [
+                "b3776f0e.48233"
+            ]
+        ]
+    },
+    {
+        "id": "b3776f0e.48233",
+        "type": "csv",
+        "z": "552a74b7.7ce90c",
+        "name": "",
+        "sep": ",",
+        "hdrin": true,
+        "hdrout": "",
+        "multi": "one",
+        "ret": "\\n",
+        "temp": "",
+        "skip": "0",
+        "x": 630,
+        "y": 180,
+        "wires": [
+            [
+                "2b62dc95.f86e74"
+            ]
+        ]
+    },
+    {
+        "id": "2b62dc95.f86e74",
+        "type": "simpletime",
+        "z": "552a74b7.7ce90c",
+        "name": "",
+        "x": 790,
+        "y": 180,
+        "wires": [
+            [
+                "6963347b.a44a64"
+            ]
+        ]
+    },
+    {
+        "id": "20601a98.4643a6",
+        "type": "sunrise",
+        "z": "552a74b7.7ce90c",
+        "name": "",
+        "lat": "48.5",
+        "lon": "-4.5",
+        "start": "sunrise",
+        "end": "sunset",
+        "x": 170,
+        "y": 160,
+        "wires": [
+            [],
+            [
+                "efc102b3.03304"
+            ]
+        ]
+    },
+    {
+        "id": "6963347b.a44a64",
+        "type": "function",
+        "z": "552a74b7.7ce90c",
+        "name": "Check date",
+        "func": "if (msg.payload.Birthdate !== undefined) {\n    var parts = msg.payload.Birthdate.split(\"-\");\n    \n    if(parts[0] == msg.mydom && parts[1] == msg.mymonthn) {\n        var res = {}\n        res.payload = \"Happy Birthday \" + msg.payload.FirstName + \" \" + msg.payload.LastName\n        return res;\n    }\n}\nreturn null;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 980,
+        "y": 180,
+        "wires": [
+            [
+                "3aaadf55.525878"
+            ]
+        ]
+    },
+    {
+        "id": "9cda2824.2b5d48",
+        "type": "file",
+        "z": "552a74b7.7ce90c",
+        "name": "/etc/my-app/contacts.csv",
+        "filename": "/data/contacts.csv",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "false",
+        "encoding": "utf8",
+        "x": 630,
+        "y": 320,
+        "wires": [
+            [
+                "d6f47b43.00aea"
+            ]
+        ]
+    },
+    {
+        "id": "70e404c9.755814",
+        "type": "inject",
+        "z": "552a74b7.7ce90c",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 180,
+        "y": 320,
+        "wires": [
+            [
+                "e628b2a8.78ef38"
+            ]
+        ]
+    },
+    {
+        "id": "e628b2a8.78ef38",
+        "type": "function",
+        "z": "552a74b7.7ce90c",
+        "name": "Create Birthdate",
+        "func": "var res = {}\nres.payload = \"Tutu,TUTU,02-03-2004\"\nreturn res;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 390,
+        "y": 320,
+        "wires": [
+            [
+                "9cda2824.2b5d48"
+            ]
+        ]
+    },
+    {
+        "id": "d6f47b43.00aea",
+        "type": "debug",
+        "z": "552a74b7.7ce90c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 890,
+        "y": 320,
+        "wires": []
+    }
+]

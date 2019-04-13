@@ -30,6 +30,5 @@ services:
      - "2880:1880"
     volumes:
      - .:/data
-     - ../../etc/node-red/settings.js:/home/node-red/settings.js
     environment:
      - FLOWS=/data/flows.json
