@@ -73,3 +73,8 @@ $ docker-compose stop
 ----
 $ docker-compose down
 ----
+
+== Examples
+
+- link:examples/contacts[Creating a simple API]
+- link:examples/birthdayB[CSV reading]
