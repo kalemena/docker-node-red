@@ -1,0 +1,97 @@
+[
+    {
+        "id": "e4b07564.01839",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "592bd35e.52b524",
+        "type": "redis-config",
+        "z": "",
+        "host": "redis",
+        "port": "6379",
+        "dbase": "callbacks",
+        "pass": ""
+    },
+    {
+        "id": "b7fbffb8.7d47",
+        "type": "redis-in",
+        "z": "e4b07564.01839",
+        "server": "592bd35e.52b524",
+        "command": "blpop",
+        "name": "Callbacks",
+        "topic": "",
+        "timeout": "10",
+        "x": 300,
+        "y": 200,
+        "wires": [
+            [
+                "7b260af8.9d76e4"
+            ]
+        ]
+    },
+    {
+        "id": "f72a7950.2c6e1",
+        "type": "redis-out",
+        "z": "e4b07564.01839",
+        "server": "592bd35e.52b524",
+        "command": "rpush",
+        "name": "",
+        "topic": "",
+        "x": 730,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "8b1a697a.e291e8",
+        "type": "inject",
+        "z": "e4b07564.01839",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 240,
+        "y": 320,
+        "wires": [
+            [
+                "4da86191.8b81a8"
+            ]
+        ]
+    },
+    {
+        "id": "4da86191.8b81a8",
+        "type": "function",
+        "z": "e4b07564.01839",
+        "name": "",
+        "func": "msg.payload = ['key','value'];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 470,
+        "y": 320,
+        "wires": [
+            [
+                "f72a7950.2c6e1"
+            ]
+        ]
+    },
+    {
+        "id": "7b260af8.9d76e4",
+        "type": "debug",
+        "z": "e4b07564.01839",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 720,
+        "y": 200,
+        "wires": []
+    }
+]

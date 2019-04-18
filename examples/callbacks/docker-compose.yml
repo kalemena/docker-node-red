@@ -1,0 +1,25 @@
+version: '3.7'
+
+volumes:
+  redis-data:
+
+services:  
+
+  redis:
+    image: redis
+    environment:
+      - REDIS_HOST=redis
+    ports:
+      - 6379:6379
+    volumes:
+      - redis-data:/data
+
+  nodered:
+    build: .
+    restart: always
+    ports:
+     - "2880:1880"
+    volumes:
+     - .:/data
+    environment:
+     - FLOWS=/data/flows.json
