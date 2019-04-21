@@ -1,35 +1,29 @@
 sudo: required
-
 services:
-  - docker
-
+- docker
 env:
   global:
-    - REGISTRY_USER=kalemena
-    - secure: "uR2m1FrxHDlqz+9BB2p2Jwa2mr1tOG04IQvpkyZ0gK/H0/tcXIBxcUNSboY+3GEAFs+jJbXsf8dU8iNyBl9F/9We0KxYRcHHglH46UQdSD7IZKe7rJ+mmvctMGRK+bPvujNDHLmjT/Ef/QiLZt/DQsJxmbhiBbtKF7LGyAtfkBXNW09JTF4n05+e7Il/1tm40ANjgiJgT5lqNGUjO05m1qS3HQ7eKXcM8kIM7t5xRnblMpzTvgkMpgCOndNh/Z3PAk27YPiJrkK13mZbeYjfvHH0Ah5ZNLQwZMWcE2GWxUNOZisFHa9ntppZYCZThmhVX1EOmwuJ1f0cOtgtJdcXVSRCiX5cU0HSURVhdOZc0zhjGCyNQCMyBwv9Z/DV/XfU/Vefj8ckpHHqnAQigsE7cgrlHBb9ckZ+BG8kJGvOuIPsI8dPmpczy5tHnWDRr/xzBYc8O65IZhN9ZXqpQ/kBtFitfKtvhy/2JuFK6httb+6acHybrBZIx9RHj0QsPXYndy+L8EHRuLYa/IgxHQPFXjJpg8eL1m3GWD2bvpsgxL1peTwpVPM7EjL8Mtn7JN8Vxe9E+5C0MtBrzdVmzH/wWpdgmD0nxJV8NUNmQAKjT6zwHZ4aR7aUGaxG8zY4JUNaLo2QwAAraFPW8NOjh20rD6zUrT/5Ph+ynJZshi/wKFQ="
+  - REGISTRY_USER=kalemena
+  - secure: rshsO4aJFGQiEuHqabOy8MRSlmfELF/2RmW9kyMLeSUJ7jkeBPi2p6NCoHTQjxYY903YViP2fKAlukLj5BrKPW9cdMpt2DRq1Y0+4I+49QokJQtmPfjvYnp/5V0jyIHY8f/elFBEYYIop98l5ibLeV5ZgWALqZNUF34CFKTtDt17LWRPCP3jonUr0bPH/wAE/JpppFImC1AgmyzHTL6NxZWXowTSwaqsznn3EC6OTxh3+xRNDHC6iHaP9GtRX+bJOhEykyzmSSH1RBZ/7tMsRzwr1tAFXj2SHf2GbVs8R4dvdBlv2UVf3ILbXFh4UGcmuwTh1jZJacU5qU4shsyRvZ06s4Tb5abSJnVXDjsT9IVNNEvzmOqtjwZ50A5bq+3f/qlvbDQ2p9JGu1pEQq7YNmAYzb8ttHHDqEEBNDX4pmwUqSxqofMKp8AcUk0tQXPU0mhe9FC+5SvMsab43IAIdqnlAPHKPcQ6OmOCE1pDidizOy0g65xfDuCXXIGvY9TvJWDuivgUmaTtkPsdzBG2mD3CilcX8IuouRxIv5gHo3hs3YmK9VcQ6wjn+xsjUFLeM5NHlhTh+rxxh+bzEz0MaucR2TPkPR2xVVYLPelnFpOvOQ+E3uq3/IAsu1a1IoMRafx5ta+0M8OqmYjsc4053t1zbMOAL79pFWteQ/X4xWc=
   matrix:
-    - IMAGE="kalemena/node-red" VERSION="0.20.5" REPO="kalemena/docker-node-red"
-
+  - IMAGE="kalemena/node-red" VERSION="0.20.5" REPO="kalemena/docker-node-red"
 before_script:
-  - docker pull centos:7
-  - docker pull ${IMAGE}:${VERSION} || true
-
+- docker pull centos:7
+- docker pull ${IMAGE}:${VERSION} || true
 script:
-  - |
-    docker build --pull --cache-from ${IMAGE}:${VERSION} \
-      -t ${IMAGE}:${VERSION} \
-      -f Dockerfile.centos \
-      --build-arg NODERED_VERSION=${VERSION} \
-      --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
-      --build-arg VCS_REF=`git rev-parse --short HEAD` \
-      --build-arg VERSION=`cat VERSION` .
-  - docker ps -a
-  - docker tag ${IMAGE}:${VERSION} ${IMAGE}:latest
-  - docker images
-
+- |
+  docker build --pull --cache-from ${IMAGE}:${VERSION} \
+    -t ${IMAGE}:${VERSION} \
+    -f Dockerfile.centos \
+    --build-arg NODERED_VERSION=${VERSION} \
+    --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
+    --build-arg VCS_REF=`git rev-parse --short HEAD` \
+    --build-arg VERSION=`cat VERSION` .
+- docker ps -a
+- docker tag ${IMAGE}:${VERSION} ${IMAGE}:latest
+- docker images
 before_deploy:
-  - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
-
+- docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
 deploy:
   provider: script
   script: docker push ${IMAGE}:${VERSION}; docker push ${IMAGE}:latest

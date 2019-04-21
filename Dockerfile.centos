@@ -68,6 +68,7 @@ RUN \
 #   node-red-node-nma
 #   node-red-node-pushbullet
 #   node-red-node-daemon
+#   node-red-contrib-web-worldmap
 
 # NODE RED Z-WAVE
 # RUN \
