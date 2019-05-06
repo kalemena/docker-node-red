@@ -55,7 +55,8 @@ RUN \
     node-red-node-ping \
     node-red-contrib-telegrambot \
     node-red-node-suncalc \
-    node-red-contrib-simpletime;
+    node-red-contrib-simpletime \
+    node-red-contrib-credentials;
 
 #   node-red-contrib-rfxcom
 #   node-red-contrib-influxdb
@@ -88,7 +89,6 @@ ENV TZ=Europe/Paris
 ENV FLOWS=/data/flows.json
 
 RUN sed -i 's+//flowFilePretty: .*+flowFilePretty: true,+g' settings.js
-# ADD etc/node-red/settings.js /home/node-red/settings.js
 
 ADD run.sh /run.sh
 
