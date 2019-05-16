@@ -51,38 +51,11 @@ WORKDIR /home/node-red
 # NODE RED MODULES
 RUN \
   npm i node-red-node-serialport \
-    node-red-node-openweathermap \
     node-red-node-ping \
-    node-red-contrib-telegrambot \
     node-red-node-suncalc \
     node-red-contrib-simpletime \
     node-red-contrib-credentials;
 
-#   node-red-contrib-rfxcom
-#   node-red-contrib-influxdb
-#   node-red-dashboard
-#   node-red-node-twilio
-#   node-red-node-smooth 
-#   node-red-node-pidcontrol
-#   node-red-node-random
-#   node-red-node-mdns
-#   node-red-node-nma
-#   node-red-node-pushbullet
-#   node-red-node-daemon
-#   node-red-contrib-web-worldmap
-
-# NODE RED Z-WAVE
-# RUN \
-#  yum install -y http://mirror.my-ho.st/Downloads/OpenZWave/CentOS_7/x86_64/libopenzwave-1.4.164-2.1.x86_64.rpm; \
-#  yum install -y http://mirror.my-ho.st/Downloads/OpenZWave/CentOS_7/x86_64/openzwave-1.4.164-2.1.x86_64.rpm; \
-#  cd /home; \
-#  wget https://github.com/OpenZWave/open-zwave/archive/V1.5.zip; unzip V1.5.zip; rm V1.5.zip; \
-#  cd open-zwave-1.5; \
-#  yum install -y libudev-devel net-tools; \
-#  make && make install; \
-#  cd /home/node-red; \
-#  npm install node-red-contrib-openzwave;
-  
 EXPOSE 1880
 
 ENV TZ=Europe/Paris
