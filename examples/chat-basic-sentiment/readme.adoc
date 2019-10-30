@@ -28,3 +28,7 @@ Chat messages with keywords *good*, *bad*, etc
 Stop everything:
 
     $ docker-compose down
+
+# References
+
+link:http://developers.sensetecnic.com/article/sentiment-chat-with-node-red/[FRED example]
