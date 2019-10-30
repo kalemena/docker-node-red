@@ -10,10 +10,10 @@
         "id": "592bd35e.52b524",
         "type": "redis-config",
         "z": "",
-        "host": "redis",
-        "port": "6379",
-        "dbase": "callbacks",
-        "pass": ""
+        "name": "redis:6379",
+        "options": "",
+        "cluster": false,
+        "optionsType": "str"
     },
     {
         "id": "b7fbffb8.7d47",
@@ -22,9 +22,9 @@
         "server": "592bd35e.52b524",
         "command": "blpop",
         "name": "Callbacks",
-        "topic": "",
+        "topic": "callbacks",
         "timeout": "10",
-        "x": 300,
+        "x": 240,
         "y": 200,
         "wires": [
             [
