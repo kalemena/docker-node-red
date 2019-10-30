@@ -1,0 +1,206 @@
+[
+    {
+        "id": "e4b07564.01839",
+        "type": "tab",
+        "label": "Simple web chat",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "bd86dddc.56bf18",
+        "type": "websocket-listener",
+        "path": "/public/publish",
+        "wholemsg": "false"
+    },
+    {
+        "id": "c3b40ada.0d9378",
+        "type": "websocket-listener",
+        "path": "/public/receive",
+        "wholemsg": "false"
+    },
+    {
+        "id": "11f5a067.3b7c38",
+        "type": "websocket in",
+        "z": "e4b07564.01839",
+        "name": "",
+        "server": "c3b40ada.0d9378",
+        "client": "",
+        "x": 130,
+        "y": 200,
+        "wires": [
+            [
+                "b74cb0ec.9975b8"
+            ]
+        ]
+    },
+    {
+        "id": "b90dfa06.0be5b8",
+        "type": "http in",
+        "z": "e4b07564.01839",
+        "name": "",
+        "url": "/public/chat",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 80,
+        "wires": [
+            [
+                "4296f8fd.c102b"
+            ]
+        ]
+    },
+    {
+        "id": "e8793558.49c92",
+        "type": "http response",
+        "z": "e4b07564.01839",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1010,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "4296f8fd.c102b",
+        "type": "template",
+        "z": "e4b07564.01839",
+        "name": "chat html",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "text",
+        "syntax": "mustache",
+        "template": "<!doctype html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>FRED-powered chat app</title>\n  <script src=\"http://code.jquery.com/jquery-1.11.3.min.js\"></script>\n  <script src=\"http:///code.jquery.com/jquery-migrate-1.2.1.min.js\"></script>\n  <style>\n    #messages {border-color:#999; border-style:solid; width:250px; min-height:200px; margin:5px;}\n    .msg {color:#FFF; background-color:#2980B9; padding:2px; margin:2px;}\n    .server {color:#999; background-color:white; font-size:small;}\n    .sentiment-3 {background-color:#992222;}  \n    .sentiment0 {background-color:#2980B9;}\n    .sentiment3 {background-color:#229922;}\n    #form {margin:5px;}\n    #form input {width:250px;}\n  </style>\n</head>\n<body>\n  <div id=\"messages\"></div>\n  <form id=\"form\" onsubmit=\"return false;\">\n    <input id=\"text\" type=\"text\" onkeypress=\"return sendText(event)\" />\n  </form>\n\n  <script type=\"text/javascript\">\n\n    // Open a websocket using FRED.\n    var publishSocket = new WebSocket(\"ws://localhost:3880/public/receive\");\n    var listenSocket = new WebSocket(\"ws://localhost:3880/public/publish\");\n\n    listenSocket.onmessage = function (event) {\n      // When receiving a message append a div child to #messages\n      data = JSON.parse(event.data);\n      $(\"#messages\").append(\"<div class='msg sentiment\"+data.sentiment+\"' >\"+data.timestamp+\" - \"+data.msg+\"</div>\")\n      if ($(\"#messages\").children().length > 10 ) { $(\"#messages :first-child\").remove()}\n    }\n\n    listenSocket.onclose = function(event){\n      $(\"#messages\").append(\"<div class='msg server'>Disconnected from server.</div>\");\n    }\n\n    listenSocket.onopen = function(event){\n      $(\"#messages\").append(\"<div class='msg server'>Connected to server.</div>\")\n    }\n\n    function sendText(event) {\n      // Only if return key pressed\n      if (event.keyCode == 13) {\n        // Construct object containing the data the server needs.\n        d = new Date();\n        var data = {\n          msg: $(\"#text\").val(),\n          timestamp: d.getHours() +\":\"+ d.getMinutes() + \":\" + d.getSeconds()\n        };\n        // Send the msg object as a JSON-formatted string.\n        publishSocket.send(JSON.stringify(data));  \n        // Blank the text input element\n        $(\"#text\").val(\"\");\n      }\n    }\n </script>\n\n</body>\n</html>\n",
+        "x": 480,
+        "y": 80,
+        "wires": [
+            [
+                "e8793558.49c92"
+            ]
+        ]
+    },
+    {
+        "id": "a2fde4f7.6de21",
+        "type": "sentiment",
+        "z": "e4b07564.01839",
+        "name": "",
+        "property": "payload",
+        "x": 660,
+        "y": 200,
+        "wires": [
+            [
+                "c4b0c936.462fd",
+                "2404193b.021b4e"
+            ]
+        ]
+    },
+    {
+        "id": "dc6bf014.6f2d1",
+        "type": "change",
+        "z": "e4b07564.01839",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "data",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.msg",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 480,
+        "y": 200,
+        "wires": [
+            [
+                "a2fde4f7.6de21"
+            ]
+        ]
+    },
+    {
+        "id": "b74cb0ec.9975b8",
+        "type": "json",
+        "z": "e4b07564.01839",
+        "name": "",
+        "x": 310,
+        "y": 200,
+        "wires": [
+            [
+                "dc6bf014.6f2d1"
+            ]
+        ]
+    },
+    {
+        "id": "c4b0c936.462fd",
+        "type": "function",
+        "z": "e4b07564.01839",
+        "name": "format message",
+        "func": "return {\n    payload: {\n        msg:msg.data.msg,\n        timestamp:msg.data.timestamp,\n        sentiment:msg.sentiment.score\n    }\n};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 840,
+        "y": 200,
+        "wires": [
+            [
+                "8592ebff.094a1"
+            ]
+        ]
+    },
+    {
+        "id": "8592ebff.094a1",
+        "type": "websocket out",
+        "z": "e4b07564.01839",
+        "name": "",
+        "server": "bd86dddc.56bf18",
+        "client": "",
+        "x": 1050,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "2404193b.021b4e",
+        "type": "debug",
+        "z": "e4b07564.01839",
+        "name": "Debug Sentiments",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 850,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "5b0d547f.1fe6b4",
+        "type": "comment",
+        "z": "e4b07564.01839",
+        "name": "Serve Web Chat Room",
+        "info": "",
+        "x": 140,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "b8af2ed9.6e428",
+        "type": "comment",
+        "z": "e4b07564.01839",
+        "name": "Listen & Broadcast events",
+        "info": "",
+        "x": 150,
+        "y": 160,
+        "wires": []
+    }
+]
