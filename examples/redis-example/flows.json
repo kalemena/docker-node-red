@@ -1,0 +1,886 @@
+[
+    {
+        "id": "e4b07564.01839",
+        "type": "tab",
+        "label": "Redis Test Pub/Sub",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "5ed67383.5985ac",
+        "type": "redis-config",
+        "z": "",
+        "name": "redis:6379",
+        "options": "{\"host\":\"redis\"}",
+        "cluster": false,
+        "optionsType": "json"
+    },
+    {
+        "id": "e243645d.ca73d",
+        "type": "catch",
+        "z": "e4b07564.01839",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 340,
+        "y": 80,
+        "wires": [
+            [
+                "3f083548.5e6872"
+            ]
+        ]
+    },
+    {
+        "id": "3f083548.5e6872",
+        "type": "debug",
+        "z": "e4b07564.01839",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 650,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "c1fdda7e.4998e",
+        "type": "debug",
+        "z": "e4b07564.01839",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 850,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "2748a823.cc0fb8",
+        "type": "inject",
+        "z": "e4b07564.01839",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 340,
+        "y": 380,
+        "wires": [
+            [
+                "a5c184a7.083b6"
+            ]
+        ]
+    },
+    {
+        "id": "a5c184a7.083b6",
+        "type": "redis-out",
+        "z": "e4b07564.01839",
+        "server": "5ed67383.5985ac",
+        "command": "rpush",
+        "name": "",
+        "topic": "test",
+        "x": 590,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "b1bbbc65.621988",
+        "type": "redis-in",
+        "z": "e4b07564.01839",
+        "server": "5ed67383.5985ac",
+        "command": "blpop",
+        "name": "",
+        "topic": "test",
+        "timeout": 0,
+        "x": 590,
+        "y": 380,
+        "wires": [
+            [
+                "c1fdda7e.4998e"
+            ]
+        ]
+    },
+    {
+        "id": "5dd59cd5.7e4894",
+        "type": "inject",
+        "z": "e4b07564.01839",
+        "name": "",
+        "topic": "",
+        "payload": "{\"a\":1,\"b\":2}",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 340,
+        "y": 340,
+        "wires": [
+            [
+                "a5c184a7.083b6"
+            ]
+        ]
+    },
+    {
+        "id": "7d3f4780.4c4e7",
+        "type": "redis-command",
+        "z": "e4b07564.01839",
+        "server": "5ed67383.5985ac",
+        "command": "getset",
+        "name": "",
+        "topic": "timestamp",
+        "params": "[]",
+        "paramsType": "json",
+        "payloadType": "json",
+        "block": false,
+        "x": 640,
+        "y": 440,
+        "wires": [
+            [
+                "fd1d86cf.b829e8"
+            ]
+        ]
+    },
+    {
+        "id": "b8b91eb4.0fa498",
+        "type": "inject",
+        "z": "e4b07564.01839",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 340,
+        "y": 440,
+        "wires": [
+            [
+                "7d3f4780.4c4e7"
+            ]
+        ]
+    },
+    {
+        "id": "fd1d86cf.b829e8",
+        "type": "debug",
+        "z": "e4b07564.01839",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 870,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "e2b59649.9425a8",
+        "type": "redis-command",
+        "z": "e4b07564.01839",
+        "server": "5ed67383.5985ac",
+        "command": "set",
+        "name": "",
+        "topic": "",
+        "params": "[]",
+        "paramsType": "json",
+        "payloadType": "json",
+        "block": false,
+        "x": 600,
+        "y": 500,
+        "wires": [
+            [
+                "759d82c8.410f94"
+            ]
+        ]
+    },
+    {
+        "id": "146b63bf.3a2304",
+        "type": "inject",
+        "z": "e4b07564.01839",
+        "name": "",
+        "topic": "",
+        "payload": "[\"key\",\"value\"]",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 330,
+        "y": 500,
+        "wires": [
+            [
+                "e2b59649.9425a8"
+            ]
+        ]
+    },
+    {
+        "id": "759d82c8.410f94",
+        "type": "debug",
+        "z": "e4b07564.01839",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 870,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "808c1d9d.6c2eb8",
+        "type": "redis-command",
+        "z": "e4b07564.01839",
+        "server": "5ed67383.5985ac",
+        "command": "getset",
+        "name": "",
+        "topic": "",
+        "params": "[]",
+        "paramsType": "json",
+        "payloadType": "json",
+        "block": false,
+        "x": 610,
+        "y": 540,
+        "wires": [
+            [
+                "d703137.5fc61f"
+            ]
+        ]
+    },
+    {
+        "id": "a902c57c.163798",
+        "type": "inject",
+        "z": "e4b07564.01839",
+        "name": "",
+        "topic": "key",
+        "payload": "[\"value\"]",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 330,
+        "y": 540,
+        "wires": [
+            [
+                "808c1d9d.6c2eb8"
+            ]
+        ]
+    },
+    {
+        "id": "d703137.5fc61f",
+        "type": "debug",
+        "z": "e4b07564.01839",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 870,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "b053ca6b.308788",
+        "type": "redis-command",
+        "z": "e4b07564.01839",
+        "server": "5ed67383.5985ac",
+        "command": "hmset",
+        "name": "",
+        "topic": "",
+        "params": "[]",
+        "paramsType": "json",
+        "payloadType": "json",
+        "block": false,
+        "x": 610,
+        "y": 660,
+        "wires": [
+            [
+                "4f702c32.a1a894"
+            ]
+        ]
+    },
+    {
+        "id": "c7b1d7f7.9b4d",
+        "type": "inject",
+        "z": "e4b07564.01839",
+        "name": "",
+        "topic": "myHash",
+        "payload": "{\"a\":1,\"b\":2}",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 310,
+        "y": 660,
+        "wires": [
+            [
+                "b053ca6b.308788"
+            ]
+        ]
+    },
+    {
+        "id": "4f702c32.a1a894",
+        "type": "debug",
+        "z": "e4b07564.01839",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 870,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "8ac0d118.c0c9c8",
+        "type": "inject",
+        "z": "e4b07564.01839",
+        "name": "",
+        "topic": "",
+        "payload": "false",
+        "payloadType": "bool",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 350,
+        "y": 700,
+        "wires": [
+            [
+                "46a46523.33b9ec"
+            ]
+        ]
+    },
+    {
+        "id": "535e49ed.a6e288",
+        "type": "debug",
+        "z": "e4b07564.01839",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 870,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "46a46523.33b9ec",
+        "type": "redis-command",
+        "z": "e4b07564.01839",
+        "server": "5ed67383.5985ac",
+        "command": "hgetall",
+        "name": "",
+        "topic": "myHash",
+        "params": "{}",
+        "paramsType": "json",
+        "payloadType": "json",
+        "block": false,
+        "x": 640,
+        "y": 700,
+        "wires": [
+            [
+                "535e49ed.a6e288"
+            ]
+        ]
+    },
+    {
+        "id": "7ba7dcee.e25fd4",
+        "type": "inject",
+        "z": "e4b07564.01839",
+        "name": "",
+        "topic": "",
+        "payload": "false",
+        "payloadType": "bool",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 350,
+        "y": 780,
+        "wires": [
+            [
+                "decd1758.c97638"
+            ]
+        ]
+    },
+    {
+        "id": "b0bc6387.91dda",
+        "type": "debug",
+        "z": "e4b07564.01839",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 870,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "decd1758.c97638",
+        "type": "redis-command",
+        "z": "e4b07564.01839",
+        "server": "5ed67383.5985ac",
+        "command": "sadd",
+        "name": "",
+        "topic": "mySet",
+        "params": "[\"memberA\",\"memberB\",\"memberC\"]",
+        "paramsType": "json",
+        "payloadType": "json",
+        "block": false,
+        "x": 630,
+        "y": 780,
+        "wires": [
+            [
+                "b0bc6387.91dda"
+            ]
+        ]
+    },
+    {
+        "id": "ed7744a6.1d9678",
+        "type": "redis-command",
+        "z": "e4b07564.01839",
+        "server": "5ed67383.5985ac",
+        "command": "get",
+        "name": "",
+        "topic": "",
+        "params": "[]",
+        "paramsType": "json",
+        "payloadType": "json",
+        "block": false,
+        "x": 600,
+        "y": 580,
+        "wires": [
+            [
+                "8e3c0cfb.0f2438"
+            ]
+        ]
+    },
+    {
+        "id": "c9f29416.d515e8",
+        "type": "inject",
+        "z": "e4b07564.01839",
+        "name": "",
+        "topic": "key",
+        "payload": "[]",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 350,
+        "y": 580,
+        "wires": [
+            [
+                "ed7744a6.1d9678"
+            ]
+        ]
+    },
+    {
+        "id": "8e3c0cfb.0f2438",
+        "type": "debug",
+        "z": "e4b07564.01839",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 850,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "cc391a6d.befb98",
+        "type": "redis-lua-script",
+        "z": "e4b07564.01839",
+        "server": "5ed67383.5985ac",
+        "name": "test",
+        "keyval": 0,
+        "func": "local text = \"Hello World\"\nreturn text",
+        "stored": true,
+        "block": false,
+        "x": 590,
+        "y": 900,
+        "wires": [
+            [
+                "c63d14bb.a26de8"
+            ]
+        ]
+    },
+    {
+        "id": "5a160ea3.5945c",
+        "type": "inject",
+        "z": "e4b07564.01839",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 340,
+        "y": 900,
+        "wires": [
+            [
+                "cc391a6d.befb98"
+            ]
+        ]
+    },
+    {
+        "id": "c63d14bb.a26de8",
+        "type": "debug",
+        "z": "e4b07564.01839",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 850,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "a777fb82.5d752",
+        "type": "inject",
+        "z": "e4b07564.01839",
+        "name": "",
+        "topic": "",
+        "payload": "false",
+        "payloadType": "bool",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 350,
+        "y": 820,
+        "wires": [
+            [
+                "5727f749.985af"
+            ]
+        ]
+    },
+    {
+        "id": "418c4974.8cca2",
+        "type": "debug",
+        "z": "e4b07564.01839",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 870,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "5727f749.985af",
+        "type": "redis-command",
+        "z": "e4b07564.01839",
+        "server": "5ed67383.5985ac",
+        "command": "sismember",
+        "name": "",
+        "topic": "mySet",
+        "params": "[\"memberC\"]",
+        "paramsType": "json",
+        "payloadType": "json",
+        "block": false,
+        "x": 640,
+        "y": 820,
+        "wires": [
+            [
+                "418c4974.8cca2"
+            ]
+        ]
+    },
+    {
+        "id": "ae93cacc.5a7bb",
+        "type": "redis-lua-script",
+        "z": "e4b07564.01839",
+        "server": "5ed67383.5985ac",
+        "name": "test2",
+        "keyval": 0,
+        "func": "local text = \"Hello2222 World2222\"\nreturn text",
+        "stored": false,
+        "block": false,
+        "x": 590,
+        "y": 960,
+        "wires": [
+            [
+                "2865dd1f.1302ea"
+            ]
+        ]
+    },
+    {
+        "id": "b2b7f693.57874",
+        "type": "inject",
+        "z": "e4b07564.01839",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 340,
+        "y": 960,
+        "wires": [
+            [
+                "ae93cacc.5a7bb"
+            ]
+        ]
+    },
+    {
+        "id": "2865dd1f.1302ea",
+        "type": "debug",
+        "z": "e4b07564.01839",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 850,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "bd4e0b13.326ab8",
+        "type": "redis-in",
+        "z": "e4b07564.01839",
+        "server": "5ed67383.5985ac",
+        "command": "psubscribe",
+        "name": "",
+        "topic": "TOPIC:*",
+        "timeout": 0,
+        "x": 600,
+        "y": 220,
+        "wires": [
+            [
+                "24edccd4.85a944"
+            ]
+        ]
+    },
+    {
+        "id": "24edccd4.85a944",
+        "type": "debug",
+        "z": "e4b07564.01839",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 850,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "207138fd.060ff8",
+        "type": "redis-in",
+        "z": "e4b07564.01839",
+        "server": "5ed67383.5985ac",
+        "command": "subscribe",
+        "name": "",
+        "topic": "TOPIC:OK",
+        "timeout": 0,
+        "x": 600,
+        "y": 280,
+        "wires": [
+            [
+                "917bf96b.89edf8"
+            ]
+        ]
+    },
+    {
+        "id": "917bf96b.89edf8",
+        "type": "debug",
+        "z": "e4b07564.01839",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 850,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "f2c7a781.66704",
+        "type": "redis-out",
+        "z": "e4b07564.01839",
+        "server": "5ed67383.5985ac",
+        "command": "publish",
+        "name": "",
+        "topic": "TOPIC:OK",
+        "x": 410,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "1790f38a.cb2434",
+        "type": "inject",
+        "z": "e4b07564.01839",
+        "name": "",
+        "topic": "",
+        "payload": "{\"a\":1,\"b\":2}",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 340,
+        "y": 220,
+        "wires": [
+            [
+                "f2c7a781.66704"
+            ]
+        ]
+    },
+    {
+        "id": "61dff92c.eb1c5",
+        "type": "redis-command",
+        "z": "e4b07564.01839",
+        "server": "5ed67383.5985ac",
+        "command": "del",
+        "name": "",
+        "topic": "",
+        "params": "[]",
+        "paramsType": "json",
+        "payloadType": "json",
+        "block": false,
+        "x": 600,
+        "y": 1020,
+        "wires": [
+            [
+                "c3fb3495.67a15"
+            ]
+        ]
+    },
+    {
+        "id": "bd2e0191.0a3b1",
+        "type": "inject",
+        "z": "e4b07564.01839",
+        "name": "",
+        "topic": "key",
+        "payload": "[]",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 350,
+        "y": 1020,
+        "wires": [
+            [
+                "61dff92c.eb1c5"
+            ]
+        ]
+    },
+    {
+        "id": "c3fb3495.67a15",
+        "type": "debug",
+        "z": "e4b07564.01839",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 850,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "acd045d5.d4198",
+        "type": "redis-instance",
+        "z": "e4b07564.01839",
+        "server": "5ed67383.5985ac",
+        "name": "",
+        "topic": "redis",
+        "location": "flow",
+        "block": false,
+        "x": 350,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "3e20faed.328636",
+        "type": "inject",
+        "z": "e4b07564.01839",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 340,
+        "y": 1120,
+        "wires": [
+            [
+                "28381f63.bbc788"
+            ]
+        ]
+    },
+    {
+        "id": "28381f63.bbc788",
+        "type": "function",
+        "z": "e4b07564.01839",
+        "name": "",
+        "func": "let redis = context.flow.get('redis');\n\nredis.info().then((data)=>{\n    msg.payload = data\n    node.send(msg);\n})\n\n/*\nredis.call(\"anycmd\").then((data)=>{\n    msg.payload = data\n    node.send(msg);\n})*/",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 590,
+        "y": 1120,
+        "wires": [
+            [
+                "60607f08.3019e8"
+            ]
+        ]
+    },
+    {
+        "id": "60607f08.3019e8",
+        "type": "debug",
+        "z": "e4b07564.01839",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 850,
+        "y": 1120,
+        "wires": []
+    }
+]

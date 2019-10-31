@@ -1,0 +1,25 @@
+# What is this example?
+
+This is a sample of using Redis imported from node block example.
+
+IMPORTANT: configuration was not explained anywhere for this Node-RED block. For correct usage, the configuration for redis should have option as json with values *host:redis*
+
+# Flow
+
+# How-To
+
+Build the few dependencies:
+
+    $ docker-compose build
+
+Start the flow:
+
+    $ docker-compose start
+
+Stop everything:
+
+    $ docker-compose down
+
+# References
+
+link:https://ioredis.readthedocs.io/en/latest/API/[ioRedis docs]
