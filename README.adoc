@@ -19,26 +19,6 @@ Runs node-red with few plugins like rfxtrx com.
 $ docker build -t kalemena/node-red .
 ----
 
-== Run
-
-Expose ports 1880 (node-red).
-
-Mount volumes for your flows into /data using -v, and environment variable FLOWS pointing to the flows.json file. 
-
-Attach your USB devices using --device.
-
-[source,bash]
-----
-$ docker run --restart=always --name nodered --hostname nodered \
-	-d -p 1880:1880 -p 1883:1883 \
-	-v ./data:/data \
-	--device=/dev/ttyUSB0:/dev/ttyRfxTrx \
-	--device=/dev/ttyUSB1:/dev/ttyJeeLink \
-	--device=/dev/ttyUSB2:/dev/ttyCurrenCost \
-	-e FLOWS=/data/flows.json \
-	kalemena/node-red
-----
-
 == Run with compose
 
 Run with opening 1880 port, and map your flows into /data directory.
@@ -58,7 +38,7 @@ include::docker-compose.yml[]
 $ docker-compose up -d
 ----
 
-Now you can connect on http://&lt;your host&gt;:1880
+Now you can connect on *http://&lt;yourhost&gt;:1880*
 
 === Stop node-red
 
@@ -78,34 +58,5 @@ $ docker-compose down
 
 - link:examples/contacts[Creating a simple API]
 - link:examples/birthdayB[CSV reading]
-
-== Interesting modules
-
-To be checked:
-
-* node-red-contrib-simple-weekly-scheduler
-* node-red-contrib-rfxcom
-* node-red-contrib-influxdb
-* node-red-dashboard
-* node-red-node-smooth 
-* node-red-node-pidcontrol
-* node-red-node-random
-* node-red-node-mdns
-* node-red-node-nma
-* node-red-node-pushbullet
-* node-red-node-daemon
-* node-red-contrib-web-worldmap
-
-```bash
-# NODE RED Z-WAVE
-# RUN \
-#  yum install -y http://mirror.my-ho.st/Downloads/OpenZWave/CentOS_7/x86_64/libopenzwave-1.4.164-2.1.x86_64.rpm; \
-#  yum install -y http://mirror.my-ho.st/Downloads/OpenZWave/CentOS_7/x86_64/openzwave-1.4.164-2.1.x86_64.rpm; \
-#  cd /home; \
-#  wget https://github.com/OpenZWave/open-zwave/archive/V1.5.zip; unzip V1.5.zip; rm V1.5.zip; \
-#  cd open-zwave-1.5; \
-#  yum install -y libudev-devel net-tools; \
-#  make && make install; \
-#  cd /home/node-red; \
-#  npm install node-red-contrib-openzwave;
-```
+- link:examples/chat-basic-sentiment[Chat Web Socket]
+- link:examples/redis-example[Redis]
