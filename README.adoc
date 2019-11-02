@@ -10,8 +10,6 @@ endif::[]
 
 Packaged Node-Red for use in home automation.
 
-Runs node-red with few plugins like rfxtrx com.
-
 == Build
 
 [source,bash]

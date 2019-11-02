@@ -7,6 +7,13 @@
         "info": ""
     },
     {
+        "id": "d6af186b.004918",
+        "type": "tab",
+        "label": "Sample redis task scheduler",
+        "disabled": false,
+        "info": ""
+    },
+    {
         "id": "5ed67383.5985ac",
         "type": "redis-config",
         "z": "",
@@ -41,7 +48,7 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 650,
+        "x": 850,
         "y": 80,
         "wires": []
     },
@@ -57,7 +64,7 @@
         "complete": "true",
         "targetType": "full",
         "x": 850,
-        "y": 380,
+        "y": 280,
         "wires": []
     },
     {
@@ -73,7 +80,7 @@
         "once": false,
         "onceDelay": 0.1,
         "x": 340,
-        "y": 380,
+        "y": 280,
         "wires": [
             [
                 "a5c184a7.083b6"
@@ -89,7 +96,7 @@
         "name": "",
         "topic": "test",
         "x": 590,
-        "y": 340,
+        "y": 240,
         "wires": []
     },
     {
@@ -102,7 +109,7 @@
         "topic": "test",
         "timeout": 0,
         "x": 590,
-        "y": 380,
+        "y": 280,
         "wires": [
             [
                 "c1fdda7e.4998e"
@@ -122,7 +129,7 @@
         "once": false,
         "onceDelay": 0.1,
         "x": 340,
-        "y": 340,
+        "y": 240,
         "wires": [
             [
                 "a5c184a7.083b6"
@@ -142,7 +149,7 @@
         "payloadType": "json",
         "block": false,
         "x": 640,
-        "y": 440,
+        "y": 340,
         "wires": [
             [
                 "fd1d86cf.b829e8"
@@ -162,7 +169,7 @@
         "once": false,
         "onceDelay": 0.1,
         "x": 340,
-        "y": 440,
+        "y": 340,
         "wires": [
             [
                 "7d3f4780.4c4e7"
@@ -180,7 +187,7 @@
         "tostatus": false,
         "complete": "false",
         "x": 870,
-        "y": 440,
+        "y": 340,
         "wires": []
     },
     {
@@ -196,7 +203,7 @@
         "payloadType": "json",
         "block": false,
         "x": 600,
-        "y": 500,
+        "y": 400,
         "wires": [
             [
                 "759d82c8.410f94"
@@ -216,7 +223,7 @@
         "once": false,
         "onceDelay": 0.1,
         "x": 330,
-        "y": 500,
+        "y": 400,
         "wires": [
             [
                 "e2b59649.9425a8"
@@ -234,7 +241,7 @@
         "tostatus": false,
         "complete": "false",
         "x": 870,
-        "y": 500,
+        "y": 400,
         "wires": []
     },
     {
@@ -250,7 +257,7 @@
         "payloadType": "json",
         "block": false,
         "x": 610,
-        "y": 540,
+        "y": 440,
         "wires": [
             [
                 "d703137.5fc61f"
@@ -270,7 +277,7 @@
         "once": false,
         "onceDelay": 0.1,
         "x": 330,
-        "y": 540,
+        "y": 440,
         "wires": [
             [
                 "808c1d9d.6c2eb8"
@@ -288,7 +295,7 @@
         "tostatus": false,
         "complete": "false",
         "x": 870,
-        "y": 540,
+        "y": 440,
         "wires": []
     },
     {
@@ -304,7 +311,7 @@
         "payloadType": "json",
         "block": false,
         "x": 610,
-        "y": 660,
+        "y": 560,
         "wires": [
             [
                 "4f702c32.a1a894"
@@ -324,7 +331,7 @@
         "once": false,
         "onceDelay": 0.1,
         "x": 310,
-        "y": 660,
+        "y": 560,
         "wires": [
             [
                 "b053ca6b.308788"
@@ -342,7 +349,7 @@
         "tostatus": false,
         "complete": "false",
         "x": 870,
-        "y": 660,
+        "y": 560,
         "wires": []
     },
     {
@@ -358,7 +365,7 @@
         "once": false,
         "onceDelay": 0.1,
         "x": 350,
-        "y": 700,
+        "y": 600,
         "wires": [
             [
                 "46a46523.33b9ec"
@@ -376,7 +383,7 @@
         "tostatus": false,
         "complete": "false",
         "x": 870,
-        "y": 700,
+        "y": 600,
         "wires": []
     },
     {
@@ -392,7 +399,7 @@
         "payloadType": "json",
         "block": false,
         "x": 640,
-        "y": 700,
+        "y": 600,
         "wires": [
             [
                 "535e49ed.a6e288"
@@ -412,7 +419,7 @@
         "once": false,
         "onceDelay": 0.1,
         "x": 350,
-        "y": 780,
+        "y": 680,
         "wires": [
             [
                 "decd1758.c97638"
@@ -430,7 +437,7 @@
         "tostatus": false,
         "complete": "false",
         "x": 870,
-        "y": 780,
+        "y": 680,
         "wires": []
     },
     {
@@ -446,7 +453,7 @@
         "payloadType": "json",
         "block": false,
         "x": 630,
-        "y": 780,
+        "y": 680,
         "wires": [
             [
                 "b0bc6387.91dda"
@@ -466,7 +473,7 @@
         "payloadType": "json",
         "block": false,
         "x": 600,
-        "y": 580,
+        "y": 480,
         "wires": [
             [
                 "8e3c0cfb.0f2438"
@@ -486,7 +493,7 @@
         "once": false,
         "onceDelay": 0.1,
         "x": 350,
-        "y": 580,
+        "y": 480,
         "wires": [
             [
                 "ed7744a6.1d9678"
@@ -505,7 +512,7 @@
         "complete": "true",
         "targetType": "full",
         "x": 850,
-        "y": 580,
+        "y": 480,
         "wires": []
     },
     {
@@ -519,7 +526,7 @@
         "stored": true,
         "block": false,
         "x": 590,
-        "y": 900,
+        "y": 800,
         "wires": [
             [
                 "c63d14bb.a26de8"
@@ -539,7 +546,7 @@
         "once": false,
         "onceDelay": 0.1,
         "x": 340,
-        "y": 900,
+        "y": 800,
         "wires": [
             [
                 "cc391a6d.befb98"
@@ -558,7 +565,7 @@
         "complete": "true",
         "targetType": "full",
         "x": 850,
-        "y": 900,
+        "y": 800,
         "wires": []
     },
     {
@@ -574,7 +581,7 @@
         "once": false,
         "onceDelay": 0.1,
         "x": 350,
-        "y": 820,
+        "y": 720,
         "wires": [
             [
                 "5727f749.985af"
@@ -592,7 +599,7 @@
         "tostatus": false,
         "complete": "false",
         "x": 870,
-        "y": 820,
+        "y": 720,
         "wires": []
     },
     {
@@ -608,7 +615,7 @@
         "payloadType": "json",
         "block": false,
         "x": 640,
-        "y": 820,
+        "y": 720,
         "wires": [
             [
                 "418c4974.8cca2"
@@ -626,7 +633,7 @@
         "stored": false,
         "block": false,
         "x": 590,
-        "y": 960,
+        "y": 860,
         "wires": [
             [
                 "2865dd1f.1302ea"
@@ -646,7 +653,7 @@
         "once": false,
         "onceDelay": 0.1,
         "x": 340,
-        "y": 960,
+        "y": 860,
         "wires": [
             [
                 "ae93cacc.5a7bb"
@@ -665,7 +672,7 @@
         "complete": "true",
         "targetType": "full",
         "x": 850,
-        "y": 960,
+        "y": 860,
         "wires": []
     },
     {
@@ -678,7 +685,7 @@
         "topic": "TOPIC:*",
         "timeout": 0,
         "x": 600,
-        "y": 220,
+        "y": 120,
         "wires": [
             [
                 "24edccd4.85a944"
@@ -697,7 +704,7 @@
         "complete": "true",
         "targetType": "full",
         "x": 850,
-        "y": 220,
+        "y": 120,
         "wires": []
     },
     {
@@ -710,7 +717,7 @@
         "topic": "TOPIC:OK",
         "timeout": 0,
         "x": 600,
-        "y": 280,
+        "y": 180,
         "wires": [
             [
                 "917bf96b.89edf8"
@@ -729,7 +736,7 @@
         "complete": "true",
         "targetType": "full",
         "x": 850,
-        "y": 280,
+        "y": 180,
         "wires": []
     },
     {
@@ -741,7 +748,7 @@
         "name": "",
         "topic": "TOPIC:OK",
         "x": 410,
-        "y": 280,
+        "y": 180,
         "wires": []
     },
     {
@@ -757,7 +764,7 @@
         "once": false,
         "onceDelay": 0.1,
         "x": 340,
-        "y": 220,
+        "y": 120,
         "wires": [
             [
                 "f2c7a781.66704"
@@ -777,7 +784,7 @@
         "payloadType": "json",
         "block": false,
         "x": 600,
-        "y": 1020,
+        "y": 920,
         "wires": [
             [
                 "c3fb3495.67a15"
@@ -797,7 +804,7 @@
         "once": false,
         "onceDelay": 0.1,
         "x": 350,
-        "y": 1020,
+        "y": 920,
         "wires": [
             [
                 "61dff92c.eb1c5"
@@ -816,7 +823,7 @@
         "complete": "true",
         "targetType": "full",
         "x": 850,
-        "y": 1020,
+        "y": 920,
         "wires": []
     },
     {
@@ -829,7 +836,7 @@
         "location": "flow",
         "block": false,
         "x": 350,
-        "y": 1080,
+        "y": 980,
         "wires": []
     },
     {
@@ -845,7 +852,7 @@
         "once": false,
         "onceDelay": 0.1,
         "x": 340,
-        "y": 1120,
+        "y": 1020,
         "wires": [
             [
                 "28381f63.bbc788"
@@ -861,7 +868,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 590,
-        "y": 1120,
+        "y": 1020,
         "wires": [
             [
                 "60607f08.3019e8"
@@ -880,7 +887,132 @@
         "complete": "true",
         "targetType": "full",
         "x": 850,
-        "y": 1120,
+        "y": 1020,
         "wires": []
+    },
+    {
+        "id": "a2153d9d.639e28",
+        "type": "redis-command",
+        "z": "d6af186b.004918",
+        "server": "5ed67383.5985ac",
+        "command": "zadd",
+        "name": "",
+        "topic": "",
+        "params": "[]",
+        "paramsType": "json",
+        "payloadType": "json",
+        "block": false,
+        "x": 460,
+        "y": 140,
+        "wires": [
+            [
+                "77c7153c.f6231c"
+            ]
+        ]
+    },
+    {
+        "id": "5c634ee7.d507b",
+        "type": "inject",
+        "z": "d6af186b.004918",
+        "name": "",
+        "topic": "tasks",
+        "payload": "[-1,\"before\"]",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 220,
+        "y": 140,
+        "wires": [
+            [
+                "a2153d9d.639e28"
+            ]
+        ]
+    },
+    {
+        "id": "77c7153c.f6231c",
+        "type": "debug",
+        "z": "d6af186b.004918",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 850,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "dba55d7.63e342",
+        "type": "catch",
+        "z": "d6af186b.004918",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 240,
+        "y": 100,
+        "wires": [
+            [
+                "6cd2abe0.575094"
+            ]
+        ]
+    },
+    {
+        "id": "6cd2abe0.575094",
+        "type": "debug",
+        "z": "d6af186b.004918",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 850,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "eda93d99.207b7",
+        "type": "redis-command",
+        "z": "d6af186b.004918",
+        "server": "5ed67383.5985ac",
+        "command": "zrangebyscore",
+        "name": "",
+        "topic": "tasks",
+        "params": "[]",
+        "paramsType": "json",
+        "payloadType": "json",
+        "block": false,
+        "x": 510,
+        "y": 180,
+        "wires": [
+            [
+                "77c7153c.f6231c"
+            ]
+        ]
+    },
+    {
+        "id": "a1308905.8b1b7",
+        "type": "inject",
+        "z": "d6af186b.004918",
+        "name": "",
+        "topic": "tasks",
+        "payload": "[\"-inf\",\"+inf\"]",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 220,
+        "y": 180,
+        "wires": [
+            [
+                "eda93d99.207b7"
+            ]
+        ]
     }
 ]
