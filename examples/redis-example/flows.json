@@ -1014,5 +1014,391 @@
                 "eda93d99.207b7"
             ]
         ]
+    },
+    {
+        "id": "cd19d03a.1613f8",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "",
+        "func": "msgQueue = {}\nmsgQueue.httpResp = msg\nmsgQueue.payload = [ msg.payload.triggerTimeMs, msg.payload.id ]\nmsgQueue.topic = \"tasks\"\nreturn msgQueue",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 890,
+        "y": 360,
+        "wires": [
+            [
+                "d4636337.5715"
+            ]
+        ]
+    },
+    {
+        "id": "76e5a2ea.9aa454",
+        "type": "http in",
+        "z": "d6af186b.004918",
+        "name": "",
+        "url": "/tasks",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 230,
+        "y": 300,
+        "wires": [
+            [
+                "bdbab86a.298fe"
+            ]
+        ]
+    },
+    {
+        "id": "2786daed.5f1cfe",
+        "type": "debug",
+        "z": "d6af186b.004918",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 1330,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "3254e7f0.5686d",
+        "type": "http response",
+        "z": "d6af186b.004918",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1330,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "e5183185.6acb68",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "",
+        "func": "msgApi = msg\nmsgApi.payload = {}\nmsgApi.payload.id = msg.uuid\nmsgApi.payload.triggerTimeMs = msg.triggerTimeMs\nmsgApi.payload.triggerTimeISO = msg.triggerTimeISO\nmsgApi.statusCode = 200\nreturn msgApi;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 750,
+        "y": 340,
+        "wires": [
+            [
+                "cd19d03a.1613f8"
+            ]
+        ]
+    },
+    {
+        "id": "d4636337.5715",
+        "type": "redis-command",
+        "z": "d6af186b.004918",
+        "server": "5ed67383.5985ac",
+        "command": "zadd",
+        "name": "",
+        "topic": "",
+        "params": "[]",
+        "paramsType": "json",
+        "payloadType": "json",
+        "block": false,
+        "x": 1020,
+        "y": 360,
+        "wires": [
+            [
+                "39521aac.ee3c36"
+            ]
+        ]
+    },
+    {
+        "id": "bdbab86a.298fe",
+        "type": "uuid",
+        "z": "d6af186b.004918",
+        "uuidVersion": "v4",
+        "namespaceType": "",
+        "namespace": "",
+        "namespaceCustom": "",
+        "name": "",
+        "field": "uuid",
+        "fieldType": "msg",
+        "x": 270,
+        "y": 360,
+        "wires": [
+            [
+                "a48f026e.358638"
+            ]
+        ]
+    },
+    {
+        "id": "468488e3.7b463",
+        "type": "moment",
+        "z": "d6af186b.004918",
+        "name": "EPOCH => ISO",
+        "topic": "",
+        "input": "triggerTimeMs",
+        "inputType": "msg",
+        "inTz": "ETC/GMT",
+        "adjAmount": 0,
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "",
+        "locale": "POSIX",
+        "output": "triggerTimeISO",
+        "outputType": "msg",
+        "outTz": "Europe/Paris",
+        "x": 600,
+        "y": 340,
+        "wires": [
+            [
+                "e5183185.6acb68"
+            ]
+        ]
+    },
+    {
+        "id": "df76d864.0827c",
+        "type": "comment",
+        "z": "d6af186b.004918",
+        "name": "Task create",
+        "info": "",
+        "x": 240,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "a48f026e.358638",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "Pre-Process",
+        "func": "\nif(msg.payload.triggerTimeMs == undefined && msg.payload.triggerTimeISO == undefined) {\n    // triggerTimeMs default to now\n    msg.triggerTimeMs = new Date().getTime()\n    return [ msg, null ]\n} else if(msg.payload.triggerTimeISO != undefined) {\n    // triggerTimeISO is defined => parse\n    msg.triggerTimeISO = msg.payload.triggerTimeISO\n    return [ null, msg ]\n} else {\n    // triggerTimeMs is defined => parse\n    msg.triggerTimeMs = msg.payload.triggerTimeMs\n    return [ msg, null ]\n}\n\nreturn [ null, null ];",
+        "outputs": 2,
+        "noerr": 0,
+        "x": 410,
+        "y": 360,
+        "wires": [
+            [
+                "468488e3.7b463"
+            ],
+            [
+                "2f27fc34.8f102c"
+            ]
+        ]
+    },
+    {
+        "id": "2f27fc34.8f102c",
+        "type": "moment",
+        "z": "d6af186b.004918",
+        "name": "ISO => EPOCH",
+        "topic": "",
+        "input": "triggerTimeISO",
+        "inputType": "msg",
+        "inTz": "ETC/GMT",
+        "adjAmount": 0,
+        "adjType": "days",
+        "adjDir": "add",
+        "format": "date",
+        "locale": "POSIX",
+        "output": "triggerTimeDate",
+        "outputType": "msg",
+        "outTz": "Europe/Paris",
+        "x": 600,
+        "y": 380,
+        "wires": [
+            [
+                "5001c157.e3439"
+            ]
+        ]
+    },
+    {
+        "id": "5001c157.e3439",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "",
+        "func": "msgApi = msg\nmsgApi.payload = {}\nmsgApi.payload.id = msg.uuid\nmsgApi.payload.triggerTimeMs = msg.triggerTimeDate.getTime()\nmsgApi.payload.triggerTimeISO = msg.triggerTimeISO\nmsgApi.statusCode = 200\nreturn msgApi;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 750,
+        "y": 380,
+        "wires": [
+            [
+                "cd19d03a.1613f8"
+            ]
+        ]
+    },
+    {
+        "id": "39521aac.ee3c36",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "",
+        "func": "msgResp = msg.httpResp\nreturn msgResp",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1170,
+        "y": 360,
+        "wires": [
+            [
+                "2786daed.5f1cfe",
+                "3254e7f0.5686d"
+            ]
+        ]
+    },
+    {
+        "id": "1a52dfc7.37983",
+        "type": "http in",
+        "z": "d6af186b.004918",
+        "name": "",
+        "url": "/tasks",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 240,
+        "y": 440,
+        "wires": [
+            [
+                "49e3678f.84c6b"
+            ]
+        ]
+    },
+    {
+        "id": "7e345c73.351c54",
+        "type": "redis-command",
+        "z": "d6af186b.004918",
+        "server": "5ed67383.5985ac",
+        "command": "zrangebyscore",
+        "name": "",
+        "topic": "tasks",
+        "params": "[]",
+        "paramsType": "json",
+        "payloadType": "json",
+        "block": false,
+        "x": 630,
+        "y": 440,
+        "wires": [
+            [
+                "da9b0419.a41408"
+            ]
+        ]
+    },
+    {
+        "id": "49e3678f.84c6b",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "Pre-Process",
+        "func": "msg.payload = [ \"-inf\", \"+inf\" ]\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 410,
+        "y": 440,
+        "wires": [
+            [
+                "7e345c73.351c54"
+            ]
+        ]
+    },
+    {
+        "id": "fa8e4e14.7d2fd8",
+        "type": "comment",
+        "z": "d6af186b.004918",
+        "name": "Task get all",
+        "info": "",
+        "x": 240,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "da9b0419.a41408",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "",
+        "func": "tasks = msg.payload\nmsg.payload = {}\nmsg.payload.tasks = []\nfor (var j = 0; j < tasks.length; j++) {\n    task = tasks[j]\n    var taskJSON = {}\n    taskJSON.id = task\n    msg.payload.tasks.push(taskJSON)\n}\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 890,
+        "y": 440,
+        "wires": [
+            [
+                "3254e7f0.5686d"
+            ]
+        ]
+    },
+    {
+        "id": "387b72ff.618bf6",
+        "type": "inject",
+        "z": "d6af186b.004918",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "10",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "60",
+        "x": 230,
+        "y": 560,
+        "wires": [
+            [
+                "2a7aedd3.d27bb2"
+            ]
+        ]
+    },
+    {
+        "id": "28a200ab.29464",
+        "type": "redis-command",
+        "z": "d6af186b.004918",
+        "server": "5ed67383.5985ac",
+        "command": "zrangebyscore",
+        "name": "",
+        "topic": "tasks",
+        "params": "[]",
+        "paramsType": "json",
+        "payloadType": "json",
+        "block": false,
+        "x": 670,
+        "y": 560,
+        "wires": [
+            [
+                "681f2d39.3e91a4"
+            ]
+        ]
+    },
+    {
+        "id": "2a7aedd3.d27bb2",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "Pre-Process",
+        "func": "msg.payload = [ \"-inf\", \"\" + new Date().getTime() ]\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 410,
+        "y": 560,
+        "wires": [
+            [
+                "28a200ab.29464"
+            ]
+        ]
+    },
+    {
+        "id": "681f2d39.3e91a4",
+        "type": "debug",
+        "z": "d6af186b.004918",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 1060,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "3670132b.216d44",
+        "type": "comment",
+        "z": "d6af186b.004918",
+        "name": "CRON @ 10s",
+        "info": "",
+        "x": 230,
+        "y": 520,
+        "wires": []
     }
 ]
