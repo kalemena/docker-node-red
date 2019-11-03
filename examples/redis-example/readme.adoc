@@ -8,17 +8,64 @@ IMPORTANT: configuration was not explained anywhere for this Node-RED block. For
 
 # How-To
 
+## Environment
+
 Build the few dependencies:
 
     $ docker-compose build
 
 Start the flow:
 
-    $ docker-compose start
+    $ docker-compose up -d
 
 Stop everything:
 
-    $ docker-compose down
+    $ docker-compose stop
+
+Cleanup everything (including database):
+
+    $ docker-compose down -v
+
+## Task API
+
+Creating tasks
+
+    $ curl -X POST -H 'Content-Type: application/json' -d '{ "triggerTimeMs": 1572729334687 }' http://localhost:3880/tasks | jq .
+    % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                    Dload  Upload   Total   Spent    Left  Speed
+    100   153  100   119  100    34  11900   3400 --:--:-- --:--:-- --:--:-- 15300
+    {
+    "id": "903f83a5-6e32-4855-a53b-63dbdbbd67f5",
+    "triggerTimeMs": 1572729334687,
+    "triggerTimeISO": "2019-11-02T21:15:34.687Z"
+    }
+    or
+    $ curl -X POST -H 'Content-Type: application/json' -d '{ "triggerTimeISO": "2019-11-04T02:02:00.000Z"  }' http://localhost:3880/tasks | jq .
+    % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                    Dload  Upload   Total   Spent    Left  Speed
+    100   168  100   119  100    49  17000   7000 --:--:-- --:--:-- --:--:-- 24000
+    {
+    "id": "fa157059-3a9c-43a9-875e-ea46c3068927",
+    "triggerTimeMs": 1572832920000,
+    "triggerTimeISO": "2019-11-04T02:02:00.000Z"
+    }
+
+Reading all created tasks:
+
+    $ curl -X GET http://localhost:3880/tasks | jq .
+    % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                    Dload  Upload   Total   Spent    Left  Speed
+    100   685  100   685    0     0  52692      0 --:--:-- --:--:-- --:--:-- 57083
+    {
+    "tasks": [
+        {
+        "id": "903f83a5-6e32-4855-a53b-63dbdbbd67f5"
+        },
+        {
+        "id": "fa157059-3a9c-43a9-875e-ea46c3068927"
+        }
+    ]
+    }
 
 # References
 

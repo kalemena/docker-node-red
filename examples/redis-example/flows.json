@@ -1023,8 +1023,8 @@
         "func": "msgQueue = {}\nmsgQueue.httpResp = msg\nmsgQueue.payload = [ msg.payload.triggerTimeMs, msg.payload.id ]\nmsgQueue.topic = \"tasks\"\nreturn msgQueue",
         "outputs": 1,
         "noerr": 0,
-        "x": 890,
-        "y": 360,
+        "x": 1010,
+        "y": 380,
         "wires": [
             [
                 "d4636337.5715"
@@ -1059,7 +1059,7 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 1330,
+        "x": 1450,
         "y": 340,
         "wires": []
     },
@@ -1086,7 +1086,8 @@
         "y": 340,
         "wires": [
             [
-                "cd19d03a.1613f8"
+                "cd19d03a.1613f8",
+                "680bcb85.4f0a5c"
             ]
         ]
     },
@@ -1102,8 +1103,8 @@
         "paramsType": "json",
         "payloadType": "json",
         "block": false,
-        "x": 1020,
-        "y": 360,
+        "x": 1140,
+        "y": 380,
         "wires": [
             [
                 "39521aac.ee3c36"
@@ -1220,7 +1221,8 @@
         "y": 380,
         "wires": [
             [
-                "cd19d03a.1613f8"
+                "cd19d03a.1613f8",
+                "680bcb85.4f0a5c"
             ]
         ]
     },
@@ -1232,8 +1234,8 @@
         "func": "msgResp = msg.httpResp\nreturn msgResp",
         "outputs": 1,
         "noerr": 0,
-        "x": 1170,
-        "y": 360,
+        "x": 1290,
+        "y": 380,
         "wires": [
             [
                 "2786daed.5f1cfe",
@@ -1400,5 +1402,41 @@
         "x": 230,
         "y": 520,
         "wires": []
+    },
+    {
+        "id": "22046521.0cf20a",
+        "type": "redis-command",
+        "z": "d6af186b.004918",
+        "server": "5ed67383.5985ac",
+        "command": "hset",
+        "name": "",
+        "topic": "taskDetails",
+        "params": "[]",
+        "paramsType": "json",
+        "payloadType": "json",
+        "block": false,
+        "x": 1180,
+        "y": 340,
+        "wires": [
+            [
+                "2786daed.5f1cfe"
+            ]
+        ]
+    },
+    {
+        "id": "680bcb85.4f0a5c",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "",
+        "func": "msgQueue = {}\nmsgQueue.payload = [ msg.payload.id, { \"id\": msg.payload.id, \"triggerTimeMs\": msg.payload.triggerTimeMs, \"triggerTimeISO\": msg.payload.triggerTimeISO } ]\nmsgQueue.topic = \"taskDetails\"\nreturn msgQueue",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1010,
+        "y": 340,
+        "wires": [
+            [
+                "22046521.0cf20a"
+            ]
+        ]
     }
 ]
