@@ -1019,12 +1019,12 @@
         "id": "cd19d03a.1613f8",
         "type": "function",
         "z": "d6af186b.004918",
-        "name": "",
-        "func": "msgQueue = {}\nmsgQueue.httpResp = msg\nmsgQueue.payload = [ msg.payload.triggerTimeMs, msg.payload.id ]\nmsgQueue.topic = \"tasks\"\nreturn msgQueue",
+        "name": "TimeIndex",
+        "func": "msg.payload = [ msg.triggerTimeMs, msg.uuid ]\nmsg.topic = \"tasks\"\nreturn msg",
         "outputs": 1,
         "noerr": 0,
-        "x": 1010,
-        "y": 380,
+        "x": 1080,
+        "y": 300,
         "wires": [
             [
                 "d4636337.5715"
@@ -1060,7 +1060,7 @@
         "complete": "true",
         "targetType": "full",
         "x": 1450,
-        "y": 340,
+        "y": 380,
         "wires": []
     },
     {
@@ -1070,26 +1070,9 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 1330,
-        "y": 440,
+        "x": 1030,
+        "y": 500,
         "wires": []
-    },
-    {
-        "id": "e5183185.6acb68",
-        "type": "function",
-        "z": "d6af186b.004918",
-        "name": "",
-        "func": "msgApi = msg\nmsgApi.payload = {}\nmsgApi.payload.id = msg.uuid\nmsgApi.payload.triggerTimeMs = msg.triggerTimeMs\nmsgApi.payload.triggerTimeISO = msg.triggerTimeISO\nmsgApi.statusCode = 200\nreturn msgApi;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 750,
-        "y": 340,
-        "wires": [
-            [
-                "cd19d03a.1613f8",
-                "680bcb85.4f0a5c"
-            ]
-        ]
     },
     {
         "id": "d4636337.5715",
@@ -1103,11 +1086,11 @@
         "paramsType": "json",
         "payloadType": "json",
         "block": false,
-        "x": 1140,
-        "y": 380,
+        "x": 1120,
+        "y": 340,
         "wires": [
             [
-                "39521aac.ee3c36"
+                "8508a9cc.2249d8"
             ]
         ]
     },
@@ -1123,35 +1106,10 @@
         "field": "uuid",
         "fieldType": "msg",
         "x": 270,
-        "y": 360,
-        "wires": [
-            [
-                "a48f026e.358638"
-            ]
-        ]
-    },
-    {
-        "id": "468488e3.7b463",
-        "type": "moment",
-        "z": "d6af186b.004918",
-        "name": "EPOCH => ISO",
-        "topic": "",
-        "input": "triggerTimeMs",
-        "inputType": "msg",
-        "inTz": "ETC/GMT",
-        "adjAmount": 0,
-        "adjType": "days",
-        "adjDir": "add",
-        "format": "",
-        "locale": "POSIX",
-        "output": "triggerTimeISO",
-        "outputType": "msg",
-        "outTz": "Europe/Paris",
-        "x": 600,
         "y": 340,
         "wires": [
             [
-                "e5183185.6acb68"
+                "a12e3a78.4528f"
             ]
         ]
     },
@@ -1166,31 +1124,12 @@
         "wires": []
     },
     {
-        "id": "a48f026e.358638",
-        "type": "function",
-        "z": "d6af186b.004918",
-        "name": "Pre-Process",
-        "func": "\nif(msg.payload.triggerTimeMs == undefined && msg.payload.triggerTimeISO == undefined) {\n    // triggerTimeMs default to now\n    msg.triggerTimeMs = new Date().getTime()\n    return [ msg, null ]\n} else if(msg.payload.triggerTimeISO != undefined) {\n    // triggerTimeISO is defined => parse\n    msg.triggerTimeISO = msg.payload.triggerTimeISO\n    return [ null, msg ]\n} else {\n    // triggerTimeMs is defined => parse\n    msg.triggerTimeMs = msg.payload.triggerTimeMs\n    return [ msg, null ]\n}\n\nreturn [ null, null ];",
-        "outputs": 2,
-        "noerr": 0,
-        "x": 410,
-        "y": 360,
-        "wires": [
-            [
-                "468488e3.7b463"
-            ],
-            [
-                "2f27fc34.8f102c"
-            ]
-        ]
-    },
-    {
         "id": "2f27fc34.8f102c",
         "type": "moment",
         "z": "d6af186b.004918",
         "name": "ISO => EPOCH",
         "topic": "",
-        "input": "triggerTimeISO",
+        "input": "payload.triggerTimeISO",
         "inputType": "msg",
         "inTz": "ETC/GMT",
         "adjAmount": 0,
@@ -1201,45 +1140,11 @@
         "output": "triggerTimeDate",
         "outputType": "msg",
         "outTz": "Europe/Paris",
-        "x": 600,
-        "y": 380,
+        "x": 540,
+        "y": 340,
         "wires": [
             [
-                "5001c157.e3439"
-            ]
-        ]
-    },
-    {
-        "id": "5001c157.e3439",
-        "type": "function",
-        "z": "d6af186b.004918",
-        "name": "",
-        "func": "msgApi = msg\nmsgApi.payload = {}\nmsgApi.payload.id = msg.uuid\nmsgApi.payload.triggerTimeMs = msg.triggerTimeDate.getTime()\nmsgApi.payload.triggerTimeISO = msg.triggerTimeISO\nmsgApi.statusCode = 200\nreturn msgApi;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 750,
-        "y": 380,
-        "wires": [
-            [
-                "cd19d03a.1613f8",
-                "680bcb85.4f0a5c"
-            ]
-        ]
-    },
-    {
-        "id": "39521aac.ee3c36",
-        "type": "function",
-        "z": "d6af186b.004918",
-        "name": "",
-        "func": "msgResp = msg.httpResp\nreturn msgResp",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 1290,
-        "y": 380,
-        "wires": [
-            [
-                "2786daed.5f1cfe",
-                "3254e7f0.5686d"
+                "1dbf19fa.5c26be"
             ]
         ]
     },
@@ -1253,7 +1158,7 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 240,
-        "y": 440,
+        "y": 500,
         "wires": [
             [
                 "49e3678f.84c6b"
@@ -1273,7 +1178,7 @@
         "payloadType": "json",
         "block": false,
         "x": 630,
-        "y": 440,
+        "y": 500,
         "wires": [
             [
                 "da9b0419.a41408"
@@ -1289,7 +1194,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 410,
-        "y": 440,
+        "y": 500,
         "wires": [
             [
                 "7e345c73.351c54"
@@ -1303,22 +1208,23 @@
         "name": "Task get all",
         "info": "",
         "x": 240,
-        "y": 400,
+        "y": 460,
         "wires": []
     },
     {
         "id": "da9b0419.a41408",
         "type": "function",
         "z": "d6af186b.004918",
-        "name": "",
-        "func": "tasks = msg.payload\nmsg.payload = {}\nmsg.payload.tasks = []\nfor (var j = 0; j < tasks.length; j++) {\n    task = tasks[j]\n    var taskJSON = {}\n    taskJSON.id = task\n    msg.payload.tasks.push(taskJSON)\n}\nreturn msg",
+        "name": "Loop on Details",
+        "func": "let redis = context.flow.get('redis');\n\n/*\nredis.info().then((data)=>{\n    msg.payload = data\n    node.send(msg);\n})\n*/\n\ntasks = msg.payload\nmsg.payload = {}\nmsg.payload.tasks = []\n\nfor (var j = 0; j < tasks.length; j++) {\n    task = tasks[j]\n\n    redis.call(\"hget\", \"taskDetails\", task).then((data)=>{\n        taskJSON = JSON.parse(data)\n        msg.payload.tasks.push(taskJSON)\n    })\n}\n\nreturn msg",
         "outputs": 1,
         "noerr": 0,
-        "x": 890,
-        "y": 440,
+        "x": 860,
+        "y": 500,
         "wires": [
             [
-                "3254e7f0.5686d"
+                "3254e7f0.5686d",
+                "8b6c0860.41bd2"
             ]
         ]
     },
@@ -1335,7 +1241,7 @@
         "once": false,
         "onceDelay": "60",
         "x": 230,
-        "y": 560,
+        "y": 780,
         "wires": [
             [
                 "2a7aedd3.d27bb2"
@@ -1355,7 +1261,7 @@
         "payloadType": "json",
         "block": false,
         "x": 670,
-        "y": 560,
+        "y": 780,
         "wires": [
             [
                 "681f2d39.3e91a4"
@@ -1371,7 +1277,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 410,
-        "y": 560,
+        "y": 780,
         "wires": [
             [
                 "28a200ab.29464"
@@ -1383,14 +1289,14 @@
         "type": "debug",
         "z": "d6af186b.004918",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 1060,
-        "y": 560,
+        "x": 1030,
+        "y": 780,
         "wires": []
     },
     {
@@ -1400,7 +1306,7 @@
         "name": "CRON @ 10s",
         "info": "",
         "x": 230,
-        "y": 520,
+        "y": 740,
         "wires": []
     },
     {
@@ -1415,11 +1321,11 @@
         "paramsType": "json",
         "payloadType": "json",
         "block": false,
-        "x": 1180,
+        "x": 900,
         "y": 340,
         "wires": [
             [
-                "2786daed.5f1cfe"
+                "cd19d03a.1613f8"
             ]
         ]
     },
@@ -1427,16 +1333,265 @@
         "id": "680bcb85.4f0a5c",
         "type": "function",
         "z": "d6af186b.004918",
-        "name": "",
-        "func": "msgQueue = {}\nmsgQueue.payload = [ msg.payload.id, { \"id\": msg.payload.id, \"triggerTimeMs\": msg.payload.triggerTimeMs, \"triggerTimeISO\": msg.payload.triggerTimeISO } ]\nmsgQueue.topic = \"taskDetails\"\nreturn msgQueue",
+        "name": "UserData",
+        "func": "// park payload\nmsg.inboundPayload = msg.payload\n\n// enhance parked payload\nmsg.inboundPayload.id = msg.uuid\nmsg.inboundPayload.triggerTimeMs = msg.triggerTimeMs\n\n// build storage request\nmsg.payload = [ msg.uuid, JSON.stringify(msg.inboundPayload) ]\nmsg.topic = \"taskDetails\"\n\nreturn msg",
         "outputs": 1,
         "noerr": 0,
-        "x": 1010,
-        "y": 340,
+        "x": 820,
+        "y": 300,
         "wires": [
             [
                 "22046521.0cf20a"
             ]
         ]
+    },
+    {
+        "id": "a12e3a78.4528f",
+        "type": "switch",
+        "z": "d6af186b.004918",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "hask",
+                "v": "triggerTimeMs",
+                "vt": "str"
+            },
+            {
+                "t": "hask",
+                "v": "triggerTimeISO",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 390,
+        "y": 340,
+        "wires": [
+            [
+                "ea63cb14.46018"
+            ],
+            [
+                "2f27fc34.8f102c"
+            ],
+            [
+                "e1be9568.50ce9"
+            ]
+        ]
+    },
+    {
+        "id": "e1be9568.50ce9",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "Add triggerTimeMs",
+        "func": "msg.triggerTimeMs = new Date().getTime()\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 550,
+        "y": 380,
+        "wires": [
+            [
+                "680bcb85.4f0a5c"
+            ]
+        ]
+    },
+    {
+        "id": "8b6c0860.41bd2",
+        "type": "debug",
+        "z": "d6af186b.004918",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 1030,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "1dbf19fa.5c26be",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "Date",
+        "func": "msg.triggerTimeMs = msg.triggerTimeDate.getTime()\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 690,
+        "y": 340,
+        "wires": [
+            [
+                "680bcb85.4f0a5c"
+            ]
+        ]
+    },
+    {
+        "id": "ea63cb14.46018",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "Asign triggerTimeMs",
+        "func": "msg.triggerTimeMs = msg.payload.triggerTimeMs\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 560,
+        "y": 300,
+        "wires": [
+            [
+                "680bcb85.4f0a5c"
+            ]
+        ]
+    },
+    {
+        "id": "8508a9cc.2249d8",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "Post-processing",
+        "func": "msg.payload = msg.inboundPayload\nmsg.statusCode = 200\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1280,
+        "y": 340,
+        "wires": [
+            [
+                "8e7bf041.c84de",
+                "2786daed.5f1cfe"
+            ]
+        ]
+    },
+    {
+        "id": "8e7bf041.c84de",
+        "type": "http response",
+        "z": "d6af186b.004918",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1450,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "e078cc25.9f1fe8",
+        "type": "redis-instance",
+        "z": "d6af186b.004918",
+        "server": "5ed67383.5985ac",
+        "name": "",
+        "topic": "redis",
+        "location": "flow",
+        "block": false,
+        "x": 390,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "ff6ff53c.4a893",
+        "type": "comment",
+        "z": "d6af186b.004918",
+        "name": "Task delete all",
+        "info": "",
+        "x": 230,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "3b6c3e87.c817fa",
+        "type": "http in",
+        "z": "d6af186b.004918",
+        "name": "",
+        "url": "/tasks",
+        "method": "delete",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 230,
+        "y": 640,
+        "wires": [
+            [
+                "8a04ae2a.ce90b8"
+            ]
+        ]
+    },
+    {
+        "id": "8a04ae2a.ce90b8",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "Pre-Process",
+        "func": "msg.payload = [ \"-inf\", \"+inf\" ]\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 410,
+        "y": 640,
+        "wires": [
+            [
+                "b70fc26c.720348"
+            ]
+        ]
+    },
+    {
+        "id": "b70fc26c.720348",
+        "type": "redis-command",
+        "z": "d6af186b.004918",
+        "server": "5ed67383.5985ac",
+        "command": "zrangebyscore",
+        "name": "",
+        "topic": "tasks",
+        "params": "[]",
+        "paramsType": "json",
+        "payloadType": "json",
+        "block": false,
+        "x": 630,
+        "y": 640,
+        "wires": [
+            [
+                "4ff2d511.a17b7c"
+            ]
+        ]
+    },
+    {
+        "id": "3db4df0a.52ffb8",
+        "type": "http response",
+        "z": "d6af186b.004918",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1030,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "4ff2d511.a17b7c",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "Loop on Details",
+        "func": "let redis = context.flow.get('redis');\n\n/*\nredis.info().then((data)=>{\n    msg.payload = data\n    node.send(msg);\n})\n*/\n\ntasks = msg.payload\nmsg.payload = {}\nmsg.payload.tasks = []\n\nfor (var j = 0; j < tasks.length; j++) {\n    task = tasks[j]\n\n    redis.call(\"hdel\", \"taskDetails\", task).then((data)=>{\n        \n    })\n}\n\nredis.call(\"del\", \"tasks\").then((data)=>{\n    \n})\n\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 860,
+        "y": 640,
+        "wires": [
+            [
+                "3db4df0a.52ffb8",
+                "acc48f56.edfae8"
+            ]
+        ]
+    },
+    {
+        "id": "acc48f56.edfae8",
+        "type": "debug",
+        "z": "d6af186b.004918",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 1030,
+        "y": 680,
+        "wires": []
     }
 ]
