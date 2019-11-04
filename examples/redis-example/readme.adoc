@@ -28,26 +28,26 @@ Cleanup everything (including database):
 
 ## Task API
 
-Creating tasks
+Creating tasks:
 
-    $ curl -X POST -H 'Content-Type: application/json' -d '{ "triggerTimeMs": 1572729334687 }' http://localhost:3880/tasks | jq .
+    $ curl -X POST -H 'Content-Type: application/json' -d '{ "triggerTimeMs": 1572729334687, "toto":"titi" }' http://localhost:3880/tasks | jq .
     % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                     Dload  Upload   Total   Spent    Left  Speed
-    100   153  100   119  100    34  11900   3400 --:--:-- --:--:-- --:--:-- 15300
+    100   138  100    89  100    49  14833   8166 --:--:-- --:--:-- --:--:-- 23000
     {
-    "id": "903f83a5-6e32-4855-a53b-63dbdbbd67f5",
     "triggerTimeMs": 1572729334687,
-    "triggerTimeISO": "2019-11-02T21:15:34.687Z"
+    "toto": "titi",
+    "id": "f07468fb-1d59-481d-b06a-96775f86f85f"
     }
-    or
+
     $ curl -X POST -H 'Content-Type: application/json' -d '{ "triggerTimeISO": "2019-11-04T02:02:00.000Z"  }' http://localhost:3880/tasks | jq .
     % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                     Dload  Upload   Total   Spent    Left  Speed
-    100   168  100   119  100    49  17000   7000 --:--:-- --:--:-- --:--:-- 24000
+    100   168  100   119  100    49   9916   4083 --:--:-- --:--:-- --:--:-- 14000
     {
-    "id": "fa157059-3a9c-43a9-875e-ea46c3068927",
-    "triggerTimeMs": 1572832920000,
-    "triggerTimeISO": "2019-11-04T02:02:00.000Z"
+    "triggerTimeISO": "2019-11-04T02:02:00.000Z",
+    "id": "625f8ee7-7241-4549-9800-0663717fde6e",
+    "triggerTimeMs": 1572832920000
     }
 
 Reading all created tasks:
@@ -55,17 +55,27 @@ Reading all created tasks:
     $ curl -X GET http://localhost:3880/tasks | jq .
     % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                     Dload  Upload   Total   Spent    Left  Speed
-    100   685  100   685    0     0  52692      0 --:--:-- --:--:-- --:--:-- 57083
+    100   101  100   101    0     0  11222      0 --:--:-- --:--:-- --:--:-- 12625
     {
     "tasks": [
         {
-        "id": "903f83a5-6e32-4855-a53b-63dbdbbd67f5"
-        },
-        {
-        "id": "fa157059-3a9c-43a9-875e-ea46c3068927"
+        "triggerTimeMs": 1572729334687,
+        "toto": "titi",
+        "id": "f07468fb-1d59-481d-b06a-96775f86f85f"
         }
     ]
     }
+
+Delete the full set of tasks (dangerous zone):
+
+    $ curl -X DELETE http://localhost:3880/tasks | jq .
+    % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                    Dload  Upload   Total   Spent    Left  Speed
+    100    12  100    12    0     0   2000      0 --:--:-- --:--:-- --:--:--  2000
+    {
+    "tasks": []
+    }
+
 
 # References
 
