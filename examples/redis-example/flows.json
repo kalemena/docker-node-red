@@ -7,9 +7,9 @@
         "info": ""
     },
     {
-        "id": "d6af186b.004918",
+        "id": "3aa6f007.48ac5",
         "type": "tab",
-        "label": "Sample redis task scheduler",
+        "label": "Scheduler API",
         "disabled": false,
         "info": ""
     },
@@ -891,79 +891,24 @@
         "wires": []
     },
     {
-        "id": "a2153d9d.639e28",
-        "type": "redis-command",
-        "z": "d6af186b.004918",
-        "server": "5ed67383.5985ac",
-        "command": "zadd",
-        "name": "",
-        "topic": "",
-        "params": "[]",
-        "paramsType": "json",
-        "payloadType": "json",
-        "block": false,
-        "x": 460,
-        "y": 140,
-        "wires": [
-            [
-                "77c7153c.f6231c"
-            ]
-        ]
-    },
-    {
-        "id": "5c634ee7.d507b",
-        "type": "inject",
-        "z": "d6af186b.004918",
-        "name": "",
-        "topic": "tasks",
-        "payload": "[-1,\"before\"]",
-        "payloadType": "json",
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "x": 220,
-        "y": 140,
-        "wires": [
-            [
-                "a2153d9d.639e28"
-            ]
-        ]
-    },
-    {
-        "id": "77c7153c.f6231c",
-        "type": "debug",
-        "z": "d6af186b.004918",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "x": 850,
-        "y": 140,
-        "wires": []
-    },
-    {
-        "id": "dba55d7.63e342",
+        "id": "25a2fec6.2b338a",
         "type": "catch",
-        "z": "d6af186b.004918",
+        "z": "3aa6f007.48ac5",
         "name": "",
         "scope": null,
         "uncaught": false,
-        "x": 240,
-        "y": 100,
+        "x": 140,
+        "y": 800,
         "wires": [
             [
-                "6cd2abe0.575094"
+                "ec5781c3.279e38"
             ]
         ]
     },
     {
-        "id": "6cd2abe0.575094",
+        "id": "ec5781c3.279e38",
         "type": "debug",
-        "z": "d6af186b.004918",
+        "z": "3aa6f007.48ac5",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -971,87 +916,47 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 850,
-        "y": 100,
+        "x": 990,
+        "y": 800,
         "wires": []
     },
     {
-        "id": "eda93d99.207b7",
-        "type": "redis-command",
-        "z": "d6af186b.004918",
-        "server": "5ed67383.5985ac",
-        "command": "zrangebyscore",
-        "name": "",
-        "topic": "tasks",
-        "params": "[]",
-        "paramsType": "json",
-        "payloadType": "json",
-        "block": false,
-        "x": 510,
-        "y": 180,
-        "wires": [
-            [
-                "77c7153c.f6231c"
-            ]
-        ]
-    },
-    {
-        "id": "a1308905.8b1b7",
-        "type": "inject",
-        "z": "d6af186b.004918",
-        "name": "",
-        "topic": "tasks",
-        "payload": "[\"-inf\",\"+inf\"]",
-        "payloadType": "json",
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "x": 220,
-        "y": 180,
-        "wires": [
-            [
-                "eda93d99.207b7"
-            ]
-        ]
-    },
-    {
-        "id": "cd19d03a.1613f8",
+        "id": "27e1d8de.526",
         "type": "function",
-        "z": "d6af186b.004918",
+        "z": "3aa6f007.48ac5",
         "name": "TimeIndex",
         "func": "msg.payload = [ msg.triggerTimeMs, msg.uuid ]\nmsg.topic = \"tasks\"\nreturn msg",
         "outputs": 1,
         "noerr": 0,
-        "x": 1080,
-        "y": 300,
+        "x": 1020,
+        "y": 100,
         "wires": [
             [
-                "d4636337.5715"
+                "a28df3f.d65dc1"
             ]
         ]
     },
     {
-        "id": "76e5a2ea.9aa454",
+        "id": "9d4fa69d.17c318",
         "type": "http in",
-        "z": "d6af186b.004918",
+        "z": "3aa6f007.48ac5",
         "name": "",
         "url": "/tasks",
         "method": "post",
         "upload": false,
         "swaggerDoc": "",
-        "x": 230,
-        "y": 300,
+        "x": 170,
+        "y": 100,
         "wires": [
             [
-                "bdbab86a.298fe"
+                "4bf05afa.03515c"
             ]
         ]
     },
     {
-        "id": "2786daed.5f1cfe",
+        "id": "2931ff0.2f6ad82",
         "type": "debug",
-        "z": "d6af186b.004918",
+        "z": "3aa6f007.48ac5",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -1059,25 +964,25 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 1450,
-        "y": 380,
+        "x": 1390,
+        "y": 180,
         "wires": []
     },
     {
-        "id": "3254e7f0.5686d",
+        "id": "15d8cf6f.856939",
         "type": "http response",
-        "z": "d6af186b.004918",
+        "z": "3aa6f007.48ac5",
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 1030,
-        "y": 500,
+        "x": 990,
+        "y": 300,
         "wires": []
     },
     {
-        "id": "d4636337.5715",
+        "id": "a28df3f.d65dc1",
         "type": "redis-command",
-        "z": "d6af186b.004918",
+        "z": "3aa6f007.48ac5",
         "server": "5ed67383.5985ac",
         "command": "zadd",
         "name": "",
@@ -1086,18 +991,18 @@
         "paramsType": "json",
         "payloadType": "json",
         "block": false,
-        "x": 1120,
-        "y": 340,
+        "x": 1060,
+        "y": 140,
         "wires": [
             [
-                "8508a9cc.2249d8"
+                "83b2d754.4f0a48"
             ]
         ]
     },
     {
-        "id": "bdbab86a.298fe",
+        "id": "4bf05afa.03515c",
         "type": "uuid",
-        "z": "d6af186b.004918",
+        "z": "3aa6f007.48ac5",
         "uuidVersion": "v4",
         "namespaceType": "",
         "namespace": "",
@@ -1105,28 +1010,28 @@
         "name": "",
         "field": "uuid",
         "fieldType": "msg",
-        "x": 270,
-        "y": 340,
+        "x": 210,
+        "y": 140,
         "wires": [
             [
-                "a12e3a78.4528f"
+                "b7d0645d.b05988"
             ]
         ]
     },
     {
-        "id": "df76d864.0827c",
+        "id": "23035353.dda564",
         "type": "comment",
-        "z": "d6af186b.004918",
+        "z": "3aa6f007.48ac5",
         "name": "Task create",
         "info": "",
-        "x": 240,
-        "y": 260,
+        "x": 80,
+        "y": 60,
         "wires": []
     },
     {
-        "id": "2f27fc34.8f102c",
+        "id": "58a9ed29.f6785c",
         "type": "moment",
-        "z": "d6af186b.004918",
+        "z": "3aa6f007.48ac5",
         "name": "ISO => EPOCH",
         "topic": "",
         "input": "payload.triggerTimeISO",
@@ -1140,35 +1045,35 @@
         "output": "triggerTimeDate",
         "outputType": "msg",
         "outTz": "Europe/Paris",
-        "x": 540,
-        "y": 340,
+        "x": 480,
+        "y": 140,
         "wires": [
             [
-                "1dbf19fa.5c26be"
+                "a69af9f4.33d7b"
             ]
         ]
     },
     {
-        "id": "1a52dfc7.37983",
+        "id": "df3de2f9.4c7a98",
         "type": "http in",
-        "z": "d6af186b.004918",
+        "z": "3aa6f007.48ac5",
         "name": "",
         "url": "/tasks",
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 240,
-        "y": 500,
+        "x": 180,
+        "y": 300,
         "wires": [
             [
-                "49e3678f.84c6b"
+                "8f450dfc.ed79f"
             ]
         ]
     },
     {
-        "id": "7e345c73.351c54",
+        "id": "f56bd92d.1abac",
         "type": "redis-command",
-        "z": "d6af186b.004918",
+        "z": "3aa6f007.48ac5",
         "server": "5ed67383.5985ac",
         "command": "zrangebyscore",
         "name": "",
@@ -1177,81 +1082,81 @@
         "paramsType": "json",
         "payloadType": "json",
         "block": false,
-        "x": 630,
-        "y": 500,
+        "x": 570,
+        "y": 300,
         "wires": [
             [
-                "da9b0419.a41408"
+                "8c538280.b4a75"
             ]
         ]
     },
     {
-        "id": "49e3678f.84c6b",
+        "id": "8f450dfc.ed79f",
         "type": "function",
-        "z": "d6af186b.004918",
+        "z": "3aa6f007.48ac5",
         "name": "Pre-Process",
         "func": "msg.payload = [ \"-inf\", \"+inf\" ]\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 410,
-        "y": 500,
+        "x": 350,
+        "y": 300,
         "wires": [
             [
-                "7e345c73.351c54"
+                "f56bd92d.1abac"
             ]
         ]
     },
     {
-        "id": "fa8e4e14.7d2fd8",
+        "id": "27f2b42e.4c40e4",
         "type": "comment",
-        "z": "d6af186b.004918",
+        "z": "3aa6f007.48ac5",
         "name": "Task get all",
         "info": "",
-        "x": 240,
-        "y": 460,
+        "x": 80,
+        "y": 260,
         "wires": []
     },
     {
-        "id": "da9b0419.a41408",
+        "id": "8c538280.b4a75",
         "type": "function",
-        "z": "d6af186b.004918",
+        "z": "3aa6f007.48ac5",
         "name": "Loop on Details",
         "func": "let redis = context.flow.get('redis');\n\n/*\nredis.info().then((data)=>{\n    msg.payload = data\n    node.send(msg);\n})\n*/\n\ntasks = msg.payload\nmsg.payload = {}\nmsg.payload.tasks = []\n\nfor (var j = 0; j < tasks.length; j++) {\n    task = tasks[j]\n\n    redis.call(\"hget\", \"taskDetails\", task).then((data)=>{\n        taskJSON = JSON.parse(data)\n        msg.payload.tasks.push(taskJSON)\n    })\n}\n\nreturn msg",
         "outputs": 1,
         "noerr": 0,
-        "x": 860,
-        "y": 500,
+        "x": 800,
+        "y": 300,
         "wires": [
             [
-                "3254e7f0.5686d",
-                "8b6c0860.41bd2"
+                "15d8cf6f.856939",
+                "3cb19b70.312ae4"
             ]
         ]
     },
     {
-        "id": "387b72ff.618bf6",
+        "id": "ea44a75a.097eb8",
         "type": "inject",
-        "z": "d6af186b.004918",
+        "z": "3aa6f007.48ac5",
         "name": "",
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "repeat": "10",
+        "repeat": "60",
         "crontab": "",
         "once": false,
         "onceDelay": "60",
-        "x": 230,
-        "y": 780,
+        "x": 170,
+        "y": 680,
         "wires": [
             [
-                "2a7aedd3.d27bb2"
+                "b857decc.45d0d"
             ]
         ]
     },
     {
-        "id": "28a200ab.29464",
+        "id": "13be66bf.301be1",
         "type": "redis-command",
-        "z": "d6af186b.004918",
+        "z": "3aa6f007.48ac5",
         "server": "5ed67383.5985ac",
         "command": "zrangebyscore",
         "name": "",
@@ -1260,59 +1165,59 @@
         "paramsType": "json",
         "payloadType": "json",
         "block": false,
-        "x": 670,
-        "y": 780,
+        "x": 610,
+        "y": 680,
         "wires": [
             [
-                "681f2d39.3e91a4"
+                "c48deb4a.9bdc6"
             ]
         ]
     },
     {
-        "id": "2a7aedd3.d27bb2",
+        "id": "b857decc.45d0d",
         "type": "function",
-        "z": "d6af186b.004918",
+        "z": "3aa6f007.48ac5",
         "name": "Pre-Process",
         "func": "msg.payload = [ \"-inf\", \"\" + new Date().getTime() ]\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 410,
-        "y": 780,
+        "x": 350,
+        "y": 680,
         "wires": [
             [
-                "28a200ab.29464"
+                "13be66bf.301be1"
             ]
         ]
     },
     {
-        "id": "681f2d39.3e91a4",
+        "id": "c48deb4a.9bdc6",
         "type": "debug",
-        "z": "d6af186b.004918",
+        "z": "3aa6f007.48ac5",
         "name": "",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 1030,
-        "y": 780,
+        "x": 990,
+        "y": 680,
         "wires": []
     },
     {
-        "id": "3670132b.216d44",
+        "id": "2172756a.29d0b2",
         "type": "comment",
-        "z": "d6af186b.004918",
-        "name": "CRON @ 10s",
+        "z": "3aa6f007.48ac5",
+        "name": "CRON @ 60s",
         "info": "",
-        "x": 230,
-        "y": 740,
+        "x": 90,
+        "y": 640,
         "wires": []
     },
     {
-        "id": "22046521.0cf20a",
+        "id": "fb2086fc.273b5",
         "type": "redis-command",
-        "z": "d6af186b.004918",
+        "z": "3aa6f007.48ac5",
         "server": "5ed67383.5985ac",
         "command": "hset",
         "name": "",
@@ -1321,34 +1226,34 @@
         "paramsType": "json",
         "payloadType": "json",
         "block": false,
-        "x": 900,
-        "y": 340,
+        "x": 840,
+        "y": 140,
         "wires": [
             [
-                "cd19d03a.1613f8"
+                "27e1d8de.526"
             ]
         ]
     },
     {
-        "id": "680bcb85.4f0a5c",
+        "id": "34c9bd42.23e04a",
         "type": "function",
-        "z": "d6af186b.004918",
+        "z": "3aa6f007.48ac5",
         "name": "UserData",
         "func": "// park payload\nmsg.inboundPayload = msg.payload\n\n// enhance parked payload\nmsg.inboundPayload.id = msg.uuid\nmsg.inboundPayload.triggerTimeMs = msg.triggerTimeMs\n\n// build storage request\nmsg.payload = [ msg.uuid, JSON.stringify(msg.inboundPayload) ]\nmsg.topic = \"taskDetails\"\n\nreturn msg",
         "outputs": 1,
         "noerr": 0,
-        "x": 820,
-        "y": 300,
+        "x": 760,
+        "y": 100,
         "wires": [
             [
-                "22046521.0cf20a"
+                "fb2086fc.273b5"
             ]
         ]
     },
     {
-        "id": "a12e3a78.4528f",
+        "id": "b7d0645d.b05988",
         "type": "switch",
-        "z": "d6af186b.004918",
+        "z": "3aa6f007.48ac5",
         "name": "",
         "property": "payload",
         "propertyType": "msg",
@@ -1370,40 +1275,40 @@
         "checkall": "true",
         "repair": false,
         "outputs": 3,
-        "x": 390,
-        "y": 340,
+        "x": 330,
+        "y": 140,
         "wires": [
             [
-                "ea63cb14.46018"
+                "23eaec00.a44854"
             ],
             [
-                "2f27fc34.8f102c"
+                "58a9ed29.f6785c"
             ],
             [
-                "e1be9568.50ce9"
+                "25d57edd.975eba"
             ]
         ]
     },
     {
-        "id": "e1be9568.50ce9",
+        "id": "25d57edd.975eba",
         "type": "function",
-        "z": "d6af186b.004918",
+        "z": "3aa6f007.48ac5",
         "name": "Add triggerTimeMs",
         "func": "msg.triggerTimeMs = new Date().getTime()\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 550,
-        "y": 380,
+        "x": 490,
+        "y": 180,
         "wires": [
             [
-                "680bcb85.4f0a5c"
+                "34c9bd42.23e04a"
             ]
         ]
     },
     {
-        "id": "8b6c0860.41bd2",
+        "id": "3cb19b70.312ae4",
         "type": "debug",
-        "z": "d6af186b.004918",
+        "z": "3aa6f007.48ac5",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -1411,130 +1316,282 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 1030,
-        "y": 540,
+        "x": 990,
+        "y": 340,
         "wires": []
     },
     {
-        "id": "1dbf19fa.5c26be",
+        "id": "a69af9f4.33d7b",
         "type": "function",
-        "z": "d6af186b.004918",
+        "z": "3aa6f007.48ac5",
         "name": "Date",
         "func": "msg.triggerTimeMs = msg.triggerTimeDate.getTime()\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 690,
-        "y": 340,
+        "x": 630,
+        "y": 140,
         "wires": [
             [
-                "680bcb85.4f0a5c"
+                "34c9bd42.23e04a"
             ]
         ]
     },
     {
-        "id": "ea63cb14.46018",
+        "id": "23eaec00.a44854",
         "type": "function",
-        "z": "d6af186b.004918",
+        "z": "3aa6f007.48ac5",
         "name": "Asign triggerTimeMs",
         "func": "msg.triggerTimeMs = msg.payload.triggerTimeMs\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 560,
-        "y": 300,
+        "x": 500,
+        "y": 100,
         "wires": [
             [
-                "680bcb85.4f0a5c"
+                "34c9bd42.23e04a"
             ]
         ]
     },
     {
-        "id": "8508a9cc.2249d8",
+        "id": "83b2d754.4f0a48",
         "type": "function",
-        "z": "d6af186b.004918",
+        "z": "3aa6f007.48ac5",
         "name": "Post-processing",
         "func": "msg.payload = msg.inboundPayload\nmsg.statusCode = 200\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 1280,
-        "y": 340,
+        "x": 1220,
+        "y": 140,
         "wires": [
             [
-                "8e7bf041.c84de",
-                "2786daed.5f1cfe"
+                "5e5a99ad.47cde",
+                "2931ff0.2f6ad82"
             ]
         ]
     },
     {
-        "id": "8e7bf041.c84de",
+        "id": "5e5a99ad.47cde",
         "type": "http response",
-        "z": "d6af186b.004918",
+        "z": "3aa6f007.48ac5",
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 1450,
-        "y": 340,
+        "x": 1390,
+        "y": 140,
         "wires": []
     },
     {
-        "id": "e078cc25.9f1fe8",
+        "id": "707a66af.15eb6",
         "type": "redis-instance",
-        "z": "d6af186b.004918",
+        "z": "3aa6f007.48ac5",
         "server": "5ed67383.5985ac",
         "name": "",
         "topic": "redis",
         "location": "flow",
         "block": false,
-        "x": 390,
-        "y": 460,
+        "x": 330,
+        "y": 260,
         "wires": []
     },
     {
-        "id": "ff6ff53c.4a893",
+        "id": "58a30694.fe3d2",
         "type": "comment",
-        "z": "d6af186b.004918",
+        "z": "3aa6f007.48ac5",
         "name": "Task delete all",
         "info": "",
-        "x": 230,
-        "y": 600,
+        "x": 90,
+        "y": 380,
         "wires": []
     },
     {
-        "id": "3b6c3e87.c817fa",
+        "id": "a1a3dfc9.6061f",
         "type": "http in",
-        "z": "d6af186b.004918",
+        "z": "3aa6f007.48ac5",
         "name": "",
         "url": "/tasks",
         "method": "delete",
         "upload": false,
         "swaggerDoc": "",
-        "x": 230,
-        "y": 640,
+        "x": 170,
+        "y": 420,
         "wires": [
             [
-                "8a04ae2a.ce90b8"
+                "81991478.49d458"
             ]
         ]
     },
     {
-        "id": "8a04ae2a.ce90b8",
+        "id": "81991478.49d458",
         "type": "function",
-        "z": "d6af186b.004918",
+        "z": "3aa6f007.48ac5",
         "name": "Pre-Process",
         "func": "msg.payload = [ \"-inf\", \"+inf\" ]\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 410,
-        "y": 640,
+        "x": 350,
+        "y": 420,
         "wires": [
             [
-                "b70fc26c.720348"
+                "6cf699de.c49eb"
             ]
         ]
     },
     {
-        "id": "b70fc26c.720348",
+        "id": "fb0524a5.9c27a8",
+        "type": "http response",
+        "z": "3aa6f007.48ac5",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 990,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "46518896.9358d8",
+        "type": "function",
+        "z": "3aa6f007.48ac5",
+        "name": "Loop on Details",
+        "func": "let redis = context.flow.get('redis');\n\n/*\nredis.info().then((data)=>{\n    msg.payload = data\n    node.send(msg);\n})\n*/\n\ntasks = msg.payload\nmsg.payload = {}\nmsg.payload.tasks = []\n\nfor (var j = 0; j < tasks.length; j++) {\n    task = tasks[j]\n\n    redis.call(\"hdel\", \"taskDetails\", task).then((data)=>{\n        \n    })\n}\n\nredis.call(\"del\", \"tasks\").then((data)=>{\n    \n})\n\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 800,
+        "y": 420,
+        "wires": [
+            [
+                "fb0524a5.9c27a8",
+                "f9332842.4d229"
+            ]
+        ]
+    },
+    {
+        "id": "f9332842.4d229",
+        "type": "debug",
+        "z": "3aa6f007.48ac5",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 990,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "f96e7556.c395d8",
+        "type": "comment",
+        "z": "3aa6f007.48ac5",
+        "name": "Task delete one",
+        "info": "",
+        "x": 100,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "1e07a24b.f5af5e",
+        "type": "http in",
+        "z": "3aa6f007.48ac5",
+        "name": "",
+        "url": "/tasks/:id",
+        "method": "delete",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 560,
+        "wires": [
+            [
+                "769051fe.dbd4f"
+            ]
+        ]
+    },
+    {
+        "id": "769051fe.dbd4f",
+        "type": "function",
+        "z": "3aa6f007.48ac5",
+        "name": "TimeIndex",
+        "func": "msg.payload = [ msg.req.params.id ]\nmsg.topic = \"tasks\"\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 340,
+        "y": 540,
+        "wires": [
+            [
+                "c2425cde.c2c86"
+            ]
+        ]
+    },
+    {
+        "id": "3ffd326e.77d95e",
+        "type": "http response",
+        "z": "3aa6f007.48ac5",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 990,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "c9397ab3.593ce8",
+        "type": "debug",
+        "z": "3aa6f007.48ac5",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 990,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "c2425cde.c2c86",
         "type": "redis-command",
-        "z": "d6af186b.004918",
+        "z": "3aa6f007.48ac5",
+        "server": "5ed67383.5985ac",
+        "command": "zrem",
+        "name": "",
+        "topic": "tasks",
+        "params": "[]",
+        "paramsType": "json",
+        "payloadType": "json",
+        "block": false,
+        "x": 400,
+        "y": 580,
+        "wires": [
+            [
+                "ac53516b.c5da38"
+            ]
+        ]
+    },
+    {
+        "id": "9cc18db4.213508",
+        "type": "redis-command",
+        "z": "3aa6f007.48ac5",
+        "server": "5ed67383.5985ac",
+        "command": "hdel",
+        "name": "",
+        "topic": "tasksDetails",
+        "params": "[]",
+        "paramsType": "json",
+        "payloadType": "json",
+        "block": false,
+        "x": 640,
+        "y": 580,
+        "wires": [
+            [
+                "b087cda2.17b9"
+            ]
+        ]
+    },
+    {
+        "id": "6cf699de.c49eb",
+        "type": "redis-command",
+        "z": "3aa6f007.48ac5",
         "server": "5ed67383.5985ac",
         "command": "zrangebyscore",
         "name": "",
@@ -1543,55 +1600,45 @@
         "paramsType": "json",
         "payloadType": "json",
         "block": false,
-        "x": 630,
-        "y": 640,
+        "x": 570,
+        "y": 420,
         "wires": [
             [
-                "4ff2d511.a17b7c"
+                "46518896.9358d8"
             ]
         ]
     },
     {
-        "id": "3db4df0a.52ffb8",
-        "type": "http response",
-        "z": "d6af186b.004918",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 1030,
-        "y": 640,
-        "wires": []
-    },
-    {
-        "id": "4ff2d511.a17b7c",
+        "id": "ac53516b.c5da38",
         "type": "function",
-        "z": "d6af186b.004918",
-        "name": "Loop on Details",
-        "func": "let redis = context.flow.get('redis');\n\n/*\nredis.info().then((data)=>{\n    msg.payload = data\n    node.send(msg);\n})\n*/\n\ntasks = msg.payload\nmsg.payload = {}\nmsg.payload.tasks = []\n\nfor (var j = 0; j < tasks.length; j++) {\n    task = tasks[j]\n\n    redis.call(\"hdel\", \"taskDetails\", task).then((data)=>{\n        \n    })\n}\n\nredis.call(\"del\", \"tasks\").then((data)=>{\n    \n})\n\nreturn msg",
+        "z": "3aa6f007.48ac5",
+        "name": "UserData",
+        "func": "msg.payload = [ msg.req.params.id ]\nmsg.topic = \"tasksDetails\"\nreturn msg",
         "outputs": 1,
         "noerr": 0,
-        "x": 860,
-        "y": 640,
+        "x": 540,
+        "y": 540,
         "wires": [
             [
-                "3db4df0a.52ffb8",
-                "acc48f56.edfae8"
+                "9cc18db4.213508"
             ]
         ]
     },
     {
-        "id": "acc48f56.edfae8",
-        "type": "debug",
-        "z": "d6af186b.004918",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "x": 1030,
-        "y": 680,
-        "wires": []
+        "id": "b087cda2.17b9",
+        "type": "function",
+        "z": "3aa6f007.48ac5",
+        "name": "Post-processing",
+        "func": "msg.payload = {}\nmsg.statusCode = 200\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 820,
+        "y": 540,
+        "wires": [
+            [
+                "3ffd326e.77d95e",
+                "c9397ab3.593ce8"
+            ]
+        ]
     }
 ]

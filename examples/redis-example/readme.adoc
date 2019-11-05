@@ -76,6 +76,13 @@ Delete the full set of tasks (dangerous zone):
     "tasks": []
     }
 
+Delete only one task:
+
+    $ curl -X DELETE http://localhost:3880/tasks/934264b9-db47-4e8c-8f84-ee2ebce3625a | jq .
+    % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                    Dload  Upload   Total   Spent    Left  Speed
+    100     2  100     2    0     0    333      0 --:--:-- --:--:-- --:--:--   333
+    {}
 
 # References
 
