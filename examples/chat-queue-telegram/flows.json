@@ -64,7 +64,7 @@
         "type": "function",
         "z": "d6af186b.004918",
         "name": "format message",
-        "func": "return [ \n    {\n        payload: {\n            \"chatId\":  global.get('telegramID'),\n            \"type\": \"message\",\n            \"options\": { \"parse_mode\": \"Markdown\" },\n            \"content\": \"Agent: How may I help you?\"\n        }\n    },\n    {\n        payload: {\n            msg:\"Signal: Connecting user: \" +  global.get('telegramID'),\n            timestamp: new Date().getTime()\n        }\n    }\n]",
+        "func": "return [ \n    {\n        payload: {\n            \"chatId\":  global.get('telegramID'),\n            \"type\": \"message\",\n            \"options\": { \"parse_mode\": \"Markdown\" },\n            \"content\": \"Agent: How may I help you?\"\n        }\n    },\n    {\n        payload: {\n            msg:\"Signal: Connecting user: \" +  global.get('telegramID') + \" for ixn=\" + msg.payload.id,\n            timestamp: new Date().getTime()\n        }\n    }\n]",
         "outputs": 2,
         "noerr": 0,
         "x": 780,
@@ -329,11 +329,11 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "repeat": "",
+        "repeat": "10",
         "crontab": "",
         "once": false,
         "onceDelay": "60",
-        "x": 160,
+        "x": 170,
         "y": 700,
         "wires": [
             [
@@ -396,7 +396,7 @@
         "id": "c277c181.780e",
         "type": "comment",
         "z": "b19d2de2.d6a79",
-        "name": "CRON @ 60s",
+        "name": "CRON @ 10s",
         "info": "",
         "x": 90,
         "y": 660,
@@ -717,8 +717,8 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 1150,
-        "y": 540,
+        "x": 1390,
+        "y": 560,
         "wires": []
     },
     {
@@ -732,8 +732,8 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 1150,
-        "y": 580,
+        "x": 1390,
+        "y": 600,
         "wires": []
     },
     {
@@ -819,7 +819,7 @@
         "y": 580,
         "wires": [
             [
-                "9cf76a83.57d058"
+                "3bfa78ae.33472"
             ]
         ]
     },
@@ -867,8 +867,8 @@
         "func": "msg.payload = {}\nmsg.statusCode = 200\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 980,
-        "y": 540,
+        "x": 1220,
+        "y": 560,
         "wires": [
             [
                 "71aab919.9980b",
@@ -889,7 +889,8 @@
         "wires": [
             [
                 "1b16f5a5.7509fa",
-                "a0f02889.08df2"
+                "a0f02889.08df2",
+                "5065644.5fa671c"
             ]
         ]
     },
@@ -967,7 +968,7 @@
         "y": 600,
         "wires": [
             [
-                "e0ad37f9.5ff77"
+                "8b0ace59.bb08d"
             ]
         ]
     },
@@ -979,7 +980,7 @@
         "func": "msg.id = msg.req.params.id\nreturn msg",
         "outputs": 1,
         "noerr": 0,
-        "x": 350,
+        "x": 330,
         "y": 560,
         "wires": [
             [
@@ -1069,7 +1070,7 @@
         "type": "function",
         "z": "d6af186b.004918",
         "name": "format message",
-        "func": "return [ \n    {\n        payload: {\n            \"chatId\":  global.get('telegramID'),\n            \"type\": \"message\",\n            \"options\": { \"parse_mode\": \"Markdown\" },\n            \"content\": msg.payload.msg\n        }\n    },\n    {\n        payload: {\n            msg:msg.payload.msg,\n            timestamp:msg.payload.timestamp\n        }\n    }\n]",
+        "func": "return [ \n    {\n        payload: {\n            \"chatId\":  global.get('telegramID'),\n            \"type\": \"message\",\n            \"options\": { \"parse_mode\": \"Markdown\" },\n            \"content\": \"Agent: \" + msg.payload.msg\n        }\n    },\n    {\n        payload: {\n            msg:msg.payload.msg,\n            timestamp:msg.payload.timestamp\n        }\n    }\n]",
         "outputs": 2,
         "noerr": 0,
         "x": 780,
@@ -1303,5 +1304,62 @@
         "x": 100,
         "y": 720,
         "wires": []
+    },
+    {
+        "id": "5065644.5fa671c",
+        "type": "redis-out",
+        "z": "b19d2de2.d6a79",
+        "server": "5ed67383.5985ac",
+        "command": "publish",
+        "name": "",
+        "topic": "queueDelete",
+        "x": 1030,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "8b0ace59.bb08d",
+        "type": "function",
+        "z": "b19d2de2.d6a79",
+        "name": "",
+        "func": "msg.id = msg.payload.id\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 330,
+        "y": 600,
+        "wires": [
+            [
+                "e027a9de.daeff"
+            ]
+        ]
+    },
+    {
+        "id": "3bfa78ae.33472",
+        "type": "switch",
+        "z": "b19d2de2.d6a79",
+        "name": "",
+        "property": "req",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nempty"
+            },
+            {
+                "t": "eq",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 990,
+        "y": 560,
+        "wires": [
+            [
+                "9cf76a83.57d058"
+            ],
+            []
+        ]
     }
 ]
