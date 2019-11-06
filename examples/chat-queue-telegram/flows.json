@@ -26,7 +26,7 @@
         "id": "28c31e1f.031b7a",
         "type": "telegram bot",
         "z": "",
-        "botname": "Ghostgbot",
+        "botname": "Ghost",
         "usernames": "",
         "chatids": "",
         "baseapiurl": "",
@@ -46,13 +46,27 @@
         "verboselogging": true
     },
     {
+        "id": "ad6fda06.930828",
+        "type": "websocket-listener",
+        "z": "",
+        "path": "/agent/receive",
+        "wholemsg": "false"
+    },
+    {
+        "id": "f3eba521.b2e75",
+        "type": "websocket-listener",
+        "z": "",
+        "path": "/agent/publish",
+        "wholemsg": "false"
+    },
+    {
         "id": "5893b06b.bd1368",
         "type": "telegram sender",
         "z": "d6af186b.004918",
         "name": "Ghostgbot",
         "bot": "28c31e1f.031b7a",
-        "x": 820,
-        "y": 180,
+        "x": 800,
+        "y": 400,
         "wires": [
             [
                 "a3761142.1a7c"
@@ -64,11 +78,11 @@
         "type": "function",
         "z": "d6af186b.004918",
         "name": "",
-        "func": "msg.payload = {\n    \"chatId\": msg.payload.telegramID,\n    \"type\": \"message\",\n    \"options\": { \"parse_mode\": \"Markdown\" },\n    \"content\": \"This is triggered \" + msg.payload.id\n}\nreturn msg;",
+        "func": "msg.payload = {\n    \"chatId\": global.get('telegramID'),\n    \"type\": \"message\",\n    \"options\": { \"parse_mode\": \"Markdown\" },\n    \"content\": \"This is triggered \" + msg.payload.id\n}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 510,
-        "y": 180,
+        "x": 610,
+        "y": 400,
         "wires": [
             [
                 "5893b06b.bd1368",
@@ -741,8 +755,8 @@
         "name": "",
         "scope": null,
         "uncaught": false,
-        "x": 200,
-        "y": 100,
+        "x": 140,
+        "y": 920,
         "wires": [
             [
                 "fa07d08a.86bc48"
@@ -760,8 +774,8 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 810,
-        "y": 100,
+        "x": 850,
+        "y": 920,
         "wires": []
     },
     {
@@ -773,11 +787,11 @@
         "name": "queueExecute",
         "topic": "queueExecute",
         "timeout": 0,
-        "x": 210,
-        "y": 180,
+        "x": 190,
+        "y": 400,
         "wires": [
             [
-                "27bd0690.bbba72"
+                "7fd44d84.4c95bc"
             ]
         ]
     },
@@ -914,8 +928,8 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 810,
-        "y": 240,
+        "x": 790,
+        "y": 460,
         "wires": []
     },
     {
@@ -925,11 +939,12 @@
         "name": "Ghostgbot",
         "bot": "28c31e1f.031b7a",
         "saveDataDir": "/tmp",
-        "x": 220,
-        "y": 300,
+        "x": 140,
+        "y": 740,
         "wires": [
             [
-                "26584add.21e286"
+                "26584add.21e286",
+                "2669675d.d9ce08"
             ],
             [
                 "31f9df34.4c9dd8"
@@ -947,8 +962,8 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 370,
-        "y": 400,
+        "x": 290,
+        "y": 840,
         "wires": []
     },
     {
@@ -962,8 +977,8 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 370,
-        "y": 360,
+        "x": 290,
+        "y": 800,
         "wires": []
     },
     {
@@ -977,8 +992,8 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 990,
-        "y": 180,
+        "x": 970,
+        "y": 400,
         "wires": []
     },
     {
@@ -1013,5 +1028,324 @@
                 "e027a9de.daeff"
             ]
         ]
+    },
+    {
+        "id": "49072487.d36ddc",
+        "type": "websocket in",
+        "z": "d6af186b.004918",
+        "name": "",
+        "server": "ad6fda06.930828",
+        "client": "",
+        "x": 170,
+        "y": 640,
+        "wires": [
+            [
+                "6e9628a7.c325a"
+            ]
+        ]
+    },
+    {
+        "id": "c6840aac.028098",
+        "type": "http in",
+        "z": "d6af186b.004918",
+        "name": "",
+        "url": "/agent/chat",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 180,
+        "y": 120,
+        "wires": [
+            [
+                "283ce9f2.9ca366"
+            ]
+        ]
+    },
+    {
+        "id": "bf8ac2f1.ef05e8",
+        "type": "http response",
+        "z": "d6af186b.004918",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1070,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "283ce9f2.9ca366",
+        "type": "template",
+        "z": "d6af186b.004918",
+        "name": "chat html",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "text",
+        "syntax": "mustache",
+        "template": "<!doctype html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>FRED-powered chat app</title>\n  <script src=\"http://code.jquery.com/jquery-1.11.3.min.js\"></script>\n  <script src=\"http:///code.jquery.com/jquery-migrate-1.2.1.min.js\"></script>\n  <style>\n    #messages {border-color:#999; border-style:solid; width:250px; min-height:200px; margin:5px;}\n    .msg {color:#FFF; background-color:#2980B9; padding:2px; margin:2px;}\n    .server {color:#999; background-color:white; font-size:small;}\n    .sentiment-3 {background-color:#992222;}  \n    .sentiment0 {background-color:#2980B9;}\n    .sentiment3 {background-color:#229922;}\n    #form {margin:5px;}\n    #form input {width:250px;}\n  </style>\n</head>\n<body>\n  <div id=\"messages\"></div>\n  <form id=\"form\" onsubmit=\"return false;\">\n    <input id=\"text\" type=\"text\" onkeypress=\"return sendText(event)\" />\n  </form>\n\n  <script type=\"text/javascript\">\n\n    // Open a websocket using FRED.\n    var publishSocket = new WebSocket(\"ws://localhost:3880/agent/receive\");\n    var listenSocket = new WebSocket(\"ws://localhost:3880/agent/publish\");\n\n    listenSocket.onmessage = function (event) {\n      // When receiving a message append a div child to #messages\n      data = JSON.parse(event.data);\n      $(\"#messages\").append(\"<div class='msg sentiment\"+data.sentiment+\"' >\"+data.timestamp+\" - \"+data.msg+\"</div>\")\n      if ($(\"#messages\").children().length > 10 ) { $(\"#messages :first-child\").remove()}\n    }\n\n    listenSocket.onclose = function(event){\n      $(\"#messages\").append(\"<div class='msg server'>Disconnected from server.</div>\");\n    }\n\n    listenSocket.onopen = function(event){\n      $(\"#messages\").append(\"<div class='msg server'>Connected to server.</div>\")\n    }\n\n    function sendText(event) {\n      // Only if return key pressed\n      if (event.keyCode == 13) {\n        // Construct object containing the data the server needs.\n        d = new Date();\n        var data = {\n          msg: $(\"#text\").val(),\n          timestamp: d.getHours() +\":\"+ d.getMinutes() + \":\" + d.getSeconds()\n        };\n        // Send the msg object as a JSON-formatted string.\n        publishSocket.send(JSON.stringify(data));  \n        // Blank the text input element\n        $(\"#text\").val(\"\");\n      }\n    }\n </script>\n\n</body>\n</html>\n",
+        "x": 600,
+        "y": 120,
+        "wires": [
+            [
+                "bf8ac2f1.ef05e8"
+            ]
+        ]
+    },
+    {
+        "id": "c153bd08.f3d418",
+        "type": "change",
+        "z": "d6af186b.004918",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "data",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.msg",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 640,
+        "wires": [
+            [
+                "55d0d356.8e963c"
+            ]
+        ]
+    },
+    {
+        "id": "6e9628a7.c325a",
+        "type": "json",
+        "z": "d6af186b.004918",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 350,
+        "y": 640,
+        "wires": [
+            [
+                "c153bd08.f3d418"
+            ]
+        ]
+    },
+    {
+        "id": "320cc422.94a28c",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "format message",
+        "func": "return [ \n    {\n        payload: {\n            msg:msg.data.msg,\n            timestamp:msg.data.timestamp,\n            sentiment:msg.sentiment.score\n            }\n    },\n    {\n        payload: {\n            \"chatId\":  global.get('telegramID'),\n            \"type\": \"message\",\n            \"options\": { \"parse_mode\": \"Markdown\" },\n            \"content\": msg.data.msg\n        }\n    }\n]",
+        "outputs": 2,
+        "noerr": 0,
+        "x": 880,
+        "y": 640,
+        "wires": [
+            [
+                "901b7bf5.1571"
+            ],
+            [
+                "a158ad06.c89328"
+            ]
+        ]
+    },
+    {
+        "id": "901b7bf5.1571",
+        "type": "websocket out",
+        "z": "d6af186b.004918",
+        "name": "",
+        "server": "f3eba521.b2e75",
+        "client": "",
+        "x": 1110,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "6eb77d2a.6d1284",
+        "type": "debug",
+        "z": "d6af186b.004918",
+        "name": "Debug Sentiments",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 890,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "48957651.fe8ee8",
+        "type": "comment",
+        "z": "d6af186b.004918",
+        "name": "Serve Agent Chat Room Page",
+        "info": "",
+        "x": 140,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "6625e861.2ba06",
+        "type": "comment",
+        "z": "d6af186b.004918",
+        "name": "Listen & Broadcast events",
+        "info": "",
+        "x": 190,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "55d0d356.8e963c",
+        "type": "sentiment",
+        "z": "d6af186b.004918",
+        "name": "",
+        "property": "payload",
+        "x": 700,
+        "y": 640,
+        "wires": [
+            [
+                "320cc422.94a28c",
+                "6eb77d2a.6d1284"
+            ]
+        ]
+    },
+    {
+        "id": "a158ad06.c89328",
+        "type": "telegram sender",
+        "z": "d6af186b.004918",
+        "name": "Ghostgbot",
+        "bot": "28c31e1f.031b7a",
+        "x": 1080,
+        "y": 660,
+        "wires": [
+            [
+                "ba5b0b5e.dbede"
+            ]
+        ]
+    },
+    {
+        "id": "ba5b0b5e.dbede",
+        "type": "debug",
+        "z": "d6af186b.004918",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 1250,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "7fd44d84.4c95bc",
+        "type": "change",
+        "z": "d6af186b.004918",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "telegramID",
+                "pt": "global",
+                "to": "payload.telegramID",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 400,
+        "y": 400,
+        "wires": [
+            [
+                "27bd0690.bbba72"
+            ]
+        ]
+    },
+    {
+        "id": "2669675d.d9ce08",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "format message",
+        "func": "return {\n    payload: {\n        msg: msg.originalMessage.from.username + \": \" + msg.payload.content,\n        timestamp: msg.originalMessage.date,\n        sentiment:50\n        }\n};",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 340,
+        "y": 740,
+        "wires": [
+            [
+                "901b7bf5.1571"
+            ]
+        ]
+    },
+    {
+        "id": "6aff6f4f.cdbb2",
+        "type": "redis-in",
+        "z": "d6af186b.004918",
+        "server": "5ed67383.5985ac",
+        "command": "subscribe",
+        "name": "queueTelegramOut",
+        "topic": "queueTelegramOut",
+        "timeout": 0,
+        "x": 170,
+        "y": 260,
+        "wires": [
+            [
+                "1b68e80a.d0694"
+            ]
+        ]
+    },
+    {
+        "id": "104c246f.aa99f4",
+        "type": "comment",
+        "z": "d6af186b.004918",
+        "name": "Send Telegram Message to User",
+        "info": "",
+        "x": 150,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "1b68e80a.d0694",
+        "type": "telegram sender",
+        "z": "d6af186b.004918",
+        "name": "Ghostgbot",
+        "bot": "28c31e1f.031b7a",
+        "x": 600,
+        "y": 260,
+        "wires": [
+            [
+                "254ae785.601568"
+            ]
+        ]
+    },
+    {
+        "id": "254ae785.601568",
+        "type": "debug",
+        "z": "d6af186b.004918",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 1070,
+        "y": 260,
+        "wires": []
     }
 ]
