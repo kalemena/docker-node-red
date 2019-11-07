@@ -755,7 +755,7 @@
         "id": "fa07d08a.86bc48",
         "type": "debug",
         "z": "d6af186b.004918",
-        "name": "",
+        "name": "error",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -921,24 +921,9 @@
                 "2669675d.d9ce08"
             ],
             [
-                "31f9df34.4c9dd8"
+                "1b1ab33f.e9b9ad"
             ]
         ]
-    },
-    {
-        "id": "31f9df34.4c9dd8",
-        "type": "debug",
-        "z": "d6af186b.004918",
-        "name": "error",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "x": 390,
-        "y": 640,
-        "wires": []
     },
     {
         "id": "26584add.21e286",
@@ -1284,18 +1269,6 @@
         "wires": []
     },
     {
-        "id": "686f3fcb.5bb7",
-        "type": "redis-out",
-        "z": "d6af186b.004918",
-        "server": "5ed67383.5985ac",
-        "command": "publish",
-        "name": "",
-        "topic": "queueWebOut",
-        "x": 1100,
-        "y": 660,
-        "wires": []
-    },
-    {
         "id": "6665c8db.1d1218",
         "type": "comment",
         "z": "d6af186b.004918",
@@ -1361,5 +1334,104 @@
             ],
             []
         ]
+    },
+    {
+        "id": "951b321b.014c7",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "create log string",
+        "func": "var chatId = msg.payload.chatId;\nvar username = msg.originalMessage.from.username;\nmsg.originalMessage.timestamp = new Date();\nvar message = JSON.stringify(msg.originalMessage);\n\nmsg.topic = username + ' ' + chatId;\nmsg.payload = [msg.topic, message];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 440,
+        "y": 1000,
+        "wires": [
+            [
+                "81d73a66.9cef9"
+            ]
+        ]
+    },
+    {
+        "id": "81d73a66.9cef9",
+        "type": "file",
+        "z": "d6af186b.004918",
+        "name": "LogFile",
+        "filename": "/var/log/telegram-unauthorized.log",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "false",
+        "x": 670,
+        "y": 1000,
+        "wires": [
+            [
+                "6dd4f2bf.169a4c"
+            ]
+        ]
+    },
+    {
+        "id": "6dd4f2bf.169a4c",
+        "type": "debug",
+        "z": "d6af186b.004918",
+        "name": "error",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 870,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "686f3fcb.5bb7",
+        "type": "redis-out",
+        "z": "d6af186b.004918",
+        "server": "5ed67383.5985ac",
+        "command": "publish",
+        "name": "",
+        "topic": "queueWebOut",
+        "x": 1100,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "1b1ab33f.e9b9ad",
+        "type": "redis-out",
+        "z": "d6af186b.004918",
+        "server": "5ed67383.5985ac",
+        "command": "publish",
+        "name": "",
+        "topic": "telegramError",
+        "x": 410,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "4aad9146.753468",
+        "type": "redis-in",
+        "z": "d6af186b.004918",
+        "server": "5ed67383.5985ac",
+        "command": "subscribe",
+        "name": "telegramError",
+        "topic": "telegramError",
+        "timeout": 0,
+        "x": 190,
+        "y": 1000,
+        "wires": [
+            [
+                "951b321b.014c7"
+            ]
+        ]
+    },
+    {
+        "id": "a26fd5ef.fa8028",
+        "type": "comment",
+        "z": "d6af186b.004918",
+        "name": "Error Handling",
+        "info": "",
+        "x": 90,
+        "y": 920,
+        "wires": []
     }
 ]
