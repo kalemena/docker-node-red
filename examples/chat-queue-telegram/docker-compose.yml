@@ -21,5 +21,7 @@ services:
      - "3880:1880"
     volumes:
      - .:/data
+     - ./etc/node-red:/root/.node-red
+     - ./var/log:/var/log
     environment:
      - FLOWS=/data/flows.json

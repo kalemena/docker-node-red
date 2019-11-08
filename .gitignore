@@ -1,1 +1,6 @@
 *.backup
+*_cred.*
+settings.js
+package.json
+.config.json
+.env
