@@ -93,7 +93,7 @@
         "scope": null,
         "uncaught": false,
         "x": 140,
-        "y": 820,
+        "y": 1040,
         "wires": [
             [
                 "f174a574.3cfdd"
@@ -112,7 +112,7 @@
         "complete": "true",
         "targetType": "full",
         "x": 990,
-        "y": 820,
+        "y": 1040,
         "wires": []
     },
     {
@@ -171,7 +171,7 @@
         "statusCode": "",
         "headers": {},
         "x": 990,
-        "y": 300,
+        "y": 680,
         "wires": []
     },
     {
@@ -217,9 +217,9 @@
         "id": "fead6e8.245de1",
         "type": "comment",
         "z": "b19d2de2.d6a79",
-        "name": "Task create",
+        "name": "POST Task",
         "info": "",
-        "x": 80,
+        "x": 90,
         "y": 60,
         "wires": []
     },
@@ -258,7 +258,7 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 180,
-        "y": 300,
+        "y": 680,
         "wires": [
             [
                 "b29d1f4a.207ce8"
@@ -278,7 +278,7 @@
         "payloadType": "json",
         "block": false,
         "x": 570,
-        "y": 300,
+        "y": 680,
         "wires": [
             [
                 "47af8106.938be"
@@ -294,7 +294,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 350,
-        "y": 300,
+        "y": 680,
         "wires": [
             [
                 "205132b8.03fd46"
@@ -305,10 +305,10 @@
         "id": "54442106.c1494",
         "type": "comment",
         "z": "b19d2de2.d6a79",
-        "name": "Task get all",
+        "name": "GET Tasks",
         "info": "",
         "x": 80,
-        "y": 260,
+        "y": 640,
         "wires": []
     },
     {
@@ -320,7 +320,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 800,
-        "y": 300,
+        "y": 680,
         "wires": [
             [
                 "3fcd1591.b8b802",
@@ -341,7 +341,7 @@
         "once": false,
         "onceDelay": "60",
         "x": 170,
-        "y": 700,
+        "y": 920,
         "wires": [
             [
                 "ee55b0d0.6ed7c8"
@@ -361,7 +361,7 @@
         "payloadType": "json",
         "block": false,
         "x": 590,
-        "y": 700,
+        "y": 920,
         "wires": [
             [
                 "3bacf2b7.88e33e"
@@ -377,7 +377,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 350,
-        "y": 700,
+        "y": 920,
         "wires": [
             [
                 "abdffb92.9c2e18"
@@ -396,7 +396,7 @@
         "complete": "true",
         "targetType": "full",
         "x": 1010,
-        "y": 700,
+        "y": 920,
         "wires": []
     },
     {
@@ -406,7 +406,7 @@
         "name": "CRON @ 10s",
         "info": "",
         "x": 90,
-        "y": 660,
+        "y": 880,
         "wires": []
     },
     {
@@ -512,7 +512,7 @@
         "complete": "true",
         "targetType": "full",
         "x": 990,
-        "y": 340,
+        "y": 720,
         "wires": []
     },
     {
@@ -585,17 +585,17 @@
         "location": "flow",
         "block": false,
         "x": 330,
-        "y": 260,
+        "y": 640,
         "wires": []
     },
     {
         "id": "ddfe2dc9.4f4548",
         "type": "comment",
         "z": "b19d2de2.d6a79",
-        "name": "Task delete all",
+        "name": "DELETE Tasks",
         "info": "",
-        "x": 90,
-        "y": 380,
+        "x": 100,
+        "y": 760,
         "wires": []
     },
     {
@@ -608,7 +608,7 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 170,
-        "y": 420,
+        "y": 800,
         "wires": [
             [
                 "6111605c.6f0388"
@@ -624,7 +624,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 350,
-        "y": 420,
+        "y": 800,
         "wires": [
             [
                 "d20a0e28.3647d"
@@ -639,7 +639,7 @@
         "statusCode": "",
         "headers": {},
         "x": 990,
-        "y": 420,
+        "y": 800,
         "wires": []
     },
     {
@@ -651,7 +651,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 800,
-        "y": 420,
+        "y": 800,
         "wires": [
             [
                 "a65028ae.5278a8",
@@ -671,17 +671,17 @@
         "complete": "true",
         "targetType": "full",
         "x": 990,
-        "y": 460,
+        "y": 840,
         "wires": []
     },
     {
         "id": "28df79c8.11abd6",
         "type": "comment",
         "z": "b19d2de2.d6a79",
-        "name": "Task delete one",
+        "name": "DELETE Task",
         "info": "",
-        "x": 100,
-        "y": 520,
+        "x": 90,
+        "y": 220,
         "wires": []
     },
     {
@@ -694,7 +694,7 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 160,
-        "y": 560,
+        "y": 260,
         "wires": [
             [
                 "e0ad37f9.5ff77"
@@ -710,7 +710,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 500,
-        "y": 540,
+        "y": 240,
         "wires": [
             [
                 "e9c12ce9.39b7a"
@@ -725,7 +725,7 @@
         "statusCode": "",
         "headers": {},
         "x": 1390,
-        "y": 560,
+        "y": 260,
         "wires": []
     },
     {
@@ -740,7 +740,7 @@
         "complete": "true",
         "targetType": "full",
         "x": 1390,
-        "y": 600,
+        "y": 300,
         "wires": []
     },
     {
@@ -804,7 +804,7 @@
         "payloadType": "json",
         "block": false,
         "x": 560,
-        "y": 580,
+        "y": 280,
         "wires": [
             [
                 "f6bff892.cda778"
@@ -824,7 +824,7 @@
         "payloadType": "json",
         "block": false,
         "x": 800,
-        "y": 580,
+        "y": 280,
         "wires": [
             [
                 "3bfa78ae.33472"
@@ -844,7 +844,7 @@
         "payloadType": "json",
         "block": false,
         "x": 570,
-        "y": 420,
+        "y": 800,
         "wires": [
             [
                 "d0f0e812.a738e"
@@ -860,7 +860,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 700,
-        "y": 540,
+        "y": 240,
         "wires": [
             [
                 "43ddd81a.7b55b"
@@ -876,7 +876,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 1220,
-        "y": 560,
+        "y": 260,
         "wires": [
             [
                 "71aab919.9980b",
@@ -893,7 +893,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 840,
-        "y": 700,
+        "y": 920,
         "wires": [
             [
                 "1b16f5a5.7509fa",
@@ -909,9 +909,9 @@
         "server": "5ed67383.5985ac",
         "command": "publish",
         "name": "",
-        "topic": "queueExecute",
-        "x": 1040,
-        "y": 740,
+        "topic": "queueTaskExecute",
+        "x": 1050,
+        "y": 960,
         "wires": []
     },
     {
@@ -954,11 +954,11 @@
         "z": "b19d2de2.d6a79",
         "server": "5ed67383.5985ac",
         "command": "subscribe",
-        "name": "queueDelete",
-        "topic": "queueDelete",
+        "name": "",
+        "topic": "queueTaskDelete",
         "timeout": 0,
-        "x": 170,
-        "y": 600,
+        "x": 160,
+        "y": 300,
         "wires": [
             [
                 "8b0ace59.bb08d"
@@ -974,7 +974,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 330,
-        "y": 560,
+        "y": 260,
         "wires": [
             [
                 "e027a9de.daeff"
@@ -1136,8 +1136,8 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 1070,
-        "y": 260,
+        "x": 1090,
+        "y": 160,
         "wires": []
     },
     {
@@ -1236,10 +1236,10 @@
         "z": "b19d2de2.d6a79",
         "server": "5ed67383.5985ac",
         "command": "publish",
-        "name": "",
-        "topic": "queueDelete",
-        "x": 1030,
-        "y": 780,
+        "name": "queueTaskDelete",
+        "topic": "queueTaskDelete",
+        "x": 1040,
+        "y": 1000,
         "wires": []
     },
     {
@@ -1251,7 +1251,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 330,
-        "y": 600,
+        "y": 300,
         "wires": [
             [
                 "e027a9de.daeff"
@@ -1279,7 +1279,7 @@
         "repair": false,
         "outputs": 2,
         "x": 990,
-        "y": 560,
+        "y": 260,
         "wires": [
             [
                 "9cf76a83.57d058"
@@ -1622,5 +1622,337 @@
         "x": 350,
         "y": 820,
         "wires": []
+    },
+    {
+        "id": "5278803b.8da13",
+        "type": "comment",
+        "z": "b19d2de2.d6a79",
+        "name": "UPDATE Task",
+        "info": "",
+        "x": 90,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "cee905f6.dc7cb",
+        "type": "http in",
+        "z": "b19d2de2.d6a79",
+        "name": "",
+        "url": "/tasks/:id",
+        "method": "put",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 170,
+        "y": 400,
+        "wires": [
+            [
+                "bfbfe049.444d1"
+            ]
+        ]
+    },
+    {
+        "id": "d1dbf37e.6726a",
+        "type": "http response",
+        "z": "b19d2de2.d6a79",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1390,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "28bff97d.b85ec6",
+        "type": "debug",
+        "z": "b19d2de2.d6a79",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 1390,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "a5ff76c5.56d458",
+        "type": "redis-command",
+        "z": "b19d2de2.d6a79",
+        "server": "5ed67383.5985ac",
+        "command": "hset",
+        "name": "",
+        "topic": "tasksDetails",
+        "params": "[]",
+        "paramsType": "json",
+        "payloadType": "json",
+        "block": false,
+        "x": 800,
+        "y": 420,
+        "wires": [
+            [
+                "7aca5179.9a7ef"
+            ]
+        ]
+    },
+    {
+        "id": "1cc9204.8fbcf6",
+        "type": "function",
+        "z": "b19d2de2.d6a79",
+        "name": "UserData",
+        "func": "// park payload\nmsg.inboundPayload = msg.payload\n\n// enhance parked payload\nmsg.inboundPayload.id = msg.id\n\n// build storage request\nmsg.payload = [ msg.id, JSON.stringify(msg.inboundPayload) ]\nmsg.topic = \"taskDetails\"\n\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 700,
+        "y": 380,
+        "wires": [
+            [
+                "a5ff76c5.56d458"
+            ]
+        ]
+    },
+    {
+        "id": "fb85da81.cdfab8",
+        "type": "function",
+        "z": "b19d2de2.d6a79",
+        "name": "Post-processing",
+        "func": "msg.payload = {}\nmsg.statusCode = 200\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1220,
+        "y": 400,
+        "wires": [
+            [
+                "d1dbf37e.6726a",
+                "28bff97d.b85ec6"
+            ]
+        ]
+    },
+    {
+        "id": "f7f59166.06172",
+        "type": "redis-in",
+        "z": "b19d2de2.d6a79",
+        "server": "5ed67383.5985ac",
+        "command": "subscribe",
+        "name": "",
+        "topic": "queueTaskUpdate",
+        "timeout": 0,
+        "x": 160,
+        "y": 440,
+        "wires": [
+            [
+                "9477be8a.91f2"
+            ]
+        ]
+    },
+    {
+        "id": "bfbfe049.444d1",
+        "type": "function",
+        "z": "b19d2de2.d6a79",
+        "name": "",
+        "func": "msg.id = msg.req.params.id\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 330,
+        "y": 400,
+        "wires": [
+            [
+                "1cc9204.8fbcf6"
+            ]
+        ]
+    },
+    {
+        "id": "9477be8a.91f2",
+        "type": "function",
+        "z": "b19d2de2.d6a79",
+        "name": "",
+        "func": "msg.id = msg.payload.id\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 330,
+        "y": 440,
+        "wires": [
+            [
+                "1cc9204.8fbcf6"
+            ]
+        ]
+    },
+    {
+        "id": "7aca5179.9a7ef",
+        "type": "switch",
+        "z": "b19d2de2.d6a79",
+        "name": "",
+        "property": "req",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nempty"
+            },
+            {
+                "t": "eq",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 990,
+        "y": 400,
+        "wires": [
+            [
+                "fb85da81.cdfab8"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "16436ac3.64aa5d",
+        "type": "comment",
+        "z": "b19d2de2.d6a79",
+        "name": "GET Task",
+        "info": "",
+        "x": 80,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "72ae910c.e5a1d8",
+        "type": "http in",
+        "z": "b19d2de2.d6a79",
+        "name": "",
+        "url": "/tasks/:id",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 170,
+        "y": 540,
+        "wires": [
+            [
+                "4675e36c.a5a17c"
+            ]
+        ]
+    },
+    {
+        "id": "423f4e94.48b33",
+        "type": "http response",
+        "z": "b19d2de2.d6a79",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1390,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "2504ae76.516f52",
+        "type": "function",
+        "z": "b19d2de2.d6a79",
+        "name": "UserData",
+        "func": "//msg.payload = msg.id\n//msg.topic = \"tasksDetails\"\n//return msg\n\nlet redis = context.flow.get('redis');\n\nmsg.payload = {}\nredis.call(\"hget\", \"taskDetails\", msg.id).then((data)=>{\n    taskJSON = data\n    msg.payload = JSON.parse(taskJSON)\n})\n\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 700,
+        "y": 540,
+        "wires": [
+            [
+                "db5f0369.91c248"
+            ]
+        ]
+    },
+    {
+        "id": "611c334.db28b4c",
+        "type": "function",
+        "z": "b19d2de2.d6a79",
+        "name": "Post-processing",
+        "func": "msg.statusCode = 200\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1220,
+        "y": 540,
+        "wires": [
+            [
+                "423f4e94.48b33"
+            ]
+        ]
+    },
+    {
+        "id": "a7a74560.347bc",
+        "type": "redis-in",
+        "z": "b19d2de2.d6a79",
+        "server": "5ed67383.5985ac",
+        "command": "subscribe",
+        "name": "",
+        "topic": "queueTaskGet",
+        "timeout": 0,
+        "x": 170,
+        "y": 580,
+        "wires": [
+            [
+                "6c2c83bc.edc46c"
+            ]
+        ]
+    },
+    {
+        "id": "4675e36c.a5a17c",
+        "type": "function",
+        "z": "b19d2de2.d6a79",
+        "name": "",
+        "func": "msg.id = msg.req.params.id\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 330,
+        "y": 540,
+        "wires": [
+            [
+                "2504ae76.516f52"
+            ]
+        ]
+    },
+    {
+        "id": "6c2c83bc.edc46c",
+        "type": "function",
+        "z": "b19d2de2.d6a79",
+        "name": "",
+        "func": "msg.id = msg.payload.id\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 330,
+        "y": 580,
+        "wires": [
+            [
+                "2504ae76.516f52"
+            ]
+        ]
+    },
+    {
+        "id": "db5f0369.91c248",
+        "type": "switch",
+        "z": "b19d2de2.d6a79",
+        "name": "",
+        "property": "req",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "nempty"
+            },
+            {
+                "t": "eq",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 990,
+        "y": 540,
+        "wires": [
+            [
+                "611c334.db28b4c"
+            ],
+            []
+        ]
     }
 ]
