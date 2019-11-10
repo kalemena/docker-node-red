@@ -14,6 +14,14 @@ services:
     volumes:
       - redis-data:/data
 
+  www:
+    image: nginx
+    restart: always
+    ports:
+     - "9080:80"
+    volumes:
+     - ./web:/usr/share/nginx/html
+
   nodered:
     build: .
     restart: always
