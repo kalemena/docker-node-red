@@ -56,14 +56,14 @@
         "id": "ad6fda06.930828",
         "type": "websocket-listener",
         "z": "",
-        "path": "/agent/receive",
+        "path": "/ws/agent/receive",
         "wholemsg": "false"
     },
     {
         "id": "f3eba521.b2e75",
         "type": "websocket-listener",
         "z": "",
-        "path": "/agent/publish",
+        "path": "/ws/agent/publish",
         "wholemsg": "false"
     },
     {
@@ -763,7 +763,7 @@
         "type": "debug",
         "z": "d6af186b.004918",
         "name": "error",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -786,7 +786,8 @@
         "y": 760,
         "wires": [
             [
-                "7fd44d84.4c95bc"
+                "7fd44d84.4c95bc",
+                "b652eeef.95c358"
             ]
         ]
     },
@@ -987,57 +988,11 @@
         "name": "",
         "server": "ad6fda06.930828",
         "client": "",
-        "x": 170,
+        "x": 180,
         "y": 500,
         "wires": [
             [
                 "6e9628a7.c325a"
-            ]
-        ]
-    },
-    {
-        "id": "c6840aac.028098",
-        "type": "http in",
-        "z": "d6af186b.004918",
-        "name": "",
-        "url": "/agent/chat",
-        "method": "get",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 180,
-        "y": 120,
-        "wires": [
-            [
-                "283ce9f2.9ca366"
-            ]
-        ]
-    },
-    {
-        "id": "bf8ac2f1.ef05e8",
-        "type": "http response",
-        "z": "d6af186b.004918",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 1070,
-        "y": 120,
-        "wires": []
-    },
-    {
-        "id": "283ce9f2.9ca366",
-        "type": "template",
-        "z": "d6af186b.004918",
-        "name": "chat html",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "text",
-        "syntax": "mustache",
-        "template": "<!doctype html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>FRED-powered chat app</title>\n  <script src=\"http://code.jquery.com/jquery-1.11.3.min.js\"></script>\n  <script src=\"http:///code.jquery.com/jquery-migrate-1.2.1.min.js\"></script>\n  <style>\n    #messages {border-color:#999; border-style:solid; width:250px; min-height:200px; margin:5px;}\n    .msg {color:#FFF; background-color:#2980B9; padding:2px; margin:2px;}\n    .server {color:#999; background-color:white; font-size:small;}\n    .sentiment-3 {background-color:#992222;}  \n    .sentiment0 {background-color:#2980B9;}\n    .sentiment3 {background-color:#229922;}\n    #form {margin:5px;}\n    #form input {width:250px;}\n  </style>\n</head>\n<body>\n  <div id=\"messages\"></div>\n  <form id=\"form\" onsubmit=\"return false;\">\n    <input id=\"text\" type=\"text\" onkeypress=\"return sendText(event)\" />\n  </form>\n\n  <script type=\"text/javascript\">\n\n    // Open a websocket using FRED.\n    var publishSocket = new WebSocket(\"ws://localhost:3880/agent/receive\");\n    var listenSocket = new WebSocket(\"ws://localhost:3880/agent/publish\");\n\n    listenSocket.onmessage = function (event) {\n      // When receiving a message append a div child to #messages\n      data = JSON.parse(event.data);\n      $(\"#messages\").append(\"<div class='msg sentiment\"+data.sentiment+\"' >\"+data.timestamp+\" - \"+data.msg+\"</div>\")\n      if ($(\"#messages\").children().length > 10 ) { $(\"#messages :first-child\").remove()}\n    }\n\n    listenSocket.onclose = function(event){\n      $(\"#messages\").append(\"<div class='msg server'>Disconnected from server.</div>\");\n    }\n\n    listenSocket.onopen = function(event){\n      $(\"#messages\").append(\"<div class='msg server'>Connected to server.</div>\")\n    }\n\n    function sendText(event) {\n      // Only if return key pressed\n      if (event.keyCode == 13) {\n        // Construct object containing the data the server needs.\n        d = new Date();\n        var data = {\n          msg: $(\"#text\").val(),\n          timestamp: d.getHours() +\":\"+ d.getMinutes() + \":\" + d.getSeconds()\n        };\n        // Send the msg object as a JSON-formatted string.\n        publishSocket.send(JSON.stringify(data));  \n        // Blank the text input element\n        $(\"#text\").val(\"\");\n      }\n    }\n </script>\n\n</body>\n</html>\n",
-        "x": 600,
-        "y": 120,
-        "wires": [
-            [
-                "bf8ac2f1.ef05e8"
             ]
         ]
     },
@@ -1075,16 +1030,6 @@
                 "686f3fcb.5bb7"
             ]
         ]
-    },
-    {
-        "id": "48957651.fe8ee8",
-        "type": "comment",
-        "z": "d6af186b.004918",
-        "name": "Serve Agent Chat Room Page",
-        "info": "",
-        "x": 140,
-        "y": 80,
-        "wires": []
     },
     {
         "id": "6625e861.2ba06",
@@ -1233,7 +1178,7 @@
         "name": "",
         "server": "f3eba521.b2e75",
         "client": "",
-        "x": 1110,
+        "x": 1120,
         "y": 380,
         "wires": []
     },
@@ -1661,6 +1606,21 @@
         "targetType": "full",
         "x": 830,
         "y": 220,
+        "wires": []
+    },
+    {
+        "id": "b652eeef.95c358",
+        "type": "debug",
+        "z": "d6af186b.004918",
+        "name": "error",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 350,
+        "y": 820,
         "wires": []
     }
 ]
