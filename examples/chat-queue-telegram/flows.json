@@ -84,19 +84,15 @@
         "id": "27bd0690.bbba72",
         "type": "function",
         "z": "d6af186b.004918",
-        "name": "format message",
-        "func": "return [ \n    {\n        payload: {\n            \"chatId\":  global.get('telegramID'),\n            \"type\": \"message\",\n            \"options\": { \"parse_mode\": \"Markdown\" },\n            \"content\": \"Agent: How may I help you?\"\n        }\n    },\n    {\n        payload: {\n            msg:\"Signal: Connecting user: \" +  global.get('telegramID') + \" for ixn=\" + msg.payload.id,\n            timestamp: new Date().getTime()\n        }\n    }\n]",
+        "name": "Pre-process",
+        "func": "return [ \n    {\n        payload: {\n            timestamp: new Date().getTime(),\n            username: \"agent\",\n            msg: \"How may I help you?\"\n        }\n    },\n    {\n        payload: {\n            timestamp: new Date().getTime(),\n            username: \"SYSTEM\",\n            msg: \"Connecting user: \" +  global.get('telegramID') + \" for ixn=\" + msg.payload.id\n        }\n    }\n]",
         "outputs": 2,
         "noerr": 0,
-        "x": 820,
-        "y": 700,
+        "x": 610,
+        "y": 520,
         "wires": [
-            [
-                "d4dd0a4c.53bd58"
-            ],
-            [
-                "b70610ba.a6882"
-            ]
+            [],
+            []
         ]
     },
     {
@@ -671,7 +667,7 @@
         "scope": null,
         "uncaught": false,
         "x": 240,
-        "y": 840,
+        "y": 660,
         "wires": [
             [
                 "fa07d08a.86bc48"
@@ -690,7 +686,7 @@
         "complete": "true",
         "targetType": "full",
         "x": 910,
-        "y": 840,
+        "y": 660,
         "wires": []
     },
     {
@@ -703,7 +699,7 @@
         "topic": "queueTaskExecute",
         "timeout": 0,
         "x": 210,
-        "y": 700,
+        "y": 520,
         "wires": [
             [
                 "7fd44d84.4c95bc",
@@ -812,11 +808,11 @@
         "bot": "28c31e1f.031b7a",
         "saveDataDir": "/tmp",
         "x": 240,
-        "y": 460,
+        "y": 300,
         "wires": [
             [
                 "26584add.21e286",
-                "2669675d.d9ce08"
+                "e9ba981a.08704"
             ],
             [
                 "1b1ab33f.e9b9ad"
@@ -828,14 +824,14 @@
         "type": "debug",
         "z": "d6af186b.004918",
         "name": "std",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 430,
-        "y": 500,
+        "x": 450,
+        "y": 380,
         "wires": []
     },
     {
@@ -879,7 +875,7 @@
         "server": "ad6fda06.930828",
         "client": "",
         "x": 200,
-        "y": 280,
+        "y": 100,
         "wires": [
             [
                 "6e9628a7.c325a"
@@ -895,31 +891,10 @@
         "action": "",
         "pretty": false,
         "x": 370,
-        "y": 280,
+        "y": 100,
         "wires": [
             [
-                "320cc422.94a28c",
-                "2c6f069e.e8f97a"
-            ]
-        ]
-    },
-    {
-        "id": "320cc422.94a28c",
-        "type": "function",
-        "z": "d6af186b.004918",
-        "name": "format message",
-        "func": "return [ \n    {\n        payload: {\n            \"chatId\":  global.get('telegramID'),\n            \"type\": \"message\",\n            \"options\": { \"parse_mode\": \"Markdown\" },\n            \"content\": \"Agent: \" + msg.payload.msg\n        }\n    },\n    {\n        payload: {\n            msg:msg.payload.msg,\n            timestamp:msg.payload.timestamp\n        }\n    }\n]",
-        "outputs": 2,
-        "noerr": 0,
-        "x": 820,
-        "y": 280,
-        "wires": [
-            [
-                "d4dd0a4c.53bd58"
-            ],
-            [
-                "b70610ba.a6882",
-                "e583580a.898e5"
+                "a772dc08.4917c"
             ]
         ]
     },
@@ -927,10 +902,10 @@
         "id": "6625e861.2ba06",
         "type": "comment",
         "z": "d6af186b.004918",
-        "name": "Listen & Broadcast events",
+        "name": "Listen & Broadcast events - Agents",
         "info": "",
-        "x": 130,
-        "y": 240,
+        "x": 160,
+        "y": 60,
         "wires": []
     },
     {
@@ -952,8 +927,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 520,
-        "y": 700,
+        "x": 420,
+        "y": 520,
         "wires": [
             [
                 "27bd0690.bbba72"
@@ -964,12 +939,12 @@
         "id": "2669675d.d9ce08",
         "type": "function",
         "z": "d6af186b.004918",
-        "name": "format message",
-        "func": "return {\n    payload: {\n        msg: msg.originalMessage.from.username + \": \" + msg.payload.content,\n        timestamp: msg.originalMessage.date\n    }\n};",
+        "name": "Pre-process",
+        "func": "return {\n    payload: {\n        timestamp: msg.originalMessage.date,\n        username: msg.originalMessage.from.username,\n        msg: msg.payload.content\n    }\n}",
         "outputs": 1,
         "noerr": 0,
-        "x": 820,
-        "y": 460,
+        "x": 670,
+        "y": 320,
         "wires": [
             [
                 "b70610ba.a6882"
@@ -983,7 +958,7 @@
         "name": "Open initial Chat",
         "info": "",
         "x": 100,
-        "y": 660,
+        "y": 480,
         "wires": []
     },
     {
@@ -1040,7 +1015,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 480,
-        "y": 880,
+        "y": 700,
         "wires": [
             [
                 "81d73a66.9cef9"
@@ -1057,7 +1032,7 @@
         "createDir": false,
         "overwriteFile": "false",
         "x": 710,
-        "y": 880,
+        "y": 700,
         "wires": [
             [
                 "6dd4f2bf.169a4c"
@@ -1076,7 +1051,7 @@
         "complete": "true",
         "targetType": "full",
         "x": 910,
-        "y": 880,
+        "y": 700,
         "wires": []
     },
     {
@@ -1087,8 +1062,8 @@
         "command": "publish",
         "name": "",
         "topic": "telegramError",
-        "x": 450,
-        "y": 540,
+        "x": 470,
+        "y": 420,
         "wires": []
     },
     {
@@ -1101,7 +1076,7 @@
         "topic": "telegramError",
         "timeout": 0,
         "x": 230,
-        "y": 880,
+        "y": 700,
         "wires": [
             [
                 "951b321b.014c7"
@@ -1115,7 +1090,7 @@
         "name": "Error Handling",
         "info": "",
         "x": 90,
-        "y": 800,
+        "y": 620,
         "wires": []
     },
     {
@@ -1678,8 +1653,8 @@
         "z": "d6af186b.004918",
         "name": "Ghostgbot",
         "bot": "28c31e1f.031b7a",
-        "x": 1120,
-        "y": 460,
+        "x": 1280,
+        "y": 340,
         "wires": [
             [
                 "56e0b46a.3b22d4"
@@ -1697,8 +1672,8 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 1270,
-        "y": 460,
+        "x": 1410,
+        "y": 340,
         "wires": []
     },
     {
@@ -1707,8 +1682,8 @@
         "z": "d6af186b.004918",
         "name": "",
         "property": "payload.msg",
-        "x": 1120,
-        "y": 280,
+        "x": 960,
+        "y": 100,
         "wires": [
             [
                 "8397b601.6470a8"
@@ -1722,8 +1697,8 @@
         "name": "",
         "server": "f3eba521.b2e75",
         "client": "",
-        "x": 1480,
-        "y": 280,
+        "x": 1320,
+        "y": 100,
         "wires": []
     },
     {
@@ -1731,11 +1706,11 @@
         "type": "function",
         "z": "d6af186b.004918",
         "name": "format message",
-        "func": "return {\n    payload: {\n        msg: msg.payload.msg,\n        timestamp: msg.payload.timestamp,\n        sentiment: msg.sentiment.score\n    }\n}",
+        "func": "return {\n    payload: {\n        timestamp: msg.payload.timestamp,\n        username: msg.payload.username,\n        msg: msg.payload.msg,\n        sentiment: msg.sentiment.score\n    }\n}",
         "outputs": 1,
         "noerr": 0,
-        "x": 1280,
-        "y": 280,
+        "x": 1120,
+        "y": 100,
         "wires": [
             [
                 "5a8578e4.615bc"
@@ -1899,8 +1874,8 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 470,
-        "y": 740,
+        "x": 370,
+        "y": 560,
         "wires": []
     },
     {
@@ -1961,7 +1936,7 @@
         "server": "f6bb74c5.558b4",
         "client": "",
         "x": 190,
-        "y": 420,
+        "y": 240,
         "wires": [
             [
                 "505eb204.6b01b4"
@@ -1977,10 +1952,10 @@
         "action": "",
         "pretty": false,
         "x": 370,
-        "y": 420,
+        "y": 240,
         "wires": [
             [
-                "3e1985fd.5329ba"
+                "918ee78a.f5f61"
             ]
         ]
     },
@@ -1991,8 +1966,8 @@
         "name": "",
         "server": "bb3776ec.76bac8",
         "client": "",
-        "x": 1490,
-        "y": 420,
+        "x": 1330,
+        "y": 240,
         "wires": []
     },
     {
@@ -2000,30 +1975,158 @@
         "type": "function",
         "z": "d6af186b.004918",
         "name": "format message",
-        "func": "return {\n        payload: {\n            msg:msg.payload.msg,\n            timestamp:msg.payload.timestamp\n        }\n    }",
+        "func": "return {\n    payload: {\n        timestamp: msg.payload.timestamp,\n        username: msg.payload.username,\n        msg: msg.payload.msg\n    }\n}",
         "outputs": 1,
         "noerr": 0,
-        "x": 820,
-        "y": 420,
+        "x": 1120,
+        "y": 240,
         "wires": [
             [
-                "b70610ba.a6882",
                 "e583580a.898e5"
             ]
         ]
     },
     {
-        "id": "2c6f069e.e8f97a",
-        "type": "debug",
+        "id": "a772dc08.4917c",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "Pre-process",
+        "func": "msg.payload.username = msg.payload.agent_id\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 550,
+        "y": 100,
+        "wires": [
+            [
+                "b70610ba.a6882",
+                "d8a55266.23ceb"
+            ]
+        ]
+    },
+    {
+        "id": "918ee78a.f5f61",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "Pre-process",
+        "func": "msg.payload.username = msg.payload.customer_id\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 670,
+        "y": 240,
+        "wires": [
+            [
+                "3e1985fd.5329ba",
+                "b70610ba.a6882"
+            ]
+        ]
+    },
+    {
+        "id": "c15d5ced.1d9478",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "format message",
+        "func": "return {\n    payload: {\n        \"chatId\":  msg.payload.chatId,\n        \"type\": \"message\",\n        \"options\": { \"parse_mode\": \"Markdown\" },\n        \"content\": msg.payload.username + \": \" + msg.payload.msg\n    }\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1120,
+        "y": 340,
+        "wires": [
+            [
+                "d4dd0a4c.53bd58"
+            ]
+        ]
+    },
+    {
+        "id": "df247d53.e44cd",
+        "type": "comment",
+        "z": "d6af186b.004918",
+        "name": "Listen & Broadcast events - Customers",
+        "info": "",
+        "x": 170,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "e9ba981a.08704",
+        "type": "change",
         "z": "d6af186b.004918",
         "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "x": 530,
+        "rules": [
+            {
+                "t": "set",
+                "p": "telegramID",
+                "pt": "global",
+                "to": "payload.chatId",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 480,
         "y": 320,
-        "wires": []
+        "wires": [
+            [
+                "2669675d.d9ce08"
+            ]
+        ]
+    },
+    {
+        "id": "a455fb1a.9d3a6",
+        "type": "change",
+        "z": "d6af186b.004918",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.chatId",
+                "pt": "msg",
+                "to": "telegramID",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 920,
+        "y": 340,
+        "wires": [
+            [
+                "c15d5ced.1d9478"
+            ]
+        ]
+    },
+    {
+        "id": "d8a55266.23ceb",
+        "type": "switch",
+        "z": "d6af186b.004918",
+        "name": "",
+        "property": "telegramID",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "empty"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 710,
+        "y": 140,
+        "wires": [
+            [
+                "3e1985fd.5329ba"
+            ],
+            [
+                "a455fb1a.9d3a6"
+            ]
+        ]
     }
 ]
