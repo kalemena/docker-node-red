@@ -34,6 +34,7 @@
     listenSocket.onmessage = function (event) {
       // When receiving a message append a div child to #messages
       data = JSON.parse(event.data);
+      console.log(data)
       timestampDate = new Date(data.timestamp)
       timestampDisplay = ("0" + timestampDate.getHours()).slice(-2) + ":" + ("0" + timestampDate.getMinutes()).slice(-2) + ":" + ("0" + timestampDate.getSeconds()).slice(-2)
       $("#messages").append("<div class='msg sentiment"+data.sentiment+"' ><div class='msgheaders' >"+timestampDisplay+" " + data.username + ": </div>"+data.msg+"</div>")
