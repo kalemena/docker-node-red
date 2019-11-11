@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>FRED-powered chat app</title>
+  <title>Sample Agent Chat App</title>
   <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
   <script src="http:///code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
   <style>
-    #messages {border-color:#999; border-style:solid; width:250px; min-height:200px; margin:5px;}
+    #messages {border-color:#999; border-style:solid; width:640px; min-height:480px; margin:5px;}
     .msg {color:#FFF; background-color:#2980B9; padding:2px; margin:2px;}
+    .msgheaders {color:#999; background-color:rgb(55, 74, 87);}
     .server {color:#999; background-color:white; font-size:small;}
     .sentiment-3 {background-color:#992222;}  
     .sentiment0 {background-color:#2980B9;}
@@ -19,7 +20,9 @@
 <body>
   <div id="messages"></div>
   <form id="form" onsubmit="return false;">
-    <input id="text" type="text" onkeypress="return sendText(event)" />
+    Agent ID: <input id="agentID" type="text" />
+    <br/>
+    Message: <input id="text" type="text" onkeypress="return sendText(event)" />
   </form>
 
   <script type="text/javascript">
@@ -31,7 +34,9 @@
     listenSocket.onmessage = function (event) {
       // When receiving a message append a div child to #messages
       data = JSON.parse(event.data);
-      $("#messages").append("<div class='msg sentiment"+data.sentiment+"' >"+data.timestamp+" - "+data.msg+"</div>")
+      timestampDate = new Date(data.timestamp)
+      timestampDisplay = timestampDate.getHours() +":"+ timestampDate.getMinutes() + ":" + timestampDate.getSeconds()
+      $("#messages").append("<div class='msg sentiment"+data.sentiment+"' ><div class='msgheaders' >"+timestampDisplay+": </div>"+data.msg+"</div>")
       if ($("#messages").children().length > 10 ) { $("#messages :first-child").remove()}
     }
 
@@ -47,10 +52,10 @@
       // Only if return key pressed
       if (event.keyCode == 13) {
         // Construct object containing the data the server needs.
-        d = new Date();
         var data = {
+          agent_id: $("#agentID").val(),
           msg: $("#text").val(),
-          timestamp: d.getHours() +":"+ d.getMinutes() + ":" + d.getSeconds()
+          timestamp: new Date().getTime()
         };
         // Send the msg object as a JSON-formatted string.
         publishSocket.send(JSON.stringify(data));  

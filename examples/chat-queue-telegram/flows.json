@@ -67,6 +67,20 @@
         "wholemsg": "false"
     },
     {
+        "id": "f6bb74c5.558b4",
+        "type": "websocket-listener",
+        "z": "",
+        "path": "/ws/customer/receive",
+        "wholemsg": "false"
+    },
+    {
+        "id": "bb3776ec.76bac8",
+        "type": "websocket-listener",
+        "z": "",
+        "path": "/ws/customer/publish",
+        "wholemsg": "false"
+    },
+    {
         "id": "27bd0690.bbba72",
         "type": "function",
         "z": "d6af186b.004918",
@@ -74,14 +88,14 @@
         "func": "return [ \n    {\n        payload: {\n            \"chatId\":  global.get('telegramID'),\n            \"type\": \"message\",\n            \"options\": { \"parse_mode\": \"Markdown\" },\n            \"content\": \"Agent: How may I help you?\"\n        }\n    },\n    {\n        payload: {\n            msg:\"Signal: Connecting user: \" +  global.get('telegramID') + \" for ixn=\" + msg.payload.id,\n            timestamp: new Date().getTime()\n        }\n    }\n]",
         "outputs": 2,
         "noerr": 0,
-        "x": 780,
-        "y": 760,
+        "x": 820,
+        "y": 700,
         "wires": [
             [
-                "97f98ca8.68217"
+                "d4dd0a4c.53bd58"
             ],
             [
-                "686f3fcb.5bb7"
+                "b70610ba.a6882"
             ]
         ]
     },
@@ -92,7 +106,7 @@
         "name": "",
         "scope": null,
         "uncaught": false,
-        "x": 140,
+        "x": 240,
         "y": 1040,
         "wires": [
             [
@@ -111,7 +125,7 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 990,
+        "x": 1450,
         "y": 1040,
         "wires": []
     },
@@ -123,7 +137,7 @@
         "func": "msg.payload = [ msg.triggerTimeMs, msg.uuid ]\nmsg.topic = \"tasks\"\nreturn msg",
         "outputs": 1,
         "noerr": 0,
-        "x": 1020,
+        "x": 1080,
         "y": 100,
         "wires": [
             [
@@ -140,7 +154,7 @@
         "method": "post",
         "upload": false,
         "swaggerDoc": "",
-        "x": 170,
+        "x": 230,
         "y": 100,
         "wires": [
             [
@@ -159,7 +173,7 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 1390,
+        "x": 1450,
         "y": 180,
         "wires": []
     },
@@ -170,8 +184,8 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 990,
-        "y": 680,
+        "x": 1450,
+        "y": 660,
         "wires": []
     },
     {
@@ -186,7 +200,7 @@
         "paramsType": "json",
         "payloadType": "json",
         "block": false,
-        "x": 1060,
+        "x": 1120,
         "y": 140,
         "wires": [
             [
@@ -205,7 +219,7 @@
         "name": "",
         "field": "uuid",
         "fieldType": "msg",
-        "x": 210,
+        "x": 270,
         "y": 140,
         "wires": [
             [
@@ -240,7 +254,7 @@
         "output": "triggerTimeDate",
         "outputType": "msg",
         "outTz": "Europe/Paris",
-        "x": 480,
+        "x": 540,
         "y": 140,
         "wires": [
             [
@@ -257,7 +271,7 @@
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 180,
+        "x": 240,
         "y": 680,
         "wires": [
             [
@@ -277,7 +291,7 @@
         "paramsType": "json",
         "payloadType": "json",
         "block": false,
-        "x": 570,
+        "x": 870,
         "y": 680,
         "wires": [
             [
@@ -293,7 +307,7 @@
         "func": "msg.payload = [ \"-inf\", \"+inf\" ]\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 350,
+        "x": 410,
         "y": 680,
         "wires": [
             [
@@ -319,7 +333,7 @@
         "func": "let redis = context.flow.get('redis');\n\n/*\nredis.info().then((data)=>{\n    msg.payload = data\n    node.send(msg);\n})\n*/\n\ntasks = msg.payload\nmsg.payload = {}\nmsg.payload.tasks = []\n\nfor (var j = 0; j < tasks.length; j++) {\n    task = tasks[j]\n\n    redis.call(\"hget\", \"taskDetails\", task).then((data)=>{\n        taskJSON = JSON.parse(data)\n        msg.payload.tasks.push(taskJSON)\n    })\n}\n\nreturn msg",
         "outputs": 1,
         "noerr": 0,
-        "x": 800,
+        "x": 1280,
         "y": 680,
         "wires": [
             [
@@ -327,87 +341,6 @@
                 "1115cd00.eb3f3b"
             ]
         ]
-    },
-    {
-        "id": "76570b76.c4cedc",
-        "type": "inject",
-        "z": "b19d2de2.d6a79",
-        "name": "",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "repeat": "10",
-        "crontab": "",
-        "once": false,
-        "onceDelay": "60",
-        "x": 170,
-        "y": 920,
-        "wires": [
-            [
-                "ee55b0d0.6ed7c8"
-            ]
-        ]
-    },
-    {
-        "id": "abdffb92.9c2e18",
-        "type": "redis-command",
-        "z": "b19d2de2.d6a79",
-        "server": "5ed67383.5985ac",
-        "command": "zrangebyscore",
-        "name": "",
-        "topic": "tasks",
-        "params": "[]",
-        "paramsType": "json",
-        "payloadType": "json",
-        "block": false,
-        "x": 590,
-        "y": 920,
-        "wires": [
-            [
-                "3bacf2b7.88e33e"
-            ]
-        ]
-    },
-    {
-        "id": "ee55b0d0.6ed7c8",
-        "type": "function",
-        "z": "b19d2de2.d6a79",
-        "name": "Pre-Process",
-        "func": "msg.payload = [ \"-inf\", \"\" + new Date().getTime() ]\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 350,
-        "y": 920,
-        "wires": [
-            [
-                "abdffb92.9c2e18"
-            ]
-        ]
-    },
-    {
-        "id": "1b16f5a5.7509fa",
-        "type": "debug",
-        "z": "b19d2de2.d6a79",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "x": 1010,
-        "y": 920,
-        "wires": []
-    },
-    {
-        "id": "c277c181.780e",
-        "type": "comment",
-        "z": "b19d2de2.d6a79",
-        "name": "CRON @ 10s",
-        "info": "",
-        "x": 90,
-        "y": 880,
-        "wires": []
     },
     {
         "id": "550495fc.813d84",
@@ -421,7 +354,7 @@
         "paramsType": "json",
         "payloadType": "json",
         "block": false,
-        "x": 840,
+        "x": 900,
         "y": 140,
         "wires": [
             [
@@ -437,7 +370,7 @@
         "func": "// park payload\nmsg.inboundPayload = msg.payload\n\n// enhance parked payload\nmsg.inboundPayload.id = msg.uuid\nmsg.inboundPayload.triggerTimeMs = msg.triggerTimeMs\n\n// build storage request\nmsg.payload = [ msg.uuid, JSON.stringify(msg.inboundPayload) ]\nmsg.topic = \"taskDetails\"\n\nreturn msg",
         "outputs": 1,
         "noerr": 0,
-        "x": 760,
+        "x": 820,
         "y": 100,
         "wires": [
             [
@@ -470,7 +403,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 3,
-        "x": 330,
+        "x": 390,
         "y": 140,
         "wires": [
             [
@@ -492,7 +425,7 @@
         "func": "msg.triggerTimeMs = new Date().getTime()\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 490,
+        "x": 550,
         "y": 180,
         "wires": [
             [
@@ -511,8 +444,8 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 990,
-        "y": 720,
+        "x": 1450,
+        "y": 700,
         "wires": []
     },
     {
@@ -523,7 +456,7 @@
         "func": "msg.triggerTimeMs = msg.triggerTimeDate.getTime()\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 630,
+        "x": 690,
         "y": 140,
         "wires": [
             [
@@ -539,7 +472,7 @@
         "func": "msg.triggerTimeMs = msg.payload.triggerTimeMs\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 500,
+        "x": 560,
         "y": 100,
         "wires": [
             [
@@ -555,7 +488,7 @@
         "func": "msg.payload = msg.inboundPayload\nmsg.statusCode = 200\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 1220,
+        "x": 1280,
         "y": 140,
         "wires": [
             [
@@ -571,21 +504,8 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 1390,
+        "x": 1450,
         "y": 140,
-        "wires": []
-    },
-    {
-        "id": "2c001db0.91010a",
-        "type": "redis-instance",
-        "z": "b19d2de2.d6a79",
-        "server": "5ed67383.5985ac",
-        "name": "",
-        "topic": "redis",
-        "location": "flow",
-        "block": false,
-        "x": 330,
-        "y": 640,
         "wires": []
     },
     {
@@ -607,7 +527,7 @@
         "method": "delete",
         "upload": false,
         "swaggerDoc": "",
-        "x": 170,
+        "x": 230,
         "y": 800,
         "wires": [
             [
@@ -623,7 +543,7 @@
         "func": "msg.payload = [ \"-inf\", \"+inf\" ]\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 350,
+        "x": 410,
         "y": 800,
         "wires": [
             [
@@ -638,8 +558,8 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 990,
-        "y": 800,
+        "x": 1450,
+        "y": 780,
         "wires": []
     },
     {
@@ -650,7 +570,7 @@
         "func": "let redis = context.flow.get('redis');\n\n/*\nredis.info().then((data)=>{\n    msg.payload = data\n    node.send(msg);\n})\n*/\n\ntasks = msg.payload\nmsg.payload = {}\nmsg.payload.tasks = []\n\nfor (var j = 0; j < tasks.length; j++) {\n    task = tasks[j]\n\n    redis.call(\"hdel\", \"taskDetails\", task).then((data)=>{\n        \n    })\n}\n\nredis.call(\"del\", \"tasks\").then((data)=>{\n    \n})\n\nreturn msg",
         "outputs": 1,
         "noerr": 0,
-        "x": 800,
+        "x": 1280,
         "y": 800,
         "wires": [
             [
@@ -670,8 +590,8 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 990,
-        "y": 840,
+        "x": 1450,
+        "y": 820,
         "wires": []
     },
     {
@@ -693,7 +613,7 @@
         "method": "delete",
         "upload": false,
         "swaggerDoc": "",
-        "x": 160,
+        "x": 220,
         "y": 260,
         "wires": [
             [
@@ -709,8 +629,8 @@
         "func": "msg.payload = [ msg.id ]\nmsg.topic = \"tasks\"\nreturn msg",
         "outputs": 1,
         "noerr": 0,
-        "x": 500,
-        "y": 240,
+        "x": 560,
+        "y": 260,
         "wires": [
             [
                 "e9c12ce9.39b7a"
@@ -724,7 +644,7 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 1390,
+        "x": 1450,
         "y": 260,
         "wires": []
     },
@@ -739,7 +659,7 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 1390,
+        "x": 1450,
         "y": 300,
         "wires": []
     },
@@ -750,8 +670,8 @@
         "name": "",
         "scope": null,
         "uncaught": false,
-        "x": 200,
-        "y": 960,
+        "x": 240,
+        "y": 840,
         "wires": [
             [
                 "fa07d08a.86bc48"
@@ -769,8 +689,8 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 870,
-        "y": 960,
+        "x": 910,
+        "y": 840,
         "wires": []
     },
     {
@@ -779,11 +699,11 @@
         "z": "d6af186b.004918",
         "server": "5ed67383.5985ac",
         "command": "subscribe",
-        "name": "queueExecute",
-        "topic": "queueExecute",
+        "name": "",
+        "topic": "queueTaskExecute",
         "timeout": 0,
-        "x": 190,
-        "y": 760,
+        "x": 210,
+        "y": 700,
         "wires": [
             [
                 "7fd44d84.4c95bc",
@@ -803,8 +723,8 @@
         "paramsType": "json",
         "payloadType": "json",
         "block": false,
-        "x": 560,
-        "y": 280,
+        "x": 620,
+        "y": 300,
         "wires": [
             [
                 "f6bff892.cda778"
@@ -823,8 +743,8 @@
         "paramsType": "json",
         "payloadType": "json",
         "block": false,
-        "x": 800,
-        "y": 280,
+        "x": 860,
+        "y": 300,
         "wires": [
             [
                 "3bfa78ae.33472"
@@ -843,7 +763,7 @@
         "paramsType": "json",
         "payloadType": "json",
         "block": false,
-        "x": 570,
+        "x": 870,
         "y": 800,
         "wires": [
             [
@@ -859,8 +779,8 @@
         "func": "msg.payload = [ msg.id ]\nmsg.topic = \"tasksDetails\"\nreturn msg",
         "outputs": 1,
         "noerr": 0,
-        "x": 700,
-        "y": 240,
+        "x": 760,
+        "y": 260,
         "wires": [
             [
                 "43ddd81a.7b55b"
@@ -875,8 +795,8 @@
         "func": "msg.payload = {}\nmsg.statusCode = 200\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 1220,
-        "y": 260,
+        "x": 1280,
+        "y": 280,
         "wires": [
             [
                 "71aab919.9980b",
@@ -885,44 +805,14 @@
         ]
     },
     {
-        "id": "3bacf2b7.88e33e",
-        "type": "function",
-        "z": "b19d2de2.d6a79",
-        "name": "Post-processing",
-        "func": "let redis = context.flow.get('redis');\n\n/*\nredis.info().then((data)=>{\n    msg.payload = data\n    node.send(msg);\n})\n*/\n\ntasks = msg.payload\nfor (var j = 0; j < tasks.length; j++) {\n    task = tasks[j]\n\n    redis.call(\"hget\", \"taskDetails\", task).then((data)=>{\n        taskJSON = JSON.parse(data)\n        node.send( { payload: taskJSON } );\n    })\n}\n\nreturn null",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 840,
-        "y": 920,
-        "wires": [
-            [
-                "1b16f5a5.7509fa",
-                "a0f02889.08df2",
-                "5065644.5fa671c"
-            ]
-        ]
-    },
-    {
-        "id": "a0f02889.08df2",
-        "type": "redis-out",
-        "z": "b19d2de2.d6a79",
-        "server": "5ed67383.5985ac",
-        "command": "publish",
-        "name": "",
-        "topic": "queueTaskExecute",
-        "x": 1050,
-        "y": 960,
-        "wires": []
-    },
-    {
         "id": "760dbf4b.707fa",
         "type": "telegram receiver",
         "z": "d6af186b.004918",
         "name": "Ghostgbot",
         "bot": "28c31e1f.031b7a",
         "saveDataDir": "/tmp",
-        "x": 200,
-        "y": 580,
+        "x": 240,
+        "y": 460,
         "wires": [
             [
                 "26584add.21e286",
@@ -944,8 +834,8 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 390,
-        "y": 600,
+        "x": 430,
+        "y": 500,
         "wires": []
     },
     {
@@ -957,7 +847,7 @@
         "name": "",
         "topic": "queueTaskDelete",
         "timeout": 0,
-        "x": 160,
+        "x": 220,
         "y": 300,
         "wires": [
             [
@@ -973,7 +863,7 @@
         "func": "msg.id = msg.req.params.id\nreturn msg",
         "outputs": 1,
         "noerr": 0,
-        "x": 330,
+        "x": 390,
         "y": 260,
         "wires": [
             [
@@ -988,8 +878,8 @@
         "name": "",
         "server": "ad6fda06.930828",
         "client": "",
-        "x": 180,
-        "y": 500,
+        "x": 200,
+        "y": 280,
         "wires": [
             [
                 "6e9628a7.c325a"
@@ -1004,11 +894,12 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 350,
-        "y": 500,
+        "x": 370,
+        "y": 280,
         "wires": [
             [
-                "320cc422.94a28c"
+                "320cc422.94a28c",
+                "2c6f069e.e8f97a"
             ]
         ]
     },
@@ -1020,14 +911,15 @@
         "func": "return [ \n    {\n        payload: {\n            \"chatId\":  global.get('telegramID'),\n            \"type\": \"message\",\n            \"options\": { \"parse_mode\": \"Markdown\" },\n            \"content\": \"Agent: \" + msg.payload.msg\n        }\n    },\n    {\n        payload: {\n            msg:msg.payload.msg,\n            timestamp:msg.payload.timestamp\n        }\n    }\n]",
         "outputs": 2,
         "noerr": 0,
-        "x": 780,
-        "y": 500,
+        "x": 820,
+        "y": 280,
         "wires": [
             [
-                "97f98ca8.68217"
+                "d4dd0a4c.53bd58"
             ],
             [
-                "686f3fcb.5bb7"
+                "b70610ba.a6882",
+                "e583580a.898e5"
             ]
         ]
     },
@@ -1038,7 +930,7 @@
         "name": "Listen & Broadcast events",
         "info": "",
         "x": 130,
-        "y": 460,
+        "y": 240,
         "wires": []
     },
     {
@@ -1060,8 +952,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 400,
-        "y": 760,
+        "x": 520,
+        "y": 700,
         "wires": [
             [
                 "27bd0690.bbba72"
@@ -1076,149 +968,13 @@
         "func": "return {\n    payload: {\n        msg: msg.originalMessage.from.username + \": \" + msg.payload.content,\n        timestamp: msg.originalMessage.date\n    }\n};",
         "outputs": 1,
         "noerr": 0,
-        "x": 780,
-        "y": 540,
+        "x": 820,
+        "y": 460,
         "wires": [
             [
-                "686f3fcb.5bb7"
+                "b70610ba.a6882"
             ]
         ]
-    },
-    {
-        "id": "6aff6f4f.cdbb2",
-        "type": "redis-in",
-        "z": "d6af186b.004918",
-        "server": "5ed67383.5985ac",
-        "command": "subscribe",
-        "name": "queueTelegramOut",
-        "topic": "queueTelegramOut",
-        "timeout": 0,
-        "x": 170,
-        "y": 260,
-        "wires": [
-            [
-                "1b68e80a.d0694"
-            ]
-        ]
-    },
-    {
-        "id": "104c246f.aa99f4",
-        "type": "comment",
-        "z": "d6af186b.004918",
-        "name": "Send Telegram Message to User",
-        "info": "{\n    payload: {\n        \"chatId\":  <telegramID>,\n        \"type\": \"message\",\n        \"options\": { \"parse_mode\": \"Markdown\" },\n        \"content\": <message>\n    }\n}",
-        "x": 150,
-        "y": 220,
-        "wires": []
-    },
-    {
-        "id": "1b68e80a.d0694",
-        "type": "telegram sender",
-        "z": "d6af186b.004918",
-        "name": "Ghostgbot",
-        "bot": "28c31e1f.031b7a",
-        "x": 600,
-        "y": 260,
-        "wires": [
-            [
-                "254ae785.601568"
-            ]
-        ]
-    },
-    {
-        "id": "254ae785.601568",
-        "type": "debug",
-        "z": "d6af186b.004918",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "x": 1090,
-        "y": 160,
-        "wires": []
-    },
-    {
-        "id": "b9596bf4.d93a8",
-        "type": "redis-in",
-        "z": "d6af186b.004918",
-        "server": "5ed67383.5985ac",
-        "command": "subscribe",
-        "name": "queueWebOut",
-        "topic": "queueWebOut",
-        "timeout": 0,
-        "x": 190,
-        "y": 380,
-        "wires": [
-            [
-                "c3ab63b3.b46b4"
-            ]
-        ]
-    },
-    {
-        "id": "c3ab63b3.b46b4",
-        "type": "sentiment",
-        "z": "d6af186b.004918",
-        "name": "",
-        "property": "payload.msg",
-        "x": 480,
-        "y": 380,
-        "wires": [
-            [
-                "de688237.ee0e5"
-            ]
-        ]
-    },
-    {
-        "id": "58c5c61f.ecd4d8",
-        "type": "websocket out",
-        "z": "d6af186b.004918",
-        "name": "",
-        "server": "f3eba521.b2e75",
-        "client": "",
-        "x": 1120,
-        "y": 380,
-        "wires": []
-    },
-    {
-        "id": "346350c7.0dae3",
-        "type": "comment",
-        "z": "d6af186b.004918",
-        "name": "Send WS Message to Agent",
-        "info": "{\n    payload: {\n        msg: <message>,\n        timestamp: <timestamp>\n    }\n}",
-        "x": 140,
-        "y": 340,
-        "wires": []
-    },
-    {
-        "id": "de688237.ee0e5",
-        "type": "function",
-        "z": "d6af186b.004918",
-        "name": "format message",
-        "func": "return {\n    payload: {\n        msg: msg.payload.msg,\n        timestamp: msg.payload.timestamp,\n        sentiment: msg.sentiment.score\n    }\n}",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 780,
-        "y": 380,
-        "wires": [
-            [
-                "58c5c61f.ecd4d8"
-            ]
-        ]
-    },
-    {
-        "id": "97f98ca8.68217",
-        "type": "redis-out",
-        "z": "d6af186b.004918",
-        "server": "5ed67383.5985ac",
-        "command": "publish",
-        "name": "",
-        "topic": "queueTelegramOut",
-        "x": 1110,
-        "y": 580,
-        "wires": []
     },
     {
         "id": "6665c8db.1d1218",
@@ -1227,19 +983,7 @@
         "name": "Open initial Chat",
         "info": "",
         "x": 100,
-        "y": 720,
-        "wires": []
-    },
-    {
-        "id": "5065644.5fa671c",
-        "type": "redis-out",
-        "z": "b19d2de2.d6a79",
-        "server": "5ed67383.5985ac",
-        "command": "publish",
-        "name": "queueTaskDelete",
-        "topic": "queueTaskDelete",
-        "x": 1040,
-        "y": 1000,
+        "y": 660,
         "wires": []
     },
     {
@@ -1250,7 +994,7 @@
         "func": "msg.id = msg.payload.id\nreturn msg",
         "outputs": 1,
         "noerr": 0,
-        "x": 330,
+        "x": 390,
         "y": 300,
         "wires": [
             [
@@ -1278,8 +1022,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 990,
-        "y": 260,
+        "x": 1050,
+        "y": 280,
         "wires": [
             [
                 "9cf76a83.57d058"
@@ -1295,8 +1039,8 @@
         "func": "var chatId = msg.payload.chatId;\nvar username = msg.originalMessage.from.username;\nmsg.originalMessage.timestamp = new Date();\nvar message = JSON.stringify(msg.originalMessage);\n\nmsg.topic = username + ' ' + chatId;\nmsg.payload = [msg.topic, message];\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 440,
-        "y": 1000,
+        "x": 480,
+        "y": 880,
         "wires": [
             [
                 "81d73a66.9cef9"
@@ -1312,8 +1056,8 @@
         "appendNewline": true,
         "createDir": false,
         "overwriteFile": "false",
-        "x": 670,
-        "y": 1000,
+        "x": 710,
+        "y": 880,
         "wires": [
             [
                 "6dd4f2bf.169a4c"
@@ -1331,20 +1075,8 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 870,
-        "y": 1000,
-        "wires": []
-    },
-    {
-        "id": "686f3fcb.5bb7",
-        "type": "redis-out",
-        "z": "d6af186b.004918",
-        "server": "5ed67383.5985ac",
-        "command": "publish",
-        "name": "",
-        "topic": "queueWebOut",
-        "x": 1100,
-        "y": 660,
+        "x": 910,
+        "y": 880,
         "wires": []
     },
     {
@@ -1355,8 +1087,8 @@
         "command": "publish",
         "name": "",
         "topic": "telegramError",
-        "x": 410,
-        "y": 640,
+        "x": 450,
+        "y": 540,
         "wires": []
     },
     {
@@ -1368,8 +1100,8 @@
         "name": "telegramError",
         "topic": "telegramError",
         "timeout": 0,
-        "x": 190,
-        "y": 1000,
+        "x": 230,
+        "y": 880,
         "wires": [
             [
                 "951b321b.014c7"
@@ -1383,7 +1115,7 @@
         "name": "Error Handling",
         "info": "",
         "x": 90,
-        "y": 920,
+        "y": 800,
         "wires": []
     },
     {
@@ -1394,7 +1126,7 @@
         "func": "context.global.keyboard = { pending : true };\n\nvar opts = {\n  reply_to_message_id: msg.payload.messageId,\n  reply_markup: JSON.stringify({\n    keyboard: [\n      ['Yes'],\n      ['No']],\n      'resize_keyboard' : true, \n      'one_time_keyboard' : true\n  })\n};\n\nmsg.payload.content = 'Really?';\nmsg.payload.options = opts;\n\nreturn [ msg ];\n",
         "outputs": "1",
         "noerr": 0,
-        "x": 380,
+        "x": 440,
         "y": 220,
         "wires": [
             [
@@ -1410,7 +1142,7 @@
         "command": "/chatnow",
         "bot": "28c31e1f.031b7a",
         "strict": false,
-        "x": 180,
+        "x": 240,
         "y": 220,
         "wires": [
             [
@@ -1430,7 +1162,7 @@
         "func": "if(context.global.keyboard.pending)\n{\n    context.global.keyboard.pending = false;\n    \n    if(msg.payload.content === 'Yes')\n    {\n        msg.payload.content = 'Yes';\n        return [msg, null];   \n    }\n    else\n    {\n        msg.payload.content = 'No';\n        return [null, msg];   \n    }\n}\n",
         "outputs": "2",
         "noerr": 0,
-        "x": 360,
+        "x": 420,
         "y": 260,
         "wires": [
             [
@@ -1445,7 +1177,7 @@
         "z": "a2bbb6f1.3942c8",
         "name": "send response",
         "bot": "28c31e1f.031b7a",
-        "x": 640,
+        "x": 700,
         "y": 220,
         "wires": [
             [
@@ -1461,7 +1193,7 @@
         "command": "/help",
         "bot": "28c31e1f.031b7a",
         "strict": false,
-        "x": 170,
+        "x": 250,
         "y": 100,
         "wires": [
             [
@@ -1480,7 +1212,7 @@
         "func": "var helpMessage = \"/help - shows help\\n\";\nhelpMessage += \"/chatnow - trigger a chat conversation\\n\";\n\nhelpMessage += \"Your chat id is \" + msg.payload.chatId + \"\\n\";\nhelpMessage += \"You are welcome: \"+ msg.originalMessage.from.username + \"\\n\";\n\nmsg.payload.content = helpMessage;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 380,
+        "x": 440,
         "y": 100,
         "wires": [
             [
@@ -1495,7 +1227,7 @@
         "name": "location",
         "bot": "28c31e1f.031b7a",
         "saveDataDir": "",
-        "x": 190,
+        "x": 250,
         "y": 360,
         "wires": [
             [
@@ -1514,7 +1246,7 @@
         "func": "if(msg.payload.type == 'location')\n{\n    var lat = msg.payload.content.latitude;\n    var lng = msg.payload.content.longitude;\n    \n    msg.payload.type = 'message';\n    msg.payload.content = 'lat=' + lat + ' lon=' + lng;\n    return msg;\n}\nelse\n{\n    return null;\n}\n",
         "outputs": 1,
         "noerr": 0,
-        "x": 390,
+        "x": 450,
         "y": 360,
         "wires": [
             [
@@ -1533,7 +1265,7 @@
         "repeat": "",
         "crontab": "",
         "once": false,
-        "x": 190,
+        "x": 250,
         "y": 440,
         "wires": [
             [
@@ -1549,7 +1281,7 @@
         "func": "msg.payload = { \n    chatId : global.get('telegramID'), \n    type : 'message', \n    content : 'ping'\n}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 380,
+        "x": 440,
         "y": 440,
         "wires": [
             [
@@ -1565,7 +1297,7 @@
         "command": "publish",
         "name": "",
         "topic": "telegramError",
-        "x": 370,
+        "x": 430,
         "y": 140,
         "wires": []
     },
@@ -1577,7 +1309,7 @@
         "active": false,
         "console": "false",
         "complete": "payload",
-        "x": 330,
+        "x": 390,
         "y": 300,
         "wires": []
     },
@@ -1589,7 +1321,7 @@
         "command": "publish",
         "name": "",
         "topic": "telegramError",
-        "x": 350,
+        "x": 410,
         "y": 400,
         "wires": []
     },
@@ -1604,23 +1336,8 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 830,
+        "x": 890,
         "y": 220,
-        "wires": []
-    },
-    {
-        "id": "b652eeef.95c358",
-        "type": "debug",
-        "z": "d6af186b.004918",
-        "name": "error",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "x": 350,
-        "y": 820,
         "wires": []
     },
     {
@@ -1642,7 +1359,7 @@
         "method": "put",
         "upload": false,
         "swaggerDoc": "",
-        "x": 170,
+        "x": 230,
         "y": 400,
         "wires": [
             [
@@ -1657,7 +1374,7 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 1390,
+        "x": 1450,
         "y": 400,
         "wires": []
     },
@@ -1672,7 +1389,7 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 1390,
+        "x": 1450,
         "y": 440,
         "wires": []
     },
@@ -1688,7 +1405,7 @@
         "paramsType": "json",
         "payloadType": "json",
         "block": false,
-        "x": 800,
+        "x": 860,
         "y": 420,
         "wires": [
             [
@@ -1704,8 +1421,8 @@
         "func": "// park payload\nmsg.inboundPayload = msg.payload\n\n// enhance parked payload\nmsg.inboundPayload.id = msg.id\n\n// build storage request\nmsg.payload = [ msg.id, JSON.stringify(msg.inboundPayload) ]\nmsg.topic = \"taskDetails\"\n\nreturn msg",
         "outputs": 1,
         "noerr": 0,
-        "x": 700,
-        "y": 380,
+        "x": 600,
+        "y": 420,
         "wires": [
             [
                 "a5ff76c5.56d458"
@@ -1720,8 +1437,8 @@
         "func": "msg.payload = {}\nmsg.statusCode = 200\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 1220,
-        "y": 400,
+        "x": 1280,
+        "y": 420,
         "wires": [
             [
                 "d1dbf37e.6726a",
@@ -1738,7 +1455,7 @@
         "name": "",
         "topic": "queueTaskUpdate",
         "timeout": 0,
-        "x": 160,
+        "x": 220,
         "y": 440,
         "wires": [
             [
@@ -1754,7 +1471,7 @@
         "func": "msg.id = msg.req.params.id\nreturn msg",
         "outputs": 1,
         "noerr": 0,
-        "x": 330,
+        "x": 390,
         "y": 400,
         "wires": [
             [
@@ -1770,7 +1487,7 @@
         "func": "msg.id = msg.payload.id\nreturn msg",
         "outputs": 1,
         "noerr": 0,
-        "x": 330,
+        "x": 390,
         "y": 440,
         "wires": [
             [
@@ -1798,8 +1515,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 990,
-        "y": 400,
+        "x": 1050,
+        "y": 420,
         "wires": [
             [
                 "fb85da81.cdfab8"
@@ -1826,7 +1543,7 @@
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 170,
+        "x": 230,
         "y": 540,
         "wires": [
             [
@@ -1841,7 +1558,7 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 1390,
+        "x": 1450,
         "y": 540,
         "wires": []
     },
@@ -1853,7 +1570,7 @@
         "func": "//msg.payload = msg.id\n//msg.topic = \"tasksDetails\"\n//return msg\n\nlet redis = context.flow.get('redis');\n\nmsg.payload = {}\nredis.call(\"hget\", \"taskDetails\", msg.id).then((data)=>{\n    taskJSON = data\n    msg.payload = JSON.parse(taskJSON)\n})\n\nreturn msg",
         "outputs": 1,
         "noerr": 0,
-        "x": 700,
+        "x": 760,
         "y": 540,
         "wires": [
             [
@@ -1869,7 +1586,7 @@
         "func": "msg.statusCode = 200\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 1220,
+        "x": 1280,
         "y": 540,
         "wires": [
             [
@@ -1886,7 +1603,7 @@
         "name": "",
         "topic": "queueTaskGet",
         "timeout": 0,
-        "x": 170,
+        "x": 230,
         "y": 580,
         "wires": [
             [
@@ -1902,7 +1619,7 @@
         "func": "msg.id = msg.req.params.id\nreturn msg",
         "outputs": 1,
         "noerr": 0,
-        "x": 330,
+        "x": 390,
         "y": 540,
         "wires": [
             [
@@ -1918,7 +1635,7 @@
         "func": "msg.id = msg.payload.id\nreturn msg",
         "outputs": 1,
         "noerr": 0,
-        "x": 330,
+        "x": 390,
         "y": 580,
         "wires": [
             [
@@ -1946,7 +1663,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 990,
+        "x": 1050,
         "y": 540,
         "wires": [
             [
@@ -1954,5 +1671,359 @@
             ],
             []
         ]
+    },
+    {
+        "id": "d4dd0a4c.53bd58",
+        "type": "telegram sender",
+        "z": "d6af186b.004918",
+        "name": "Ghostgbot",
+        "bot": "28c31e1f.031b7a",
+        "x": 1120,
+        "y": 460,
+        "wires": [
+            [
+                "56e0b46a.3b22d4"
+            ]
+        ]
+    },
+    {
+        "id": "56e0b46a.3b22d4",
+        "type": "debug",
+        "z": "d6af186b.004918",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 1270,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "b70610ba.a6882",
+        "type": "sentiment",
+        "z": "d6af186b.004918",
+        "name": "",
+        "property": "payload.msg",
+        "x": 1120,
+        "y": 280,
+        "wires": [
+            [
+                "8397b601.6470a8"
+            ]
+        ]
+    },
+    {
+        "id": "5a8578e4.615bc",
+        "type": "websocket out",
+        "z": "d6af186b.004918",
+        "name": "",
+        "server": "f3eba521.b2e75",
+        "client": "",
+        "x": 1480,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "8397b601.6470a8",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "format message",
+        "func": "return {\n    payload: {\n        msg: msg.payload.msg,\n        timestamp: msg.payload.timestamp,\n        sentiment: msg.sentiment.score\n    }\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1280,
+        "y": 280,
+        "wires": [
+            [
+                "5a8578e4.615bc"
+            ]
+        ]
+    },
+    {
+        "id": "364749a5.6099fe",
+        "type": "comment",
+        "z": "b19d2de2.d6a79",
+        "name": "ERROR Handler",
+        "info": "",
+        "x": 100,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "67780b5b.980f14",
+        "type": "redis-instance",
+        "z": "b19d2de2.d6a79",
+        "server": "5ed67383.5985ac",
+        "name": "",
+        "topic": "redis",
+        "location": "flow",
+        "block": false,
+        "x": 230,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "760a9f27.0253d",
+        "type": "inject",
+        "z": "b19d2de2.d6a79",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "10",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "60",
+        "x": 230,
+        "y": 920,
+        "wires": [
+            [
+                "8375e83f.ada5f"
+            ]
+        ]
+    },
+    {
+        "id": "8d95fca6.d9f27",
+        "type": "redis-command",
+        "z": "b19d2de2.d6a79",
+        "server": "5ed67383.5985ac",
+        "command": "zrangebyscore",
+        "name": "",
+        "topic": "tasks",
+        "params": "[]",
+        "paramsType": "json",
+        "payloadType": "json",
+        "block": false,
+        "x": 870,
+        "y": 920,
+        "wires": [
+            [
+                "6d441a4f.457404"
+            ]
+        ]
+    },
+    {
+        "id": "8375e83f.ada5f",
+        "type": "function",
+        "z": "b19d2de2.d6a79",
+        "name": "Pre-Process",
+        "func": "msg.payload = [ \"-inf\", \"\" + new Date().getTime() ]\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 410,
+        "y": 920,
+        "wires": [
+            [
+                "8d95fca6.d9f27"
+            ]
+        ]
+    },
+    {
+        "id": "99a8fc23.6aa9e8",
+        "type": "debug",
+        "z": "b19d2de2.d6a79",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 1450,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "b600c242.96501",
+        "type": "comment",
+        "z": "b19d2de2.d6a79",
+        "name": "CRON @ 10s",
+        "info": "",
+        "x": 90,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "6d441a4f.457404",
+        "type": "function",
+        "z": "b19d2de2.d6a79",
+        "name": "Post-processing",
+        "func": "let redis = context.flow.get('redis');\n\n/*\nredis.info().then((data)=>{\n    msg.payload = data\n    node.send(msg);\n})\n*/\n\ntasks = msg.payload\nfor (var j = 0; j < tasks.length; j++) {\n    task = tasks[j]\n\n    redis.call(\"hget\", \"taskDetails\", task).then((data)=>{\n        taskJSON = JSON.parse(data)\n        node.send( { payload: taskJSON } );\n    })\n}\n\nreturn null",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1280,
+        "y": 920,
+        "wires": [
+            [
+                "99a8fc23.6aa9e8",
+                "976e3333.7e8e38",
+                "d274717d.cc092"
+            ]
+        ]
+    },
+    {
+        "id": "976e3333.7e8e38",
+        "type": "redis-out",
+        "z": "b19d2de2.d6a79",
+        "server": "5ed67383.5985ac",
+        "command": "publish",
+        "name": "",
+        "topic": "queueTaskExecute",
+        "x": 1490,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "d274717d.cc092",
+        "type": "redis-out",
+        "z": "b19d2de2.d6a79",
+        "server": "5ed67383.5985ac",
+        "command": "publish",
+        "name": "queueTaskDelete",
+        "topic": "queueTaskDelete",
+        "x": 1480,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "b652eeef.95c358",
+        "type": "debug",
+        "z": "d6af186b.004918",
+        "name": "debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 470,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "fd31b76f.e594c",
+        "type": "catch",
+        "z": "a2bbb6f1.3942c8",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 240,
+        "y": 580,
+        "wires": [
+            [
+                "82027170.0f66f8"
+            ]
+        ]
+    },
+    {
+        "id": "82027170.0f66f8",
+        "type": "debug",
+        "z": "a2bbb6f1.3942c8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 1450,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "cc51d0c8.b353a",
+        "type": "comment",
+        "z": "a2bbb6f1.3942c8",
+        "name": "ERROR Handler",
+        "info": "",
+        "x": 100,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "e71bb253.fb90f",
+        "type": "comment",
+        "z": "a2bbb6f1.3942c8",
+        "name": "Conversions Handler",
+        "info": "",
+        "x": 110,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "1d7ccf75.8756f1",
+        "type": "websocket in",
+        "z": "d6af186b.004918",
+        "name": "",
+        "server": "f6bb74c5.558b4",
+        "client": "",
+        "x": 190,
+        "y": 420,
+        "wires": [
+            [
+                "505eb204.6b01b4"
+            ]
+        ]
+    },
+    {
+        "id": "505eb204.6b01b4",
+        "type": "json",
+        "z": "d6af186b.004918",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 370,
+        "y": 420,
+        "wires": [
+            [
+                "3e1985fd.5329ba"
+            ]
+        ]
+    },
+    {
+        "id": "e583580a.898e5",
+        "type": "websocket out",
+        "z": "d6af186b.004918",
+        "name": "",
+        "server": "bb3776ec.76bac8",
+        "client": "",
+        "x": 1490,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "3e1985fd.5329ba",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "format message",
+        "func": "return {\n        payload: {\n            msg:msg.payload.msg,\n            timestamp:msg.payload.timestamp\n        }\n    }",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 820,
+        "y": 420,
+        "wires": [
+            [
+                "b70610ba.a6882",
+                "e583580a.898e5"
+            ]
+        ]
+    },
+    {
+        "id": "2c6f069e.e8f97a",
+        "type": "debug",
+        "z": "d6af186b.004918",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 530,
+        "y": 320,
+        "wires": []
     }
 ]

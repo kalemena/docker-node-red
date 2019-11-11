@@ -20,7 +20,7 @@
 
   <div id="messages"></div>
   <form id="form" onsubmit="return false;">
-    TelegramID: <input id="telegramID" type="text" />
+    Customer ID: <input id="customerID" type="text" />
     <br/>
     Message: <input id="text" type="text" onkeypress="return sendText(event)" />
   </form>
@@ -36,7 +36,7 @@
       data = JSON.parse(event.data);
       timestampDate = new Date(data.timestamp)
       timestampDisplay = timestampDate.getHours() +":"+ timestampDate.getMinutes() + ":" + timestampDate.getSeconds()
-      $("#messages").append("<div class='msg sentiment" + data.sentiment +"' >" + timestampDisplay + " - " + data.msg + "</div>")
+      $("#messages").append("<div class='msg' >" + timestampDisplay + " - " + data.msg + "</div>")
       if ($("#messages").children().length > 10 ) { $("#messages :first-child").remove()}
     }
 
@@ -54,7 +54,7 @@
         
         // Construct object containing the data the server needs.
         var data = {
-          username: $("#telegramID").val(),
+          customer_id: $("#customerID").val(),
           msg: $("#text").val(),
           timestamp: new Date().getTime()
         };
