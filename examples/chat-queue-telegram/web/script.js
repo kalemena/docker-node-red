@@ -35,8 +35,8 @@
       send: function() {
         // Construct object containing the data the server needs.
         var data = {
-            customer_id: "customer",
-            msg: this.messageToSend,
+            username: "customer",
+            message: this.messageToSend,
             timestamp: new Date().getTime()
         };
         
@@ -51,13 +51,10 @@
         this.listenSocket.onmessage = function (event) {
             // When receiving a message append a div child to #messages
             data = JSON.parse(event.data);
-            if(data.username != 'agent') {
-                return;
-            }
-
             var contextResponse = {
-                response: data.msg,
-                time: this.getCurrentTime() };
+                response: data.message,
+                time: this.getCurrentTime() 
+            };
 
             var templateResponse = Handlebars.compile($("#message-response-template").html());
             this.$chatHistoryList.append(templateResponse(contextResponse));
