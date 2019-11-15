@@ -88,7 +88,7 @@
         "func": "return [ \n    {\n        payload: {\n            timestamp: new Date().getTime(),\n            username: \"agent\",\n            msg: \"How may I help you?\"\n        }\n    },\n    {\n        payload: {\n            timestamp: new Date().getTime(),\n            username: \"SYSTEM\",\n            msg: \"Connecting user: \" +  global.get('telegramID') + \" for ixn=\" + msg.payload.id\n        }\n    }\n]",
         "outputs": 2,
         "noerr": 0,
-        "x": 630,
+        "x": 610,
         "y": 740,
         "wires": [
             [],
@@ -666,7 +666,7 @@
         "name": "",
         "scope": null,
         "uncaught": false,
-        "x": 260,
+        "x": 240,
         "y": 880,
         "wires": [
             [
@@ -685,7 +685,7 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 930,
+        "x": 910,
         "y": 880,
         "wires": []
     },
@@ -698,7 +698,7 @@
         "name": "",
         "topic": "queueTaskExecute",
         "timeout": 0,
-        "x": 230,
+        "x": 210,
         "y": 740,
         "wires": [
             [
@@ -807,12 +807,12 @@
         "name": "Ghostgbot",
         "bot": "28c31e1f.031b7a",
         "saveDataDir": "/tmp",
-        "x": 260,
-        "y": 1060,
+        "x": 140,
+        "y": 520,
         "wires": [
             [
                 "26584add.21e286",
-                "e9ba981a.08704"
+                "234fe528.1687ca"
             ],
             [
                 "1b1ab33f.e9b9ad"
@@ -830,8 +830,8 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 490,
-        "y": 1100,
+        "x": 310,
+        "y": 560,
         "wires": []
     },
     {
@@ -890,11 +890,11 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 370,
-        "y": 100,
+        "x": 270,
+        "y": 140,
         "wires": [
             [
-                "3e1985fd.5329ba"
+                "9d10f682.580fb8"
             ]
         ]
     },
@@ -927,7 +927,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 440,
+        "x": 420,
         "y": 740,
         "wires": [
             [
@@ -936,26 +936,12 @@
         ]
     },
     {
-        "id": "2669675d.d9ce08",
-        "type": "function",
-        "z": "d6af186b.004918",
-        "name": "Pre-process",
-        "func": "return {\n    payload: {\n        timestamp: msg.originalMessage.date,\n        username: msg.originalMessage.from.username,\n        msg: msg.payload.content\n    }\n}",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 710,
-        "y": 1040,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "6665c8db.1d1218",
         "type": "comment",
         "z": "d6af186b.004918",
         "name": "Open initial Chat",
         "info": "",
-        "x": 120,
+        "x": 100,
         "y": 700,
         "wires": []
     },
@@ -1012,7 +998,7 @@
         "func": "var chatId = msg.payload.chatId;\nvar username = msg.originalMessage.from.username;\nmsg.originalMessage.timestamp = new Date();\nvar message = JSON.stringify(msg.originalMessage);\n\nmsg.topic = username + ' ' + chatId;\nmsg.payload = [msg.topic, message];\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 500,
+        "x": 480,
         "y": 920,
         "wires": [
             [
@@ -1029,7 +1015,7 @@
         "appendNewline": true,
         "createDir": false,
         "overwriteFile": "false",
-        "x": 730,
+        "x": 710,
         "y": 920,
         "wires": [
             [
@@ -1048,7 +1034,7 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 930,
+        "x": 910,
         "y": 920,
         "wires": []
     },
@@ -1060,8 +1046,8 @@
         "command": "publish",
         "name": "",
         "topic": "telegramError",
-        "x": 510,
-        "y": 1140,
+        "x": 330,
+        "y": 600,
         "wires": []
     },
     {
@@ -1073,7 +1059,7 @@
         "name": "telegramError",
         "topic": "telegramError",
         "timeout": 0,
-        "x": 250,
+        "x": 230,
         "y": 920,
         "wires": [
             [
@@ -1087,7 +1073,7 @@
         "z": "d6af186b.004918",
         "name": "Error Handling",
         "info": "",
-        "x": 110,
+        "x": 90,
         "y": 840,
         "wires": []
     },
@@ -1651,8 +1637,8 @@
         "z": "d6af186b.004918",
         "name": "Ghostgbot",
         "bot": "28c31e1f.031b7a",
-        "x": 1320,
-        "y": 1060,
+        "x": 1020,
+        "y": 180,
         "wires": [
             [
                 "56e0b46a.3b22d4"
@@ -1670,23 +1656,9 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 1450,
-        "y": 1060,
+        "x": 1150,
+        "y": 180,
         "wires": []
-    },
-    {
-        "id": "b70610ba.a6882",
-        "type": "sentiment",
-        "z": "d6af186b.004918",
-        "name": "",
-        "property": "payload.message",
-        "x": 900,
-        "y": 360,
-        "wires": [
-            [
-                "8397b601.6470a8"
-            ]
-        ]
     },
     {
         "id": "5a8578e4.615bc",
@@ -1698,22 +1670,6 @@
         "x": 1260,
         "y": 360,
         "wires": []
-    },
-    {
-        "id": "8397b601.6470a8",
-        "type": "function",
-        "z": "d6af186b.004918",
-        "name": "format message",
-        "func": "return {\n    payload: {\n        timestamp: msg.payload.timestamp,\n        username: msg.payload.username,\n        message: msg.payload.message,\n        sentiment: msg.sentiment.score\n    }\n}",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 1060,
-        "y": 360,
-        "wires": [
-            [
-                "5a8578e4.615bc"
-            ]
-        ]
     },
     {
         "id": "364749a5.6099fe",
@@ -1872,7 +1828,7 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 390,
+        "x": 370,
         "y": 780,
         "wires": []
     },
@@ -1949,11 +1905,11 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 370,
-        "y": 360,
+        "x": 270,
+        "y": 400,
         "wires": [
             [
-                "b70610ba.a6882"
+                "6d786e09.7c90e8"
             ]
         ]
     },
@@ -1964,7 +1920,7 @@
         "name": "",
         "server": "bb3776ec.76bac8",
         "client": "",
-        "x": 1270,
+        "x": 1070,
         "y": 100,
         "wires": []
     },
@@ -1973,11 +1929,11 @@
         "type": "function",
         "z": "d6af186b.004918",
         "name": "format message",
-        "func": "return {\n    payload: {\n        \"chatId\":  msg.payload.chatId,\n        \"type\": \"message\",\n        \"options\": { \"parse_mode\": \"Markdown\" },\n        \"content\": msg.payload.username + \": \" + msg.payload.msg\n    }\n}\n",
+        "func": "return {\n    payload: {\n        \"chatId\": global.get('telegramID'),\n        \"type\": \"message\",\n        \"options\": { \"parse_mode\": \"Markdown\" },\n        \"content\": msg.context.username + \": \" + msg.payload\n    }\n}\n",
         "outputs": 1,
         "noerr": 0,
-        "x": 1160,
-        "y": 1060,
+        "x": 860,
+        "y": 180,
         "wires": [
             [
                 "d4dd0a4c.53bd58"
@@ -1995,7 +1951,116 @@
         "wires": []
     },
     {
-        "id": "e9ba981a.08704",
+        "id": "3e1985fd.5329ba",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "format message",
+        "func": "return {\n    payload: {\n        username: msg.context.username,\n        timestamp: msg.context.timestamp,\n        message: msg.payload\n    }\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 860,
+        "y": 100,
+        "wires": [
+            [
+                "e583580a.898e5"
+            ]
+        ]
+    },
+    {
+        "id": "414aac35.25699c",
+        "type": "google-translate",
+        "z": "d6af186b.004918",
+        "from": "prog",
+        "name": "? -> en",
+        "to": "prog",
+        "x": 710,
+        "y": 440,
+        "wires": [
+            [
+                "1c9df5db.3d50d2"
+            ]
+        ]
+    },
+    {
+        "id": "1c9df5db.3d50d2",
+        "type": "sentiment",
+        "z": "d6af186b.004918",
+        "name": "",
+        "property": "payload",
+        "x": 840,
+        "y": 440,
+        "wires": [
+            [
+                "8397b601.6470a8"
+            ]
+        ]
+    },
+    {
+        "id": "6d786e09.7c90e8",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "",
+        "func": "// store context\nmsg.context = msg.payload\n\n// prepare for translation\nmsg.payload = {\n    phrase: msg.payload.message,\n    from : 'fr',\n    to : 'en'\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 310,
+        "y": 440,
+        "wires": [
+            [
+                "414aac35.25699c"
+            ]
+        ]
+    },
+    {
+        "id": "8397b601.6470a8",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "format message",
+        "func": "return {\n    payload: {\n        username: msg.context.username,\n        timestamp: msg.context.timestamp,\n        message: msg.payload,\n        sentiment: msg.sentiment.score\n    }\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1060,
+        "y": 360,
+        "wires": [
+            [
+                "5a8578e4.615bc"
+            ]
+        ]
+    },
+    {
+        "id": "9d10f682.580fb8",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "",
+        "func": "// store context\nmsg.context = msg.payload\n\n// prepare for translation\nmsg.payload = {\n    phrase: msg.payload.message,\n    from : 'en',\n    to : 'fr'\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 330,
+        "y": 180,
+        "wires": [
+            [
+                "d1bfa497.4c6358"
+            ]
+        ]
+    },
+    {
+        "id": "d1bfa497.4c6358",
+        "type": "google-translate",
+        "z": "d6af186b.004918",
+        "from": "prog",
+        "name": "en > fr",
+        "to": "prog",
+        "x": 510,
+        "y": 180,
+        "wires": [
+            [
+                "3e1985fd.5329ba",
+                "c15d5ced.1d9478"
+            ]
+        ]
+    },
+    {
+        "id": "234fe528.1687ca",
         "type": "change",
         "z": "d6af186b.004918",
         "name": "",
@@ -2013,54 +2078,27 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 520,
-        "y": 1040,
+        "x": 360,
+        "y": 520,
         "wires": [
             [
-                "2669675d.d9ce08"
+                "8f1c5b5b.39d4f8"
             ]
         ]
     },
     {
-        "id": "a455fb1a.9d3a6",
-        "type": "change",
-        "z": "d6af186b.004918",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.chatId",
-                "pt": "msg",
-                "to": "telegramID",
-                "tot": "global"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 960,
-        "y": 1060,
-        "wires": [
-            [
-                "c15d5ced.1d9478"
-            ]
-        ]
-    },
-    {
-        "id": "3e1985fd.5329ba",
+        "id": "8f1c5b5b.39d4f8",
         "type": "function",
         "z": "d6af186b.004918",
-        "name": "format message",
-        "func": "return {\n    payload: {\n        timestamp: msg.payload.timestamp,\n        username: msg.payload.username,\n        message: msg.payload.message\n    }\n}",
+        "name": "",
+        "func": "// store context\nmsg.context = {\n    username: msg.originalMessage.username,\n    timestamp: msg.originalMessage.date,\n    message: msg.originalMessage.text\n}\n\n// prepare for translation\nmsg.payload = {\n    phrase: msg.originalMessage.text,\n    from : 'fr',\n    to : 'en'\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 1060,
-        "y": 100,
+        "x": 530,
+        "y": 520,
         "wires": [
             [
-                "e583580a.898e5"
+                "414aac35.25699c"
             ]
         ]
     }
