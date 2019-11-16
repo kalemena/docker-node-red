@@ -36,7 +36,7 @@ include::docker-compose.yml[]
 $ docker-compose up -d
 ----
 
-Now you can connect on *http://&lt;yourhost&gt;:1880*
+Now you can connect on *http://localhost:1880*
 
 === Stop node-red
 
@@ -54,7 +54,13 @@ $ docker-compose down
 
 == Examples
 
-- link:examples/contacts[Creating a simple API]
-- link:examples/birthdayB[CSV reading]
-- link:examples/chat-basic-sentiment[Chat Web Socket]
-- link:examples/redis-example[Redis]
+Few samples are shared for faster rampup on Node-Red and usage of existing blocks
+
+- link:examples/basics-csv-calendar-events[CSV Calendar reading & processing]
+- link:examples/basics-websockets-chat-sentiment[Using WebSockets in Chat Room - example from FRED portal]
+- link:examples/basics-mongodb-http-contacts-api[HTTP API & MongoDB storage for contact creation/identification]
+- link:examples/basics-redis-http-scheduler-api[HTTP API & Redis storage for a scheduler API]
+
+Other example based on my contribs:
+
+- link:https://github.com/kalemena/node-red-contrib-libphonenumber[LibPhoneNumber example]
