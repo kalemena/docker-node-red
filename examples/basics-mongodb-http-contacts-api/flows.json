@@ -2,7 +2,7 @@
     {
         "id": "8c0bf6c8.3070a8",
         "type": "tab",
-        "label": "Flow 1",
+        "label": "Example MongoDB & Elasticsearch",
         "disabled": false,
         "info": ""
     },
@@ -30,6 +30,11 @@
         "reqtimeout": "10000"
     },
     {
+        "id": "da780982.7dbdf",
+        "type": "mongodb2",
+        "name": ""
+    },
+    {
         "id": "58590358.894f04",
         "type": "http in",
         "z": "8c0bf6c8.3070a8",
@@ -39,10 +44,11 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 200,
-        "y": 240,
+        "y": 160,
         "wires": [
             [
-                "e2731756.21cd98"
+                "e2731756.21cd98",
+                "3e7f3b80.3cbc1c"
             ]
         ]
     },
@@ -56,7 +62,7 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 200,
-        "y": 60,
+        "y": 100,
         "wires": [
             [
                 "9cc746f9.ae4d5"
@@ -72,20 +78,20 @@
         "headers": {
             "Content-Type": "application/json"
         },
-        "x": 920,
-        "y": 60,
+        "x": 1040,
+        "y": 100,
         "wires": []
     },
     {
         "id": "9cc746f9.ae4d5",
         "type": "function",
         "z": "8c0bf6c8.3070a8",
-        "name": "",
+        "name": "MongoDB req. prep.",
         "func": "var newMsg = msg;\nnewMsg.collection = 'Contacts';\n//newMsg.operation  = 'deleteOne';\nnewMsg.operation  = 'insert';\nnewMsg.payload    = msg.req.body;\nreturn newMsg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 370,
-        "y": 60,
+        "x": 430,
+        "y": 100,
         "wires": [
             [
                 "e5ccda8c.b31b68"
@@ -101,11 +107,12 @@
         "name": "Find Contact by Id",
         "collection": "Contacts",
         "operation": "",
-        "x": 690,
-        "y": 240,
+        "x": 850,
+        "y": 160,
         "wires": [
             [
-                "27e2a522.33a49a"
+                "27e2a522.33a49a",
+                "93d41234.0099d8"
             ]
         ]
     },
@@ -118,62 +125,11 @@
         "name": "Insert Contact",
         "collection": "",
         "operation": "",
-        "x": 540,
-        "y": 60,
+        "x": 660,
+        "y": 100,
         "wires": [
             [
-                "1061615.3d2c89f",
-                "89525ae8.3a8228"
-            ]
-        ]
-    },
-    {
-        "id": "149aab74.5e7915",
-        "type": "http in",
-        "z": "8c0bf6c8.3070a8",
-        "name": "PUT /contacts/:id",
-        "url": "/contacts/:id",
-        "method": "put",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 200,
-        "y": 520,
-        "wires": [
-            [
-                "b905365b.368868"
-            ]
-        ]
-    },
-    {
-        "id": "b905365b.368868",
-        "type": "function",
-        "z": "8c0bf6c8.3070a8",
-        "name": "",
-        "func": "var newMsg = msg;\nnewMsg.operation  = 'update';\nnewMsg.payload    = { '_id' : msg.req.params['id'] };\n//newMsg.projection = { '_id' : 1 };\nreturn newMsg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 370,
-        "y": 520,
-        "wires": [
-            [
-                "b81fbac.6be2348"
-            ]
-        ]
-    },
-    {
-        "id": "5e5f3d03.33d364",
-        "type": "mongodb2 in",
-        "z": "8c0bf6c8.3070a8",
-        "service": "_ext_",
-        "configNode": "27cbe166.1bdcbe",
-        "name": "Update Contact",
-        "collection": "Contacts",
-        "operation": "",
-        "x": 700,
-        "y": 520,
-        "wires": [
-            [
-                "9fc18a91.0e61b8"
+                "1061615.3d2c89f"
             ]
         ]
     },
@@ -186,11 +142,12 @@
         "method": "delete",
         "upload": false,
         "swaggerDoc": "",
-        "x": 180,
-        "y": 460,
+        "x": 220,
+        "y": 280,
         "wires": [
             [
-                "bb5dfed8.e626d8"
+                "bb5dfed8.e626d8",
+                "3e7f3b80.3cbc1c"
             ]
         ]
     },
@@ -198,15 +155,16 @@
         "id": "bb5dfed8.e626d8",
         "type": "function",
         "z": "8c0bf6c8.3070a8",
-        "name": "",
+        "name": "MongoDB req. prep.",
         "func": "var newMsg = msg;\nnewMsg.operation  = 'deleteOne';\nnewMsg.payload    = { '_id' : msg.req.params['id'] };\n//newMsg.projection = { '_id' : 1 };\nreturn newMsg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 370,
-        "y": 460,
+        "x": 430,
+        "y": 280,
         "wires": [
             [
-                "44d42a1b.a173f4"
+                "44d42a1b.a173f4",
+                "e7738447.0fcf58"
             ]
         ]
     },
@@ -219,11 +177,12 @@
         "name": "Delete Contact",
         "collection": "Contacts",
         "operation": "",
-        "x": 700,
-        "y": 460,
+        "x": 840,
+        "y": 280,
         "wires": [
             [
-                "b02ab41a.eb89c8"
+                "4ce59fb7.f710f",
+                "93d41234.0099d8"
             ]
         ]
     },
@@ -231,12 +190,12 @@
         "id": "1061615.3d2c89f",
         "type": "function",
         "z": "8c0bf6c8.3070a8",
-        "name": "id",
-        "func": "var newMsg = msg;\nnewMsg.payload = { \"id\": msg.payload.ops[0]._id };\n//newMsg.payload = msg.payload.ops[0];\nreturn newMsg;",
+        "name": "extract id",
+        "func": "var newMsg = msg;\nnewMsg.payload = { \"_id\": msg.payload.ops[0]._id };\n//newMsg.payload = msg.payload.ops[0];\nreturn newMsg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 730,
-        "y": 60,
+        "x": 860,
+        "y": 100,
         "wires": [
             [
                 "540af128.378f18"
@@ -247,15 +206,16 @@
         "id": "e2731756.21cd98",
         "type": "function",
         "z": "8c0bf6c8.3070a8",
-        "name": "",
+        "name": "MongoDB req. prep.",
         "func": " var newMsg = msg;\nnewMsg.operation  = 'find.toArray';\nnewMsg.payload    = { '_id' : msg.req.params['id'] };\n//newMsg.projection = { '_id' : 1 };\nreturn newMsg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 370,
-        "y": 240,
+        "x": 430,
+        "y": 160,
         "wires": [
             [
-                "38936eb8.7fb302"
+                "38936eb8.7fb302",
+                "e7738447.0fcf58"
             ]
         ]
     },
@@ -268,11 +228,12 @@
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 210,
-        "y": 300,
+        "x": 190,
+        "y": 400,
         "wires": [
             [
-                "c9c15853.d0bed"
+                "c9c15853.d0bed",
+                "3e7f3b80.3cbc1c"
             ]
         ]
     },
@@ -285,11 +246,12 @@
         "name": "Find Contacts",
         "collection": "Contacts",
         "operation": "",
-        "x": 740,
-        "y": 300,
+        "x": 820,
+        "y": 400,
         "wires": [
             [
-                "cf4db7d9.63f938"
+                "cf4db7d9.63f938",
+                "93d41234.0099d8"
             ]
         ]
     },
@@ -297,15 +259,16 @@
         "id": "1588411d.398bcf",
         "type": "function",
         "z": "8c0bf6c8.3070a8",
-        "name": "",
+        "name": "MongoDB req. prep.",
         "func": "var newMsg = msg;\nnewMsg.collection = 'Contacts';\nnewMsg.operation  = 'find.toArray';\nnewMsg.payload    = msg.req.query;\n// newMsg.projection = { '_id' : 0 };\nreturn newMsg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 550,
-        "y": 300,
+        "x": 610,
+        "y": 400,
         "wires": [
             [
-                "a2c77c39.fbf91"
+                "a2c77c39.fbf91",
+                "5fbf999f.ca7838"
             ]
         ]
     },
@@ -318,8 +281,8 @@
         "headers": {
             "Content-Type": "application/json"
         },
-        "x": 920,
-        "y": 240,
+        "x": 1040,
+        "y": 160,
         "wires": []
     },
     {
@@ -331,8 +294,8 @@
         "headers": {
             "Content-Type": "application/json"
         },
-        "x": 1060,
-        "y": 300,
+        "x": 1040,
+        "y": 400,
         "wires": []
     },
     {
@@ -341,11 +304,12 @@
         "z": "8c0bf6c8.3070a8",
         "name": "",
         "selectedProperty": "_id",
-        "x": 510,
-        "y": 240,
+        "x": 630,
+        "y": 160,
         "wires": [
             [
-                "2d4a6c46.b51fb4"
+                "2d4a6c46.b51fb4",
+                "5fbf999f.ca7838"
             ]
         ]
     },
@@ -354,12 +318,12 @@
         "type": "http response",
         "z": "8c0bf6c8.3070a8",
         "name": "response",
-        "statusCode": "200",
+        "statusCode": "",
         "headers": {
             "Content-Type": "application/json"
         },
-        "x": 920,
-        "y": 460,
+        "x": 1240,
+        "y": 280,
         "wires": []
     },
     {
@@ -368,106 +332,12 @@
         "z": "8c0bf6c8.3070a8",
         "name": "",
         "selectedProperty": "_id",
-        "x": 510,
-        "y": 460,
+        "x": 630,
+        "y": 280,
         "wires": [
             [
-                "eee28c80.a627b8"
-            ]
-        ]
-    },
-    {
-        "id": "b81fbac.6be2348",
-        "type": "objectid",
-        "z": "8c0bf6c8.3070a8",
-        "name": "",
-        "selectedProperty": "_id",
-        "x": 510,
-        "y": 520,
-        "wires": [
-            [
-                "5e5f3d03.33d364"
-            ]
-        ]
-    },
-    {
-        "id": "9fc18a91.0e61b8",
-        "type": "http response",
-        "z": "8c0bf6c8.3070a8",
-        "name": "response",
-        "statusCode": "200",
-        "headers": {
-            "Content-Type": "application/json"
-        },
-        "x": 920,
-        "y": 520,
-        "wires": []
-    },
-    {
-        "id": "857d647d.6cc7f",
-        "type": "es-create",
-        "z": "8c0bf6c8.3070a8",
-        "name": "create contact",
-        "documentIndex": "contacts",
-        "documentType": "contacts",
-        "server": "cd7ac2d3.cd6208",
-        "x": 900,
-        "y": 100,
-        "wires": [
-            [
-                "2a12bfd3.e43ba"
-            ]
-        ]
-    },
-    {
-        "id": "2a12bfd3.e43ba",
-        "type": "debug",
-        "z": "8c0bf6c8.3070a8",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "x": 1050,
-        "y": 100,
-        "wires": []
-    },
-    {
-        "id": "89525ae8.3a8228",
-        "type": "function",
-        "z": "8c0bf6c8.3070a8",
-        "name": "id",
-        "func": "var newMsg = {};\nnewMsg.payload = msg.req.body;\ndelete newMsg.payload['_id'];\nnewMsg.documentId = \"\" + msg.payload.ops[0]._id;\n//newMsg.payload = msg.payload.ops[0];\nreturn newMsg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 730,
-        "y": 100,
-        "wires": [
-            [
-                "857d647d.6cc7f"
-            ]
-        ]
-    },
-    {
-        "id": "534fd7ed.0667f",
-        "type": "es-search",
-        "z": "8c0bf6c8.3070a8",
-        "name": "",
-        "documentIndex": "contacts",
-        "documentType": "contacts",
-        "query": "FirstName:Clement",
-        "sort": "",
-        "includeFields": "",
-        "maxResults": 10,
-        "server": "cd7ac2d3.cd6208",
-        "x": 710,
-        "y": 360,
-        "wires": [
-            [
-                "5a1e4f9d.29f4b",
-                "cf4db7d9.63f938"
+                "eee28c80.a627b8",
+                "5fbf999f.ca7838"
             ]
         ]
     },
@@ -490,34 +360,166 @@
         "repair": false,
         "outputs": 2,
         "x": 390,
-        "y": 300,
+        "y": 400,
         "wires": [
             [
-                "1588411d.398bcf"
+                "1588411d.398bcf",
+                "e7738447.0fcf58"
             ],
             [
-                "743b2035.17581"
+                "e7738447.0fcf58"
             ]
         ]
     },
     {
-        "id": "743b2035.17581",
-        "type": "function",
+        "id": "8d17d8fd.bf6478",
+        "type": "comment",
         "z": "8c0bf6c8.3070a8",
-        "name": "",
-        "func": "var newMsg = msg;\nnewMsg.query = msg.req.query['q'];\nreturn newMsg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 550,
+        "name": "Contacts API - CRUD",
+        "info": "",
+        "x": 140,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "5cc46b6.8024d14",
+        "type": "comment",
+        "z": "8c0bf6c8.3070a8",
+        "name": "Contacts API - search",
+        "info": "",
+        "x": 140,
         "y": 360,
+        "wires": []
+    },
+    {
+        "id": "921be2b.88d33a",
+        "type": "http in",
+        "z": "8c0bf6c8.3070a8",
+        "name": "PUT /contacts/:id",
+        "url": "/contacts/:id",
+        "method": "put",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 200,
+        "y": 220,
         "wires": [
             [
-                "534fd7ed.0667f"
+                "99c72eb8.77664",
+                "3e7f3b80.3cbc1c"
             ]
         ]
     },
     {
-        "id": "5a1e4f9d.29f4b",
+        "id": "99c72eb8.77664",
+        "type": "function",
+        "z": "8c0bf6c8.3070a8",
+        "name": "MongoDB req. prep.",
+        "func": "var newMsg = msg;\nnewMsg.operation  = 'update';\n//newMsg.payload    = { '_id' : msg.req.params['id'] };\n//newMsg.projection = { '_id' : 1 };\nreturn newMsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 430,
+        "y": 220,
+        "wires": [
+            [
+                "521b784a.fe3e9",
+                "e7738447.0fcf58"
+            ]
+        ]
+    },
+    {
+        "id": "c25316ea.d71f8",
+        "type": "mongodb2 in",
+        "z": "8c0bf6c8.3070a8",
+        "service": "_ext_",
+        "configNode": "27cbe166.1bdcbe",
+        "name": "Update Contact by Id",
+        "collection": "Contacts",
+        "operation": "updateOne",
+        "x": 860,
+        "y": 220,
+        "wires": [
+            [
+                "2eda784.5667d08",
+                "93d41234.0099d8"
+            ]
+        ]
+    },
+    {
+        "id": "521b784a.fe3e9",
+        "type": "objectid",
+        "z": "8c0bf6c8.3070a8",
+        "name": "",
+        "selectedProperty": "_id",
+        "x": 630,
+        "y": 220,
+        "wires": [
+            [
+                "c25316ea.d71f8",
+                "5fbf999f.ca7838"
+            ]
+        ]
+    },
+    {
+        "id": "2eda784.5667d08",
+        "type": "http response",
+        "z": "8c0bf6c8.3070a8",
+        "name": "response",
+        "statusCode": "200",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "x": 1040,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "bfec3535.6272d",
+        "type": "catch",
+        "z": "8c0bf6c8.3070a8",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 180,
+        "y": 560,
+        "wires": [
+            [
+                "4eda4825.b2a858"
+            ]
+        ]
+    },
+    {
+        "id": "4eda4825.b2a858",
+        "type": "debug",
+        "z": "8c0bf6c8.3070a8",
+        "name": "Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 380,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "4ce59fb7.f710f",
+        "type": "function",
+        "z": "8c0bf6c8.3070a8",
+        "name": "204 No Content",
+        "func": "// FIXME: should check payload.n > 0\n\nmsg.payload = {};\nmsg.statusCode = 200;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1060,
+        "y": 280,
+        "wires": [
+            [
+                "b02ab41a.eb89c8"
+            ]
+        ]
+    },
+    {
+        "id": "3e7f3b80.3cbc1c",
         "type": "debug",
         "z": "8c0bf6c8.3070a8",
         "name": "",
@@ -527,8 +529,73 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 890,
-        "y": 380,
+        "x": 390,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "e7738447.0fcf58",
+        "type": "debug",
+        "z": "8c0bf6c8.3070a8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 630,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "5fbf999f.ca7838",
+        "type": "debug",
+        "z": "8c0bf6c8.3070a8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 810,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "93d41234.0099d8",
+        "type": "debug",
+        "z": "8c0bf6c8.3070a8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 1030,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "29253e79.52636a",
+        "type": "comment",
+        "z": "8c0bf6c8.3070a8",
+        "name": "FIXME",
+        "info": "",
+        "x": 170,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "9ebcaaa6.1bb468",
+        "type": "comment",
+        "z": "8c0bf6c8.3070a8",
+        "name": "FIXME",
+        "info": "",
+        "x": 170,
+        "y": 420,
         "wires": []
     }
 ]
