@@ -2,7 +2,7 @@
     {
         "id": "552a74b7.7ce90c",
         "type": "tab",
-        "label": "Flow 1",
+        "label": "CSV example",
         "disabled": false,
         "info": ""
     },
@@ -35,8 +35,8 @@
         "console": false,
         "tostatus": false,
         "complete": "true",
-        "x": 1150,
-        "y": 180,
+        "x": 1170,
+        "y": 160,
         "wires": []
     },
     {
@@ -64,7 +64,7 @@
         "chunk": false,
         "sendError": false,
         "x": 410,
-        "y": 180,
+        "y": 160,
         "wires": [
             [
                 "b3776f0e.48233"
@@ -83,8 +83,8 @@
         "ret": "\\n",
         "temp": "",
         "skip": "0",
-        "x": 630,
-        "y": 180,
+        "x": 610,
+        "y": 160,
         "wires": [
             [
                 "2b62dc95.f86e74"
@@ -97,7 +97,7 @@
         "z": "552a74b7.7ce90c",
         "name": "",
         "x": 790,
-        "y": 180,
+        "y": 160,
         "wires": [
             [
                 "6963347b.a44a64"
@@ -130,8 +130,8 @@
         "func": "if (msg.payload.Birthdate !== undefined) {\n    var parts = msg.payload.Birthdate.split(\"-\");\n    \n    if(parts[0] == msg.mydom && parts[1] == msg.mymonthn) {\n        var res = {}\n        res.payload = \"Happy Birthday \" + msg.payload.FirstName + \" \" + msg.payload.LastName\n        return res;\n    }\n}\nreturn null;",
         "outputs": 1,
         "noerr": 0,
-        "x": 980,
-        "y": 180,
+        "x": 990,
+        "y": 160,
         "wires": [
             [
                 "3aaadf55.525878"
@@ -183,7 +183,7 @@
         "func": "var res = {}\nres.payload = \"Tutu,TUTU,02-03-2004\"\nreturn res;",
         "outputs": 1,
         "noerr": 0,
-        "x": 390,
+        "x": 380,
         "y": 320,
         "wires": [
             [
@@ -201,8 +201,28 @@
         "console": false,
         "tostatus": false,
         "complete": "true",
-        "x": 890,
+        "x": 850,
         "y": 320,
+        "wires": []
+    },
+    {
+        "id": "118a44b0.42a5db",
+        "type": "comment",
+        "z": "552a74b7.7ce90c",
+        "name": "Trigger read of CSV file (force, schedule or file change)",
+        "info": "",
+        "x": 220,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "cd8dc5cd.112c78",
+        "type": "comment",
+        "z": "552a74b7.7ce90c",
+        "name": "Write to CSV file",
+        "info": "",
+        "x": 100,
+        "y": 280,
         "wires": []
     }
 ]

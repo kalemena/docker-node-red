@@ -6,7 +6,7 @@ services:
     image: kalemena/node-red:latest
     restart: always
     ports:
-     - "2880:1880"
+     - "1880:1880"
     volumes:
      - .:/data
     environment:

@@ -9,7 +9,7 @@ This flow shows how to:
 
 = Snapshot
 
-image:birthdayb.png[]
+image:csv-calendar-events.png[]
 
 = Environment
 
