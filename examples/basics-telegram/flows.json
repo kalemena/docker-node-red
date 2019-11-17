@@ -1,0 +1,650 @@
+[
+    {
+        "id": "d6af186b.004918",
+        "type": "tab",
+        "label": "Telegram Example",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "28c31e1f.031b7a",
+        "type": "telegram bot",
+        "z": "",
+        "botname": "Ghost",
+        "usernames": "",
+        "chatids": "",
+        "baseapiurl": "",
+        "updatemode": "polling",
+        "pollinterval": "3000",
+        "usesocks": false,
+        "sockshost": "",
+        "socksport": "6667",
+        "socksusername": "anonymous",
+        "sockspassword": "",
+        "bothost": "",
+        "localbotport": "8443",
+        "publicbotport": "8443",
+        "privatekey": "",
+        "certificate": "",
+        "useselfsignedcertificate": false,
+        "verboselogging": true
+    },
+    {
+        "id": "e9319f35.5786b8",
+        "type": "catch",
+        "z": "d6af186b.004918",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 200,
+        "y": 940,
+        "wires": [
+            [
+                "fa07d08a.86bc48"
+            ]
+        ]
+    },
+    {
+        "id": "fa07d08a.86bc48",
+        "type": "debug",
+        "z": "d6af186b.004918",
+        "name": "error",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 930,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "760dbf4b.707fa",
+        "type": "telegram receiver",
+        "z": "d6af186b.004918",
+        "name": "Echo",
+        "bot": "28c31e1f.031b7a",
+        "saveDataDir": "/tmp",
+        "x": 190,
+        "y": 540,
+        "wires": [
+            [
+                "c15d5ced.1d9478"
+            ],
+            [
+                "c8fd6876.9b4ad8"
+            ]
+        ]
+    },
+    {
+        "id": "951b321b.014c7",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "create log string",
+        "func": "var chatId = msg.payload.chatId;\nvar username = msg.originalMessage.from.username;\nmsg.originalMessage.timestamp = new Date();\nvar message = JSON.stringify(msg.originalMessage);\n\nmsg.topic = username + ' ' + chatId;\nmsg.payload = [msg.topic, message];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 460,
+        "y": 980,
+        "wires": [
+            [
+                "81d73a66.9cef9"
+            ]
+        ]
+    },
+    {
+        "id": "81d73a66.9cef9",
+        "type": "file",
+        "z": "d6af186b.004918",
+        "name": "LogFile",
+        "filename": "/var/log/telegram-unauthorized.log",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "false",
+        "x": 730,
+        "y": 980,
+        "wires": [
+            [
+                "6dd4f2bf.169a4c"
+            ]
+        ]
+    },
+    {
+        "id": "6dd4f2bf.169a4c",
+        "type": "debug",
+        "z": "d6af186b.004918",
+        "name": "error",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 930,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "a26fd5ef.fa8028",
+        "type": "comment",
+        "z": "d6af186b.004918",
+        "name": "Error Handling",
+        "info": "",
+        "x": 90,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "d4dd0a4c.53bd58",
+        "type": "telegram sender",
+        "z": "d6af186b.004918",
+        "name": "send",
+        "bot": "28c31e1f.031b7a",
+        "x": 770,
+        "y": 540,
+        "wires": [
+            [
+                "56e0b46a.3b22d4"
+            ]
+        ]
+    },
+    {
+        "id": "56e0b46a.3b22d4",
+        "type": "debug",
+        "z": "d6af186b.004918",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 930,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "c15d5ced.1d9478",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "format message",
+        "func": "return {\n    payload: {\n        \"chatId\": msg.payload.chatId,\n        \"type\": \"message\",\n        \"options\": { \"parse_mode\": \"Markdown\" },\n        \"content\": msg.payload.content\n    }\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 380,
+        "y": 540,
+        "wires": [
+            [
+                "d4dd0a4c.53bd58"
+            ]
+        ]
+    },
+    {
+        "id": "44cb6961.8a298",
+        "type": "telegram command",
+        "z": "d6af186b.004918",
+        "name": "",
+        "command": "/phonenumber",
+        "bot": "28c31e1f.031b7a",
+        "strict": false,
+        "x": 210,
+        "y": 160,
+        "wires": [
+            [
+                "d83995ba.c230f8"
+            ],
+            [
+                "dde367c4.0e89"
+            ]
+        ]
+    },
+    {
+        "id": "d83995ba.c230f8",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "edit initial location",
+        "func": "var options = {\n    \"parse_mode\": \"Markdown\",\n    \"reply_markup\": {\n        \"one_time_keyboard\": true,\n        \"keyboard\": [\n            [{\n                text: \"Using my phone number\",\n                request_contact: true\n            }], \n            [\"Cancel\"]\n        ]\n    }\n};\n\nreturn {\n    payload: {\n        \"chatId\": msg.payload.chatId,\n        \"type\": \"message\",\n        \"options\": options,\n        \"content\": \"How can we contact you?\"\n    }\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 390,
+        "y": 160,
+        "wires": [
+            [
+                "c622c012.4fd738"
+            ]
+        ]
+    },
+    {
+        "id": "c622c012.4fd738",
+        "type": "telegram sender",
+        "z": "d6af186b.004918",
+        "name": "send response",
+        "bot": "28c31e1f.031b7a",
+        "x": 620,
+        "y": 160,
+        "wires": [
+            [
+                "c044d13.219f8b"
+            ]
+        ]
+    },
+    {
+        "id": "c044d13.219f8b",
+        "type": "debug",
+        "z": "d6af186b.004918",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 790,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "6c82f68b.e1af28",
+        "type": "telegram command",
+        "z": "d6af186b.004918",
+        "name": "",
+        "command": "/location",
+        "bot": "28c31e1f.031b7a",
+        "strict": false,
+        "x": 190,
+        "y": 280,
+        "wires": [
+            [
+                "be1166cb.9384a"
+            ],
+            [
+                "2e407553.df97ba"
+            ]
+        ]
+    },
+    {
+        "id": "be1166cb.9384a",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "edit initial location",
+        "func": "var options = {\n    \"parse_mode\": \"Markdown\",\n    \"reply_markup\": {\n        \"one_time_keyboard\": true,\n        \"keyboard\": [\n            [{\n                text: \"Using my location\",\n                request_location: true\n            }], \n            [\"Cancel\"]\n        ]\n    }\n};\n\nreturn {\n    payload: {\n        \"chatId\": msg.payload.chatId,\n        \"type\": \"message\",\n        \"options\": options,\n        \"content\": \"How can we reach you?\"\n    }\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 390,
+        "y": 280,
+        "wires": [
+            [
+                "901b5b1.2d3d628"
+            ]
+        ]
+    },
+    {
+        "id": "901b5b1.2d3d628",
+        "type": "telegram sender",
+        "z": "d6af186b.004918",
+        "name": "send response",
+        "bot": "28c31e1f.031b7a",
+        "x": 580,
+        "y": 280,
+        "wires": [
+            [
+                "d297a266.5ca598"
+            ]
+        ]
+    },
+    {
+        "id": "d297a266.5ca598",
+        "type": "debug",
+        "z": "d6af186b.004918",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 750,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "4e3c064b.c7f608",
+        "type": "link in",
+        "z": "d6af186b.004918",
+        "name": "",
+        "links": [],
+        "x": 155,
+        "y": 980,
+        "wires": [
+            [
+                "951b321b.014c7"
+            ]
+        ]
+    },
+    {
+        "id": "c6199fe6.225978",
+        "type": "comment",
+        "z": "d6af186b.004918",
+        "name": "Locations & Contact Info",
+        "info": "",
+        "x": 130,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "e711fb2a.517ed",
+        "type": "link out",
+        "z": "d6af186b.004918",
+        "name": "",
+        "links": [],
+        "x": 315,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "aff024ce.066f7",
+        "type": "telegram command",
+        "z": "d6af186b.004918",
+        "name": "",
+        "command": "/help",
+        "bot": "28c31e1f.031b7a",
+        "strict": false,
+        "x": 190,
+        "y": 660,
+        "wires": [
+            [
+                "d8a99ae.2217ee8"
+            ],
+            [
+                "e711fb2a.517ed"
+            ]
+        ]
+    },
+    {
+        "id": "d8a99ae.2217ee8",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "create help text",
+        "func": "var helpMessage = \"/help - shows help\\n\";\nhelpMessage += \"/phonenumber - share my contact info\\n\";\nhelpMessage += \"/location - share my location info\\n\";\n\nhelpMessage += \"Your chat id is \" + msg.payload.chatId + \"\\n\";\nhelpMessage += \"You are welcome: \"+ msg.originalMessage.from.username + \"\\n\";\n\nmsg.payload.content = helpMessage;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 380,
+        "y": 660,
+        "wires": [
+            [
+                "1cdf9323.3fa3ed"
+            ]
+        ]
+    },
+    {
+        "id": "1cdf9323.3fa3ed",
+        "type": "telegram sender",
+        "z": "d6af186b.004918",
+        "name": "send",
+        "bot": "28c31e1f.031b7a",
+        "x": 770,
+        "y": 660,
+        "wires": [
+            [
+                "207599ef.f1bcae"
+            ]
+        ]
+    },
+    {
+        "id": "207599ef.f1bcae",
+        "type": "debug",
+        "z": "d6af186b.004918",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 930,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "bc127499.c50b08",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "confirmation message",
+        "func": "context.global.keyboard = { pending : true };\n\nvar opts = {\n  reply_to_message_id: msg.payload.messageId,\n  reply_markup: JSON.stringify({\n    keyboard: [\n      ['Yes'],\n      ['No']],\n      'resize_keyboard' : true, \n      'one_time_keyboard' : true\n  })\n};\n\nmsg.payload.content = 'Really?';\nmsg.payload.options = opts;\n\nreturn [ msg ];\n",
+        "outputs": "1",
+        "noerr": 0,
+        "x": 400,
+        "y": 400,
+        "wires": [
+            [
+                "3ca6369f.ec329a"
+            ]
+        ]
+    },
+    {
+        "id": "2bf34b9a.acb12c",
+        "type": "telegram command",
+        "z": "d6af186b.004918",
+        "name": "",
+        "command": "/confirm",
+        "bot": "28c31e1f.031b7a",
+        "strict": false,
+        "x": 190,
+        "y": 400,
+        "wires": [
+            [
+                "bc127499.c50b08"
+            ],
+            [
+                "bb5c556f.cbe558"
+            ]
+        ]
+    },
+    {
+        "id": "bb5c556f.cbe558",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "create response",
+        "func": "if(context.global.keyboard.pending)\n{\n    context.global.keyboard.pending = false;\n    \n    if(msg.payload.content === 'Yes')\n    {\n        msg.payload.content = 'Yes';\n        return [msg, null];   \n    }\n    else\n    {\n        msg.payload.content = 'No';\n        return [null, msg];   \n    }\n}\n",
+        "outputs": "2",
+        "noerr": 0,
+        "x": 380,
+        "y": 440,
+        "wires": [
+            [
+                "3ca6369f.ec329a"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "3ca6369f.ec329a",
+        "type": "telegram sender",
+        "z": "d6af186b.004918",
+        "name": "send",
+        "bot": "28c31e1f.031b7a",
+        "x": 770,
+        "y": 400,
+        "wires": [
+            [
+                "2de3a4bc.c487f4"
+            ]
+        ]
+    },
+    {
+        "id": "2de3a4bc.c487f4",
+        "type": "debug",
+        "z": "d6af186b.004918",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 930,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "5c0a1af9.83899c",
+        "type": "comment",
+        "z": "d6af186b.004918",
+        "name": "Question inline",
+        "info": "",
+        "x": 90,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "8b14562e.1a3a08",
+        "type": "comment",
+        "z": "d6af186b.004918",
+        "name": "Echoing",
+        "info": "",
+        "x": 70,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "19dc248b.b2252b",
+        "type": "comment",
+        "z": "d6af186b.004918",
+        "name": "Construct message",
+        "info": "",
+        "x": 110,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "c8fd6876.9b4ad8",
+        "type": "link out",
+        "z": "d6af186b.004918",
+        "name": "",
+        "links": [],
+        "x": 315,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "2e407553.df97ba",
+        "type": "link out",
+        "z": "d6af186b.004918",
+        "name": "",
+        "links": [],
+        "x": 315,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "dde367c4.0e89",
+        "type": "link out",
+        "z": "d6af186b.004918",
+        "name": "",
+        "links": [],
+        "x": 315,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "e98b93d0.678e48",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "Prepare image",
+        "func": "msg.filename = '/data/shadock.jpg';\nmsg.payload = { \n chatId: msg.payload.chatId,\n type: 'photo',\n file: msg.filename,\n caption: 'Snapshot from camera.',\n content: 'Test pic'\n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 380,
+        "y": 800,
+        "wires": [
+            [
+                "30448a8d.199be6"
+            ]
+        ]
+    },
+    {
+        "id": "e28e3e.ff7a69c",
+        "type": "comment",
+        "z": "d6af186b.004918",
+        "name": "Picture  FIXME",
+        "info": "",
+        "x": 100,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "9bf010ce.13f4a8",
+        "type": "link out",
+        "z": "d6af186b.004918",
+        "name": "",
+        "links": [],
+        "x": 315,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "cc1aa9f5.b830f8",
+        "type": "telegram command",
+        "z": "d6af186b.004918",
+        "name": "",
+        "command": "/pics",
+        "bot": "28c31e1f.031b7a",
+        "strict": false,
+        "x": 190,
+        "y": 800,
+        "wires": [
+            [
+                "e98b93d0.678e48",
+                "b7966028.8e0f48"
+            ],
+            [
+                "9bf010ce.13f4a8"
+            ]
+        ]
+    },
+    {
+        "id": "30448a8d.199be6",
+        "type": "telegram sender",
+        "z": "d6af186b.004918",
+        "name": "send",
+        "bot": "28c31e1f.031b7a",
+        "x": 770,
+        "y": 800,
+        "wires": [
+            [
+                "d589f2d2.174f"
+            ]
+        ]
+    },
+    {
+        "id": "d589f2d2.174f",
+        "type": "debug",
+        "z": "d6af186b.004918",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 930,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "b7966028.8e0f48",
+        "type": "debug",
+        "z": "d6af186b.004918",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 350,
+        "y": 880,
+        "wires": []
+    }
+]

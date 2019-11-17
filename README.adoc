@@ -62,6 +62,7 @@ Simple flows:
 - link:examples/basics-elasticsearch-http-contacts-api[HTTP API & ElasticSearch storage for contact creation/identification]
 - link:examples/basics-mongodb-http-contacts-api[HTTP API & MongoDB storage for contact creation/identification]
 - link:examples/basics-redis-http-scheduler-api[HTTP API & Redis storage for a scheduler API]
+- link:examples/basics-telegram[Example Telegram usage]
 - link:examples/basics-websockets-chat-sentiment[Using WebSockets in Chat Room - example from FRED portal]
 
 Other example based on my contribs:

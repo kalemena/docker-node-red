@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:  
+
+  nodered:
+    build: .
+    restart: always
+    ports:
+     - "1880:1880"
+    volumes:
+     - .:/data
+     - ./etc/node-red:/root/.node-red
+     - ./var/log:/var/log
+    environment:
+     - FLOWS=/data/flows.json

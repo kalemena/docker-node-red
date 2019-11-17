@@ -1,0 +1,37 @@
+# What is this example?
+
+This is a sample of using Telegram.
+
+# How-To
+
+IMPORTANT: At first run, the telegram bot is not initialized. You need to open Telegram config and fill-in your token key as provided by BotFather.
+
+* Start environment as explained below
+* Browse link:http://localhost:1880[]
+* Edit config if needed
+
+To test bot, from you Telegram client:
+
+* Start conversation with your named bot
+* Enter one of the Telegram question (e.g. */help*, */location*, */contact*, etc)
+
+## Environment
+
+Build the few dependencies:
+
+    $ docker-compose build
+
+Start the flow:
+
+    $ docker-compose up -d
+
+Stop everything:
+
+    $ docker-compose stop
+
+Cleanup everything (including database):
+
+    $ docker-compose down -v
+
+
+
