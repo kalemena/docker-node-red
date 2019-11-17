@@ -64,3 +64,7 @@ Few samples are shared for faster rampup on Node-Red and usage of existing block
 Other example based on my contribs:
 
 - link:https://github.com/kalemena/node-red-contrib-libphonenumber[LibPhoneNumber example]
+
+== TODOs
+
+link:todo.adoc[]

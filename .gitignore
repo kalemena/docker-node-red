@@ -4,3 +4,4 @@ settings.js
 package.json
 .config.json
 .env
+**/ko*
