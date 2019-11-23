@@ -6,13 +6,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Build the Docker image
-      run: docker build \
-              -t ${IMAGE}:${VERSION} \
-              -f Dockerfile \
-              --build-arg NODERED_VERSION=${VERSION} \
-              --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
-              --build-arg VCS_REF=`git rev-parse --short HEAD` \
-              --build-arg VERSION=${VERSION} .
+      run: docker build -t ${IMAGE}:${VERSION} -f Dockerfile --build-arg NODERED_VERSION=${VERSION} --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` --build-arg VCS_REF=`git rev-parse --short HEAD` --build-arg VERSION=${VERSION} .
       env:
         IMAGE: kalemena/node-red
         VERSION: 1.0.3
