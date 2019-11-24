@@ -1,7 +1,7 @@
 :toc:
 
 ifdef::env-github[]
-image:https://img.shields.io/travis/kalemena/docker-node-red/master.svg[Travis build status, link=https://travis-ci.org/kalemena/docker-node-red]
+image:https://github.com/kalemena/docker-node-red/workflows/.github/workflows/main.yml/badge.svg[GitHub Build]
 image:https://images.microbadger.com/badges/version/kalemena/node-red.svg[Docker Version, link=https://microbadger.com/images/kalemena/node-red]
 image:https://images.microbadger.com/badges/image/kalemena/node-red.svg[Docker Hub, link=https://hub.docker.com/r/kalemena/node-red/tags]
 endif::[]
