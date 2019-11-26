@@ -5,6 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
+    - run: |
+        echo "Check Docker Version"
+        docker -v
     - name: Build & Publish Docker Image
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
