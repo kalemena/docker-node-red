@@ -5,9 +5,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - run: |
-        echo "Check Docker Version"
+    - name: Build Docker Image
+      env:
+        - IMAGE: "kalemena/node-red"
+        - VERSION: "1.0.3"
+      run: |
         docker -v
+        docker pull centos:7
+        docker pull ${IMAGE}:${VERSION} || true
     - name: Build & Publish Docker Image
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
