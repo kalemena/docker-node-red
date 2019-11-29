@@ -23,6 +23,9 @@ jobs:
         docker ps -a
         docker tag ${IMAGE}:${VERSION} ${IMAGE}:latest
         docker images
+        docker login -u "${{ secrets.DOCKER_USERNAME }}" -p "${{ secrets.DOCKER_PASSWORD }}"
+        docker push ${IMAGE}:${VERSION}
+        docker push ${IMAGE}:latest
     # - name: Build & Publish Docker Image
     #   uses: elgohr/Publish-Docker-Github-Action@master
     #   with:
