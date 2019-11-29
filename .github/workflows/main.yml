@@ -26,9 +26,4 @@ jobs:
         docker login -u "${{ secrets.DOCKER_USERNAME }}" -p "${{ secrets.DOCKER_PASSWORD }}"
         docker push ${IMAGE}:${VERSION}
         docker push ${IMAGE}:latest
-    # - name: Build & Publish Docker Image
-    #   uses: elgohr/Publish-Docker-Github-Action@master
-    #   with:
-    #     name: kalemena/node-red:1.0.3
-    #     username: ${{ secrets.DOCKER_USERNAME }}
-    #     password: ${{ secrets.DOCKER_PASSWORD }}
+        docker logout
