@@ -13,9 +13,19 @@ jobs:
         docker -v
         docker pull centos:7
         docker pull ${IMAGE}:${VERSION} || true
-    - name: Build & Publish Docker Image
-      uses: elgohr/Publish-Docker-Github-Action@master
-      with:
-        name: kalemena/node-red:1.0.3
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+        docker build --pull --cache-from ${IMAGE}:${VERSION} \
+          -t ${IMAGE}:${VERSION} \
+          -f Dockerfile \
+          --build-arg NODERED_VERSION=${VERSION} \
+          --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
+          --build-arg VCS_REF=`git rev-parse --short HEAD` \
+          --build-arg VERSION=${VERSION} .
+        docker ps -a
+        docker tag ${IMAGE}:${VERSION} ${IMAGE}:latest
+        docker images
+    # - name: Build & Publish Docker Image
+    #   uses: elgohr/Publish-Docker-Github-Action@master
+    #   with:
+    #     name: kalemena/node-red:1.0.3
+    #     username: ${{ secrets.DOCKER_USERNAME }}
+    #     password: ${{ secrets.DOCKER_PASSWORD }}
