@@ -2,7 +2,7 @@ FROM centos:7
 
 MAINTAINER Kalemena
 
-ARG NODERED_VERSION=1.0.3
+ARG NODERED_VERSION=1.0.4
 
  # Build-time metadata as defined at http://label-schema.org
 ARG BUILD_DATE
@@ -39,7 +39,7 @@ RUN \
   && npm install -g grunt-cli
 
 # NODE RED
- RUN \
+RUN \
   mkdir -p /home; cd /home \
   && wget https://github.com/node-red/node-red/releases/download/${NODERED_VERSION}/node-red-${NODERED_VERSION}.zip \
   && unzip node-red-${NODERED_VERSION}.zip \
@@ -48,7 +48,10 @@ RUN \
   && npm install --production
   
 WORKDIR /home/node-red
-  
+
+RUN \
+  npm install -g node-red-nodegen
+
 # NODE RED MODULES
 RUN \
   npm i node-red-node-serialport \
