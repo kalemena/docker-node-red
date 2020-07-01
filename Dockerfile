@@ -2,7 +2,7 @@ FROM centos:7
 
 MAINTAINER Kalemena
 
-ARG NODERED_VERSION=1.0.6
+ARG NODERED_VERSION=1.1.0
 
  # Build-time metadata as defined at http://label-schema.org
 ARG BUILD_DATE
