@@ -18,23 +18,23 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.version=$NODERED_VERSION \
       org.label-schema.schema-version="1.0"
 
-# TOOLS
+#########
+### TOOLS
 RUN \
   apt-get update -y \
   && apt-get install -y \
+# Node-Red pre-requisits
     nodejs npm \
     git-core \
     wget \
     unzip \
+# ZWave
     build-essential \
-    libudev-dev;
-
-# apt-get clean && \
-# 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-RUN apt-get install -y \
+    libudev-dev \
     openzwave libopenzwave1.5-dev \
-    software-properties-common
+    software-properties-common \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 WORKDIR /root
 
