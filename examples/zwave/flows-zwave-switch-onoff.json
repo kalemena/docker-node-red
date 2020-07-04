@@ -1,0 +1,140 @@
+[
+    {
+        "id": "74834c94.f69f1c",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "84a6166f.d5f4c8",
+        "type": "zwave-in",
+        "z": "74834c94.f69f1c",
+        "name": "ZWave-USB",
+        "controller": "9f8d7423.906368",
+        "x": 130,
+        "y": 80,
+        "wires": [
+            [
+                "b4226ce1.f72eb8"
+            ]
+        ]
+    },
+    {
+        "id": "b4226ce1.f72eb8",
+        "type": "debug",
+        "z": "74834c94.f69f1c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 570,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "68f28da6.88e244",
+        "type": "zwave-out",
+        "z": "74834c94.f69f1c",
+        "name": "Switch",
+        "controller": "9f8d7423.906368",
+        "x": 370,
+        "y": 160,
+        "wires": [
+            [
+                "61ee6852.aeef3"
+            ]
+        ]
+    },
+    {
+        "id": "61ee6852.aeef3",
+        "type": "debug",
+        "z": "74834c94.f69f1c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 570,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "a56cf4bb.92002",
+        "type": "inject",
+        "z": "74834c94.f69f1c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "switchOn",
+        "payload": "{\"nodeid\":6}",
+        "payloadType": "json",
+        "x": 160,
+        "y": 160,
+        "wires": [
+            [
+                "68f28da6.88e244"
+            ]
+        ]
+    },
+    {
+        "id": "9c683af1.2f0228",
+        "type": "inject",
+        "z": "74834c94.f69f1c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "switchOff",
+        "payload": "{\"nodeid\":6}",
+        "payloadType": "json",
+        "x": 160,
+        "y": 200,
+        "wires": [
+            [
+                "68f28da6.88e244"
+            ]
+        ]
+    },
+    {
+        "id": "9f8d7423.906368",
+        "type": "zwave-controller",
+        "z": "",
+        "port": "/dev/ttyACM0",
+        "driverattempts": "3",
+        "pollinterval": "10000",
+        "allowunreadyupdates": false,
+        "networkkey": "",
+        "logging": true
+    }
+]
