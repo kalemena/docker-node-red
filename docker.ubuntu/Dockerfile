@@ -39,29 +39,44 @@ RUN \
 #########
 ### NODE-RED
 RUN \
-  mkdir -p /home; cd /home; \
-  wget https://github.com/node-red/node-red/releases/download/${NODERED_VERSION}/node-red-${NODERED_VERSION}.zip; \
-  unzip node-red-${NODERED_VERSION}.zip; \
-  rm /home/node-red-${NODERED_VERSION}.zip; \
-  mv /home/node-red-${NODERED_VERSION} /home/node-red; \
-  cd /home/node-red; \
-  npm install --production;
+  mkdir -p /home \
+  && cd /home \
+  && wget https://github.com/node-red/node-red/releases/download/${NODERED_VERSION}/node-red-${NODERED_VERSION}.zip \
+  && unzip node-red-${NODERED_VERSION}.zip \
+  && rm /home/node-red-${NODERED_VERSION}.zip \
+  && cd /home/node-red \
+  && npm install --production \
+# formatted flows
+  && sed -i 's+//flowFilePretty: .*+flowFilePretty: true,+g' settings.js
 
 WORKDIR /home/node-red
 
+### NODE RED MODULES
+RUN \
+  npm install -g node-red-nodegen
+
+RUN npm i \
+      node-red-node-serialport \
+      node-red-node-ping \
+      node-red-node-suncalc \
+      node-red-contrib-simpletime \
+      node-red-contrib-credentials  
+
+### ZWAVE
 # https://github.com/OpenZWave/node-openzwave-shared
 # RUN git clone https://github.com/OpenZWave/node-openzwave-shared.git
-RUN npm i \
-      openzwave-shared \
-# workaround docker
-  && mv ./node_modules ./node_modules.tmp \
-  && mv ./node_modules.tmp ./node_modules \
-  && npm i \
-      node-red-contrib-openzwave-am
+# WARNING: folder workaround docker to enable next build !
+RUN mkdir /tmp/node.install \
+    && cd /tmp/node.install \
+    && npm i \
+#      openzwave-shared \
+      node-red-contrib-openzwave-am \
+    && cp -r node_modules /home/node-red/ \
+    && rm -rf node_modules
+    
+# ADD [ "test2.js", "/root/" ]
 
-ADD [ "test2.js", "/root/" ]
-      
-EXPOSE 1880 1883
+EXPOSE 1880
 
 ENV TZ=Europe/Paris
 ENV FLOWS=/data/flows.json
