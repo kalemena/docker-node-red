@@ -64,6 +64,7 @@ Simple flows:
 - link:examples/basics-redis-http-scheduler-api[HTTP API & Redis storage for a scheduler API]
 - link:examples/basics-telegram[Example Telegram usage]
 - link:examples/basics-websockets-chat-sentiment[Using WebSockets in Chat Room - example from FRED portal]
+- link:examples/zwave/flows-zwave-switch-onoff.json[ZWave sample]
 
 Other example based on my contribs:
 
