@@ -72,7 +72,7 @@ RUN mkdir /tmp/node.install \
 #      openzwave-shared \
       node-red-contrib-openzwave-am \
     && cp -r node_modules /home/node-red/ \
-    && rm -rf node_modules
+    && rm -rf /tmp/node.install
     
 # ADD [ "test2.js", "/root/" ]
 
@@ -80,6 +80,14 @@ EXPOSE 1880
 
 ENV TZ=Europe/Paris
 ENV FLOWS=/data/flows.json
+
+#########
+### USER
+RUN useradd -ms /bin/bash -u 1000 nodered \
+  && chown -R nodered:nodered /home/node-red \
+  && usermod -a -G dialout nodered
+
+USER nodered
 
 ADD [ "run.sh", "/run.sh" ]
 CMD ["bash", "/run.sh"]
