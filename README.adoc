@@ -2,9 +2,9 @@
 
 ifdef::env-github[]
 image:https://github.com/kalemena/docker-node-red/workflows/Pipeline/badge.svg[GitHub Build]
-image:https://img.shields.io/docker/v/kalemena/node-red[Docker Hub, link=https://hub.docker.com/r/kalemena/connectiq/tags]
-image:https://img.shields.io/docker/pulls/kalemena/node-red[Docker Hub, link=https://hub.docker.com/r/kalemena/connectiq/tags]
-image:https://img.shields.io/docker/image-size/kalemena/node-red[Docker Hub, link=https://hub.docker.com/r/kalemena/connectiq/tags]
+image:https://img.shields.io/docker/v/kalemena/node-red[Docker Hub, link=https://hub.docker.com/r/kalemena/node-red/tags]
+image:https://img.shields.io/docker/pulls/kalemena/node-red[Docker Hub, link=https://hub.docker.com/r/kalemena/node-red/tags]
+image:https://img.shields.io/docker/image-size/kalemena/node-red[Docker Hub, link=https://hub.docker.com/r/kalemena/node-red/tags]
 endif::[]
 
 = docker-node-red
