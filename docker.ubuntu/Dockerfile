@@ -18,6 +18,8 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.version=$NODERED_VERSION \
       org.label-schema.schema-version="1.0"
 
+ENV DEBIAN_FRONTEND=noninteractive
+
 #########
 ### TOOLS
 RUN \
