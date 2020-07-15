@@ -41,17 +41,17 @@ RUN \
 #########
 ### NODE-RED
 RUN \
-  mkdir -p /home \
-  && cd /home \
+  mkdir -p /opt \
+  && cd /opt \
   && wget https://github.com/node-red/node-red/releases/download/${NODERED_VERSION}/node-red-${NODERED_VERSION}.zip \
   && unzip node-red-${NODERED_VERSION}.zip \
-  && rm /home/node-red-${NODERED_VERSION}.zip \
-  && cd /home/node-red \
+  && rm /opt/node-red-${NODERED_VERSION}.zip \
+  && cd /opt/node-red \
   && npm install --production \
 # formatted flows
   && sed -i 's+//flowFilePretty: .*+flowFilePretty: true,+g' settings.js
 
-WORKDIR /home/node-red
+WORKDIR /opt/node-red
 
 ### NODE RED MODULES
 RUN \
@@ -73,7 +73,7 @@ RUN mkdir /tmp/node.install \
     && npm i \
 #      openzwave-shared \
       node-red-contrib-openzwave-am \
-    && cp -r node_modules /home/node-red/ \
+    && cp -r node_modules /opt/node-red/ \
     && rm -rf /tmp/node.install
     
 # ADD [ "test2.js", "/root/" ]
@@ -86,7 +86,7 @@ ENV FLOWS=/data/flows.json
 #########
 ### USER
 RUN useradd -ms /bin/bash -u 1000 nodered \
-  && chown -R nodered:nodered /home/node-red \
+  && chown -R nodered:nodered /opt/node-red \
   && usermod -a -G dialout nodered
 
 USER nodered
