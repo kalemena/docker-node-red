@@ -38,6 +38,9 @@ RUN \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+# BUG with npm < 4 ==> https://github.com/npm/npm/issues/9863
+RUN npm install -g npm@5.1.0
+
 #########
 ### NODE-RED
 RUN \
@@ -62,19 +65,11 @@ RUN npm i \
       node-red-node-ping \
       node-red-node-suncalc \
       node-red-contrib-simpletime \
-      node-red-contrib-credentials  
-
-### ZWAVE
-# https://github.com/OpenZWave/node-openzwave-shared
+      node-red-contrib-credentials \
+# ZWAVE https://github.com/OpenZWave/node-openzwave-shared
 # RUN git clone https://github.com/OpenZWave/node-openzwave-shared.git
-# WARNING: folder workaround docker to enable next build !
-RUN mkdir /tmp/node.install \
-    && cd /tmp/node.install \
-    && npm i \
 #      openzwave-shared \
-      node-red-contrib-openzwave-am \
-    && cp -r node_modules /opt/node-red/ \
-    && rm -rf /tmp/node.install
+      node-red-contrib-openzwave-am
     
 # ADD [ "test2.js", "/root/" ]
 
