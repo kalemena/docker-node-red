@@ -28,7 +28,7 @@ RUN \
 # Node-Red pre-requisits
     nodejs npm \
     git-core \
-    wget \
+    wget curl \
     unzip \
 # ZWave
     build-essential \
