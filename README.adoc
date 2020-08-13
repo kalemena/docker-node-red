@@ -75,6 +75,10 @@ Advanced flows:
 
 - link:examples/chat-queue-telegram[Chat Websocket + REST API + Telegram]
 
+Monitoring:
+
+- link:https://developer.ibm.com/node/2017/07/26/visualize-node-red-flow-performance-using-node-application-metrics/[Plug Monitoring]
+
 == TODOs
 
 link:todo.adoc[]
