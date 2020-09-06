@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /home/node-red
+cd /home/nodered
 # mosquitto&
 
 # nodejs red.js

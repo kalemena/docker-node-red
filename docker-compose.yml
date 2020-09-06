@@ -18,3 +18,4 @@ services:
 #     - "/dev/ttyUSB2:/dev/ttyRfxTrx"
     environment:
      - FLOWS=/data/flows.json
+     # - NODE_OPTIONS=
