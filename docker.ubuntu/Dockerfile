@@ -84,6 +84,9 @@ RUN useradd -ms /bin/bash -u 1000 nodered \
   && chown -R nodered:nodered /opt/node-red \
   && usermod -a -G dialout nodered
 
+RUN mkdir /data \
+  && chown nodered:nodered /data
+
 USER nodered
 
 ADD [ "run.sh", "/run.sh" ]
