@@ -6,7 +6,7 @@ services:
     image: kalemena/node-red:latest
     restart: always
     ports:
-     - "8880:1880"
+     - "${NODERED_PORT:-1880}:1880"
     volumes:
      - ./data:/data
      # - /home/nodered/.node-red                  # Default User Directory
