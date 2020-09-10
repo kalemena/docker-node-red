@@ -64,6 +64,8 @@ $ make down
 Examples from Node-Red libs are first steps to learn. +
 Once started, go to burger menu at top-right, and *Import*, then select *Examples* and browse the basics block examples to import and test them.
 
+TIP: Don't forget to click *Deploy* :-)
+
 image:/docs/node-red-examples.png[]
 
 Hera are few other examples from this reporsitory:

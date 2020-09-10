@@ -35,6 +35,7 @@ RUN \
     libudev-dev \
     openzwave libopenzwave1.5-dev \
     software-properties-common \
+# Cleanup (reduce size)
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -71,23 +72,24 @@ RUN npm i \
 #      openzwave-shared \
       node-red-contrib-openzwave-am
     
-# ADD [ "test2.js", "/root/" ]
-
 EXPOSE 1880
 
 ENV TZ=Europe/Paris
 ENV FLOWS=/data/flows.json
 
 #########
-### USER
+### USER nodered
 RUN useradd -ms /bin/bash -u 1000 nodered \
   && chown -R nodered:nodered /opt/node-red \
   && usermod -a -G dialout nodered
 
+# Default rights to /data
 RUN mkdir /data \
   && chown nodered:nodered /data
 
 USER nodered
 
 ADD [ "run.sh", "/run.sh" ]
-CMD ["bash", "/run.sh"]
+
+# no ENTRYPOINT
+CMD [ "bash", "/run.sh" ]
