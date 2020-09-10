@@ -7,22 +7,31 @@ image:https://img.shields.io/docker/pulls/kalemena/node-red[Docker Hub, link=htt
 image:https://img.shields.io/docker/image-size/kalemena/node-red[Docker Hub, link=https://hub.docker.com/r/kalemena/node-red/tags]
 endif::[]
 
-= docker-node-red
+= Docker Node-Red
 
-Packaged Node-Red for use in home automation.
+Packaged Node-Red for use in link:https://github.com/kalemena/ti-dhome[Ti-Dhome home automation project]
 
-== Build
+== How-To
 
+=== Get Docker Image
+
+.Pull Docker image from docker hub
 [source,bash]
 ----
-$ docker build -t kalemena/node-red .
+$ docker pull kalemena/node-red:latest
 ----
 
-== Run with compose
+.Build Docker image locally
+[source,bash]
+----
+$ make
+----
 
-Run with opening 1880 port, and map your flows into /data directory.
+=== Run Docker Image
 
-Optionaly, map USB devices used in flows.
+.Run the image with docker-compose
+* Edit docker-compose.yml for your purpose
+* Run with opening 1880 port, and map your flows into /data directory.
 
 [source,bash]
 .docker-compose.yml
@@ -30,53 +39,53 @@ Optionaly, map USB devices used in flows.
 include::docker-compose.yml[]
 ====
 
-=== Start node-red
-
+.Start node-red
 [source,bash]
 ----
-$ docker-compose up -d
+$ make up
 ----
 
 Now you can connect on *http://localhost:1880*
 
-=== Stop node-red
-
+.Stop node-red (keeping volumes)
 [source,bash]
 ----
-$ docker-compose stop
+$ make stop
 ----
 
-=== Remove container node-red
-
+.Remove node-red (and volumes)
 [source,bash]
 ----
-$ docker-compose down
+$ make down
 ----
 
 == Examples
 
-Few samples are shared for faster rampup on Node-Red and usage of existing blocks
+Examples from Node-Red libs are first steps to learn. +
+Once started, go to burger menu at top-right, and *Import*, then select *Examples* and browse the basics block examples to import and test them.
 
-Simple flows:
+image:/docs/node-red-examples.png[]
 
+Hera are few other examples from this reporsitory:
+
+.Simple flows:
 - link:examples/basics-csv-calendar-events[CSV Calendar reading & processing]
 - link:examples/basics-elasticsearch-http-contacts-api[HTTP API & ElasticSearch storage for contact creation/identification]
 - link:examples/basics-mongodb-http-contacts-api[HTTP API & MongoDB storage for contact creation/identification]
 - link:examples/basics-redis-http-scheduler-api[HTTP API & Redis storage for a scheduler API]
 - link:examples/basics-telegram[Example Telegram usage]
 - link:examples/basics-websockets-chat-sentiment[Using WebSockets in Chat Room - example from FRED portal]
-- link:examples/zwave/flows-zwave-switch-onoff.json[ZWave sample]
 
-Other example based on my contribs:
-
+.Other example based on my contribs:
 - link:https://github.com/kalemena/node-red-contrib-libphonenumber[LibPhoneNumber example]
 
-Advanced flows:
+.IoT - interfacing with devices
+- link:examples/gateways-zwave/flows-zwave-switch-onoff.json[ZWave sample]
 
+.Advanced flows:
 - link:examples/chat-queue-telegram[Chat Websocket + REST API + Telegram]
 
-Monitoring:
-
+.Monitoring:
 - link:https://developer.ibm.com/node/2017/07/26/visualize-node-red-flow-performance-using-node-application-metrics/[Plug Monitoring]
 
 == TODOs
