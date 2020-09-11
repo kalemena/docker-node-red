@@ -1,0 +1,50 @@
+= What is this example?
+
+This is a sample of using link:https://aeotec.com/z-wave-usb-stick/[Z-Wave USB key] with a 230v plug.
+
+IMPORTANT: ZWave plugs usualy allow On/Off and power consumption measures, as seen below showing debug logs.
+
+image:nodered-zwave-debug.png[]
+
+= Pre-requisits
+
+You need to understand ZWave basics. +
+And make sure the USB stick and devices are correctly paired. +
+Check low-level info at link:https://github.com/kalemena/iot-tools/tree/master/docs/gateways/zwave[]
+
+= How-To
+
+IMPORTANT: ZWave libraries are installed into this Node-RED Docker image already.
+
+Here is how to run the ZWave in Node-RED:
+
+* Edit *docker-compose.yml* to set you USB ZWave key (e.g. /dev/ttyZWave)
+* Start environment as explained below
+* Browse link:http://localhost:1880[]
+* Change input nodes to set ids of your ZWave devices (e.g. my switch is 7 in this sample)
+* Click the *switchOn* or *switchOff* button !
+
+## Environment
+
+Build the few dependencies:
+
+    $ docker-compose build
+
+Start the flow:
+
+    $ docker-compose up -d
+
+Stop everything:
+
+    $ docker-compose stop
+
+Cleanup everything (including database):
+
+    $ docker-compose down -v
+
+
+
+
+
+
+curl -X POST -u "apikey:XZZIkU2kjI-Laow6RSWE_Pi3rN5A3i2KnXVMv9IDzGaJ" --header "Content-Type: application/json" --data "{\"text\": [\"Bonjour monsieur le conseiller! \"], \"model_id\":\"fr-en\"}" "https://gateway-lon.watsonplatform.net/language-translator/api/v3/translate?version=2018-05-01"
