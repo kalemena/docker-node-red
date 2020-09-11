@@ -7,6 +7,17 @@
         "info": ""
     },
     {
+        "id": "9f8d7423.906368",
+        "type": "zwave-controller",
+        "z": "",
+        "port": "/dev/ttyZWave",
+        "driverattempts": "3",
+        "pollinterval": "10000",
+        "allowunreadyupdates": false,
+        "networkkey": "",
+        "logging": true
+    },
+    {
         "id": "84a6166f.d5f4c8",
         "type": "zwave-in",
         "z": "74834c94.f69f1c",
@@ -87,7 +98,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "switchOn",
-        "payload": "{\"nodeid\":6}",
+        "payload": "{\"nodeid\":7}",
         "payloadType": "json",
         "x": 160,
         "y": 160,
@@ -116,7 +127,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "switchOff",
-        "payload": "{\"nodeid\":6}",
+        "payload": "{\"nodeid\":7}",
         "payloadType": "json",
         "x": 160,
         "y": 200,
@@ -125,16 +136,5 @@
                 "68f28da6.88e244"
             ]
         ]
-    },
-    {
-        "id": "9f8d7423.906368",
-        "type": "zwave-controller",
-        "z": "",
-        "port": "/dev/ttyACM0",
-        "driverattempts": "3",
-        "pollinterval": "10000",
-        "allowunreadyupdates": false,
-        "networkkey": "",
-        "logging": true
     }
 ]

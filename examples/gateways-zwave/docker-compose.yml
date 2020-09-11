@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:  
+
+  nodered:
+    image: kalemena/node-red:latest
+    restart: always
+    ports:
+     - "${NODERED_PORT:-1880}:1880"
+    volumes:
+     - .:/data
+     # - ./workspace/nodered:/home/nodered/.node-red
+     # - ./workspace/log:/var/log
+    devices:
+     - "/dev/ttyZWave:/dev/ttyZWave"
+    environment:
+     - FLOWS=/data/flows-zwave-switch-onoff.json
+     
