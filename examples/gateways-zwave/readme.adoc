@@ -38,13 +38,6 @@ Stop everything:
 
     $ docker-compose stop
 
-Cleanup everything (including database):
+Cleanup everything:
 
     $ docker-compose down -v
-
-
-
-
-
-
-curl -X POST -u "apikey:XZZIkU2kjI-Laow6RSWE_Pi3rN5A3i2KnXVMv9IDzGaJ" --header "Content-Type: application/json" --data "{\"text\": [\"Bonjour monsieur le conseiller! \"], \"model_id\":\"fr-en\"}" "https://gateway-lon.watsonplatform.net/language-translator/api/v3/translate?version=2018-05-01"
