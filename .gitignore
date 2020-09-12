@@ -5,3 +5,8 @@ package.json
 .config.json
 .env
 **/ko*
+
+# ZigBee
+*.db
+session.default
+*.bkp
