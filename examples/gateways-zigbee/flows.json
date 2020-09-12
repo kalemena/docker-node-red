@@ -1,0 +1,107 @@
+[
+    {
+        "id": "74834c94.f69f1c",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "9f8d7423.906368",
+        "type": "zwave-controller",
+        "z": "",
+        "port": "/dev/ttyZWave",
+        "driverattempts": "3",
+        "pollinterval": "10000",
+        "allowunreadyupdates": false,
+        "networkkey": "",
+        "logging": true
+    },
+    {
+        "id": "fee42dff.faa3f8",
+        "type": "deconz-server",
+        "z": "",
+        "name": "Deconz",
+        "ip": "172.24.0.3",
+        "port": "7080",
+        "apikey": "xoxoxoxox",
+        "ws_port": "7443",
+        "secure": false,
+        "polling": "15"
+    },
+    {
+        "id": "52f43e66.732cf",
+        "type": "deconz-battery",
+        "z": "74834c94.f69f1c",
+        "name": "Battery",
+        "server": "fee42dff.faa3f8",
+        "device": "00:15:8d:00:04:ac:b3:f9-01-0405",
+        "device_name": "Multi Sensor #01 : ZHAHumidity",
+        "outputAtStartup": true,
+        "x": 160,
+        "y": 100,
+        "wires": [
+            [
+                "dc63dbc0.d40e4"
+            ],
+            [
+                "dc63dbc0.d40e4"
+            ]
+        ]
+    },
+    {
+        "id": "9e76f479.16c1d8",
+        "type": "deconz-input",
+        "z": "74834c94.f69f1c",
+        "name": "",
+        "server": "fee42dff.faa3f8",
+        "device": "00:15:8d:00:04:ac:b3:f9-01-0405",
+        "device_name": "Multi Sensor #01 : ZHAHumidity",
+        "topic": "",
+        "state": "0",
+        "output": "always",
+        "outputAtStartup": true,
+        "x": 240,
+        "y": 160,
+        "wires": [
+            [
+                "dc63dbc0.d40e4"
+            ],
+            [
+                "dc63dbc0.d40e4"
+            ]
+        ]
+    },
+    {
+        "id": "67098474.833b14",
+        "type": "deconz-event",
+        "z": "74834c94.f69f1c",
+        "name": "Events",
+        "server": "fee42dff.faa3f8",
+        "device_name": null,
+        "x": 160,
+        "y": 220,
+        "wires": [
+            [
+                "dc63dbc0.d40e4"
+            ]
+        ]
+    },
+    {
+        "id": "dc63dbc0.d40e4",
+        "type": "debug",
+        "z": "74834c94.f69f1c",
+        "name": "logs",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 160,
+        "wires": []
+    }
+]

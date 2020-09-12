@@ -1,0 +1,38 @@
+version: '3.7'
+
+services:  
+
+  # https://github.com/marthoc/docker-deconz
+  deconz:
+    image: marthoc/deconz
+    restart: always
+    ports:
+      - 7080:7080
+      - 7443:7443
+    volumes:
+      - ./deconz:/root/.local/share/dresden-elektronik/deCONZ
+    devices:
+      - /dev/ttyZigbee
+    environment:
+      - DECONZ_DEVICE=/dev/ttyZigbee
+      - DECONZ_WEB_PORT=7080
+      - DECONZ_WS_PORT=7443
+      - DEBUG_INFO=1
+      - DEBUG_APS=0
+      - DEBUG_ZCL=0
+      - DEBUG_ZDP=0
+      - DEBUG_OTAU=0
+
+  nodered:
+    build: .
+    # image: kalemena/node-red:latest
+    restart: always
+    ports:
+     - "${NODERED_PORT:-1880}:1880"
+    volumes:
+     - .:/data
+     # - ./workspace/nodered:/home/nodered/.node-red
+     # - ./workspace/log:/var/log
+    environment:
+     - FLOWS=/data/flows.json
+     
