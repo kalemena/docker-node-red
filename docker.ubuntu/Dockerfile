@@ -25,6 +25,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN \
   apt-get update -y \
   && apt-get install -y \
+    tzdata \
 # Node-Red pre-requisits
     nodejs npm \
     git-core \
@@ -52,6 +53,7 @@ RUN \
   && rm /opt/node-red-${NODERED_VERSION}.zip \
   && cd /opt/node-red \
   && npm install --production \
+  && npm cache clean \
 # formatted flows
   && sed -i 's+//flowFilePretty: .*+flowFilePretty: true,+g' settings.js
 
@@ -59,7 +61,8 @@ WORKDIR /opt/node-red
 
 ### NODE RED MODULES
 RUN \
-  npm install -g node-red-nodegen
+  npm install -g node-red-nodegen \
+  && npm cache clean
 
 RUN npm i \
       node-red-node-serialport \
@@ -70,11 +73,15 @@ RUN npm i \
 # ZWAVE https://github.com/OpenZWave/node-openzwave-shared
 # RUN git clone https://github.com/OpenZWave/node-openzwave-shared.git
 #      openzwave-shared \
-      node-red-contrib-openzwave-am
+      node-red-contrib-openzwave-am \
+    && npm cache clean
     
 EXPOSE 1880
 
 ENV TZ=Europe/Paris
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
+  && dpkg-reconfigure tzdata
+
 ENV FLOWS=/data/flows.json
 
 #########
