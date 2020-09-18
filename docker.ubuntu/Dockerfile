@@ -53,7 +53,6 @@ RUN \
   && rm /opt/node-red-${NODERED_VERSION}.zip \
   && cd /opt/node-red \
   && npm install --production \
-  && npm cache clean \
 # formatted flows
   && sed -i 's+//flowFilePretty: .*+flowFilePretty: true,+g' settings.js
 
@@ -61,8 +60,7 @@ WORKDIR /opt/node-red
 
 ### NODE RED MODULES
 RUN \
-  npm install -g node-red-nodegen \
-  && npm cache clean
+  npm install -g node-red-nodegen
 
 RUN npm i \
       node-red-node-serialport \
@@ -73,8 +71,7 @@ RUN npm i \
 # ZWAVE https://github.com/OpenZWave/node-openzwave-shared
 # RUN git clone https://github.com/OpenZWave/node-openzwave-shared.git
 #      openzwave-shared \
-      node-red-contrib-openzwave-am \
-    && npm cache clean
+      node-red-contrib-openzwave-am
     
 EXPOSE 1880
 
