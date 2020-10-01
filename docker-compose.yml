@@ -12,6 +12,7 @@ services:
      # - /home/nodered/.node-red                  # Default User Directory
      # - /home/nodered/.node-red/settings.js      # Default Settings file
      # - /data/flows.json                         # Default Flows file
+# Examples of mounting USB devices
 #    devices:
 #     - "/dev/ttyUSB0:/dev/ttyCurrenCost"
 #     - "/dev/ttyUSB1:/dev/ttyJeeLink"
@@ -19,4 +20,6 @@ services:
 #     - "/dev/ttyUSB3:/dev/ttyZigbee"
 #     - "/dev/ttyUSB4:/dev/ttyZWave"
     environment:
-     - FLOWS=/data/flows.json
+     - NODERED_FLOWS=/data/flows.json
+     - NODERED_USERDIR=/home/nodered/.node-red
+     - NODERED_SETTINGS=/home/nodered/.node-red/settings.js
