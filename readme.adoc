@@ -39,6 +39,11 @@ $ make
 include::docker-compose.yml[]
 ====
 
+.Environment variables and defaults:
+* NODERED_FLOWS=/data/flows.json
+* NODERED_SETTINGS=/home/nodered/.node-red/settings.js
+* NODERED_USERDIR=/home/nodered/.node-red
+
 .Start node-red
 [source,bash]
 ----
