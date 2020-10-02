@@ -8,10 +8,11 @@ services:
     ports:
      - "${NODERED_PORT:-1880}:1880"
     volumes:
-     - ./data:/data
      # - /home/nodered/.node-red                  # Default User Directory
      # - /home/nodered/.node-red/settings.js      # Default Settings file
      # - /data/flows.json                         # Default Flows file
+     # - /home/nodered/.node-red/flows_cred.json  # Defaults credentials
+     - ./data:/data
 # Examples of mounting USB devices
 #    devices:
 #     - "/dev/ttyUSB0:/dev/ttyCurrenCost"
@@ -23,3 +24,4 @@ services:
      - NODERED_FLOWS=/data/flows.json
      - NODERED_USERDIR=/home/nodered/.node-red
      - NODERED_SETTINGS=/home/nodered/.node-red/settings.js
+     - NODERED_CREDENTIAL_SECRETS=changeme
