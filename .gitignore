@@ -1,3 +1,4 @@
+# Node-Red
 *.backup
 *_cred.*
 settings.js
