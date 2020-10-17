@@ -1,0 +1,29 @@
+= Examples
+
+Hera are few other examples from this reporsitory:
+
+== Simple flows
+
+- link:basics-csv-calendar-events[CSV Calendar reading & processing]
+- link:basics-elasticsearch-http-contacts-api[HTTP API & ElasticSearch storage for contact creation/identification]
+- link:basics-mongodb-http-contacts-api[HTTP API & MongoDB storage for contact creation/identification]
+- link:basics-redis-http-scheduler-api[HTTP API & Redis storage for a scheduler API]
+- link:basics-telegram[Example Telegram usage]
+- link:basics-websockets-chat-sentiment[Using WebSockets in Chat Room - example from FRED portal]
+
+.IoT - interfacing with devices
+- link:gateways-zwave/flows-zwave-switch-onoff.json[ZWave sample]
+
+.Advanced flows
+- link:chat-queue-telegram[Chat Websocket + REST API + Telegram]
+
+.node-red-node-feedparser
+image:node-red-node-feedparser/node-red-node-feedparser.png[node-red-node-feedparser]
+
+== Other example based on my contribs
+
+- link:https://github.com/kalemena/node-red-contrib-libphonenumber[LibPhoneNumber example]
+
+== Monitoring
+
+- link:https://developer.ibm.com/node/2017/07/26/visualize-node-red-flow-performance-using-node-application-metrics/[Plug Monitoring]

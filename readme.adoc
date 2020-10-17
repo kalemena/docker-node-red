@@ -73,28 +73,7 @@ TIP: Don't forget to click *Deploy* :-)
 
 image:/docs/node-red-examples.png[]
 
-Hera are few other examples from this reporsitory:
+See more link:examples[examples]
 
-.Simple flows:
-- link:examples/basics-csv-calendar-events[CSV Calendar reading & processing]
-- link:examples/basics-elasticsearch-http-contacts-api[HTTP API & ElasticSearch storage for contact creation/identification]
-- link:examples/basics-mongodb-http-contacts-api[HTTP API & MongoDB storage for contact creation/identification]
-- link:examples/basics-redis-http-scheduler-api[HTTP API & Redis storage for a scheduler API]
-- link:examples/basics-telegram[Example Telegram usage]
-- link:examples/basics-websockets-chat-sentiment[Using WebSockets in Chat Room - example from FRED portal]
-
-.Other example based on my contribs:
-- link:https://github.com/kalemena/node-red-contrib-libphonenumber[LibPhoneNumber example]
-
-.IoT - interfacing with devices
-- link:examples/gateways-zwave/flows-zwave-switch-onoff.json[ZWave sample]
-
-.Advanced flows:
-- link:examples/chat-queue-telegram[Chat Websocket + REST API + Telegram]
-
-.Monitoring:
-- link:https://developer.ibm.com/node/2017/07/26/visualize-node-red-flow-performance-using-node-application-metrics/[Plug Monitoring]
-
-== TODOs
-
-link:todo.adoc[]
+.TODOs
+link:todo.adoc[TODOs]
