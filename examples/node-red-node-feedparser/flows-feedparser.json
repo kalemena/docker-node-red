@@ -1,0 +1,229 @@
+[
+    {
+        "id": "d877de31.cff2e",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "c38452a5.4f84e8",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "mqtt",
+        "broker": "mqtt",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "15",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "54735d85.15fdcc",
+        "type": "feedparse",
+        "z": "d877de31.cff2e",
+        "name": "Dealabs",
+        "url": "https://www.dealabs.com/rss/hot",
+        "interval": 15,
+        "x": 120,
+        "y": 120,
+        "wires": [
+            [
+                "cc9758a7.2b4098"
+            ]
+        ]
+    },
+    {
+        "id": "51f8b99f.53d71",
+        "type": "debug",
+        "z": "d877de31.cff2e",
+        "name": "Deals",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1000,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "1112e5f1.b5f00a",
+        "type": "switch",
+        "z": "d877de31.cff2e",
+        "name": "",
+        "property": "article",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "payload",
+                "vt": "msg"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 1,
+        "x": 520,
+        "y": 190,
+        "wires": [
+            [
+                "e2309dde.803df"
+            ]
+        ]
+    },
+    {
+        "id": "cc9758a7.2b4098",
+        "type": "json",
+        "z": "d877de31.cff2e",
+        "name": "",
+        "property": "article",
+        "action": "",
+        "pretty": false,
+        "x": 260,
+        "y": 120,
+        "wires": [
+            [
+                "e4c31dad.d9dac"
+            ]
+        ]
+    },
+    {
+        "id": "a8e258fc.19318",
+        "type": "change",
+        "z": "d877de31.cff2e",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "topic",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 810,
+        "y": 120,
+        "wires": [
+            [
+                "51f8b99f.53d71"
+            ]
+        ]
+    },
+    {
+        "id": "e4c31dad.d9dac",
+        "type": "change",
+        "z": "d877de31.cff2e",
+        "name": "lowercase",
+        "rules": [
+            {
+                "t": "set",
+                "p": "article",
+                "pt": "msg",
+                "to": "$lowercase(article)\t",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 400,
+        "y": 120,
+        "wires": [
+            [
+                "296b1428.5152cc"
+            ]
+        ]
+    },
+    {
+        "id": "296b1428.5152cc",
+        "type": "template",
+        "z": "d877de31.cff2e",
+        "name": "keywords",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "plain",
+        "template": "garmin\nultrawide\nssd\nmicrosdxc\nnintendo\nmario\nwestern\nxiaomi\nzigbee\nquest\nlego",
+        "output": "str",
+        "x": 240,
+        "y": 190,
+        "wires": [
+            [
+                "f45ea15f.5f1e88"
+            ]
+        ]
+    },
+    {
+        "id": "f45ea15f.5f1e88",
+        "type": "split",
+        "z": "d877de31.cff2e",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 390,
+        "y": 190,
+        "wires": [
+            [
+                "1112e5f1.b5f00a"
+            ]
+        ]
+    },
+    {
+        "id": "e2309dde.803df",
+        "type": "trigger",
+        "z": "d877de31.cff2e",
+        "name": "Watchdog",
+        "op1": "",
+        "op2": "",
+        "op1type": "nul",
+        "op2type": "pay",
+        "duration": "1",
+        "extend": true,
+        "units": "s",
+        "reset": "",
+        "bytopic": "topic",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 620,
+        "y": 120,
+        "wires": [
+            [
+                "a8e258fc.19318"
+            ]
+        ]
+    },
+    {
+        "id": "673a734c.ca8f6c",
+        "type": "comment",
+        "z": "d877de31.cff2e",
+        "name": "Deals",
+        "info": "Listen to Dealabs HotDeals\nSearch keywords\nSort topics\nSend Telegram notification",
+        "x": 110,
+        "y": 70,
+        "wires": []
+    }
+]

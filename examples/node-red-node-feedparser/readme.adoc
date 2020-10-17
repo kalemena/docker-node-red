@@ -1,0 +1,27 @@
+= node-red-contrib-feedparser
+
+This is a sample of listening on RSS feed using node-red-contrib-feedparser.
+
+Here we listen on Dealabs, parse feed for keywords and eventually log matching deals.
+
+This works very good if replacing message by Telegram notice.
+
+image:node-red-contrib-feedparser.png[]
+
+== Environment
+
+Build the few dependencies:
+
+    $ docker-compose build
+
+Start the flow:
+
+    $ docker-compose up -d
+
+Stop everything:
+
+    $ docker-compose stop
+
+Cleanup everything (including database):
+
+    $ docker-compose down -v
