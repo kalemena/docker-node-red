@@ -7,6 +7,9 @@ Hera are few other examples from this reporsitory:
 .CSV file read
 image:basics-csv-calendar-events/csv-calendar-events.png[link="basics-csv-calendar-events"]
 
+.HTTP API & MongoDB storage for contact creation/identification
+image:basics-mongodb-http-contacts-api/contacts-api.png[link="basics-mongodb-http-contacts-api"]
+
 
 .IoT - interfacing with devices
 - link:gateways-zwave/flows-zwave-switch-onoff.json[ZWave sample]
