@@ -74,6 +74,3 @@ TIP: Don't forget to click *Deploy* :-)
 image:/docs/node-red-examples.png[]
 
 See more link:examples[examples]
-
-.TODOs
-link:todo.adoc[TODOs]
