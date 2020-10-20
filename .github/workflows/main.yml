@@ -18,7 +18,7 @@ jobs:
         docker -v
         docker pull ubuntu:18.04
         docker pull ${IMAGE}:${VERSION} || true
-        cd docker.ubuntu
+        cd docker
         docker build --pull --cache-from ${IMAGE}:${VERSION} \
           -t ${IMAGE}:${VERSION} \
           -f Dockerfile \
