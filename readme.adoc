@@ -36,7 +36,33 @@ $ make
 [source,bash]
 .docker-compose.yml
 ====
-include::docker-compose.yml[]
+version: '3.7'
+
+services:  
+
+  nodered:
+    image: kalemena/node-red:latest
+    restart: always
+    ports:
+     - "${NODERED_PORT:-1880}:1880"
+    volumes:
+     # - /home/nodered/.node-red                  # Default User Directory
+     # - /home/nodered/.node-red/settings.js      # Default Settings file
+     # - /data/flows.json                         # Default Flows file
+     # - /home/nodered/.node-red/flows_cred.json  # Defaults credentials
+     - ./data:/data
+# Examples of mounting USB devices
+#    devices:
+#     - "/dev/ttyUSB0:/dev/ttyCurrenCost"
+#     - "/dev/ttyUSB1:/dev/ttyJeeLink"
+#     - "/dev/ttyUSB2:/dev/ttyRfxTrx"
+#     - "/dev/ttyUSB3:/dev/ttyZigbee"
+#     - "/dev/ttyUSB4:/dev/ttyZWave"
+    environment:
+     - NODERED_FLOWS=/data/flows.json
+     - NODERED_USERDIR=/home/nodered/.node-red
+     - NODERED_SETTINGS=/home/nodered/.node-red/settings.js
+     - NODERED_CREDENTIAL_SECRETS=changeme
 ====
 
 .Environment variables and defaults:
@@ -47,21 +73,27 @@ include::docker-compose.yml[]
 .Start node-red
 [source,bash]
 ----
-$ make up
+$ docker-compose up -d
 ----
 
 Now you can connect on *http://localhost:1880*
 
-.Stop node-red (keeping volumes)
+.Stop node-red
 [source,bash]
 ----
-$ make stop
+$ docker-compose stop
 ----
 
-.Remove node-red (and volumes)
+.Remove node-red container with keeping volumes
 [source,bash]
 ----
-$ make down
+$ docker-compose down -v
+----
+
+.Remove node-red container and volumes
+[source,bash]
+----
+$ docker-compose down -v
 ----
 
 == Examples
@@ -74,3 +106,16 @@ TIP: Don't forget to click *Deploy* :-)
 image:/docs/node-red-examples.png[]
 
 See more link:examples[examples]
+
+// .To be checked:
+// * node-red-contrib-simple-weekly-scheduler
+// * node-red-contrib-rfxcom
+// * node-red-dashboard
+// * node-red-node-smooth 
+// * node-red-node-pidcontrol
+// * node-red-node-random
+// * node-red-node-mdns
+// * node-red-node-nma
+// * node-red-node-pushbullet
+// * node-red-node-daemon
+// * node-red-contrib-web-worldmap
