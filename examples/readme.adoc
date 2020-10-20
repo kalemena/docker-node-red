@@ -18,7 +18,7 @@ image:basics-mongodb-http-contacts-api/contacts-api.png[link="basics-mongodb-htt
 - link:chat-queue-telegram[Chat Websocket + REST API + Telegram]
 
 .node-red-node-feedparser
-image:node-red-contrib-feedparser/node-red-contrib-feedparser.png[link="node-red-node-feedparser"]
+image:node-red-contrib-feedparser/node-red-contrib-feedparser.png[link="node-red-contrib-feedparser"]
 
 == Other example based on my contribs
 
