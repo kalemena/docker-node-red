@@ -1,4 +1,3 @@
-:toc:
 
 ifdef::env-github[]
 image:https://github.com/kalemena/docker-node-red/workflows/Pipeline/badge.svg[GitHub Build]
@@ -6,6 +5,8 @@ image:https://img.shields.io/docker/v/kalemena/node-red[Docker Hub, link=https:/
 image:https://img.shields.io/docker/pulls/kalemena/node-red[Docker Hub, link=https://hub.docker.com/r/kalemena/node-red/tags]
 image:https://img.shields.io/docker/image-size/kalemena/node-red[Docker Hub, link=https://hub.docker.com/r/kalemena/node-red/tags]
 endif::[]
+
+:toc:
 
 = Docker Node-Red
 
@@ -33,9 +34,9 @@ $ make
 * Edit docker-compose.yml for your purpose
 * Run with opening 1880 port, and map your flows into /data directory.
 
-[source,bash]
 .docker-compose.yml
-====
+[source,yaml]
+----
 version: '3.7'
 
 services:  
@@ -63,7 +64,7 @@ services:
      - NODERED_USERDIR=/home/nodered/.node-red
      - NODERED_SETTINGS=/home/nodered/.node-red/settings.js
      - NODERED_CREDENTIAL_SECRETS=changeme
-====
+----
 
 .Environment variables and defaults:
 * NODERED_FLOWS=/data/flows.json
