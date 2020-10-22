@@ -9,6 +9,8 @@ This uses blocks
 - WebSocket
 - Telegram in/out 
 
+image:chat-queue-telegram.png[]
+
 # Flow
 
 # How-To
