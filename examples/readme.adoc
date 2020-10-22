@@ -7,15 +7,26 @@ Hera are few other examples from this reporsitory:
 .CSV file read
 image:basics-csv-calendar-events/csv-calendar-events.png[link="basics-csv-calendar-events"]
 
+// .HTTP API & ElasticSearch storage for contact creation/identification
+// image:basics-elasticsearch-http-contacts-api/contacts-api.png[link="basics-elasticsearch-http-contacts-api"]
+
 .HTTP API & MongoDB storage for contact creation/identification
 image:basics-mongodb-http-contacts-api/contacts-api.png[link="basics-mongodb-http-contacts-api"]
 
+// .HTTP API & Redis storage for a scheduler API
+// image:basics-redis-http-scheduler-api[link="basics-redis-http-scheduler-api"]
 
-.IoT - interfacing with devices
-- link:gateways-zwave/flows-zwave-switch-onoff.json[ZWave sample]
+// .Example Telegram usage
+// image:basics-telegram[link="basics-telegram"]
 
-.Advanced flows
-- link:chat-queue-telegram[Chat Websocket + REST API + Telegram]
+// .Using WebSockets in Chat Room - example from FRED portal
+// image:basics-websockets-chat-sentiment[link="basics-websockets-chat-sentiment"]
+
+// .Advanced flows
+// - link:chat-queue-telegram[Chat Websocket + REST API + Telegram]
+
+.IoT - interfacing with ZWave
+image:gateways-zwave/nodered-zwave-debug.png[link="gateways-zwave"]
 
 .node-red-node-feedparser
 image:node-red-contrib-feedparser/node-red-contrib-feedparser.png[link="node-red-contrib-feedparser"]
