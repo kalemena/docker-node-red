@@ -2,7 +2,7 @@
 
 This is a sample of using link:https://phoscon.de/en/conbee2/[Zigbee USB key] with sensor devices (e.g. Xiaomi).
 
-image:screenshot-zigbee-nodered[]
+image:screenshot-zigbee-nodered.png[]
 
 = Pre-requisits
 

@@ -25,7 +25,10 @@ image:basics-mongodb-http-contacts-api/contacts-api.png[link="basics-mongodb-htt
 // .Advanced flows
 // - link:chat-queue-telegram[Chat Websocket + REST API + Telegram]
 
-.IoT - interfacing with ZWave
+.ZigBee devices 
+image:gateways-zigbee/screenshot-zigbee-nodered.png[link="gateways-zigbee"]
+
+.ZWave devices
 image:gateways-zwave/nodered-zwave-debug.png[link="gateways-zwave"]
 
 .node-red-node-feedparser
