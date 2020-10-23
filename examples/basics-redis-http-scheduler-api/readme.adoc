@@ -1,14 +1,16 @@
-# What is this example?
+= What is this example?
 
 This is a sample of using Redis imported from node block example.
 
 IMPORTANT: configuration was not explained anywhere for this Node-RED block. For correct usage, the configuration for redis should have option as json with values *host:redis*
 
-# Flow
+image:redis-http-scheduler-api.png[]
 
-# How-To
+= Flow
 
-## Environment
+== How-To
+
+=== Environment
 
 Build the few dependencies:
 
@@ -26,7 +28,7 @@ Cleanup everything (including database):
 
     $ docker-compose down -v
 
-## Task API
+=== Task API
 
 Creating tasks:
 
@@ -84,6 +86,6 @@ Delete only one task:
     100     2  100     2    0     0    333      0 --:--:-- --:--:-- --:--:--   333
     {}
 
-# References
+= References
 
 link:https://ioredis.readthedocs.io/en/latest/API/[ioRedis docs]
