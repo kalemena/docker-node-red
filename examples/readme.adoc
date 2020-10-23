@@ -5,34 +5,34 @@ Hera are few other examples from this reporsitory:
 == Simple flows
 
 .CSV file read
-image:basics-csv-calendar-events/csv-calendar-events.png[link="basics-csv-calendar-events"]
+image:basics-csv-calendar-events/csv-calendar-events.png[link="basics-csv-calendar-events", 640,320]
 
 // .HTTP API & ElasticSearch storage for contact creation/identification
 // image:basics-elasticsearch-http-contacts-api/contacts-api.png[link="basics-elasticsearch-http-contacts-api"]
 
 .HTTP API & MongoDB storage for contact creation/identification
-image:basics-mongodb-http-contacts-api/contacts-api.png[link="basics-mongodb-http-contacts-api"]
+image:basics-mongodb-http-contacts-api/contacts-api.png[link="basics-mongodb-http-contacts-api", 640,320]
 
 // .HTTP API & Redis storage for a scheduler API
 // image:basics-redis-http-scheduler-api[link="basics-redis-http-scheduler-api"]
 
 .Telegram usage
-image:basics-telegram/basics-telegram.png[link="basics-telegram"]
+image:basics-telegram/basics-telegram.png[link="basics-telegram", 640,320]
 
 // .Using WebSockets in Chat Room - example from FRED portal
 // image:basics-websockets-chat-sentiment[link="basics-websockets-chat-sentiment"]
 
 .Advanced flows - websocket + telegram + redis
-image:chat-queue-telegram/chat-queue-telegram.png[link="chat-queue-telegram"]
+image:chat-queue-telegram/chat-queue-telegram.png[link="chat-queue-telegram", 640,320]
 
 .ZigBee devices 
-image:gateways-zigbee/screenshot-zigbee-nodered.png[link="gateways-zigbee"]
+image:gateways-zigbee/screenshot-zigbee-nodered.png[link="gateways-zigbee", 640,320]
 
 .ZWave devices
-image:gateways-zwave/nodered-zwave-debug.png[link="gateways-zwave"]
+image:gateways-zwave/nodered-zwave-debug.png[link="gateways-zwave", 640,320]
 
 .node-red-node-feedparser
-image:node-red-contrib-feedparser/node-red-contrib-feedparser.png[link="node-red-contrib-feedparser"]
+image:node-red-contrib-feedparser/node-red-contrib-feedparser.png[link="node-red-contrib-feedparser", 640,320]
 
 == Other example based on my contribs
 
