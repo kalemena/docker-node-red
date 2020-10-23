@@ -1,8 +1,10 @@
-# What is this example?
+= What is this example?
 
 This is a sample of using Telegram.
 
-# How-To
+image:basics-telegram.png[]
+
+== How-To
 
 IMPORTANT: At first run, the telegram bot is not initialized. You need to open Telegram config and fill-in your token key as provided by BotFather.
 
@@ -15,7 +17,7 @@ To test bot, from you Telegram client:
 * Start conversation with your named bot
 * Enter one of the Telegram question (e.g. */help*, */location*, */contact*, etc)
 
-## Environment
+== Environment
 
 Build the few dependencies:
 

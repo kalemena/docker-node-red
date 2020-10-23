@@ -16,8 +16,8 @@ image:basics-mongodb-http-contacts-api/contacts-api.png[link="basics-mongodb-htt
 // .HTTP API & Redis storage for a scheduler API
 // image:basics-redis-http-scheduler-api[link="basics-redis-http-scheduler-api"]
 
-// .Example Telegram usage
-// image:basics-telegram[link="basics-telegram"]
+.Telegram usage
+image:basics-telegram/basics-telegram.png[link="basics-telegram"]
 
 // .Using WebSockets in Chat Room - example from FRED portal
 // image:basics-websockets-chat-sentiment[link="basics-websockets-chat-sentiment"]
