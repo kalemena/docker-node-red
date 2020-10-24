@@ -10,6 +10,9 @@ image:basics-csv-calendar-events/csv-calendar-events.png[link="basics-csv-calend
 // .HTTP API & ElasticSearch storage for contact creation/identification
 // image:basics-elasticsearch-http-contacts-api/contacts-api.png[link="basics-elasticsearch-http-contacts-api"]
 
+.Sunrise/Sunset node
+image:sunrise.png[link="basics-hello", 640,320]
+
 .HTTP API & MongoDB storage for contact creation/identification
 image:basics-mongodb-http-contacts-api/contacts-api.png[link="basics-mongodb-http-contacts-api", 640,320]
 

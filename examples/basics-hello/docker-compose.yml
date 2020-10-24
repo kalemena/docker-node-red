@@ -12,7 +12,7 @@ services:
      # - /home/nodered/.node-red/settings.js      # Default Settings file
      # - /data/flows.json                         # Default Flows file
      # - /home/nodered/.node-red/flows_cred.json  # Defaults credentials
-     - ./data:/data
+     - .:/data
 # Examples of mounting USB devices
 #    devices:
 #     - "/dev/ttyUSB0:/dev/ttyCurrenCost"
