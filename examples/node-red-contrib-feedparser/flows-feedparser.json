@@ -9,7 +9,6 @@
     {
         "id": "c38452a5.4f84e8",
         "type": "mqtt-broker",
-        "z": "",
         "name": "mqtt",
         "broker": "mqtt",
         "port": "1883",
@@ -55,7 +54,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1000,
+        "x": 1010,
         "y": 120,
         "wires": []
     },
