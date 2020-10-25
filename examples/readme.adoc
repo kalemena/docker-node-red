@@ -1,6 +1,6 @@
 = Examples
 
-Hera are few other examples from this reporsitory:
+Here are few other examples from this reporsitory:
 
 == Simple flows
 
@@ -35,7 +35,7 @@ image:gateways-zigbee/screenshot-zigbee-nodered.png[link="gateways-zigbee", 640,
 image:gateways-zwave/nodered-zwave-debug.png[link="gateways-zwave", 640,320]
 
 .node-red-node-feedparser
-image:node-red-contrib-feedparser/node-red-contrib-feedparser.png[link="node-red-contrib-feedparser", 640,240]
+image:node-red-contrib-feedparser/node-red-contrib-feedparser.png[link="node-red-contrib-feedparser", 640,180]
 
 == Other example based on my contribs
 
