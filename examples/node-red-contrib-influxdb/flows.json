@@ -1,0 +1,97 @@
+[
+    {
+        "id": "ee322aa5.04059",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "2b245d4f.5baf12",
+        "type": "influxdb",
+        "hostname": "influxdb",
+        "port": "8086",
+        "protocol": "http",
+        "database": "aTimeSeries",
+        "name": "",
+        "usetls": false,
+        "tls": ""
+    },
+    {
+        "id": "e2d21338.ab7f58",
+        "type": "inject",
+        "z": "ee322aa5.04059",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 80,
+        "wires": [
+            [
+                "634375f2.32e9d4",
+                "f14893fc.d042b8"
+            ]
+        ]
+    },
+    {
+        "id": "634375f2.32e9d4",
+        "type": "debug",
+        "z": "ee322aa5.04059",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 490,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "f14893fc.d042b8",
+        "type": "function",
+        "z": "ee322aa5.04059",
+        "name": "",
+        "func": "msg.payload = Math.random()*10;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 410,
+        "y": 160,
+        "wires": [
+            [
+                "de1fd091.09b5c"
+            ]
+        ]
+    },
+    {
+        "id": "de1fd091.09b5c",
+        "type": "influxdb out",
+        "z": "ee322aa5.04059",
+        "influxdb": "2b245d4f.5baf12",
+        "name": "",
+        "measurement": "test",
+        "precision": "",
+        "retentionPolicy": "",
+        "x": 710,
+        "y": 160,
+        "wires": []
+    }
+]

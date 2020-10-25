@@ -1,0 +1,23 @@
+= node-red-contrib-influxdb
+
+This is a sample of using node-red-contrib-influxdb to push and graph time metrics.
+
+image:node-red-contrib-influxdb.png[]
+
+== Environment
+
+Build the few dependencies:
+
+    $ docker-compose build
+
+Start the flow:
+
+    $ docker-compose up -d
+
+Stop everything:
+
+    $ docker-compose stop
+
+Cleanup everything (including database):
+
+    $ docker-compose down -v

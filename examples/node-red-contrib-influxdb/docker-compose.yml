@@ -1,0 +1,46 @@
+version: '3.7'
+
+services:  
+
+  influxdb:
+    image: influxdb
+    user: "${UID}:${GID}"
+    # ports:
+    #   - "8083:8083"
+    #   - "8086:8086"
+    volumes: 
+      - ./var/lib/influxdb:/var/lib/influxdb:rw
+      - ./var/lib/.influx_history:/.influx_history
+    environment:
+      INFLUXDB_ADMIN_ENABLED: "true"
+      INFLUXDB_ADMIN_USER: ${INFLUXDB_ADMIN_USER:-default}
+      INFLUXDB_ADMIN_PASSWORD: ${INFLUXDB_ADMIN_PASSWORD:-password}
+      INFLUXDB_MONITOR_STORE_ENABLED: "false"
+
+  grafana:
+    image: grafana/grafana
+    user: "${UID}:${GID}"
+    ports:
+      - "${GRAFANA_PORT:-3000}:3000"
+    volumes:
+  #    - ./etc/grafana:/etc/grafana
+      - ./var/lib/grafana:/var/lib/grafana
+      - ./var/log/grafana:/var/log/grafana
+    environment:
+      GF_SECURITY_ADMIN_USER: ${GRAFANA_ADMIN_USER:-default}
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:-password}
+
+  nodered:
+    #image: kalemena/node-red:latest
+    build: .
+    restart: always
+    ports:
+     - "${NODERED_PORT:-1880}:1880"
+    volumes:
+     - .:/data
+     # - ./workspace/nodered:/home/nodered/.node-red
+     # - ./workspace/log:/var/log
+    environment:
+     FLOWS: /data/flows.json
+     NODERED_CREDENTIAL_SECRETS: ${NODERED_CREDENTIAL_SECRETS:-xoxoxoxo}
+     
