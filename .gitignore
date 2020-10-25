@@ -11,3 +11,5 @@ package.json
 *.db
 session.default
 *.bkp
+
+private
