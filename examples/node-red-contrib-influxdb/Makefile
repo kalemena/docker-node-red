@@ -11,8 +11,8 @@ images-build:
 	docker-compose build
 
 init-influxdb:
-	mkdir -p var/lib/influxdb/meta
-	mkdir -p etc/influxdb
+	mkdir -p $(CURDIR)/var/lib/influxdb/meta
+	# mkdir -p $(CURDIR)/etc/influxdb/scripts
 	# generates a default config (to be customized if needed)
 	docker run --rm influxdb influxd config | tee etc/influxdb/influxdb.conf > /dev/null
 	touch var/lib/.influx_history
