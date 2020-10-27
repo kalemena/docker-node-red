@@ -12,7 +12,7 @@
         "hostname": "influxdb",
         "port": "8086",
         "protocol": "http",
-        "database": "aTimeSeries",
+        "database": "weather",
         "name": "",
         "usetls": false,
         "tls": ""
@@ -90,7 +90,7 @@
         "measurement": "test",
         "precision": "",
         "retentionPolicy": "",
-        "x": 710,
+        "x": 690,
         "y": 160,
         "wires": []
     }

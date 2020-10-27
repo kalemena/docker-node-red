@@ -5,9 +5,8 @@ services:
   influxdb:
     image: influxdb
     user: "${UID}:${GID}"
-    # ports:
-    #   - "8083:8083"
-    #   - "8086:8086"
+    ports:
+      - "${INFLUXDB_PORT:-8086}:8086"
     volumes: 
       - ./var/lib/influxdb:/var/lib/influxdb:rw
       - ./var/lib/.influx_history:/.influx_history
