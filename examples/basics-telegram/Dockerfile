@@ -1,3 +1,3 @@
-FROM kalemena/node-red:1.0.2
+FROM kalemena/node-red:latest
 
 RUN npm i   node-red-contrib-telegrambot;

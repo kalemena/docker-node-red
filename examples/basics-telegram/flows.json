@@ -9,8 +9,7 @@
     {
         "id": "28c31e1f.031b7a",
         "type": "telegram bot",
-        "z": "",
-        "botname": "Ghost",
+        "botname": "BasicsTelegram",
         "usernames": "",
         "chatids": "",
         "baseapiurl": "",
@@ -27,6 +26,7 @@
         "privatekey": "",
         "certificate": "",
         "useselfsignedcertificate": false,
+        "sslterminated": false,
         "verboselogging": true
     },
     {

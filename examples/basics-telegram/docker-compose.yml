@@ -9,7 +9,13 @@ services:
      - "${NODERED_PORT:-1880}:1880"
     volumes:
      - .:/data
-     - ./etc/node-red:/root/.node-red
-     - ./var/log:/var/log
+     - ./etc/node-red/flows_cred.json:/home/nodered/.node-red/flows_cred.json:rw
+    # - ./var/log:/var/log
     environment:
-     - FLOWS=/data/flows.json
+     - NODERED_FLOWS=/data/flows.json
+     - NODERED_USERDIR=/home/nodered/.node-red
+     - NODERED_SETTINGS=/home/nodered/.node-red/settings.js
+     - NODERED_CREDENTIAL_SECRETS=changeme
+     - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN:-changeme}
+    env_file:
+     - .env-example
