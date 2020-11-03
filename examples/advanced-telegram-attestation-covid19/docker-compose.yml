@@ -1,0 +1,31 @@
+version: '3.7'
+
+services:  
+
+  nodered:
+    build: .
+    restart: always
+    ports:
+     - "${NODERED_PORT:-1880}:1880"
+    volumes:
+     - .:/data
+     - ./etc/node-red/.node-red:/home/nodered/.node-red
+    environment:
+     - NODERED_FLOWS=/data/flows.json
+     - NODERED_USERDIR=/home/nodered/.node-red
+     - NODERED_SETTINGS=/home/nodered/.node-red/settings.js
+     - NODERED_CREDENTIAL_SECRETS=changeme
+     - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN:-changeme}
+    env_file:
+     - .env
+
+  attestation-covid19:
+    image: kalemena/attestation-covid19:latest   
+    #volumes:
+    #  - ./tidhome/data/covid/config_clement.inc:/data/config/config.inc:ro
+    # ports:
+    #   - 5000:5000
+    networks:
+      default:
+        aliases:
+          - attestation.covid.local
