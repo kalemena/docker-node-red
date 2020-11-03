@@ -1,0 +1,333 @@
+[
+    {
+        "id": "d6af186b.004918",
+        "type": "tab",
+        "label": "Telegram Example",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "28c31e1f.031b7a",
+        "type": "telegram bot",
+        "botname": "BasicsTelegram",
+        "usernames": "",
+        "chatids": "",
+        "baseapiurl": "",
+        "updatemode": "polling",
+        "pollinterval": "3000",
+        "usesocks": false,
+        "sockshost": "",
+        "socksport": "6667",
+        "socksusername": "anonymous",
+        "sockspassword": "",
+        "bothost": "",
+        "localbotport": "8443",
+        "publicbotport": "8443",
+        "privatekey": "",
+        "certificate": "",
+        "useselfsignedcertificate": false,
+        "sslterminated": false,
+        "verboselogging": true
+    },
+    {
+        "id": "e9319f35.5786b8",
+        "type": "catch",
+        "z": "d6af186b.004918",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 140,
+        "y": 120,
+        "wires": [
+            [
+                "fa07d08a.86bc48"
+            ]
+        ]
+    },
+    {
+        "id": "fa07d08a.86bc48",
+        "type": "debug",
+        "z": "d6af186b.004918",
+        "name": "error",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 330,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "a26fd5ef.fa8028",
+        "type": "comment",
+        "z": "d6af186b.004918",
+        "name": "Error Handling",
+        "info": "",
+        "x": 150,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "cb997968.6edb7",
+        "type": "telegram sender",
+        "z": "d6af186b.004918",
+        "name": "Send",
+        "bot": "28c31e1f.031b7a",
+        "x": 1310,
+        "y": 220,
+        "wires": [
+            [
+                "4f221dec.6cfee4"
+            ]
+        ]
+    },
+    {
+        "id": "4f221dec.6cfee4",
+        "type": "debug",
+        "z": "d6af186b.004918",
+        "name": "Status",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 1460,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "4ea74386.1933f4",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "msg",
+        "func": "msg.payload = {\n    \"chatId\": msg.topic,\n    \"type\": \"document\",\n    \"content\": \"/tmp/attestation.pdf\"\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1170,
+        "y": 260,
+        "wires": [
+            [
+                "cb997968.6edb7"
+            ]
+        ]
+    },
+    {
+        "id": "aed86f0.948f01",
+        "type": "http request",
+        "z": "d6af186b.004918",
+        "name": "/attestation",
+        "method": "POST",
+        "ret": "bin",
+        "paytoqs": "ignore",
+        "url": "http://attestation.covid.local:5000/attestation",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 830,
+        "y": 260,
+        "wires": [
+            [
+                "fc0ffc19.9960d8"
+            ]
+        ]
+    },
+    {
+        "id": "fc0ffc19.9960d8",
+        "type": "file",
+        "z": "d6af186b.004918",
+        "name": "",
+        "filename": "/tmp/attestation.pdf",
+        "appendNewline": false,
+        "createDir": false,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 1010,
+        "y": 260,
+        "wires": [
+            [
+                "4ea74386.1933f4"
+            ]
+        ]
+    },
+    {
+        "id": "a7ab4c26.76db98",
+        "type": "comment",
+        "z": "d6af186b.004918",
+        "name": "Covid",
+        "info": "",
+        "x": 130,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "e697b174.9764a",
+        "type": "inject",
+        "z": "d6af186b.004918",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "xxxx",
+        "payload": "{\"prenom\":\"John\",\"nom\":\"Doe\",\"naissance_date\":\"01/02/1903\",\"naissance_lieu\":\"Even\",\"adresse\":\"123, rue du ciel\",\"motif_travail\":\"\",\"motif_courses\":\"\",\"motif_sante\":\"\",\"motif_famille\":\"\",\"motif_handicap\":\"\",\"motif_sport\":\"\",\"motif_judiciaire\":\"\",\"motif_missions\":\"x\",\"motif_enfants\":\"\",\"fait_lieu\":\"Even\"}",
+        "payloadType": "json",
+        "x": 670,
+        "y": 300,
+        "wires": [
+            [
+                "aed86f0.948f01"
+            ]
+        ]
+    },
+    {
+        "id": "c720388.9a36648",
+        "type": "telegram command",
+        "z": "d6af186b.004918",
+        "name": "/covid",
+        "command": "/covid",
+        "bot": "28c31e1f.031b7a",
+        "strict": false,
+        "hasresponse": true,
+        "useRegex": false,
+        "x": 130,
+        "y": 220,
+        "wires": [
+            [
+                "a6ed36a3.328918"
+            ],
+            [
+                "947521a5.0fcf58"
+            ]
+        ]
+    },
+    {
+        "id": "d68f3481.a4af5",
+        "type": "change",
+        "z": "d6af186b.004918",
+        "name": "template",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"prenom\":\"John\",\"nom\":\"Doe\",\"naissance_date\":\"01/02/1903\",\"naissance_lieu\":\"Even\",\"adresse\":\"123, rue du ciel\",\"fait_lieu\":\"Even\",\"motif_travail\":\"\",\"motif_courses\":\"\",\"motif_sante\":\"\",\"motif_famille\":\"\",\"motif_handicap\":\"\",\"motif_sport\":\"\",\"motif_judiciaire\":\"\",\"motif_missions\":\"\",\"motif_enfants\":\"\"}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "originalMessage.from.id",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 460,
+        "y": 260,
+        "wires": [
+            [
+                "b33d9a96.5acc28"
+            ]
+        ]
+    },
+    {
+        "id": "a6ed36a3.328918",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "Quel motif ?",
+        "func": "context.global.keyboard = { pending : true };\n\nvar opts = {\n  reply_to_message_id: msg.payload.messageId,\n  reply_markup: JSON.stringify({\n    keyboard: [\n      ['travail'],\n      ['courses'],\n      ['sante'],\n      ['famille'],\n      ['handicap'],\n      ['sport'],\n      ['judiciaire'],\n      ['missions'],\n      ['enfants'],\n      ],\n      'resize_keyboard' : true, \n      'one_time_keyboard' : true\n  })\n};\n\nmsg.payload.content = 'Quel motif ?';\nmsg.payload.options = opts;\n\nreturn [ msg ];",
+        "outputs": "1",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 290,
+        "y": 220,
+        "wires": [
+            [
+                "c7cca884.03ea78"
+            ]
+        ]
+    },
+    {
+        "id": "947521a5.0fcf58",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "motif = x",
+        "func": "if(context.global.keyboard.pending) {\n    context.global.keyboard = { pending : false };\n    msg.motif = msg.payload.content\n}\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 280,
+        "y": 260,
+        "wires": [
+            [
+                "d68f3481.a4af5"
+            ]
+        ]
+    },
+    {
+        "id": "b33d9a96.5acc28",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "set motif",
+        "func": "var motifKey = \"motif_\" + msg.motif\nmsg.payload[motifKey] = \"x\";\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 660,
+        "y": 260,
+        "wires": [
+            [
+                "aed86f0.948f01"
+            ]
+        ]
+    },
+    {
+        "id": "c7cca884.03ea78",
+        "type": "change",
+        "z": "d6af186b.004918",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "originalMessage.from.id",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 470,
+        "y": 220,
+        "wires": [
+            [
+                "cb997968.6edb7"
+            ]
+        ]
+    }
+]
