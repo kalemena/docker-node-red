@@ -6,8 +6,7 @@ image:basics-telegram.png[]
 
 == How-To
 
-IMPORTANT: At first run, the telegram bot is not initialized. You need to open Telegram config and fill-in your token key as provided by BotFather.
-
+* Edit .env file and set valid value for TELEGRAM_BOT_TOKEN
 * Start environment as explained below
 * Browse link:http://localhost:1880[]
 * Edit config if needed

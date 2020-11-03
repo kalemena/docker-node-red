@@ -18,4 +18,4 @@ services:
      - NODERED_CREDENTIAL_SECRETS=changeme
      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN:-changeme}
     env_file:
-     - .env-example
+     - .env

@@ -207,6 +207,8 @@
         "func": "var options = {\n    \"parse_mode\": \"Markdown\",\n    \"reply_markup\": {\n        \"one_time_keyboard\": true,\n        \"keyboard\": [\n            [{\n                text: \"Using my phone number\",\n                request_contact: true\n            }], \n            [\"Cancel\"]\n        ]\n    }\n};\n\nreturn {\n    payload: {\n        \"chatId\": msg.payload.chatId,\n        \"type\": \"message\",\n        \"options\": options,\n        \"content\": \"How can we contact you?\"\n    }\n}\n",
         "outputs": 1,
         "noerr": 0,
+        "initialize": "",
+        "finalize": "",
         "x": 390,
         "y": 160,
         "wires": [
@@ -355,9 +357,6 @@
         "wires": [
             [
                 "d8a99ae.2217ee8"
-            ],
-            [
-                "e711fb2a.517ed"
             ]
         ]
     },
@@ -552,9 +551,11 @@
         "type": "function",
         "z": "d6af186b.004918",
         "name": "Prepare image",
-        "func": "msg.filename = '/data/shadock.jpg';\nmsg.payload = { \n chatId: msg.payload.chatId,\n type: 'photo',\n file: msg.filename,\n caption: 'Snapshot from camera.',\n content: 'Test pic'\n};\nreturn msg;",
+        "func": "msg.payload = {\n    \"chatId\": msg.originalMessage.from.id,\n    \"type\": \"photo\",\n    \"content\": \"/data/shadock.jpg\"\n}\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
+        "initialize": "",
+        "finalize": "",
         "x": 380,
         "y": 800,
         "wires": [
@@ -567,9 +568,9 @@
         "id": "e28e3e.ff7a69c",
         "type": "comment",
         "z": "d6af186b.004918",
-        "name": "Picture  FIXME",
+        "name": "Picture",
         "info": "",
-        "x": 100,
+        "x": 80,
         "y": 760,
         "wires": []
     },
@@ -591,15 +592,14 @@
         "command": "/pics",
         "bot": "28c31e1f.031b7a",
         "strict": false,
+        "hasresponse": false,
+        "useRegex": false,
         "x": 190,
         "y": 800,
         "wires": [
             [
                 "e98b93d0.678e48",
                 "b7966028.8e0f48"
-            ],
-            [
-                "9bf010ce.13f4a8"
             ]
         ]
     },
