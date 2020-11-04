@@ -1,0 +1,8 @@
+= Telegram Bot - Attestation COVID 19
+
+Cette exemple démontre la création d'un Chat Bot permettant de demander une attestation COVID 19 de déplacement pour la France.
+
+image:advanced-telegram-attestation-covid19.png[]
+
+IMPORTANT: ce projet fait appel au code de création d'attestation PDF: link:https://github.com/kalemena/attestation-covid19[]
+
