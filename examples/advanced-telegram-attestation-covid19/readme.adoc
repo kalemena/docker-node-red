@@ -6,6 +6,38 @@ image:advanced-telegram-attestation-covid19.png[]
 
 IMPORTANT: ce projet fait appel au code de création d'attestation PDF: link:https://github.com/kalemena/attestation-covid19[]
 
+== Comment faire?
+
+Il faut:
+
+* link:https://core.telegram.org/bots#creating-a-new-bot[Créer un Telegram Bot]
+* Editer le fichier *.env* et positioner la valeur précédement généré pour *TELEGRAM_BOT_TOKEN*
+* Construire l'environement
+
+    $ docker-compose build
+
+* Démarrer l'environment
+
+    $ docker-compose up -d
+
+* Ouvrir un navigateur sur link:http://localhost:1880[]
+
+* Ouvrir un des noeuds Telegram (en bleu) et éditer la configuration pour positioner API TOKEN à *${TELEGRAM_BOT_TOKEN}* (ou le vrai token). +
+Positioner les filtres sur les autorisations au passage si besoin.
+
+image:advanced-telegram-attestation-covid19-edit0.png[]
+
+* Ouvrir le noeud *template* pour configurer vos détails d'adresse
+
+image:advanced-telegram-attestation-covid19-edit1.png[]
+image:advanced-telegram-attestation-covid19-edit2.png[]
+
+* Commencer une conversation depuis un client Telegram vers votre Telegram Bot
+
+* Demander */covid*. Le Bot répond par une question *Quel motif?*
+
+* Répondre. L'attestation arrivera sous peu en PDF.
+
 == Environment
 
 Construire l'environement:
