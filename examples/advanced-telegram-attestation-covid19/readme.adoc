@@ -6,3 +6,23 @@ image:advanced-telegram-attestation-covid19.png[]
 
 IMPORTANT: ce projet fait appel au code de création d'attestation PDF: link:https://github.com/kalemena/attestation-covid19[]
 
+== Environment
+
+Construire l'environement:
+
+    $ docker-compose build
+
+Démarrer l'environement:
+
+    $ docker-compose up -d
+
+Stoper l'environement:
+
+    $ docker-compose stop
+
+Nettoyer l'environement:
+
+    $ docker-compose down -v
+
+
+
