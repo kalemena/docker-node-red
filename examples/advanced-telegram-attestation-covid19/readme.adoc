@@ -11,7 +11,7 @@ IMPORTANT: ce projet fait appel au code de création d'attestation PDF: link:htt
 Il faut:
 
 * link:https://core.telegram.org/bots#creating-a-new-bot[Créer un Telegram Bot]
-* Editer le fichier *.env* et positioner la valeur précédement généré pour *TELEGRAM_BOT_TOKEN*
+* Editer le fichier *.env* et positioner la valeur précédement générée pour *TELEGRAM_BOT_TOKEN*
 * Construire l'environement
 
     $ docker-compose build
@@ -36,7 +36,7 @@ image:advanced-telegram-attestation-covid19-edit2.png[]
 
 * Demander */covid*. Le Bot répond par une question *Quel motif?*
 
-* Répondre. L'attestation arrivera sous peu en PDF.
+* Répondre un des choix proposés. L'attestation arrivera sous peu en PDF.
 
 == Environment
 
