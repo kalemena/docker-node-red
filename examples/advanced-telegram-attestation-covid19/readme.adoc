@@ -32,11 +32,15 @@ image:advanced-telegram-attestation-covid19-edit0.png[]
 image:advanced-telegram-attestation-covid19-edit1.png[]
 image:advanced-telegram-attestation-covid19-edit2.png[]
 
+* Cliquer *Deploy*. Normalement les noeuds Telegram doivent afficher une note verte *"connected"*
+
 * Commencer une conversation depuis un client Telegram vers votre Telegram Bot
 
 * Demander */covid*. Le Bot répond par une question *Quel motif?*
 
 * Répondre un des choix proposés. L'attestation arrivera sous peu en PDF.
+
+TIP: Maintenant, vous pouvez aussi ajouter des noeuds *Inject* qui peuvent initier la création d'attestation avec une rêgle de jour et d'heure précise.
 
 == Environment
 
