@@ -6,6 +6,10 @@ image:advanced-telegram-attestation-covid19.png[]
 
 IMPORTANT: ce projet fait appel au code de création d'attestation PDF: link:https://github.com/kalemena/attestation-covid19[]
 
+.Exemple de Chat
+image:advanced-telegram-attestation-covid19-chat.png[]
+
+
 == Comment faire?
 
 Il faut:
