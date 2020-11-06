@@ -75,7 +75,7 @@
         "z": "d6af186b.004918",
         "name": "Send",
         "bot": "28c31e1f.031b7a",
-        "x": 1310,
+        "x": 1170,
         "y": 220,
         "wires": [
             [
@@ -94,7 +94,7 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 1460,
+        "x": 1320,
         "y": 220,
         "wires": []
     },
@@ -108,7 +108,7 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 1170,
+        "x": 1030,
         "y": 260,
         "wires": [
             [
@@ -129,7 +129,7 @@
         "persist": false,
         "proxy": "",
         "authType": "",
-        "x": 830,
+        "x": 690,
         "y": 260,
         "wires": [
             [
@@ -147,7 +147,7 @@
         "createDir": false,
         "overwriteFile": "true",
         "encoding": "none",
-        "x": 1010,
+        "x": 870,
         "y": 260,
         "wires": [
             [
@@ -186,7 +186,7 @@
         "topic": "xxxx",
         "payload": "{\"prenom\":\"John\",\"nom\":\"Doe\",\"naissance_date\":\"01/02/1903\",\"naissance_lieu\":\"Even\",\"adresse\":\"123, rue du ciel\",\"motif_travail\":\"\",\"motif_courses\":\"\",\"motif_sante\":\"\",\"motif_famille\":\"\",\"motif_handicap\":\"\",\"motif_sport\":\"\",\"motif_judiciaire\":\"\",\"motif_missions\":\"x\",\"motif_enfants\":\"\",\"fait_lieu\":\"Even\"}",
         "payloadType": "json",
-        "x": 670,
+        "x": 530,
         "y": 300,
         "wires": [
             [
@@ -225,7 +225,7 @@
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "{\"prenom\":\"John\",\"nom\":\"Doe\",\"naissance_date\":\"01/02/1903\",\"naissance_lieu\":\"Even\",\"adresse\":\"123, rue du ciel\",\"fait_lieu\":\"Even\",\"motif_travail\":\"\",\"motif_courses\":\"\",\"motif_sante\":\"\",\"motif_famille\":\"\",\"motif_handicap\":\"\",\"motif_sport\":\"\",\"motif_judiciaire\":\"\",\"motif_missions\":\"\",\"motif_enfants\":\"\"}",
+                "to": "{\"prenom\":\"John\",\"nom\":\"Doe\",\"naissance_date\":\"01/02/1903\",\"naissance_lieu\":\"Even\",\"adresse\":\"123, rue du ciel\",\"fait_lieu\":\"Even\"}",
                 "tot": "json"
             },
             {
@@ -233,6 +233,13 @@
                 "p": "topic",
                 "pt": "msg",
                 "to": "originalMessage.from.id",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload.motif",
+                "pt": "msg",
+                "to": "motif",
                 "tot": "msg"
             }
         ],
@@ -245,7 +252,7 @@
         "y": 260,
         "wires": [
             [
-                "b33d9a96.5acc28"
+                "aed86f0.948f01"
             ]
         ]
     },
@@ -254,7 +261,7 @@
         "type": "function",
         "z": "d6af186b.004918",
         "name": "Quel motif ?",
-        "func": "context.global.keyboard = { pending : true };\n\nvar opts = {\n  reply_to_message_id: msg.payload.messageId,\n  reply_markup: JSON.stringify({\n    keyboard: [\n      ['travail'],\n      ['courses'],\n      ['sante'],\n      ['famille'],\n      ['handicap'],\n      ['sport'],\n      ['judiciaire'],\n      ['missions'],\n      ['enfants'],\n      ],\n      'resize_keyboard' : true, \n      'one_time_keyboard' : true\n  })\n};\n\nmsg.payload.content = 'Quel motif ?';\nmsg.payload.options = opts;\n\nreturn [ msg ];",
+        "func": "context.global.keyboard = { pending : true };\n\nvar opts = {\n  reply_to_message_id: msg.payload.messageId,\n  reply_markup: JSON.stringify({\n    keyboard: [\n      ['travail', 'courses', 'sante'],\n      ['famille', 'handicap', 'sport'],\n      ['judiciaire', 'missions', 'enfants'],\n      ],\n      'resize_keyboard' : true, \n      'one_time_keyboard' : true\n  })\n};\n\nmsg.payload.content = 'Quel motif ?';\nmsg.payload.options = opts;\n\nreturn [ msg ];",
         "outputs": "1",
         "noerr": 0,
         "initialize": "",
@@ -282,24 +289,6 @@
         "wires": [
             [
                 "d68f3481.a4af5"
-            ]
-        ]
-    },
-    {
-        "id": "b33d9a96.5acc28",
-        "type": "function",
-        "z": "d6af186b.004918",
-        "name": "set motif",
-        "func": "var motifKey = \"motif_\" + msg.motif\nmsg.payload[motifKey] = \"x\";\nreturn msg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 660,
-        "y": 260,
-        "wires": [
-            [
-                "aed86f0.948f01"
             ]
         ]
     },
