@@ -44,7 +44,14 @@ image:advanced-telegram-attestation-covid19-edit2.png[]
 
 * Répondre un des choix proposés. L'attestation arrivera sous peu en PDF.
 
-TIP: Maintenant, vous pouvez aussi ajouter des noeuds *Inject* qui peuvent initier la création d'attestation avec une rêgle de jour et d'heure précise.
+== Adapter cet exemple
+
+TIP: Maintenant, vous pouvez maintenant adpater cette exemple !
+
+* ajouter des noeuds *Inject* pour automatiser la création d'attestation à des heures précises. + 
+Par exemple à l'heure habituelle de votre sport !
+
+* ajouter des utilisateurs
 
 == Environment
 
