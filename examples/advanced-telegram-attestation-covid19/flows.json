@@ -184,7 +184,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "xxxx",
-        "payload": "{\"prenom\":\"John\",\"nom\":\"Doe\",\"naissance_date\":\"01/02/1903\",\"naissance_lieu\":\"Even\",\"adresse\":\"123, rue du ciel\",\"motif_travail\":\"\",\"motif_courses\":\"\",\"motif_sante\":\"\",\"motif_famille\":\"\",\"motif_handicap\":\"\",\"motif_sport\":\"\",\"motif_judiciaire\":\"\",\"motif_missions\":\"x\",\"motif_enfants\":\"\",\"fait_lieu\":\"Even\"}",
+        "payload": "{\"prenom\":\"John\",\"nom\":\"Doe\",\"naissance_date\":\"01/02/1903\",\"naissance_lieu\":\"Even\",\"adresse\":\"123, rue du ciel\",\"motif\":\"travail\",\"fait_lieu\":\"Even\"}",
         "payloadType": "json",
         "x": 530,
         "y": 300,
