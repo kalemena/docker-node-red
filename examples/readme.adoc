@@ -1,8 +1,11 @@
 = Examples
 
-Here are few other examples from this reporsitory:
+This page lists and links examples. +
+I am using this as sandbox to test each technology before integrating in broader projects.
 
-== Simple flows
+== Flows
+
+Here are few other examples from this reporsitory:
 
 .CSV file read
 image:basics-csv-calendar-events/csv-calendar-events.png[link="basics-csv-calendar-events", 640,320]
@@ -11,7 +14,7 @@ image:basics-csv-calendar-events/csv-calendar-events.png[link="basics-csv-calend
 // image:basics-elasticsearch-http-contacts-api/contacts-api.png[link="basics-elasticsearch-http-contacts-api"]
 
 .Sunrise/Sunset node
-image:sunrise.png[link="basics-hello", 640,320]
+image:basics-hello/sunrise.png[link="basics-hello", 640,320]
 
 .HTTP API & MongoDB storage for contact creation/identification
 image:basics-mongodb-http-contacts-api/contacts-api.png[link="basics-mongodb-http-contacts-api", 640,320]
@@ -21,6 +24,9 @@ image:basics-redis-http-scheduler-api/redis-http-scheduler-api.png[link="basics-
 
 .Telegram usage
 image:basics-telegram/basics-telegram.png[link="basics-telegram", 640,320]
+
+.Advanced flows - Telegram - France Attestation COVID 19
+image:advanced-telegram-attestation-covid19/advanced-telegram-attestation-covid19.png[link="advanced-telegram-attestation-covid19", 640,320]
 
 // .Using WebSockets in Chat Room - example from FRED portal
 // image:basics-websockets-chat-sentiment[link="basics-websockets-chat-sentiment"]
