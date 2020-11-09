@@ -16,7 +16,7 @@ jobs:
         VERSION: "1.2.3"
       run: |
         docker -v
-        docker pull ubuntu:18.04
+        docker pull ubuntu:20.04
         docker pull ${IMAGE}:${VERSION} || true
         cd docker
         docker build --pull --cache-from ${IMAGE}:${VERSION} \
