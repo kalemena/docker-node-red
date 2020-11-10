@@ -32,7 +32,7 @@ image:../examples/basics-telegram/basics-telegram.png[link="basics-telegram", 64
 image:../examples/chat-queue-telegram/chat-queue-telegram.png[link="chat-queue-telegram", 640,320]
 
 .ZigBee devices 
-image:../examples/gateways-zigbee/screenshot-zigbee-nodered.png[link="gateways-zigbee", 640,320]
+image:../examples/integration-gateways-zigbee/screenshot-zigbee-nodered.png[link="integration-gateways-zigbee", 640,320]
 
 .ZWave devices
 image:../examples/gateways-zwave/nodered-zwave-debug.png[link="gateways-zwave", 640,320]
