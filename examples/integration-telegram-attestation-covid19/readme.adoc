@@ -2,13 +2,13 @@
 
 Cette exemple démontre la création d'un Chat Bot permettant de demander une attestation COVID 19 de déplacement pour la France.
 
-image:advanced-telegram-attestation-covid19.png[]
+image:telegram-attestation-covid19.png[]
 
 IMPORTANT: ce projet fait appel au code de création d'attestation PDF: link:https://github.com/kalemena/attestation-covid19[]
 
 .Exemple de Chat
-image:advanced-telegram-attestation-covid19-chat.png[]
-
+image:telegram-attestation-covid19-chat1.png[]
+image:telegram-attestation-covid19-chat2.png[]
 
 == Comment faire?
 
@@ -29,12 +29,12 @@ Il faut:
 * Ouvrir un des noeuds Telegram (en bleu) et éditer la configuration pour positioner API TOKEN à *${TELEGRAM_BOT_TOKEN}* (ou le vrai token). +
 Positioner les filtres sur les autorisations au passage si besoin.
 
-image:advanced-telegram-attestation-covid19-edit0.png[]
+image:telegram-attestation-covid19-edit0.png[]
 
 * Ouvrir le noeud *template* pour configurer vos détails d'adresse
 
-image:advanced-telegram-attestation-covid19-edit1.png[]
-image:advanced-telegram-attestation-covid19-edit2.png[]
+image:telegram-attestation-covid19-edit1.png[]
+image:telegram-attestation-covid19-edit2.png[]
 
 * Cliquer *Deploy*. Normalement les noeuds Telegram doivent afficher une note verte *"connected"*
 

@@ -106,7 +106,7 @@ TIP: Don't forget to click *Deploy* :-)
 
 image:/docs/node-red-examples.png[]
 
-See more link:examples[examples]
+See more link:docs/readme-examples.adoc[Documented examples]
 
 // .To be checked:
 // * node-red-contrib-simple-weekly-scheduler

@@ -1,0 +1,53 @@
+= Examples
+
+This page lists and links examples. +
+I am using this as sandbox to test each technology before integrating in broader projects.
+
+== Flows
+
+Here are few other examples from this reporsitory:
+
+.CSV file read
+image:../examples/basics-csv-calendar-events/csv-calendar-events.png[link="basics-csv-calendar-events", 640,320]
+
+// .HTTP API & ElasticSearch storage for contact creation/identification
+// image:basics-elasticsearch-http-contacts-api/contacts-api.png[link="basics-elasticsearch-http-contacts-api"]
+
+.Sunrise/Sunset node
+image:../examples/basics-hello/sunrise.png[link="basics-hello", 640,260]
+
+.HTTP API & MongoDB storage for contact creation/identification
+image:../examples/basics-mongodb-http-contacts-api/contacts-api.png[link="basics-mongodb-http-contacts-api", 640,320]
+
+.HTTP API & Redis storage for a scheduler API
+image:../examples/basics-redis-http-scheduler-api/redis-http-scheduler-api.png[link="basics-redis-http-scheduler-api", 640,320]
+
+.Telegram usage
+image:../examples/basics-telegram/basics-telegram.png[link="basics-telegram", 640,320]
+
+// .Using WebSockets in Chat Room - example from FRED portal
+// image:../examples/basics-websockets-chat-sentiment[link="basics-websockets-chat-sentiment"]
+
+.Advanced flows - websocket + telegram + redis
+image:../examples/chat-queue-telegram/chat-queue-telegram.png[link="chat-queue-telegram", 640,320]
+
+.ZigBee devices 
+image:../examples/gateways-zigbee/screenshot-zigbee-nodered.png[link="gateways-zigbee", 640,320]
+
+.ZWave devices
+image:../examples/gateways-zwave/nodered-zwave-debug.png[link="gateways-zwave", 640,320]
+
+.node-red-node-feedparser
+image:../examples/node-red-contrib-feedparser/node-red-contrib-feedparser.png[link="node-red-contrib-feedparser", 640,180]
+
+.Integration flows - Telegram - France Attestation COVID 19
+image:../examples/integration-telegram-attestation-covid19/telegram-attestation-covid19.png[link="integration-telegram-attestation-covid19", 640,240]
+
+== Other example based on my contribs
+
+* link:https://github.com/kalemena/node-red-contrib-libphonenumber[Node-Red Contrib LibPhoneNumber]
+* link:https://github.com/kalemena/node-red-contrib-topic-frequencies[Node-Red Contrib Topic Frequencies]
+
+== Monitoring
+
+- link:https://developer.ibm.com/node/2017/07/26/visualize-node-red-flow-performance-using-node-application-metrics/[Plug Monitoring]
