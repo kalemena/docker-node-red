@@ -24,7 +24,7 @@ Il faut:
 
     $ docker-compose up -d
 
-* Ouvrir un navigateur sur link:http://localhost:1880[]
+* Ouvrir un navigateur sur link:http://localhost:2880[]
 
 * Ouvrir un des noeuds Telegram (en bleu) et éditer la configuration pour positioner API TOKEN à *${TELEGRAM_BOT_TOKEN}* (ou le vrai token). +
 Positioner les filtres sur les autorisations au passage si besoin.
@@ -46,7 +46,7 @@ image:telegram-attestation-covid19-edit2.png[]
 
 == Adapter cet exemple
 
-TIP: Maintenant, vous pouvez maintenant adpater cette exemple !
+TIP: Vous pouvez maintenant adpater cette exemple !
 
 * ajouter des noeuds *Inject* pour automatiser la création d'attestation à des heures précises. + 
 Par exemple à l'heure habituelle de votre sport !
