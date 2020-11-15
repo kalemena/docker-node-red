@@ -30,14 +30,37 @@
         "verboselogging": true
     },
     {
+        "id": "4fc69d2d.235124",
+        "type": "telegram bot",
+        "botname": "SomeKalemenaBot",
+        "usernames": "",
+        "chatids": "$(TELEGRAM_IN_CHATIDS)",
+        "baseapiurl": "",
+        "updatemode": "polling",
+        "pollinterval": "3000",
+        "usesocks": false,
+        "sockshost": "",
+        "socksport": "6667",
+        "socksusername": "anonymous",
+        "sockspassword": "",
+        "bothost": "",
+        "localbotport": "8443",
+        "publicbotport": "8443",
+        "privatekey": "",
+        "certificate": "",
+        "useselfsignedcertificate": false,
+        "sslterminated": false,
+        "verboselogging": true
+    },
+    {
         "id": "e9319f35.5786b8",
         "type": "catch",
         "z": "d6af186b.004918",
         "name": "",
         "scope": null,
         "uncaught": false,
-        "x": 200,
-        "y": 940,
+        "x": 220,
+        "y": 80,
         "wires": [
             [
                 "fa07d08a.86bc48"
@@ -55,8 +78,8 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 930,
-        "y": 940,
+        "x": 950,
+        "y": 80,
         "wires": []
     },
     {
@@ -66,15 +89,13 @@
         "name": "Echo",
         "bot": "28c31e1f.031b7a",
         "saveDataDir": "/tmp",
-        "x": 190,
+        "x": 90,
         "y": 540,
         "wires": [
             [
                 "c15d5ced.1d9478"
             ],
-            [
-                "c8fd6876.9b4ad8"
-            ]
+            []
         ]
     },
     {
@@ -85,8 +106,8 @@
         "func": "var chatId = msg.payload.chatId;\nvar username = msg.originalMessage.from.username;\nmsg.originalMessage.timestamp = new Date();\nvar message = JSON.stringify(msg.originalMessage);\n\nmsg.topic = username + ' ' + chatId;\nmsg.payload = [msg.topic, message];\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 460,
-        "y": 980,
+        "x": 480,
+        "y": 120,
         "wires": [
             [
                 "81d73a66.9cef9"
@@ -102,8 +123,8 @@
         "appendNewline": true,
         "createDir": false,
         "overwriteFile": "false",
-        "x": 730,
-        "y": 980,
+        "x": 750,
+        "y": 120,
         "wires": [
             [
                 "6dd4f2bf.169a4c"
@@ -121,8 +142,8 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 930,
-        "y": 980,
+        "x": 950,
+        "y": 120,
         "wires": []
     },
     {
@@ -131,8 +152,8 @@
         "z": "d6af186b.004918",
         "name": "Error Handling",
         "info": "",
-        "x": 90,
-        "y": 900,
+        "x": 110,
+        "y": 40,
         "wires": []
     },
     {
@@ -141,7 +162,7 @@
         "z": "d6af186b.004918",
         "name": "send",
         "bot": "28c31e1f.031b7a",
-        "x": 770,
+        "x": 530,
         "y": 540,
         "wires": [
             [
@@ -154,13 +175,13 @@
         "type": "debug",
         "z": "d6af186b.004918",
         "name": "",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 930,
+        "x": 730,
         "y": 540,
         "wires": []
     },
@@ -172,12 +193,12 @@
         "func": "return {\n    payload: {\n        \"chatId\": msg.payload.chatId,\n        \"type\": \"message\",\n        \"options\": { \"parse_mode\": \"Markdown\" },\n        \"content\": msg.payload.content\n    }\n}\n",
         "outputs": 1,
         "noerr": 0,
-        "x": 380,
+        "initialize": "",
+        "finalize": "",
+        "x": 320,
         "y": 540,
         "wires": [
-            [
-                "d4dd0a4c.53bd58"
-            ]
+            []
         ]
     },
     {
@@ -188,14 +209,13 @@
         "command": "/phonenumber",
         "bot": "28c31e1f.031b7a",
         "strict": false,
-        "x": 210,
-        "y": 160,
+        "hasresponse": false,
+        "useRegex": false,
+        "x": 110,
+        "y": 220,
         "wires": [
             [
                 "d83995ba.c230f8"
-            ],
-            [
-                "dde367c4.0e89"
             ]
         ]
     },
@@ -209,8 +229,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 390,
-        "y": 160,
+        "x": 330,
+        "y": 220,
         "wires": [
             [
                 "c622c012.4fd738"
@@ -221,10 +241,10 @@
         "id": "c622c012.4fd738",
         "type": "telegram sender",
         "z": "d6af186b.004918",
-        "name": "send response",
+        "name": "send",
         "bot": "28c31e1f.031b7a",
-        "x": 620,
-        "y": 160,
+        "x": 530,
+        "y": 220,
         "wires": [
             [
                 "c044d13.219f8b"
@@ -242,8 +262,8 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 790,
-        "y": 160,
+        "x": 730,
+        "y": 220,
         "wires": []
     },
     {
@@ -254,14 +274,13 @@
         "command": "/location",
         "bot": "28c31e1f.031b7a",
         "strict": false,
-        "x": 190,
+        "hasresponse": false,
+        "useRegex": false,
+        "x": 100,
         "y": 280,
         "wires": [
             [
                 "be1166cb.9384a"
-            ],
-            [
-                "2e407553.df97ba"
             ]
         ]
     },
@@ -273,7 +292,7 @@
         "func": "var options = {\n    \"parse_mode\": \"Markdown\",\n    \"reply_markup\": {\n        \"one_time_keyboard\": true,\n        \"keyboard\": [\n            [{\n                text: \"Using my location\",\n                request_location: true\n            }], \n            [\"Cancel\"]\n        ]\n    }\n};\n\nreturn {\n    payload: {\n        \"chatId\": msg.payload.chatId,\n        \"type\": \"message\",\n        \"options\": options,\n        \"content\": \"How can we reach you?\"\n    }\n}\n",
         "outputs": 1,
         "noerr": 0,
-        "x": 390,
+        "x": 330,
         "y": 280,
         "wires": [
             [
@@ -285,9 +304,9 @@
         "id": "901b5b1.2d3d628",
         "type": "telegram sender",
         "z": "d6af186b.004918",
-        "name": "send response",
+        "name": "send",
         "bot": "28c31e1f.031b7a",
-        "x": 580,
+        "x": 530,
         "y": 280,
         "wires": [
             [
@@ -306,7 +325,7 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 750,
+        "x": 730,
         "y": 280,
         "wires": []
     },
@@ -316,8 +335,8 @@
         "z": "d6af186b.004918",
         "name": "",
         "links": [],
-        "x": 155,
-        "y": 980,
+        "x": 175,
+        "y": 120,
         "wires": [
             [
                 "951b321b.014c7"
@@ -330,18 +349,8 @@
         "z": "d6af186b.004918",
         "name": "Locations & Contact Info",
         "info": "",
-        "x": 130,
-        "y": 100,
-        "wires": []
-    },
-    {
-        "id": "e711fb2a.517ed",
-        "type": "link out",
-        "z": "d6af186b.004918",
-        "name": "",
-        "links": [],
-        "x": 315,
-        "y": 700,
+        "x": 150,
+        "y": 180,
         "wires": []
     },
     {
@@ -352,7 +361,9 @@
         "command": "/help",
         "bot": "28c31e1f.031b7a",
         "strict": false,
-        "x": 190,
+        "hasresponse": false,
+        "useRegex": false,
+        "x": 90,
         "y": 660,
         "wires": [
             [
@@ -368,7 +379,9 @@
         "func": "var helpMessage = \"/help - shows help\\n\";\nhelpMessage += \"/phonenumber - share my contact info\\n\";\nhelpMessage += \"/location - share my location info\\n\";\n\nhelpMessage += \"Your chat id is \" + msg.payload.chatId + \"\\n\";\nhelpMessage += \"You are welcome: \"+ msg.originalMessage.from.username + \"\\n\";\n\nmsg.payload.content = helpMessage;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 380,
+        "initialize": "",
+        "finalize": "",
+        "x": 280,
         "y": 660,
         "wires": [
             [
@@ -382,7 +395,7 @@
         "z": "d6af186b.004918",
         "name": "send",
         "bot": "28c31e1f.031b7a",
-        "x": 770,
+        "x": 530,
         "y": 660,
         "wires": [
             [
@@ -401,7 +414,7 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 930,
+        "x": 730,
         "y": 660,
         "wires": []
     },
@@ -413,7 +426,9 @@
         "func": "context.global.keyboard = { pending : true };\n\nvar opts = {\n  reply_to_message_id: msg.payload.messageId,\n  reply_markup: JSON.stringify({\n    keyboard: [\n      ['Yes'],\n      ['No']],\n      'resize_keyboard' : true, \n      'one_time_keyboard' : true\n  })\n};\n\nmsg.payload.content = 'Really?';\nmsg.payload.options = opts;\n\nreturn [ msg ];\n",
         "outputs": "1",
         "noerr": 0,
-        "x": 400,
+        "initialize": "",
+        "finalize": "",
+        "x": 340,
         "y": 400,
         "wires": [
             [
@@ -429,7 +444,9 @@
         "command": "/confirm",
         "bot": "28c31e1f.031b7a",
         "strict": false,
-        "x": 190,
+        "hasresponse": true,
+        "useRegex": false,
+        "x": 90,
         "y": 400,
         "wires": [
             [
@@ -448,7 +465,7 @@
         "func": "if(context.global.keyboard.pending)\n{\n    context.global.keyboard.pending = false;\n    \n    if(msg.payload.content === 'Yes')\n    {\n        msg.payload.content = 'Yes';\n        return [msg, null];   \n    }\n    else\n    {\n        msg.payload.content = 'No';\n        return [null, msg];   \n    }\n}\n",
         "outputs": "2",
         "noerr": 0,
-        "x": 380,
+        "x": 320,
         "y": 440,
         "wires": [
             [
@@ -463,7 +480,7 @@
         "z": "d6af186b.004918",
         "name": "send",
         "bot": "28c31e1f.031b7a",
-        "x": 770,
+        "x": 530,
         "y": 400,
         "wires": [
             [
@@ -482,7 +499,7 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 930,
+        "x": 730,
         "y": 400,
         "wires": []
     },
@@ -492,7 +509,7 @@
         "z": "d6af186b.004918",
         "name": "Question inline",
         "info": "",
-        "x": 90,
+        "x": 120,
         "y": 360,
         "wires": []
     },
@@ -502,7 +519,7 @@
         "z": "d6af186b.004918",
         "name": "Echoing",
         "info": "",
-        "x": 70,
+        "x": 100,
         "y": 500,
         "wires": []
     },
@@ -512,38 +529,18 @@
         "z": "d6af186b.004918",
         "name": "Construct message",
         "info": "",
-        "x": 110,
+        "x": 130,
         "y": 620,
         "wires": []
     },
     {
-        "id": "c8fd6876.9b4ad8",
-        "type": "link out",
+        "id": "e28e3e.ff7a69c",
+        "type": "comment",
         "z": "d6af186b.004918",
-        "name": "",
-        "links": [],
-        "x": 315,
-        "y": 580,
-        "wires": []
-    },
-    {
-        "id": "2e407553.df97ba",
-        "type": "link out",
-        "z": "d6af186b.004918",
-        "name": "",
-        "links": [],
-        "x": 315,
-        "y": 320,
-        "wires": []
-    },
-    {
-        "id": "dde367c4.0e89",
-        "type": "link out",
-        "z": "d6af186b.004918",
-        "name": "",
-        "links": [],
-        "x": 315,
-        "y": 200,
+        "name": "Picture",
+        "info": "",
+        "x": 90,
+        "y": 740,
         "wires": []
     },
     {
@@ -556,33 +553,13 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 380,
+        "x": 280,
         "y": 800,
         "wires": [
             [
                 "30448a8d.199be6"
             ]
         ]
-    },
-    {
-        "id": "e28e3e.ff7a69c",
-        "type": "comment",
-        "z": "d6af186b.004918",
-        "name": "Picture",
-        "info": "",
-        "x": 80,
-        "y": 760,
-        "wires": []
-    },
-    {
-        "id": "9bf010ce.13f4a8",
-        "type": "link out",
-        "z": "d6af186b.004918",
-        "name": "",
-        "links": [],
-        "x": 315,
-        "y": 840,
-        "wires": []
     },
     {
         "id": "cc1aa9f5.b830f8",
@@ -594,12 +571,11 @@
         "strict": false,
         "hasresponse": false,
         "useRegex": false,
-        "x": 190,
+        "x": 90,
         "y": 800,
         "wires": [
             [
-                "e98b93d0.678e48",
-                "b7966028.8e0f48"
+                "e98b93d0.678e48"
             ]
         ]
     },
@@ -609,7 +585,7 @@
         "z": "d6af186b.004918",
         "name": "send",
         "bot": "28c31e1f.031b7a",
-        "x": 770,
+        "x": 530,
         "y": 800,
         "wires": [
             [
@@ -628,23 +604,441 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 930,
+        "x": 730,
         "y": 800,
         "wires": []
     },
     {
-        "id": "b7966028.8e0f48",
+        "id": "4fcfd066.075208",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "Which ?",
+        "func": "var opts = {\n reply_to_message_id: msg.payload.messageId,\n reply_markup: JSON.stringify(\n    {\n     one_time_keyboard: true,\n     inline_keyboard: [[\n     {\n     \"text\": \"zigbee\",\n     \"callback_data\": \"menu-zigbee\" \n     }, \n     {\n     \"text\": \"zwave\",\n     \"callback_data\": \"menu-zwave\" \n     }\n     ],\n     [\n     {\n     \"text\": \"back\",\n     \"callback_data\": \"menu-back\" \n     }\n     ]\n     ]\n }\n )\n};\n\nmsg.payload = {\n    content: 'Which ?',\n    options: opts,\n    type: 'message',\n    chatId: msg.payload.chatId\n}\n\nreturn [ msg ];",
+        "outputs": "1",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1280,
+        "y": 900,
+        "wires": [
+            [
+                "eea967f0.af52d"
+            ]
+        ]
+    },
+    {
+        "id": "eea967f0.af52d",
+        "type": "telegram sender",
+        "z": "d6af186b.004918",
+        "name": "Send",
+        "bot": "28c31e1f.031b7a",
+        "x": 1550,
+        "y": 820,
+        "wires": [
+            [
+                "d088280a.ad223"
+            ]
+        ]
+    },
+    {
+        "id": "d088280a.ad223",
         "type": "debug",
         "z": "d6af186b.004918",
-        "name": "",
+        "name": "Status",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 1690,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "b1411a0d.c9df3",
+        "type": "telegram command",
+        "z": "d6af186b.004918",
+        "name": "/menu",
+        "command": "/menu",
+        "bot": "28c31e1f.031b7a",
+        "strict": false,
+        "hasresponse": false,
+        "useRegex": false,
+        "x": 90,
+        "y": 900,
+        "wires": [
+            [
+                "b66be76c.10431",
+                "9c5a447b.2f9438"
+            ]
+        ]
+    },
+    {
+        "id": "cd97be75.160a2",
+        "type": "comment",
+        "z": "d6af186b.004918",
+        "name": "Menu",
+        "info": "",
+        "x": 90,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "628a2f52.ffc45",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "delete Menu",
+        "func": "// delete Menu\nmsg2 = {\n    payload : {\n        \"chatId\": msg.originalMessage.from.id,\n        \"type\": \"deleteMessage\",\n        \"options\": false,\n        \"content\": msg.originalMessage.message.message_id\n        }\n    }\n\nnode.send(msg2);\n\nreturn []\n\n/*\nmsg.payload.options = false\nmsg.payload.type = 'deleteMessage'\n//msg.payload.content = context.global.keyboard.messageId\nmsg.payload.content = msg.originalMessage.message.message_id // OK\n//msg.payload.content = msg.originalMessage.message.reply_to_message.message_id // OK\nreturn [ msg ];\n*/",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1270,
+        "y": 1220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "87b5953c.9c203",
+        "type": "telegram event",
+        "z": "d6af186b.004918",
+        "name": "/menu callback",
+        "bot": "28c31e1f.031b7a",
+        "event": "callback_query",
+        "autoanswer": true,
+        "x": 120,
+        "y": 960,
+        "wires": [
+            [
+                "179b7353.d5f835"
+            ]
+        ]
+    },
+    {
+        "id": "179b7353.d5f835",
+        "type": "switch",
+        "z": "d6af186b.004918",
+        "name": "IsContext=menu ?",
+        "property": "keyboard.menu",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "true",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 330,
+        "y": 960,
+        "wires": [
+            [
+                "905148c3.7b775"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "b66be76c.10431",
+        "type": "change",
+        "z": "d6af186b.004918",
+        "name": "set context",
+        "rules": [
+            {
+                "t": "set",
+                "p": "keyboard",
+                "pt": "global",
+                "to": "{\t    \"menu\":\"true\",\t    \"menuName\": \"menu-zero\",\t    \"originalMessageFromId\": $.originalMessage.from.id,\t    \"originalMessageId\": $.payload.messageId\t}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1090,
+        "y": 900,
+        "wires": [
+            [
+                "4fcfd066.075208"
+            ]
+        ]
+    },
+    {
+        "id": "9c5a447b.2f9438",
+        "type": "debug",
+        "z": "d6af186b.004918",
+        "name": "Debug",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 350,
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 250,
         "y": 880,
         "wires": []
+    },
+    {
+        "id": "b944c4ff.fb38d8",
+        "type": "delay",
+        "z": "d6af186b.004918",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 1120,
+        "y": 1220,
+        "wires": [
+            [
+                "628a2f52.ffc45"
+            ]
+        ]
+    },
+    {
+        "id": "9e74dc1b.986fe8",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "ZigBee Which ?",
+        "func": "var opts = {\n reply_to_message_id: global.keyboard.originalMessageId,\n reply_markup: JSON.stringify(\n    {\n     one_time_keyboard: true,\n     inline_keyboard: [[\n     {\n     \"text\": \"zb1\",\n     \"callback_data\": \"menu-zigbee-1\" \n     }, \n     {\n     \"text\": \"zb2\",\n     \"callback_data\": \"menu-zigbee-2\" \n     }\n     ],\n     [\n     {\n     \"text\": \"back\",\n     \"callback_data\": \"menu-zigbee-back\" \n     }\n     ]\n     ]\n }\n )\n};\n\n/*\n// delete Menu\nmsg2 = {\n    payload : {\n        \"chatId\": msg.originalMessage.from.id,\n        \"type\": \"deleteMessage\",\n        \"options\": false,\n        \"content\": msg.originalMessage.message.message_id\n        }\n    }\nnode.send(msg2);\n*/\n\nmsg.payload = {\n    content: 'ZigBee Which ?',\n    options: opts,\n    type: 'editMessageText',\n    chatId: msg.payload.chatId,\n    messageId: msg.originalMessage.message.message_id\n}\n\nreturn [ msg ];",
+        "outputs": "1",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1260,
+        "y": 940,
+        "wires": [
+            [
+                "eea967f0.af52d",
+                "482c3190.49f01"
+            ]
+        ]
+    },
+    {
+        "id": "905148c3.7b775",
+        "type": "change",
+        "z": "d6af186b.004918",
+        "name": "set choice",
+        "rules": [
+            {
+                "t": "set",
+                "p": "keyboard.menuName",
+                "pt": "global",
+                "to": "payload.content",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 960,
+        "wires": [
+            [
+                "4184687.36bb598"
+            ]
+        ]
+    },
+    {
+        "id": "6b4be1b1.802028",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "ZWave Which ?",
+        "func": "var opts = {\n reply_to_message_id: msg.payload.messageId,\n reply_markup: JSON.stringify(\n    {\n     one_time_keyboard: true,\n     inline_keyboard: [[\n     {\n     \"text\": \"zw1\",\n     \"callback_data\": \"menu-zwave-1\" \n     }, \n     {\n     \"text\": \"zw2\",\n     \"callback_data\": \"menu-zwave-2\" \n     }\n     ],\n     [\n     {\n     \"text\": \"back\",\n     \"callback_data\": \"menu-zwave-back\" \n     }\n     ]\n     ]\n }\n )\n};\n\nmsg.payload = {\n    content: 'ZWave Which ?',\n    options: opts,\n    type: 'message',\n    chatId: msg.payload.chatId\n}\n\nreturn [ msg ];",
+        "outputs": "1",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1260,
+        "y": 980,
+        "wires": [
+            [
+                "eea967f0.af52d"
+            ]
+        ]
+    },
+    {
+        "id": "e34b3377.608ce",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "selection echo",
+        "func": "msg.payload.content = \"Your choice is \" + msg.payload.content;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1260,
+        "y": 1040,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4184687.36bb598",
+        "type": "switch",
+        "z": "d6af186b.004918",
+        "name": "Which selection ?",
+        "property": "payload.content",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "menu-zigbee",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "menu-zwave",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "menu-back",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 4,
+        "x": 670,
+        "y": 960,
+        "wires": [
+            [
+                "1e9c666a.28ac1a"
+            ],
+            [
+                "1e9c666a.28ac1a"
+            ],
+            [
+                "99ba84c3.b69e5"
+            ],
+            [
+                "99ba84c3.b69e5"
+            ]
+        ]
+    },
+    {
+        "id": "99ba84c3.b69e5",
+        "type": "change",
+        "z": "d6af186b.004918",
+        "name": "reset context",
+        "rules": [
+            {
+                "t": "set",
+                "p": "keyboard",
+                "pt": "global",
+                "to": "{\t    \"menu\":\"false\",\t    \"menulName\": \"menu-zero\",\t    \"originalMessageFromId\": $.originalMessage.from.id\t}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1030,
+        "y": 1120,
+        "wires": [
+            [
+                "32d381de.9d6306"
+            ]
+        ]
+    },
+    {
+        "id": "1e9c666a.28ac1a",
+        "type": "debug",
+        "z": "d6af186b.004918",
+        "name": "Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 890,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "482c3190.49f01",
+        "type": "debug",
+        "z": "d6af186b.004918",
+        "name": "Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1710,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "a8118b3e.95a57",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "delete All",
+        "func": "// deletes question itself\nmsg1 = {\n    payload : {\n        \"chatId\": msg.originalMessage.from.id,\n        \"type\": \"deleteMessage\",\n        \"options\": false,\n        \"content\": msg.originalMessage.message.reply_to_message.message_id\n        }\n    }\n    \nnode.send(msg1);\n\n// delete Menu\nmsg2 = {\n    payload : {\n        \"chatId\": msg.originalMessage.from.id,\n        \"type\": \"deleteMessage\",\n        \"options\": false,\n        \"content\": msg.originalMessage.message.message_id\n        }\n    }\n\nnode.send(msg2);\n\nreturn []\n\n/*\nmsg.payload.options = false\nmsg.payload.type = 'deleteMessage'\n//msg.payload.content = context.global.keyboard.messageId\nmsg.payload.content = msg.originalMessage.message.message_id // OK\n//msg.payload.content = msg.originalMessage.message.reply_to_message.message_id // OK\nreturn [ msg ];\n*/",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 1320,
+        "y": 1120,
+        "wires": [
+            [
+                "eea967f0.af52d"
+            ]
+        ]
+    },
+    {
+        "id": "32d381de.9d6306",
+        "type": "delay",
+        "z": "d6af186b.004918",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 1180,
+        "y": 1120,
+        "wires": [
+            [
+                "a8118b3e.95a57"
+            ]
+        ]
     }
 ]

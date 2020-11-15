@@ -9,8 +9,7 @@ services:
      - "${NODERED_PORT:-1880}:1880"
     volumes:
      - .:/data
-     - ./etc/node-red/flows_cred.json:/home/nodered/.node-red/flows_cred.json:rw
-    # - ./var/log:/var/log
+     - ./etc/node-red/.node-red:/home/nodered/.node-red
     environment:
      - NODERED_FLOWS=/data/flows.json
      - NODERED_USERDIR=/home/nodered/.node-red
