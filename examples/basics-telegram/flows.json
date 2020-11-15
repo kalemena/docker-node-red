@@ -613,7 +613,7 @@
         "type": "function",
         "z": "d6af186b.004918",
         "name": "Which ?",
-        "func": "var opts = {\n reply_to_message_id: msg.payload.messageId,\n reply_markup: JSON.stringify(\n    {\n     one_time_keyboard: true,\n     inline_keyboard: [[\n     {\n     \"text\": \"zigbee\",\n     \"callback_data\": \"menu-zigbee\" \n     }, \n     {\n     \"text\": \"zwave\",\n     \"callback_data\": \"menu-zwave\" \n     }\n     ],\n     [\n     {\n     \"text\": \"back\",\n     \"callback_data\": \"menu-back\" \n     }\n     ]\n     ]\n }\n )\n};\n\nmsg.payload = {\n    content: 'Which ?',\n    options: opts,\n    type: 'message',\n    chatId: msg.payload.chatId\n}\n\nreturn [ msg ];",
+        "func": "var opts = {\n reply_to_message_id: msg.payload.messageId,\n reply_markup: JSON.stringify(\n    {\n     one_time_keyboard: true,\n     inline_keyboard: [[\n     {\n     \"text\": \"zigbee\",\n     \"callback_data\": \"menu-zigbee\" \n     }, \n     {\n     \"text\": \"zwave\",\n     \"callback_data\": \"menu-zwave\" \n     }\n     ],\n     [\n     {\n     \"text\": \"back\",\n     \"callback_data\": \"menu-reset\" \n     }\n     ]\n     ]\n }\n )\n};\n\nmsg.payload = {\n    content: 'Which ?',\n    options: opts,\n    type: 'message',\n    chatId: msg.payload.chatId\n}\n\nreturn [ msg ];",
         "outputs": "1",
         "noerr": 0,
         "initialize": "",
@@ -632,8 +632,8 @@
         "z": "d6af186b.004918",
         "name": "Send",
         "bot": "28c31e1f.031b7a",
-        "x": 1550,
-        "y": 820,
+        "x": 1510,
+        "y": 900,
         "wires": [
             [
                 "d088280a.ad223"
@@ -651,8 +651,8 @@
         "tostatus": false,
         "complete": "true",
         "targetType": "full",
-        "x": 1690,
-        "y": 820,
+        "x": 1650,
+        "y": 900,
         "wires": []
     },
     {
@@ -694,10 +694,12 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 1270,
-        "y": 1220,
+        "x": 1670,
+        "y": 1020,
         "wires": [
-            []
+            [
+                "eea967f0.af52d"
+            ]
         ]
     },
     {
@@ -804,8 +806,8 @@
         "randomLast": "5",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 1120,
-        "y": 1220,
+        "x": 1520,
+        "y": 1020,
         "wires": [
             [
                 "628a2f52.ffc45"
@@ -817,7 +819,7 @@
         "type": "function",
         "z": "d6af186b.004918",
         "name": "ZigBee Which ?",
-        "func": "var opts = {\n reply_to_message_id: global.keyboard.originalMessageId,\n reply_markup: JSON.stringify(\n    {\n     one_time_keyboard: true,\n     inline_keyboard: [[\n     {\n     \"text\": \"zb1\",\n     \"callback_data\": \"menu-zigbee-1\" \n     }, \n     {\n     \"text\": \"zb2\",\n     \"callback_data\": \"menu-zigbee-2\" \n     }\n     ],\n     [\n     {\n     \"text\": \"back\",\n     \"callback_data\": \"menu-zigbee-back\" \n     }\n     ]\n     ]\n }\n )\n};\n\n/*\n// delete Menu\nmsg2 = {\n    payload : {\n        \"chatId\": msg.originalMessage.from.id,\n        \"type\": \"deleteMessage\",\n        \"options\": false,\n        \"content\": msg.originalMessage.message.message_id\n        }\n    }\nnode.send(msg2);\n*/\n\nmsg.payload = {\n    content: 'ZigBee Which ?',\n    options: opts,\n    type: 'editMessageText',\n    chatId: msg.payload.chatId,\n    messageId: msg.originalMessage.message.message_id\n}\n\nreturn [ msg ];",
+        "func": "var opts = {\n reply_to_message_id: msg.payload.messageId,\n reply_markup: JSON.stringify(\n    {\n     one_time_keyboard: true,\n     inline_keyboard: [[\n     {\n     \"text\": \"zb1\",\n     \"callback_data\": \"menu-zigbee-1\" \n     }, \n     {\n     \"text\": \"zb2\",\n     \"callback_data\": \"menu-zigbee-2\" \n     }\n     ],\n     [\n     {\n     \"text\": \"back\",\n     \"callback_data\": \"menu-zero\" \n     }\n     ]\n     ]\n }\n )\n};\n\n// messageId: msg.originalMessage.message.message_id\n\nmsg.payload = {\n    content: 'ZigBee Which ?',\n    options: opts,\n    type: 'message',\n    chatId: msg.payload.chatId\n}\n\nreturn [ msg ];",
         "outputs": "1",
         "noerr": 0,
         "initialize": "",
@@ -863,7 +865,7 @@
         "type": "function",
         "z": "d6af186b.004918",
         "name": "ZWave Which ?",
-        "func": "var opts = {\n reply_to_message_id: msg.payload.messageId,\n reply_markup: JSON.stringify(\n    {\n     one_time_keyboard: true,\n     inline_keyboard: [[\n     {\n     \"text\": \"zw1\",\n     \"callback_data\": \"menu-zwave-1\" \n     }, \n     {\n     \"text\": \"zw2\",\n     \"callback_data\": \"menu-zwave-2\" \n     }\n     ],\n     [\n     {\n     \"text\": \"back\",\n     \"callback_data\": \"menu-zwave-back\" \n     }\n     ]\n     ]\n }\n )\n};\n\nmsg.payload = {\n    content: 'ZWave Which ?',\n    options: opts,\n    type: 'message',\n    chatId: msg.payload.chatId\n}\n\nreturn [ msg ];",
+        "func": "var opts = {\n reply_to_message_id: msg.payload.messageId,\n reply_markup: JSON.stringify(\n    {\n     one_time_keyboard: true,\n     inline_keyboard: [[\n     {\n     \"text\": \"zw1\",\n     \"callback_data\": \"menu-zwave-1\" \n     }, \n     {\n     \"text\": \"zw2\",\n     \"callback_data\": \"menu-zwave-2\" \n     }\n     ],\n     [\n     {\n     \"text\": \"back\",\n     \"callback_data\": \"menu-zero\" \n     }\n     ]\n     ]\n }\n )\n};\n\nmsg.payload = {\n    content: 'ZWave Which ?',\n    options: opts,\n    type: 'message',\n    chatId: msg.payload.chatId\n}\n\nreturn [ msg ];",
         "outputs": "1",
         "noerr": 0,
         "initialize": "",
@@ -881,7 +883,7 @@
         "type": "function",
         "z": "d6af186b.004918",
         "name": "selection echo",
-        "func": "msg.payload.content = \"Your choice is \" + msg.payload.content;\nreturn msg;",
+        "func": "return {\n    payload: {\n        \"chatId\": msg.payload.chatId,\n        \"type\": \"message\",\n        \"options\": { \"parse_mode\": \"Markdown\" },\n        \"content\": \"Your choice is \" + msg.payload.content\n    }\n}\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -889,7 +891,9 @@
         "x": 1260,
         "y": 1040,
         "wires": [
-            []
+            [
+                "eea967f0.af52d"
+            ]
         ]
     },
     {
@@ -912,7 +916,32 @@
             },
             {
                 "t": "eq",
-                "v": "menu-back",
+                "v": "menu-zigbee-1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "menu-zigbee-2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "menu-zwave-1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "menu-zwave-2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "menu-zero",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "menu-reset",
                 "vt": "str"
             },
             {
@@ -921,15 +950,32 @@
         ],
         "checkall": "false",
         "repair": false,
-        "outputs": 4,
-        "x": 670,
-        "y": 960,
+        "outputs": 9,
+        "x": 710,
+        "y": 1000,
         "wires": [
             [
-                "1e9c666a.28ac1a"
+                "1e9c666a.28ac1a",
+                "9e74dc1b.986fe8"
             ],
             [
-                "1e9c666a.28ac1a"
+                "1e9c666a.28ac1a",
+                "6b4be1b1.802028"
+            ],
+            [
+                "e34b3377.608ce"
+            ],
+            [
+                "e34b3377.608ce"
+            ],
+            [
+                "e34b3377.608ce"
+            ],
+            [
+                "e34b3377.608ce"
+            ],
+            [
+                "b66be76c.10431"
             ],
             [
                 "99ba84c3.b69e5"
@@ -980,7 +1026,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 890,
-        "y": 960,
+        "y": 880,
         "wires": []
     },
     {
@@ -996,8 +1042,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1710,
-        "y": 880,
+        "x": 1410,
+        "y": 780,
         "wires": []
     },
     {
