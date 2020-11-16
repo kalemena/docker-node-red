@@ -34,5 +34,8 @@ Cleanup everything (including database):
 
     $ docker-compose down -v
 
+== References
 
-
+* Telegram
+** link:https://github.com/windkh/node-red-contrib-telegrambot/tree/master/examples[Telegram]
+** link:https://telegraf.js.org/#/?id=introduction[Docs]

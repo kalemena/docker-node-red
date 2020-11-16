@@ -51,3 +51,9 @@ image:/examples/integration-telegram-attestation-covid19/telegram-attestation-co
 == Monitoring
 
 - link:https://developer.ibm.com/node/2017/07/26/visualize-node-red-flow-performance-using-node-application-metrics/[Plug Monitoring]
+
+== Other links
+
+* Telegram
+** link:https://github.com/windkh/node-red-contrib-telegrambot/tree/master/examples[Telegram]
+** link:https://telegraf.js.org/#/?id=introduction[Docs]
