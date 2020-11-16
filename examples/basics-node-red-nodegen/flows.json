@@ -1,0 +1,142 @@
+[
+    {
+        "id": "b9afddb.4a0a82",
+        "type": "tab",
+        "label": "Flow 1"
+    },
+    {
+        "id": "fa38add9.6dba5",
+        "type": "inject",
+        "z": "b9afddb.4a0a82",
+        "name": "",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 80,
+        "wires": [
+            [
+                "d9dc3ad7.7390d"
+            ]
+        ]
+    },
+    {
+        "id": "d9dc3ad7.7390d",
+        "type": "debug",
+        "z": "b9afddb.4a0a82",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 390,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "f63c240d.08a19",
+        "type": "sunrise",
+        "z": "b9afddb.4a0a82",
+        "name": "",
+        "lat": "48.5",
+        "lon": "-4.5",
+        "start": "sunrise",
+        "end": "sunset",
+        "soff": "0",
+        "eoff": "0",
+        "x": 190,
+        "y": 120,
+        "wires": [
+            [
+                "d9dc3ad7.7390d"
+            ],
+            [
+                "d9dc3ad7.7390d"
+            ]
+        ]
+    },
+    {
+        "id": "2869d340.224384",
+        "type": "inject",
+        "z": "b9afddb.4a0a82",
+        "name": "sample data",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"index\":[7],\"timme\":-5,\"timmenu\":17,\"tid\":\"2019-08-08T12:00:00Z\",\"datum\":\"8/8 kl.12\",\"plats\":[15.611086,60.599615],\"parametrar\":[{\"name\":\"msl\",\"levelType\":\"hmsl\",\"level\":0,\"unit\":\"hPa\",\"values\":[1001.1]},{\"name\":\"t\",\"levelType\":\"hl\",\"level\":2,\"unit\":\"Cel\",\"values\":[16.4]},{\"name\":\"vis\",\"levelType\":\"hl\",\"level\":2,\"unit\":\"km\",\"values\":[22.5]}]}",
+        "payloadType": "json",
+        "x": 210,
+        "y": 260,
+        "wires": [
+            [
+                "824c5718.6b4bd8"
+            ]
+        ]
+    },
+    {
+        "id": "824c5718.6b4bd8",
+        "type": "change",
+        "z": "b9afddb.4a0a82",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.**[name=\"t\"].values",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 420,
+        "y": 260,
+        "wires": [
+            [
+                "ba815118.e4591"
+            ]
+        ]
+    },
+    {
+        "id": "ba815118.e4591",
+        "type": "debug",
+        "z": "b9afddb.4a0a82",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 630,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "702a8823.3b9a48",
+        "type": "comment",
+        "z": "b9afddb.4a0a82",
+        "name": "Demo JSONata",
+        "info": "",
+        "x": 220,
+        "y": 220,
+        "wires": []
+    }
+]

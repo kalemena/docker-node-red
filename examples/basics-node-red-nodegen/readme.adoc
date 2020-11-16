@@ -1,0 +1,15 @@
+= Summary
+:hardbreaks:
+
+This is an example of importing OpenAPI v2 schema into Node-Red block using link:https://github.com/node-red/node-red-nodegen/wiki[node-red-nodegen]
+
+== Environment
+
+As usual:
+
+[source,bash]
+----
+$ docker-compose build
+$ docker-compose up -d
+$ docker-compose down
+----
