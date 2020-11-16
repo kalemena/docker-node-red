@@ -30,29 +30,6 @@
         "verboselogging": true
     },
     {
-        "id": "4fc69d2d.235124",
-        "type": "telegram bot",
-        "botname": "SomeKalemenaBot",
-        "usernames": "",
-        "chatids": "$(TELEGRAM_IN_CHATIDS)",
-        "baseapiurl": "",
-        "updatemode": "polling",
-        "pollinterval": "3000",
-        "usesocks": false,
-        "sockshost": "",
-        "socksport": "6667",
-        "socksusername": "anonymous",
-        "sockspassword": "",
-        "bothost": "",
-        "localbotport": "8443",
-        "publicbotport": "8443",
-        "privatekey": "",
-        "certificate": "",
-        "useselfsignedcertificate": false,
-        "sslterminated": false,
-        "verboselogging": true
-    },
-    {
         "id": "e9319f35.5786b8",
         "type": "catch",
         "z": "d6af186b.004918",
@@ -216,7 +193,8 @@
         "wires": [
             [
                 "d83995ba.c230f8"
-            ]
+            ],
+            []
         ]
     },
     {
@@ -281,7 +259,8 @@
         "wires": [
             [
                 "be1166cb.9384a"
-            ]
+            ],
+            []
         ]
     },
     {
@@ -368,7 +347,8 @@
         "wires": [
             [
                 "d8a99ae.2217ee8"
-            ]
+            ],
+            []
         ]
     },
     {
@@ -576,7 +556,8 @@
         "wires": [
             [
                 "e98b93d0.678e48"
-            ]
+            ],
+            []
         ]
     },
     {
@@ -609,72 +590,6 @@
         "wires": []
     },
     {
-        "id": "4fcfd066.075208",
-        "type": "function",
-        "z": "d6af186b.004918",
-        "name": "Which ?",
-        "func": "var opts = {\n reply_to_message_id: msg.payload.messageId,\n reply_markup: JSON.stringify(\n    {\n     one_time_keyboard: true,\n     inline_keyboard: [[\n     {\n     \"text\": \"zigbee\",\n     \"callback_data\": \"menu-zigbee\" \n     }, \n     {\n     \"text\": \"zwave\",\n     \"callback_data\": \"menu-zwave\" \n     }\n     ],\n     [\n     {\n     \"text\": \"back\",\n     \"callback_data\": \"menu-reset\" \n     }\n     ]\n     ]\n }\n )\n};\n\nmsg.payload = {\n    content: 'Which ?',\n    options: opts,\n    type: 'message',\n    chatId: msg.payload.chatId\n}\n\nreturn [ msg ];",
-        "outputs": "1",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 1280,
-        "y": 900,
-        "wires": [
-            [
-                "eea967f0.af52d"
-            ]
-        ]
-    },
-    {
-        "id": "eea967f0.af52d",
-        "type": "telegram sender",
-        "z": "d6af186b.004918",
-        "name": "Send",
-        "bot": "28c31e1f.031b7a",
-        "x": 1510,
-        "y": 900,
-        "wires": [
-            [
-                "d088280a.ad223"
-            ]
-        ]
-    },
-    {
-        "id": "d088280a.ad223",
-        "type": "debug",
-        "z": "d6af186b.004918",
-        "name": "Status",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "x": 1650,
-        "y": 900,
-        "wires": []
-    },
-    {
-        "id": "b1411a0d.c9df3",
-        "type": "telegram command",
-        "z": "d6af186b.004918",
-        "name": "/menu",
-        "command": "/menu",
-        "bot": "28c31e1f.031b7a",
-        "strict": false,
-        "hasresponse": false,
-        "useRegex": false,
-        "x": 90,
-        "y": 900,
-        "wires": [
-            [
-                "b66be76c.10431",
-                "9c5a447b.2f9438"
-            ]
-        ]
-    },
-    {
         "id": "cd97be75.160a2",
         "type": "comment",
         "z": "d6af186b.004918",
@@ -683,96 +598,6 @@
         "x": 90,
         "y": 860,
         "wires": []
-    },
-    {
-        "id": "628a2f52.ffc45",
-        "type": "function",
-        "z": "d6af186b.004918",
-        "name": "delete Menu",
-        "func": "// delete Menu\nmsg2 = {\n    payload : {\n        \"chatId\": msg.originalMessage.from.id,\n        \"type\": \"deleteMessage\",\n        \"options\": false,\n        \"content\": msg.originalMessage.message.message_id\n        }\n    }\n\nnode.send(msg2);\n\nreturn []\n\n/*\nmsg.payload.options = false\nmsg.payload.type = 'deleteMessage'\n//msg.payload.content = context.global.keyboard.messageId\nmsg.payload.content = msg.originalMessage.message.message_id // OK\n//msg.payload.content = msg.originalMessage.message.reply_to_message.message_id // OK\nreturn [ msg ];\n*/",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 1670,
-        "y": 1020,
-        "wires": [
-            [
-                "eea967f0.af52d"
-            ]
-        ]
-    },
-    {
-        "id": "87b5953c.9c203",
-        "type": "telegram event",
-        "z": "d6af186b.004918",
-        "name": "/menu callback",
-        "bot": "28c31e1f.031b7a",
-        "event": "callback_query",
-        "autoanswer": true,
-        "x": 120,
-        "y": 960,
-        "wires": [
-            [
-                "179b7353.d5f835"
-            ]
-        ]
-    },
-    {
-        "id": "179b7353.d5f835",
-        "type": "switch",
-        "z": "d6af186b.004918",
-        "name": "IsContext=menu ?",
-        "property": "keyboard.menu",
-        "propertyType": "global",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "true",
-                "vt": "str"
-            },
-            {
-                "t": "else"
-            }
-        ],
-        "checkall": "false",
-        "repair": false,
-        "outputs": 2,
-        "x": 330,
-        "y": 960,
-        "wires": [
-            [
-                "905148c3.7b775"
-            ],
-            []
-        ]
-    },
-    {
-        "id": "b66be76c.10431",
-        "type": "change",
-        "z": "d6af186b.004918",
-        "name": "set context",
-        "rules": [
-            {
-                "t": "set",
-                "p": "keyboard",
-                "pt": "global",
-                "to": "{\t    \"menu\":\"true\",\t    \"menuName\": \"menu-zero\",\t    \"originalMessageFromId\": $.originalMessage.from.id,\t    \"originalMessageId\": $.payload.messageId\t}",
-                "tot": "jsonata"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1090,
-        "y": 900,
-        "wires": [
-            [
-                "4fcfd066.075208"
-            ]
-        ]
     },
     {
         "id": "9c5a447b.2f9438",
@@ -787,123 +612,175 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 250,
-        "y": 880,
+        "x": 1530,
+        "y": 960,
         "wires": []
     },
     {
-        "id": "b944c4ff.fb38d8",
-        "type": "delay",
+        "id": "20636f59.fed13",
+        "type": "telegram event",
         "z": "d6af186b.004918",
         "name": "",
-        "pauseType": "delay",
-        "timeout": "1",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 1520,
-        "y": 1020,
-        "wires": [
-            [
-                "628a2f52.ffc45"
-            ]
-        ]
-    },
-    {
-        "id": "9e74dc1b.986fe8",
-        "type": "function",
-        "z": "d6af186b.004918",
-        "name": "ZigBee Which ?",
-        "func": "var opts = {\n reply_to_message_id: msg.payload.messageId,\n reply_markup: JSON.stringify(\n    {\n     one_time_keyboard: true,\n     inline_keyboard: [[\n     {\n     \"text\": \"zb1\",\n     \"callback_data\": \"menu-zigbee-1\" \n     }, \n     {\n     \"text\": \"zb2\",\n     \"callback_data\": \"menu-zigbee-2\" \n     }\n     ],\n     [\n     {\n     \"text\": \"back\",\n     \"callback_data\": \"menu-zero\" \n     }\n     ]\n     ]\n }\n )\n};\n\n// messageId: msg.originalMessage.message.message_id\n\nmsg.payload = {\n    content: 'ZigBee Which ?',\n    options: opts,\n    type: 'message',\n    chatId: msg.payload.chatId\n}\n\nreturn [ msg ];",
-        "outputs": "1",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 1260,
-        "y": 940,
-        "wires": [
-            [
-                "eea967f0.af52d",
-                "482c3190.49f01"
-            ]
-        ]
-    },
-    {
-        "id": "905148c3.7b775",
-        "type": "change",
-        "z": "d6af186b.004918",
-        "name": "set choice",
-        "rules": [
-            {
-                "t": "set",
-                "p": "keyboard.menuName",
-                "pt": "global",
-                "to": "payload.content",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 500,
+        "bot": "28c31e1f.031b7a",
+        "event": "callback_query",
+        "autoanswer": true,
+        "x": 120,
         "y": 960,
         "wires": [
             [
-                "4184687.36bb598"
+                "239b757f.271f4a"
             ]
         ]
     },
     {
-        "id": "6b4be1b1.802028",
+        "id": "d0ae190d.071828",
+        "type": "telegram sender",
+        "z": "d6af186b.004918",
+        "name": "send",
+        "bot": "28c31e1f.031b7a",
+        "x": 530,
+        "y": 900,
+        "wires": [
+            [
+                "23220303.4a427c"
+            ]
+        ]
+    },
+    {
+        "id": "3426758a.a2d09a",
         "type": "function",
         "z": "d6af186b.004918",
-        "name": "ZWave Which ?",
-        "func": "var opts = {\n reply_to_message_id: msg.payload.messageId,\n reply_markup: JSON.stringify(\n    {\n     one_time_keyboard: true,\n     inline_keyboard: [[\n     {\n     \"text\": \"zw1\",\n     \"callback_data\": \"menu-zwave-1\" \n     }, \n     {\n     \"text\": \"zw2\",\n     \"callback_data\": \"menu-zwave-2\" \n     }\n     ],\n     [\n     {\n     \"text\": \"back\",\n     \"callback_data\": \"menu-zero\" \n     }\n     ]\n     ]\n }\n )\n};\n\nmsg.payload = {\n    content: 'ZWave Which ?',\n    options: opts,\n    type: 'message',\n    chatId: msg.payload.chatId\n}\n\nreturn [ msg ];",
+        "name": "Keyboard Which ?",
+        "func": "context.global.keyboard = { messageId : msg.payload.messageId };\n\nvar opts = {\n  reply_to_message_id: msg.payload.messageId,\n  reply_markup: JSON.stringify({\n    \"inline_keyboard\": \n    [\n        [\n            {\n            \"text\": \"zigbee\",\n            \"callback_data\": \"menu-zigbee\" \n            }, \n            {\n             \"text\": \"zwave\",\n             \"callback_data\": \"menu-zwave\" \n            }\n        ],\n        [\n            {\n            \"text\": \"back\",\n            \"callback_data\": \"menu-reset\" \n            }  \n        ]\n    ]\n  })\n};\n\nmsg.payload.content = 'Which ?';\nmsg.payload.options = opts;\n\nreturn [ msg ];",
         "outputs": "1",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 1260,
-        "y": 980,
+        "x": 310,
+        "y": 900,
         "wires": [
             [
-                "eea967f0.af52d"
+                "d0ae190d.071828"
             ]
         ]
     },
     {
-        "id": "e34b3377.608ce",
+        "id": "d7bfbd4.da4e34",
+        "type": "telegram command",
+        "z": "d6af186b.004918",
+        "name": "/menu",
+        "command": "/menu",
+        "bot": "28c31e1f.031b7a",
+        "strict": false,
+        "hasresponse": false,
+        "useRegex": false,
+        "x": 90,
+        "y": 900,
+        "wires": [
+            [
+                "3426758a.a2d09a"
+            ]
+        ]
+    },
+    {
+        "id": "43cecef5.e2e93",
         "type": "function",
         "z": "d6af186b.004918",
-        "name": "selection echo",
-        "func": "return {\n    payload: {\n        \"chatId\": msg.payload.chatId,\n        \"type\": \"message\",\n        \"options\": { \"parse_mode\": \"Markdown\" },\n        \"content\": \"Your choice is \" + msg.payload.content\n    }\n}\n",
+        "name": "cleanup",
+        "func": "// Hide the keyboard and forget the messageId\nmsg.payload.type = 'deleteMessage';\nmsg.payload.content = context.global.keyboard.messageId\ncontext.global.keyboard.messageId = null;\nreturn [ msg ];",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 1260,
-        "y": 1040,
+        "x": 920,
+        "y": 1080,
         "wires": [
             [
-                "eea967f0.af52d"
+                "8e746981.f48368"
             ]
         ]
     },
     {
-        "id": "4184687.36bb598",
+        "id": "8e746981.f48368",
+        "type": "telegram sender",
+        "z": "d6af186b.004918",
+        "name": "send",
+        "bot": "28c31e1f.031b7a",
+        "x": 1350,
+        "y": 960,
+        "wires": [
+            [
+                "9c5a447b.2f9438"
+            ]
+        ]
+    },
+    {
+        "id": "2c6089c4.883006",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "ZigBee Which ?",
+        "func": "// This is the message id of the initial keyboard that is simply exchanged by a new one.\nvar messageId = context.global.keyboard.messageId;\n\n// This is a sample of how to send a second inline keyboard with modified buttons\nvar reply_markup = JSON.stringify({\n    inline_keyboard: [[\n         {\n             \"text\": \"zb1\",\n             \"callback_data\": \"menu-zigbee-1\" \n         }, \n         {\n             \"text\": \"zb2\",\n             \"callback_data\": \"menu-zigbee-2\" \n         }\n     ],\n     [\n         {\n         \"text\": \"back\",\n         \"callback_data\": \"menu-zero\" \n         }\n     ]\n    ]\n  });\n\nvar options = {\n    chat_id : msg.payload.chatId,\n    reply_markup : reply_markup,\n    message_id : messageId\n};\n\nmsg.payload.type = 'editMessageReplyMarkup';\nmsg.payload.content = reply_markup;\nmsg.payload.options = options;\n\nreturn [ msg ];\n",
+        "outputs": "1",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 940,
+        "y": 1000,
+        "wires": [
+            [
+                "8e746981.f48368"
+            ]
+        ]
+    },
+    {
+        "id": "23220303.4a427c",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "save messageId",
+        "func": "// We store the messageId to be able to edit this reply in the callback query. \ncontext.global.keyboard.messageId = msg.payload.sentMessageId;\nreturn [ msg ];\n",
+        "outputs": "1",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 740,
+        "y": 900,
+        "wires": [
+            [
+                "9f1f18f4.a6ab8"
+            ]
+        ]
+    },
+    {
+        "id": "ae937124.bc73f8",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "Zwave Which ?",
+        "func": "// This is the message id of the initial keyboard that is simply exchanged by a new one.\nvar messageId = context.global.keyboard.messageId;\n\n// This is a sample of how to send a second inline keyboard with modified buttons\nvar reply_markup = JSON.stringify({\n    inline_keyboard: [[\n            {\n            \"text\": \"zw1\",\n            \"callback_data\": \"menu-zwave-1\" \n            }, \n            {\n            \"text\": \"zw2\",\n            \"callback_data\": \"menu-zwave-2\" \n            }\n        ],\n        [\n            {\n            \"text\": \"back\",\n            \"callback_data\": \"menu-zero\" \n            }\n        ]\n    ]\n  });\n\nvar options = {\n    chat_id : msg.payload.chatId,\n    reply_markup : reply_markup,\n    message_id : messageId\n};\n\nmsg.payload.type = 'editMessageReplyMarkup';\nmsg.payload.content = reply_markup;\nmsg.payload.options = options;\n\nreturn [ msg ];\n",
+        "outputs": "1",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 940,
+        "y": 1040,
+        "wires": [
+            [
+                "8e746981.f48368"
+            ]
+        ]
+    },
+    {
+        "id": "239b757f.271f4a",
         "type": "switch",
         "z": "d6af186b.004918",
-        "name": "Which selection ?",
+        "name": "Menu Item ?",
         "property": "payload.content",
         "propertyType": "msg",
         "rules": [
+            {
+                "t": "eq",
+                "v": "menu-zero",
+                "vt": "str"
+            },
             {
                 "t": "eq",
                 "v": "menu-zigbee",
@@ -914,6 +791,82 @@
                 "v": "menu-zwave",
                 "vt": "str"
             },
+            {
+                "t": "eq",
+                "v": "menu-reset",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 5,
+        "x": 330,
+        "y": 960,
+        "wires": [
+            [
+                "cca0873d.f956b"
+            ],
+            [
+                "2c6089c4.883006"
+            ],
+            [
+                "ae937124.bc73f8"
+            ],
+            [
+                "43cecef5.e2e93"
+            ],
+            [
+                "31c35fd6.91da78"
+            ]
+        ]
+    },
+    {
+        "id": "2f72184a.a0d7f",
+        "type": "function",
+        "z": "d6af186b.004918",
+        "name": "finish",
+        "func": "return {\n    payload: {\n        \"chatId\": msg.payload.chatId,\n        \"type\": \"message\",\n        \"options\": { \"parse_mode\": \"Markdown\" },\n        \"content\": \"Your choice is \" + msg.payload.content\n    }\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 910,
+        "y": 1140,
+        "wires": [
+            [
+                "43cecef5.e2e93",
+                "8e746981.f48368"
+            ]
+        ]
+    },
+    {
+        "id": "9f1f18f4.a6ab8",
+        "type": "debug",
+        "z": "d6af186b.004918",
+        "name": "Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1010,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "31c35fd6.91da78",
+        "type": "switch",
+        "z": "d6af186b.004918",
+        "name": "Which action ?",
+        "property": "payload.content",
+        "propertyType": "msg",
+        "rules": [
             {
                 "t": "eq",
                 "v": "menu-zigbee-1",
@@ -933,157 +886,43 @@
                 "t": "eq",
                 "v": "menu-zwave-2",
                 "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "menu-zero",
-                "vt": "str"
-            },
-            {
-                "t": "eq",
-                "v": "menu-reset",
-                "vt": "str"
-            },
-            {
-                "t": "else"
             }
         ],
         "checkall": "false",
         "repair": false,
-        "outputs": 9,
-        "x": 710,
-        "y": 1000,
+        "outputs": 4,
+        "x": 460,
+        "y": 1100,
         "wires": [
             [
-                "1e9c666a.28ac1a",
-                "9e74dc1b.986fe8"
+                "2f72184a.a0d7f"
             ],
             [
-                "1e9c666a.28ac1a",
-                "6b4be1b1.802028"
+                "2f72184a.a0d7f"
             ],
             [
-                "e34b3377.608ce"
+                "2f72184a.a0d7f"
             ],
             [
-                "e34b3377.608ce"
-            ],
-            [
-                "e34b3377.608ce"
-            ],
-            [
-                "e34b3377.608ce"
-            ],
-            [
-                "b66be76c.10431"
-            ],
-            [
-                "99ba84c3.b69e5"
-            ],
-            [
-                "99ba84c3.b69e5"
+                "2f72184a.a0d7f"
             ]
         ]
     },
     {
-        "id": "99ba84c3.b69e5",
-        "type": "change",
-        "z": "d6af186b.004918",
-        "name": "reset context",
-        "rules": [
-            {
-                "t": "set",
-                "p": "keyboard",
-                "pt": "global",
-                "to": "{\t    \"menu\":\"false\",\t    \"menulName\": \"menu-zero\",\t    \"originalMessageFromId\": $.originalMessage.from.id\t}",
-                "tot": "jsonata"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 1030,
-        "y": 1120,
-        "wires": [
-            [
-                "32d381de.9d6306"
-            ]
-        ]
-    },
-    {
-        "id": "1e9c666a.28ac1a",
-        "type": "debug",
-        "z": "d6af186b.004918",
-        "name": "Debug",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 890,
-        "y": 880,
-        "wires": []
-    },
-    {
-        "id": "482c3190.49f01",
-        "type": "debug",
-        "z": "d6af186b.004918",
-        "name": "Debug",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1410,
-        "y": 780,
-        "wires": []
-    },
-    {
-        "id": "a8118b3e.95a57",
+        "id": "cca0873d.f956b",
         "type": "function",
         "z": "d6af186b.004918",
-        "name": "delete All",
-        "func": "// deletes question itself\nmsg1 = {\n    payload : {\n        \"chatId\": msg.originalMessage.from.id,\n        \"type\": \"deleteMessage\",\n        \"options\": false,\n        \"content\": msg.originalMessage.message.reply_to_message.message_id\n        }\n    }\n    \nnode.send(msg1);\n\n// delete Menu\nmsg2 = {\n    payload : {\n        \"chatId\": msg.originalMessage.from.id,\n        \"type\": \"deleteMessage\",\n        \"options\": false,\n        \"content\": msg.originalMessage.message.message_id\n        }\n    }\n\nnode.send(msg2);\n\nreturn []\n\n/*\nmsg.payload.options = false\nmsg.payload.type = 'deleteMessage'\n//msg.payload.content = context.global.keyboard.messageId\nmsg.payload.content = msg.originalMessage.message.message_id // OK\n//msg.payload.content = msg.originalMessage.message.reply_to_message.message_id // OK\nreturn [ msg ];\n*/",
-        "outputs": 1,
+        "name": "Which ?",
+        "func": "// This is the message id of the initial keyboard that is simply exchanged by a new one.\nvar messageId = context.global.keyboard.messageId;\n\n// This is a sample of how to send a second inline keyboard with modified buttons\nvar reply_markup = JSON.stringify({\n    inline_keyboard: [\n        [\n            {\n            \"text\": \"zigbee\",\n            \"callback_data\": \"menu-zigbee\" \n            }, \n            {\n             \"text\": \"zwave\",\n             \"callback_data\": \"menu-zwave\" \n            }\n        ],\n        [\n            {\n            \"text\": \"back\",\n            \"callback_data\": \"menu-reset\" \n            }  \n        ]\n    ]\n  });\n\nvar options = {\n    chat_id : msg.payload.chatId,\n    reply_markup : reply_markup,\n    message_id : messageId\n};\n\nmsg.payload.type = 'editMessageReplyMarkup';\nmsg.payload.content = reply_markup;\nmsg.payload.options = options;\n\nreturn [ msg ];\n",
+        "outputs": "1",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 1320,
-        "y": 1120,
+        "x": 920,
+        "y": 960,
         "wires": [
             [
-                "eea967f0.af52d"
-            ]
-        ]
-    },
-    {
-        "id": "32d381de.9d6306",
-        "type": "delay",
-        "z": "d6af186b.004918",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "1",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "x": 1180,
-        "y": 1120,
-        "wires": [
-            [
-                "a8118b3e.95a57"
+                "8e746981.f48368"
             ]
         ]
     }
