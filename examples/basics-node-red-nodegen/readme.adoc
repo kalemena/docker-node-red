@@ -1,7 +1,10 @@
 = Summary
 :hardbreaks:
 
-This is an example of importing OpenAPI v2 schema into Node-Red block using link:https://github.com/node-red/node-red-nodegen/wiki[node-red-nodegen]
+This is an example of importing OpenAPI v2 schema into Node-Red block using 
+
+* link:https://github.com/node-red/node-red-nodegen/wiki[node-red-nodegen]
+* link:https://flows.nodered.org/node/openapi-red[openapi-red]
 
 == Environment
 
@@ -13,3 +16,11 @@ $ docker-compose build
 $ docker-compose up -d
 $ docker-compose down
 ----
+
+== Examples
+
+Multiple examples
+
+* demonstrate is PetShop as Open API v2 (aka Swagger v2)
+* demonstrate convert of Open API v3 to v2-compatible, prior import in Node-Red
+* demonstrate usage of openapi-red

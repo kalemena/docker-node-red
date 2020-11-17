@@ -2,6 +2,11 @@ FROM kalemena/node-red:latest
 
 USER root
 
+ADD [ "*.yaml", "*.json", "/apis/" ]
+
+RUN cd /opt/node-red \
+    && npm install openapi-red
+
 # PetStore
 RUN cd /apis \
     && node-red-nodegen http://petstore.swagger.io/v2/swagger.json --category samples \
@@ -22,7 +27,5 @@ RUN cd /apis \
     && cd /opt/node-red \
     && npm link node-red-contrib-tock-web-bot-connector-api \
     && chown -R nodered:nodered /opt/node-red/node_modules/node-red-contrib-tock-web-bot-connector-api
-
-# ADD [ "*.yaml", "/apis/" ]
 
 USER nodered
