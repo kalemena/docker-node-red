@@ -60,7 +60,7 @@ WORKDIR /opt/node-red
 
 ### NODE RED MODULES
 RUN \
-  npm install -g node-red-nodegen
+  npm install -g node-red-nodegen api-spec-converter
 
 RUN npm i \
       node-red-node-serialport \
