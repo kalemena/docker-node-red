@@ -16,8 +16,6 @@ RUN cd /apis \
     && npm link node-red-contrib-swagger-petstore \
     && chown -R nodered:nodered /opt/node-red/node_modules/node-red-contrib-swagger-petstore 
 
-RUN npm install -g api-spec-converter
-
 # Tock API
 RUN cd /apis \
     && api-spec-converter -f openapi_3 -t swagger_2 https://raw.githubusercontent.com/theopenconversationkit/tock/master/bot/connector-web/Swagger_TOCKWebConnector.yaml > tock-api.json \
@@ -27,5 +25,9 @@ RUN cd /apis \
     && cd /opt/node-red \
     && npm link node-red-contrib-tock-web-bot-connector-api \
     && chown -R nodered:nodered /opt/node-red/node_modules/node-red-contrib-tock-web-bot-connector-api
+
+RUN cd /opt/node-red \
+    && npm install \
+        node-red-contrib-openapi
 
 USER nodered
