@@ -7,24 +7,12 @@
         "info": ""
     },
     {
-        "id": "9f8d7423.906368",
-        "type": "zwave-controller",
-        "z": "",
-        "port": "/dev/ttyZWave",
-        "driverattempts": "3",
-        "pollinterval": "10000",
-        "allowunreadyupdates": false,
-        "networkkey": "",
-        "logging": true
-    },
-    {
-        "id": "fee42dff.faa3f8",
+        "id": "7daf73cd.995c9c",
         "type": "deconz-server",
-        "z": "",
-        "name": "Deconz",
-        "ip": "172.24.0.3",
+        "name": "deconz",
+        "ip": "deconz",
         "port": "7080",
-        "apikey": "xoxoxoxox",
+        "apikey": "$(ZIGBEE_DECONZ_APIKEY)",
         "ws_port": "7443",
         "secure": false,
         "polling": "15"
@@ -34,9 +22,9 @@
         "type": "deconz-battery",
         "z": "74834c94.f69f1c",
         "name": "Battery",
-        "server": "fee42dff.faa3f8",
-        "device": "00:15:8d:00:04:ac:b3:f9-01-0405",
-        "device_name": "Multi Sensor #01 : ZHAHumidity",
+        "server": "7daf73cd.995c9c",
+        "device": "00:15:8d:00:01:5e:96:99-01-0406",
+        "device_name": "Bureau : ZHAPresence",
         "outputAtStartup": true,
         "x": 160,
         "y": 100,
@@ -54,14 +42,14 @@
         "type": "deconz-input",
         "z": "74834c94.f69f1c",
         "name": "",
-        "server": "fee42dff.faa3f8",
-        "device": "00:15:8d:00:04:ac:b3:f9-01-0405",
-        "device_name": "Multi Sensor #01 : ZHAHumidity",
+        "server": "7daf73cd.995c9c",
+        "device": "00:15:8d:00:01:5e:96:99-01-0406",
+        "device_name": "Bureau : ZHAPresence",
         "topic": "",
         "state": "0",
         "output": "always",
         "outputAtStartup": true,
-        "x": 240,
+        "x": 210,
         "y": 160,
         "wires": [
             [
@@ -73,26 +61,11 @@
         ]
     },
     {
-        "id": "67098474.833b14",
-        "type": "deconz-event",
-        "z": "74834c94.f69f1c",
-        "name": "Events",
-        "server": "fee42dff.faa3f8",
-        "device_name": null,
-        "x": 160,
-        "y": 220,
-        "wires": [
-            [
-                "dc63dbc0.d40e4"
-            ]
-        ]
-    },
-    {
         "id": "dc63dbc0.d40e4",
         "type": "debug",
         "z": "74834c94.f69f1c",
         "name": "logs",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -102,6 +75,626 @@
         "statusType": "auto",
         "x": 590,
         "y": 160,
+        "wires": []
+    },
+    {
+        "id": "4d0110f3.3def58",
+        "type": "deconz-output",
+        "z": "74834c94.f69f1c",
+        "name": "",
+        "server": "7daf73cd.995c9c",
+        "device": "group_3",
+        "device_name": "○ Test",
+        "command": "toggle",
+        "commandType": "deconz_cmd",
+        "payload": "payload",
+        "payloadType": "msg",
+        "transitionTime": "",
+        "x": 430,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "342ed53a.313902",
+        "type": "inject",
+        "z": "74834c94.f69f1c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 300,
+        "wires": [
+            [
+                "4d0110f3.3def58"
+            ]
+        ]
+    },
+    {
+        "id": "d0e10eaf.45945",
+        "type": "switch",
+        "z": "74834c94.f69f1c",
+        "name": "Which type of event ?",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "hask",
+                "v": "config",
+                "vt": "str"
+            },
+            {
+                "t": "hask",
+                "v": "attr",
+                "vt": "str"
+            },
+            {
+                "t": "hask",
+                "v": "state",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 4,
+        "x": 320,
+        "y": 480,
+        "wires": [
+            [
+                "bed96ac0.f0f31"
+            ],
+            [
+                "58ed5827.49cd9"
+            ],
+            [
+                "582ef07c.94e69",
+                "5c5d17cc.b98ed8"
+            ],
+            [
+                "8c53a19a.922a4"
+            ]
+        ]
+    },
+    {
+        "id": "7838d569.56e754",
+        "type": "deconz-event",
+        "z": "74834c94.f69f1c",
+        "name": "",
+        "server": "7daf73cd.995c9c",
+        "device_name": null,
+        "x": 120,
+        "y": 430,
+        "wires": [
+            [
+                "8a923b08.266ad8",
+                "d0e10eaf.45945"
+            ]
+        ]
+    },
+    {
+        "id": "8a923b08.266ad8",
+        "type": "debug",
+        "z": "74834c94.f69f1c",
+        "name": "ZigBeeRaw",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 290,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "e24c22c4.bab6c8",
+        "type": "comment",
+        "z": "74834c94.f69f1c",
+        "name": "ZigBee Tests",
+        "info": "",
+        "x": 120,
+        "y": 390,
+        "wires": []
+    },
+    {
+        "id": "bed96ac0.f0f31",
+        "type": "debug",
+        "z": "74834c94.f69f1c",
+        "name": "ZigBee-IsConfig ?",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "8c53a19a.922a4",
+        "type": "debug",
+        "z": "74834c94.f69f1c",
+        "name": "ZigBee-IsOther ?",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "582ef07c.94e69",
+        "type": "debug",
+        "z": "74834c94.f69f1c",
+        "name": "ZigBee-IsSensorUpdate ?",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "58ed5827.49cd9",
+        "type": "debug",
+        "z": "74834c94.f69f1c",
+        "name": "ZigBee-IsLights ?",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "5c5d17cc.b98ed8",
+        "type": "switch",
+        "z": "74834c94.f69f1c",
+        "name": "Which type of sensor ?",
+        "property": "payload.state",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "hask",
+                "v": "presence",
+                "vt": "str"
+            },
+            {
+                "t": "hask",
+                "v": "lux",
+                "vt": "str"
+            },
+            {
+                "t": "hask",
+                "v": "dark",
+                "vt": "str"
+            },
+            {
+                "t": "hask",
+                "v": "daylight",
+                "vt": "str"
+            },
+            {
+                "t": "hask",
+                "v": "lightlevel",
+                "vt": "str"
+            },
+            {
+                "t": "hask",
+                "v": "consumption",
+                "vt": "str"
+            },
+            {
+                "t": "hask",
+                "v": "power",
+                "vt": "str"
+            },
+            {
+                "t": "hask",
+                "v": "temperature",
+                "vt": "str"
+            },
+            {
+                "t": "hask",
+                "v": "humidity",
+                "vt": "str"
+            },
+            {
+                "t": "hask",
+                "v": "pressure",
+                "vt": "str"
+            },
+            {
+                "t": "hask",
+                "v": "buttonevent",
+                "vt": "str"
+            },
+            {
+                "t": "hask",
+                "v": "openclose",
+                "vt": "str"
+            },
+            {
+                "t": "hask",
+                "v": "on",
+                "vt": "str"
+            },
+            {
+                "t": "hask",
+                "v": "all_on",
+                "vt": "str"
+            },
+            {
+                "t": "hask",
+                "v": "any_on",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 16,
+        "x": 620,
+        "y": 680,
+        "wires": [
+            [
+                "74cb61c0.1d8628"
+            ],
+            [
+                "db5efa1.3978108"
+            ],
+            [
+                "46f35099.45f768"
+            ],
+            [
+                "696396a1.0b166"
+            ],
+            [
+                "e4c488f1.b23438"
+            ],
+            [
+                "2d92ea8e.ddf1f6"
+            ],
+            [
+                "540d47cf.df1fa"
+            ],
+            [
+                "c111ead3.fcb258"
+            ],
+            [
+                "bf7fd08b.7fac8"
+            ],
+            [
+                "6532e7ae.939e1"
+            ],
+            [
+                "9a890ab8.16d808"
+            ],
+            [
+                "d94ec8df.e70a78"
+            ],
+            [
+                "2432b935.20739e"
+            ],
+            [
+                "bee7e7e0.d7d648"
+            ],
+            [
+                "7e64b049.3bd7b"
+            ],
+            [
+                "f038f22a.9fa708"
+            ]
+        ]
+    },
+    {
+        "id": "f038f22a.9fa708",
+        "type": "debug",
+        "z": "74834c94.f69f1c",
+        "name": "ZigBee-IsOther ?",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 990,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "696396a1.0b166",
+        "type": "debug",
+        "z": "74834c94.f69f1c",
+        "name": "daylight",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "46f35099.45f768",
+        "type": "debug",
+        "z": "74834c94.f69f1c",
+        "name": "dark",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 950,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "db5efa1.3978108",
+        "type": "debug",
+        "z": "74834c94.f69f1c",
+        "name": "lux",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 950,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "74cb61c0.1d8628",
+        "type": "debug",
+        "z": "74834c94.f69f1c",
+        "name": "presence",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "e4c488f1.b23438",
+        "type": "debug",
+        "z": "74834c94.f69f1c",
+        "name": "lightlevel",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "2d92ea8e.ddf1f6",
+        "type": "debug",
+        "z": "74834c94.f69f1c",
+        "name": "consumption",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 970,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "c111ead3.fcb258",
+        "type": "debug",
+        "z": "74834c94.f69f1c",
+        "name": "temperature",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 970,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "bf7fd08b.7fac8",
+        "type": "debug",
+        "z": "74834c94.f69f1c",
+        "name": "humidity",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "6532e7ae.939e1",
+        "type": "debug",
+        "z": "74834c94.f69f1c",
+        "name": "pressure",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "540d47cf.df1fa",
+        "type": "debug",
+        "z": "74834c94.f69f1c",
+        "name": "power",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 950,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "9a890ab8.16d808",
+        "type": "debug",
+        "z": "74834c94.f69f1c",
+        "name": "buttonevent",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 970,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "d94ec8df.e70a78",
+        "type": "debug",
+        "z": "74834c94.f69f1c",
+        "name": "openclose",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 970,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "2432b935.20739e",
+        "type": "debug",
+        "z": "74834c94.f69f1c",
+        "name": "on",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 950,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "bee7e7e0.d7d648",
+        "type": "debug",
+        "z": "74834c94.f69f1c",
+        "name": "all_on",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 950,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "7e64b049.3bd7b",
+        "type": "debug",
+        "z": "74834c94.f69f1c",
+        "name": "any_on",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 1000,
         "wires": []
     }
 ]
