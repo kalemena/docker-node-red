@@ -628,7 +628,8 @@
         "y": 960,
         "wires": [
             [
-                "239b757f.271f4a"
+                "239b757f.271f4a",
+                "31c35fd6.91da78"
             ]
         ]
     },
@@ -650,8 +651,8 @@
         "id": "3426758a.a2d09a",
         "type": "function",
         "z": "d6af186b.004918",
-        "name": "Keyboard Which ?",
-        "func": "context.global.keyboard = { messageId : msg.payload.messageId };\n\nvar opts = {\n  reply_to_message_id: msg.payload.messageId,\n  reply_markup: JSON.stringify({\n    \"inline_keyboard\": \n    [\n        [\n            {\n            \"text\": \"zigbee\",\n            \"callback_data\": \"menu-zigbee\" \n            }, \n            {\n             \"text\": \"zwave\",\n             \"callback_data\": \"menu-zwave\" \n            }\n        ],\n        [\n            {\n            \"text\": \"back\",\n            \"callback_data\": \"menu-reset\" \n            }  \n        ]\n    ]\n  })\n};\n\nmsg.payload.content = 'Which ?';\nmsg.payload.options = opts;\n\nreturn [ msg ];",
+        "name": "Keyboard Menu ?",
+        "func": "context.global.keyboard = { \n    messageId : msg.payload.messageId \n};\n\nvar opts = {\n  reply_to_message_id: msg.payload.messageId,\n  reply_markup: JSON.stringify({\n    \"inline_keyboard\": \n    [\n        [\n            {\n            \"text\": \"zigbee\",\n            \"callback_data\": \"menu-zigbee\" \n            }, \n            {\n             \"text\": \"zwave\",\n             \"callback_data\": \"menu-zwave\" \n            }\n        ],\n        [\n            {\n            \"text\": \"back\",\n            \"callback_data\": \"menu-reset\" \n            }  \n        ]\n    ]\n  })\n};\n\nmsg.payload.content = 'Which ?';\nmsg.payload.options = opts;\n\nreturn [ msg ];",
         "outputs": "1",
         "noerr": 0,
         "initialize": "",
@@ -679,7 +680,8 @@
         "wires": [
             [
                 "3426758a.a2d09a"
-            ]
+            ],
+            []
         ]
     },
     {
@@ -687,7 +689,7 @@
         "type": "function",
         "z": "d6af186b.004918",
         "name": "cleanup",
-        "func": "// Hide the keyboard and forget the messageId\nmsg.payload.type = 'deleteMessage';\nmsg.payload.content = context.global.keyboard.messageId\ncontext.global.keyboard.messageId = null;\nreturn [ msg ];",
+        "func": "// Hide the keyboard and forget the messageId\nmsg.payload.type = 'deleteMessage';\nmsg.payload.content = context.global.keyboard.messageId\n\ncontext.global.keyboard.messageId = null;\n\nreturn [ msg ];",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -804,7 +806,7 @@
         "repair": false,
         "outputs": 5,
         "x": 330,
-        "y": 960,
+        "y": 980,
         "wires": [
             [
                 "cca0873d.f956b"
@@ -818,9 +820,7 @@
             [
                 "43cecef5.e2e93"
             ],
-            [
-                "31c35fd6.91da78"
-            ]
+            []
         ]
     },
     {
@@ -891,8 +891,8 @@
         "checkall": "false",
         "repair": false,
         "outputs": 4,
-        "x": 460,
-        "y": 1100,
+        "x": 340,
+        "y": 1080,
         "wires": [
             [
                 "2f72184a.a0d7f"
