@@ -28,6 +28,6 @@ RUN cd /apis \
 
 RUN cd /opt/node-red \
     && npm install \
-        node-red-contrib-openapi
+        @node-red-tools/node-red-contrib-openapi
 
 USER nodered
