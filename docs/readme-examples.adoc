@@ -19,8 +19,8 @@ image:/examples/basics-hello/sunrise.png[link="/examples/basics-hello", 640]
 .HTTP API & MongoDB storage for contact creation/identification
 image:/examples//basics-mongodb-http-contacts-api/contacts-api.png[link="/examples/basics-mongodb-http-contacts-api", 640]
 
-.HTTP API & Redis storage for a scheduler API
-image:/examples/basics-redis-http-scheduler-api/redis-http-scheduler-api.png[link="/examples/basics-redis-http-scheduler-api", 640]
+.node-red-contrib-influxdb
+link:/examples/basics-node-red-contrib-influxdb[node-red-contrib-influxdb]
 
 .Telegram usage
 image:/examples/basics-telegram/basics-telegram.png[link="/examples/basics-telegram", 640]

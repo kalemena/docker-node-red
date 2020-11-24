@@ -6,6 +6,8 @@ image:node-red-contrib-influxdb.png[]
 
 == Environment
 
+Edit a *.env* file based on *.env-example* and setup your credentials.
+
 Build the few dependencies:
 
     $ docker-compose build
