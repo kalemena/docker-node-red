@@ -6,7 +6,7 @@ image:basics-telegram.png[]
 
 == How-To
 
-* Edit .env file and set valid value for TELEGRAM_BOT_TOKEN
+* Edit *.env* file based on *.env-example* and set valid value for *TELEGRAM_BOT_TOKEN*
 * Start environment as explained below
 * Browse link:http://localhost:1880[]
 * Edit config if needed

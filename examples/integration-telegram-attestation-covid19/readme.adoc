@@ -15,7 +15,7 @@ image:telegram-attestation-covid19-chat2.png[]
 Il faut:
 
 * link:https://core.telegram.org/bots#creating-a-new-bot[Créer un Telegram Bot]
-* Editer le fichier *.env* et positioner la valeur précédement générée pour *TELEGRAM_BOT_TOKEN*
+* Editer un fichier *.env* sur la base du fichier *.env-example* et positioner la valeur précédement générée pour *TELEGRAM_BOT_TOKEN*
 * Construire l'environement
 
     $ docker-compose build
