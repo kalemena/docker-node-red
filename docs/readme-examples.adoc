@@ -22,8 +22,9 @@ image:/examples//basics-mongodb-http-contacts-api/contacts-api.png[link="/exampl
 .node-red-contrib-influxdb
 link:/examples/basics-node-red-contrib-influxdb[node-red-contrib-influxdb]
 
-.Telegram usage
-image:/examples/basics-telegram/basics-telegram.png[link="/examples/basics-telegram", 640]
+.node-red-contrib-openzwave-am (ZWave devices)
+image:/examples/basics-node-red-contrib-openzwave-am/nodered-zwave-debug.png[link="/examples/basics-node-red-contrib-openzwave-am", 640]
+
 
 // .Using WebSockets in Chat Room - example from FRED portal
 // image:../examples/basics-websockets-chat-sentiment[link="/examples/basics-websockets-chat-sentiment"]
