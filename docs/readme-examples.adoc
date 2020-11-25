@@ -28,6 +28,9 @@ image:/examples/basics-node-red-contrib-openzwave-am/nodered-zwave-debug.png[lin
 .node-red-contrib-redis (Redis + an HTTP API to store handle a schedule)
 image:/examples/basics-node-red-contrib-redis/redis-http-scheduler-api.png[link="/examples/basics-node-red-contrib-redis", 640]
 
+.node-red-contrib-telegrambot
+image:/examples/basics-node-red-contrib-telegrambot/basics-node-red-contrib-telegrambot.png[link="/examples/basics-node-red-contrib-telegrambot", 640]
+
 
 // .Using WebSockets in Chat Room - example from FRED portal
 // image:../examples/basics-websockets-chat-sentiment[link="/examples/basics-websockets-chat-sentiment"]
