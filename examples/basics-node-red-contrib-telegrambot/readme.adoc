@@ -2,7 +2,7 @@
 
 This is a sample of using Telegram.
 
-image:basics-telegram.png[]
+image:basics-node-red-contrib-telegrambot.png[]
 
 == How-To
 
