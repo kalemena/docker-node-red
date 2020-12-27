@@ -7,15 +7,43 @@
         "info": ""
     },
     {
+        "id": "1cbb3c91.7df2b3",
+        "type": "subflow",
+        "name": "Subflow 1",
+        "info": "",
+        "in": [
+            {
+                "x": 140,
+                "y": 60,
+                "wires": []
+            }
+        ],
+        "out": [
+            {
+                "x": 960,
+                "y": 60,
+                "wires": [
+                    {
+                        "id": "1cbb3c91.7df2b3",
+                        "port": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
         "id": "2b245d4f.5baf12",
         "type": "influxdb",
         "hostname": "influxdb",
         "port": "8086",
         "protocol": "http",
-        "database": "weather",
+        "database": "sensors",
         "name": "",
         "usetls": false,
-        "tls": ""
+        "tls": "",
+        "influxdbVersion": "1.x",
+        "url": "",
+        "rejectUnauthorized": false
     },
     {
         "id": "e2d21338.ab7f58",
@@ -38,11 +66,10 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 200,
+        "x": 180,
         "y": 80,
         "wires": [
             [
-                "634375f2.32e9d4",
                 "f14893fc.d042b8"
             ]
         ]
@@ -56,28 +83,30 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "true",
+        "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 490,
-        "y": 80,
+        "x": 590,
+        "y": 120,
         "wires": []
     },
     {
         "id": "f14893fc.d042b8",
         "type": "function",
         "z": "ee322aa5.04059",
-        "name": "",
+        "name": "single value",
         "func": "msg.payload = Math.random()*10;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 410,
-        "y": 160,
+        "x": 390,
+        "y": 80,
         "wires": [
             [
-                "de1fd091.09b5c"
+                "de1fd091.09b5c",
+                "634375f2.32e9d4"
             ]
         ]
     },
@@ -90,8 +119,126 @@
         "measurement": "test",
         "precision": "",
         "retentionPolicy": "",
-        "x": 690,
-        "y": 160,
+        "database": "",
+        "retentionPolicyV18Flux": "",
+        "org": "",
+        "bucket": "",
+        "x": 670,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "401bbdfe.584c94",
+        "type": "debug",
+        "z": "1cbb3c91.7df2b3",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 680,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "bf874566.5d9478",
+        "type": "influxdb out",
+        "z": "ee322aa5.04059",
+        "influxdb": "2b245d4f.5baf12",
+        "name": "",
+        "measurement": "",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "",
+        "retentionPolicyV18Flux": "",
+        "org": "",
+        "bucket": "",
+        "x": 660,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "7849c874.0141d8",
+        "type": "function",
+        "z": "ee322aa5.04059",
+        "name": "Sensors",
+        "func": "// TEMP, HUMI, LIGHT, PRESSURE, BATTERY, RAIN\n\nvar msgres =  {\n    payload: [\n        { \"timestamp\": Number(msg.payload) },\n        { \"id\": \"office\" }\n    ],\n    measurement: \"sensors\"\n}\n\nreturn msgres;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 380,
+        "y": 240,
+        "wires": [
+            [
+                "bf874566.5d9478",
+                "2b444ab.4ee2eb6"
+            ]
+        ]
+    },
+    {
+        "id": "2b444ab.4ee2eb6",
+        "type": "debug",
+        "z": "ee322aa5.04059",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "5610048f.475424",
+        "type": "inject",
+        "z": "ee322aa5.04059",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 240,
+        "wires": [
+            [
+                "7849c874.0141d8"
+            ]
+        ]
+    },
+    {
+        "id": "eb3ffcc5.164e7",
+        "type": "comment",
+        "z": "ee322aa5.04059",
+        "name": "insert - single value",
+        "info": "",
+        "x": 210,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "829cfd40.94c308",
+        "type": "comment",
+        "z": "ee322aa5.04059",
+        "name": "insert - value + fields + tags",
+        "info": "",
+        "x": 240,
+        "y": 200,
         "wires": []
     }
 ]
