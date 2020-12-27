@@ -3,3 +3,24 @@ CREATE RETENTION POLICY one_week ON sensors DURATION 168h REPLICATION 1 DEFAULT;
 CREATE RETENTION POLICY one_month ON sensors DURATION 4w REPLICATION 1;
 CREATE RETENTION POLICY one_year ON sensors DURATION 52w REPLICATION 1;
 
+# Example
+# create database sensors
+# show retention policies on sensors
+# create retention policy three_hours on sensors duration 3h replication 1 default
+# show retention policies on sensors
+
+# use sensors
+# show measurements
+# show series
+# select * from sensors
+
+# Users
+# CREATE USER admin WITH PASSWORD 'admin123' WITH ALL PRIVILEGES
+
+# Downsampling https://docs.influxdata.com/influxdb/v1.7/guides/downsampling_and_retention/
+# CREATE CONTINUOUS QUERY "cq_30m" ON "food_data" BEGIN
+#  SELECT mean("website") AS "mean_website",mean("phone") AS "mean_phone"
+#  INTO "a_year"."downsampled_orders"
+#  FROM "orders"
+#  GROUP BY time(30m)
+# END
