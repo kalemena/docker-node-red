@@ -58,6 +58,51 @@ $ curl -G http://localhost:8086/query --data-urlencode "q=SHOW DATABASES"
 {"results":[{"statement_id":0,"series":[{"name":"databases","columns":["name"],"values":[["telegraf"],["SensorData"]]}]}]}
 ----
 
+=== Inserting / Selecting
+
+.Inserting / Selecting
+[source,bash]
+----
+root@6796120cd3fa:/# influx -precision rfc3339
+Connected to http://localhost:8086 version 1.8.3
+InfluxDB shell version: 1.8.3
+> show databases
+name: databases
+name
+sensors
+
+> use sensors
+Using database sensors
+
+> INSERT sensors,location=office,type=temp value=25
+> INSERT sensors,location=office,type=temp value=23
+> INSERT sensors,location=office,type=temp value=22
+
+> \select * from sensors
+name: sensors
+time                           location type value
+----                           -------- ---- -----
+2021-01-02T17:30:30.173554863Z office   temp 25
+2021-01-02T17:30:52.262007663Z office   temp 23
+2021-01-02T17:30:56.682454825Z office   temp 22
+
+# Select first (oldest)
+> SELECT * FROM /.*/ LIMIT 1
+name: sensors
+time                           location type value
+----                           -------- ---- -----
+2021-01-02T17:30:30.173554863Z office   temp 25
+
+# Select with filter
+> SELECT * FROM "sensors" WHERE "value" > 22
+
+name: sensors
+time                           location type value
+----                           -------- ---- -----
+2021-01-02T17:30:30.173554863Z office   temp 25
+2021-01-02T17:30:52.262007663Z office   temp 23
+----
+
 == Resources
 
 * link:https://docs.influxdata.com/influxdb/v1.8/[InfluxDB docs]
