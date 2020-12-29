@@ -161,7 +161,7 @@
         "type": "function",
         "z": "ee322aa5.04059",
         "name": "Sensors",
-        "func": "// TEMP, HUMI, LIGHT, PRESSURE, BATTERY, RAIN\n\nvar msgres =  {\n    payload: [\n        { \"timestamp\": Number(msg.payload) },\n        { \"id\": \"office\" }\n    ],\n    measurement: \"sensors\"\n}\n\nreturn msgres;\n",
+        "func": "// TEMP, HUMI, LIGHT, PRESSURE, BATTERY, RAIN\n\nvar msgres =  {\n    payload: [\n        { \"value\": Number(msg.payload) },\n        { \"type\": \"temp\", \"location\": \"office\" }\n    ],\n    measurement: \"sensors\"\n}\n\nreturn msgres;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -200,20 +200,16 @@
         "props": [
             {
                 "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
             }
         ],
         "repeat": "",
         "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
+        "once": true,
+        "onceDelay": "1",
         "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 180,
+        "payload": "25",
+        "payloadType": "num",
+        "x": 170,
         "y": 240,
         "wires": [
             [
@@ -240,5 +236,126 @@
         "x": 240,
         "y": 200,
         "wires": []
+    },
+    {
+        "id": "f9ad7f8e.736a08",
+        "type": "influxdb in",
+        "z": "ee322aa5.04059",
+        "influxdb": "2b245d4f.5baf12",
+        "name": "",
+        "query": "",
+        "rawOutput": false,
+        "precision": "",
+        "retentionPolicy": "",
+        "org": "organisation",
+        "x": 440,
+        "y": 460,
+        "wires": [
+            [
+                "fe17bda8.2a07a8"
+            ]
+        ]
+    },
+    {
+        "id": "266e0143.d568d6",
+        "type": "comment",
+        "z": "ee322aa5.04059",
+        "name": "SELECT * FROM \"sensors\" WHERE \"value\" > 22",
+        "info": "",
+        "x": 300,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "fe17bda8.2a07a8",
+        "type": "debug",
+        "z": "ee322aa5.04059",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "7ad1b802.d1df98",
+        "type": "inject",
+        "z": "ee322aa5.04059",
+        "name": "",
+        "props": [
+            {
+                "p": "query",
+                "v": "SELECT * FROM \"sensors\" WHERE \"value\" > 22",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 170,
+        "y": 460,
+        "wires": [
+            [
+                "f9ad7f8e.736a08"
+            ]
+        ]
+    },
+    {
+        "id": "82d71627.489a8",
+        "type": "inject",
+        "z": "ee322aa5.04059",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "2",
+        "topic": "",
+        "payload": "23",
+        "payloadType": "num",
+        "x": 170,
+        "y": 280,
+        "wires": [
+            [
+                "7849c874.0141d8"
+            ]
+        ]
+    },
+    {
+        "id": "c6e6ae5b.9e112",
+        "type": "inject",
+        "z": "ee322aa5.04059",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "3",
+        "topic": "",
+        "payload": "22",
+        "payloadType": "num",
+        "x": 170,
+        "y": 320,
+        "wires": [
+            [
+                "7849c874.0141d8"
+            ]
+        ]
     }
 ]
