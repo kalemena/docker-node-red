@@ -105,10 +105,15 @@ time                           location type value
 
 == Resources
 
-* link:https://docs.influxdata.com/influxdb/v1.8/[InfluxDB docs]
-* link:https://docs.influxdata.com/influxdb/v1.8/introduction/getting_started/[InfluxDB doc getting started]
-* link:https://www.influxdata.com/blog/data-layout-and-schema-design-best-practices-for-influxdb/[InfluxDB schema design]
-* link:https://docs.influxdata.com/influxdb/v1.8/query_language/manage-database/[InfluxDB doc database retention]
-* link:https://devconnected.com/the-definitive-guide-to-influxdb-in-2019/[InfluxDB learning]
-* link:https://flows.nodered.org/node/node-red-contrib-influxdb[Node-Red InfluxDB]
-* link:https://hub.docker.com/_/influxdb[Docker image]
+* InfluxDB 1.x
+** link:https://docs.influxdata.com/influxdb/v1.8/[InfluxDB docs]
+** link:https://docs.influxdata.com/influxdb/v1.8/introduction/getting_started/[InfluxDB doc getting started]
+** link:https://www.influxdata.com/blog/data-layout-and-schema-design-best-practices-for-influxdb/[InfluxDB schema design]
+** link:https://docs.influxdata.com/influxdb/v1.8/query_language/manage-database/[InfluxDB doc database retention]
+** link:https://devconnected.com/the-definitive-guide-to-influxdb-in-2019/[InfluxDB learning]
+** link:https://flows.nodered.org/node/node-red-contrib-influxdb[Node-Red InfluxDB]
+** link:https://hub.docker.com/_/influxdb[Docker image]
+
+* InfluxDB 2.0 ?
+** link:https://docs.influxdata.com/influxdb/v2.0/get-started/[InfluxDB 2.0]
+** link:https://dzone.com/articles/getting-started-with-influxdb-20#[Getting started]
