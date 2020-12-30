@@ -196,20 +196,20 @@
         "id": "5610048f.475424",
         "type": "inject",
         "z": "ee322aa5.04059",
-        "name": "",
+        "name": "~18 @ 1s",
         "props": [
             {
                 "p": "payload"
             }
         ],
-        "repeat": "",
+        "repeat": "1",
         "crontab": "",
-        "once": true,
+        "once": false,
         "onceDelay": "1",
         "topic": "",
-        "payload": "25",
-        "payloadType": "num",
-        "x": 170,
+        "payload": "18 + 5 * $random()",
+        "payloadType": "jsonata",
+        "x": 190,
         "y": 240,
         "wires": [
             [
@@ -309,23 +309,23 @@
         ]
     },
     {
-        "id": "82d71627.489a8",
+        "id": "97d54fbb.aa2e9",
         "type": "inject",
         "z": "ee322aa5.04059",
-        "name": "",
+        "name": "~19 @ 5s",
         "props": [
             {
                 "p": "payload"
             }
         ],
-        "repeat": "",
+        "repeat": "5",
         "crontab": "",
-        "once": true,
-        "onceDelay": "2",
+        "once": false,
+        "onceDelay": "1",
         "topic": "",
-        "payload": "23",
-        "payloadType": "num",
-        "x": 170,
+        "payload": "19 + 5 * $random()",
+        "payloadType": "jsonata",
+        "x": 190,
         "y": 280,
         "wires": [
             [
@@ -334,23 +334,23 @@
         ]
     },
     {
-        "id": "c6e6ae5b.9e112",
+        "id": "a557d7d1.f0c19",
         "type": "inject",
         "z": "ee322aa5.04059",
-        "name": "",
+        "name": "~20 @ 10s",
         "props": [
             {
                 "p": "payload"
             }
         ],
-        "repeat": "",
+        "repeat": "10",
         "crontab": "",
-        "once": true,
-        "onceDelay": "3",
+        "once": false,
+        "onceDelay": "1",
         "topic": "",
-        "payload": "22",
-        "payloadType": "num",
-        "x": 170,
+        "payload": "20 + 5 * $random()",
+        "payloadType": "jsonata",
+        "x": 190,
         "y": 320,
         "wires": [
             [
