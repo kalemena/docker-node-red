@@ -1,12 +1,7 @@
 CREATE DATABASE sensors;
 CREATE RETENTION POLICY one_hour ON sensors DURATION 1h REPLICATION 1 DEFAULT;
 CREATE RETENTION POLICY one_month ON sensors DURATION 4w REPLICATION 1;
-CREATE CONTINUOUS QUERY "cq_15m" ON sensors BEGIN
-  SELECT mean("value") AS "mean_temp"
-  INTO "one_month"."downsampled_sensors"
-  FROM "sensors"
-  GROUP BY time(15m)
-END
+CREATE CONTINUOUS QUERY "cq_15m" ON sensors BEGIN SELECT mean("value") AS "mean_temp" INTO "one_month"."downsampled_sensors" FROM "sensors" GROUP BY time(15m) END;
 
 # Example
 # - creates database sensors
