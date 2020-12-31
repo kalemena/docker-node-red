@@ -60,7 +60,6 @@ $ curl -G http://localhost:8086/query --data-urlencode "q=SHOW DATABASES"
 
 === Inserting / Selecting
 
-.Inserting / Selecting
 [source,bash]
 ----
 root@6796120cd3fa:/# influx -precision rfc3339
@@ -101,6 +100,59 @@ time                           location type value
 ----                           -------- ---- -----
 2021-01-02T17:30:30.173554863Z office   temp 25
 2021-01-02T17:30:52.262007663Z office   temp 23
+----
+
+=== Retention policies
+
+See: link:https://docs.influxdata.com/influxdb/v1.8/query_language/manage-database/[InfluxDB doc database retention]
+
+Default Schema is created with:
+- *DEFAULT retention* is only 1 hour, 
+- longer retention of 4 weeks is used after *downsampling* the data using a *continuous query*
+
+[source,bash]
+----
+CREATE DATABASE sensors;
+CREATE RETENTION POLICY one_hour ON sensors DURATION 1h REPLICATION 1 DEFAULT;
+CREATE RETENTION POLICY one_month ON sensors DURATION 4w REPLICATION 1;
+CREATE CONTINUOUS QUERY "cq_15m" ON sensors BEGIN
+  SELECT mean("value") AS "mean_temp"
+  INTO "one_month"."downsampled_sensors"
+  FROM "sensors"
+  GROUP BY time(15m)
+END
+----
+
+Node-Red default flow does plenty inserts continuously.
+
+Let this run for at least 15min to see the effect of *downsampling*, then run below commands:
+
+[source,bash]
+----
+# DEFAULT retention queries
+> use sensors
+> SELECT * FROM /.*/ LIMIT 4
+name: sensors
+time                           location type value
+----                           -------- ---- -----
+2021-01-03T12:47:31.891410765Z office   temp 21.40042538145746
+2021-01-03T12:47:32.865554076Z office   temp 19.02397972203253
+2021-01-03T12:47:33.86622876Z  office   temp 22.583780191258768
+2021-01-03T12:47:34.866118246Z office   temp 22.604425205798144
+
+# 15min have past => new measurement is visible due to CQ
+> show measurements
+name: measurements
+name
+-----
+downsampled_sensors
+sensors
+
+> SELECT * FROM "one_month"."downsampled_sensors" LIMIT 5
+name: downsampled_sensors
+time                 mean_temp
+----                 ---------
+2021-01-03T12:45:00Z 20.795088968018142
 ----
 
 == Resources
