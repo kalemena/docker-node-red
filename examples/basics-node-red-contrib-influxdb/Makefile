@@ -51,3 +51,13 @@ down:
 
 clean:
 	docker-compose down --volumes
+
+############################
+# Troubleshoot
+############################
+
+logs:
+	docker logs -f basics-node-red-contrib-influxdb_influxdb_1
+
+cli:
+	docker exec -it basics-node-red-contrib-influxdb_influxdb_1 influx -precision rfc3339
