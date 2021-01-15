@@ -1,0 +1,26 @@
+= nodered-contrib-signal-client
+
+
+
+image:nodered-contrib-signal-client.png[]
+
+== Environment
+
+Build the few dependencies:
+
+    $ docker-compose build
+
+Start the flow:
+
+    $ docker-compose up -d
+
+Stop everything:
+
+    $ docker-compose stop
+
+Cleanup everything (including database):
+
+    $ docker-compose down -v
+
+== Resources
+
