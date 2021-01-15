@@ -104,7 +104,7 @@ time                           location type value
 
 === Retention policies
 
-See: link:https://docs.influxdata.com/influxdb/v1.8/query_language/manage-database/[InfluxDB doc database retention]
+See link:https://docs.influxdata.com/influxdb/v1.8/query_language/manage-database/[InfluxDB doc database retention]
 
 Default Schema is created with:
 - *DEFAULT retention* is only 1 hour, 
@@ -131,14 +131,20 @@ Let this run for at least 15min to see the effect of *downsampling*, then run be
 ----
 # DEFAULT retention queries
 > use sensors
-> SELECT * FROM /.*/ LIMIT 4
+> select * from sensors LIMIT 10
 name: sensors
 time                           location type value
-----                           -------- ---- -----
-2021-01-03T12:47:31.891410765Z office   temp 21.40042538145746
-2021-01-03T12:47:32.865554076Z office   temp 19.02397972203253
-2021-01-03T12:47:33.86622876Z  office   temp 22.583780191258768
-2021-01-03T12:47:34.866118246Z office   temp 22.604425205798144
+-----
+2021-01-03T13:00:00.438903813Z office   temp 20.649397104639775
+2021-01-03T13:00:00.910804076Z office   temp 24.34536618281917
+2021-01-03T13:00:00.914038222Z office   temp 22.321641480653092
+2021-01-03T13:00:01.4403414Z   office   temp 18.12017763191719
+2021-01-03T13:00:02.440147712Z office   temp 21.000569249130052
+2021-01-03T13:00:03.441563968Z office   temp 20.837756549477454
+2021-01-03T13:00:04.441451821Z office   temp 22.331927643576215
+2021-01-03T13:00:05.441919346Z office   temp 21.32733323416813
+2021-01-03T13:00:05.914903421Z office   temp 20.732493457631076
+2021-01-03T13:00:06.443036329Z office   temp 18.651202210211032
 
 # 15min have past => new measurement is visible due to CQ
 > show measurements
@@ -148,11 +154,19 @@ name
 downsampled_sensors
 sensors
 
-> SELECT * FROM "one_month"."downsampled_sensors" LIMIT 5
+> SELECT * FROM "one_month"."downsampled_sensors" LIMIT 10
 name: downsampled_sensors
 time                 mean_temp
-----                 ---------
+-----
 2021-01-03T12:45:00Z 20.795088968018142
+2021-01-03T13:00:00Z 20.801665954069687
+2021-01-03T13:15:00Z 20.762995451956773
+2021-01-03T13:30:00Z 20.84391007699977
+2021-01-03T13:45:00Z 20.818617221757233
+2021-01-03T14:00:00Z 20.812785825866843
+2021-01-03T14:15:00Z 20.87110412555589
+2021-01-03T14:30:00Z 20.909856013475363
+2021-01-03T14:45:00Z 20.820308042018944
 ----
 
 == Resources
