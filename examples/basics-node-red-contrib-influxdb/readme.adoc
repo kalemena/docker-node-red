@@ -176,6 +176,7 @@ time                 mean_temp
 ** link:https://docs.influxdata.com/influxdb/v1.8/introduction/getting_started/[InfluxDB doc getting started]
 ** link:https://www.influxdata.com/blog/data-layout-and-schema-design-best-practices-for-influxdb/[InfluxDB schema design]
 ** link:https://docs.influxdata.com/influxdb/v1.8/query_language/manage-database/[InfluxDB doc database retention]
+** link:https://docs.influxdata.com/influxdb/v1.8/query_language/continuous_queries/[InfluxDB Continuous Query]
 ** link:https://devconnected.com/the-definitive-guide-to-influxdb-in-2019/[InfluxDB learning]
 ** link:https://flows.nodered.org/node/node-red-contrib-influxdb[Node-Red InfluxDB]
 ** link:https://hub.docker.com/_/influxdb[Docker image]
@@ -183,3 +184,7 @@ time                 mean_temp
 * InfluxDB 2.0 ?
 ** link:https://docs.influxdata.com/influxdb/v2.0/get-started/[InfluxDB 2.0]
 ** link:https://dzone.com/articles/getting-started-with-influxdb-20#[Getting started]
+
+* Tutorial ?
+** https://dummylabs.com/post/2019-01-13-influxdb-part1/
+** https://dummylabs.com/post/2019-05-28-influxdb-part2/
