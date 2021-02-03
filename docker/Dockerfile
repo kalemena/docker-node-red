@@ -2,7 +2,7 @@ FROM ubuntu:20.04
 
 MAINTAINER Kalemena
 
-ARG NODERED_VERSION=1.2.7
+ARG NODERED_VERSION=1.2.8
 
  # Build-time metadata as defined at http://label-schema.org
 ARG BUILD_DATE
