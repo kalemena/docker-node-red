@@ -13,7 +13,7 @@ jobs:
     - name: Build Docker Image
       env:
         IMAGE: "kalemena/node-red"
-        VERSION: "1.2.8"
+        VERSION: "1.2.9"
       run: |
         docker -v
         docker pull ubuntu:20.04
