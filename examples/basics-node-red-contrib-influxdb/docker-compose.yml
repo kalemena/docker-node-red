@@ -33,6 +33,7 @@ services:
   grafana:
     image: grafana/grafana
     # user: "${UID}:${GID}"
+    restart: always
     ports:
       - "${GRAFANA_PORT:-3000}:3000"
     volumes:
