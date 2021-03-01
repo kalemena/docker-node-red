@@ -1,4 +1,5 @@
 = What is this example?
+:hardbreaks:
 
 This is a sample of using link:https://aeotec.com/z-wave-usb-stick/[Z-Wave USB key] with a 230v plug.
 
@@ -6,13 +7,13 @@ IMPORTANT: ZWave plugs usualy allow On/Off and power consumption measures, as se
 
 image:nodered-zwave-debug.png[]
 
-= Pre-requisits
+== Pre-requisits
 
-You need to understand ZWave basics. +
-And make sure the USB stick and devices are correctly paired. +
+You need to understand ZWave basics.
+And make sure the USB stick and devices are correctly paired.
 Check low-level info at link:https://github.com/kalemena/iot-tools/tree/master/docs/gateways/zwave[]
 
-= How-To
+== How-To
 
 IMPORTANT: ZWave libraries are installed into this Node-RED Docker image already.
 
@@ -24,7 +25,7 @@ Here is how to run the ZWave in Node-RED:
 * Change input nodes to set ids of your ZWave devices (e.g. my switch is 7 in this sample)
 * Click the *switchOn* or *switchOff* button !
 
-## Environment
+== Environment
 
 Build the few dependencies:
 
