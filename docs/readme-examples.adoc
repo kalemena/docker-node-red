@@ -14,7 +14,7 @@ image:/examples/basics-csv-calendar-events/csv-calendar-events.png[link="/exampl
 // image:basics-elasticsearch-http-contacts-api/contacts-api.png[link="/examples/basics-elasticsearch-http-contacts-api"]
 
 .Sunrise/Sunset node
-image:/examples/basics-hello/sunrise.png[link="/examples/basics-hello", 640]
+image:/examples/node-red-node-suncalc/sunrise.png[link="/examples/node-red-node-suncalc", 640]
 
 .node-red-contrib-mongodb (MongoDB + an HTTP API to store contacts)
 image:/examples/basics-mongodb-http-contacts-api/contacts-api.png[link="/examples/basics-mongodb-http-contacts-api", 640]

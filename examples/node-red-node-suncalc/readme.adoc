@@ -1,7 +1,7 @@
 
 = Summary
 
-This is an example of using sunrise/sunset node as hello world.
+This is an example of using sunrise/sunset node (aka node-red-node-suncalc) as hello world.
 
 == Snapshot
 
