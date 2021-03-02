@@ -1,4 +1,5 @@
 = What is this example?
+:hardbreaks:
 
 This is a sample of using Redis imported from node block example.
 
@@ -6,11 +7,11 @@ IMPORTANT: configuration was not explained anywhere for this Node-RED block. For
 
 image:redis-http-scheduler-api.png[]
 
-= Flow
+== Flow
 
-== How-To
+=== How-To
 
-=== Environment
+==== Environment
 
 Build the few dependencies:
 
@@ -28,10 +29,12 @@ Cleanup everything (including database):
 
     $ docker-compose down -v
 
-=== Task API
+==== Task API
 
 Creating tasks:
 
+[source,bash]
+----
     $ curl -X POST -H 'Content-Type: application/json' -d '{ "triggerTimeMs": 1572729334687, "toto":"titi" }' http://localhost:3880/tasks | jq .
     % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                     Dload  Upload   Total   Spent    Left  Speed
@@ -51,9 +54,12 @@ Creating tasks:
     "id": "625f8ee7-7241-4549-9800-0663717fde6e",
     "triggerTimeMs": 1572832920000
     }
+----
 
 Reading all created tasks:
 
+[source,bash]
+----
     $ curl -X GET http://localhost:3880/tasks | jq .
     % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                     Dload  Upload   Total   Spent    Left  Speed
@@ -67,9 +73,12 @@ Reading all created tasks:
         }
     ]
     }
+----
 
 Delete the full set of tasks (dangerous zone):
 
+[source,bash]
+----
     $ curl -X DELETE http://localhost:3880/tasks | jq .
     % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                     Dload  Upload   Total   Spent    Left  Speed
@@ -77,15 +86,19 @@ Delete the full set of tasks (dangerous zone):
     {
     "tasks": []
     }
+----
 
 Delete only one task:
 
+[source,bash]
+----
     $ curl -X DELETE http://localhost:3880/tasks/934264b9-db47-4e8c-8f84-ee2ebce3625a | jq .
     % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                     Dload  Upload   Total   Spent    Left  Speed
     100     2  100     2    0     0    333      0 --:--:-- --:--:-- --:--:--   333
     {}
+----
 
-= References
+== References
 
 link:https://ioredis.readthedocs.io/en/latest/API/[ioRedis docs]

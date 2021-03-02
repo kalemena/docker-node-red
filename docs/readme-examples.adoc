@@ -26,7 +26,7 @@ link:/examples/basics-node-red-contrib-influxdb[node-red-contrib-influxdb]
 image:/examples/node-red-contrib-openzwave-am/nodered-zwave-debug.png[link="/examples/node-red-contrib-openzwave-am", 640]
 
 .node-red-contrib-redis (Redis + an HTTP API to store handle a schedule)
-image:/examples/basics-node-red-contrib-redis/redis-http-scheduler-api.png[link="/examples/basics-node-red-contrib-redis", 640]
+image:/examples/node-red-contrib-redis/redis-http-scheduler-api.png[link="/examples/node-red-contrib-redis", 640]
 
 .node-red-contrib-telegrambot
 image:/examples/basics-node-red-contrib-telegrambot/basics-node-red-contrib-telegrambot.png[link="/examples/basics-node-red-contrib-telegrambot", 640]
