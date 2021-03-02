@@ -29,7 +29,7 @@ image:/examples/node-red-contrib-openzwave-am/nodered-zwave-debug.png[link="/exa
 image:/examples/node-red-contrib-redis/redis-http-scheduler-api.png[link="/examples/node-red-contrib-redis", 640]
 
 .node-red-contrib-telegrambot
-image:/examples/basics-node-red-contrib-telegrambot/basics-node-red-contrib-telegrambot.png[link="/examples/basics-node-red-contrib-telegrambot", 640]
+image:/examples/node-red-contrib-telegrambot/basics-node-red-contrib-telegrambot.png[link="/examples/node-red-contrib-telegrambot", 640]
 
 .node-red-nodegen (Swagger and OpenAPI usage)
 link:/examples/node-red-nodegen[node-red-nodegen]
