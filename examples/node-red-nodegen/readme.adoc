@@ -21,6 +21,6 @@ $ docker-compose down
 
 Multiple examples
 
-* demonstrate is PetShop as Open API v2 (aka Swagger v2)
+* demonstrate PetShop as Open API v2 (aka Swagger v2)
 * demonstrate convert of Open API v3 to v2-compatible, prior import in Node-Red
 * demonstrate usage of openapi-red
