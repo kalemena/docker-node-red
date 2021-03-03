@@ -57,7 +57,7 @@ clean:
 ############################
 
 logs:
-	docker logs -f basics-node-red-contrib-influxdb_influxdb_1
+	docker logs -f integration-node-red-contrib-influxdb_influxdb_1
 
 cli:
-	docker exec -it basics-node-red-contrib-influxdb_influxdb_1 influx -precision rfc3339
+	docker exec -it integration-node-red-contrib-influxdb_influxdb_1 influx -precision rfc3339

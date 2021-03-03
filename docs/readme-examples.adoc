@@ -20,7 +20,7 @@ image:/examples/node-red-node-suncalc/sunrise.png[link="/examples/node-red-node-
 image:/examples/node-red-contrib-mongodb2/contacts-api.png[link="/examples/node-red-contrib-mongodb2", 640]
 
 .node-red-contrib-influxdb
-link:/examples/basics-node-red-contrib-influxdb[node-red-contrib-influxdb]
+link:/examples/integration-node-red-contrib-influxdb[node-red-contrib-influxdb]
 
 .node-red-contrib-openzwave-am (ZWave devices)
 image:/examples/node-red-contrib-openzwave-am/nodered-zwave-debug.png[link="/examples/node-red-contrib-openzwave-am", 640]
