@@ -35,7 +35,7 @@ image:/examples/node-red-contrib-telegrambot/basics-node-red-contrib-telegrambot
 link:/examples/node-red-nodegen[node-red-nodegen]
 
 .node-red-node-sentiment (sentiments within a little chat app)
-image:/examples/basics-websockets-chat-sentiment/example-flow.png[link="/examples/basics-websockets-chat-sentiment", 640]
+image:/examples/node-red-node-sentiment/example-flow.png[link="/examples/node-red-node-sentiment", 640]
 
 .Advanced flows - websocket + telegram + redis
 image:/examples/integration-chat-queue-telegram/chat-queue-telegram.png[link="/examples/integration-chat-queue-telegram", 640]
