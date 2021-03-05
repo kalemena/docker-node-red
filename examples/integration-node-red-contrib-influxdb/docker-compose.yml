@@ -6,6 +6,12 @@ volumes:
 
 services:  
 
+  mqtt:
+    image: eclipse-mosquitto:1.6
+    restart: always
+    ports:
+      - "1883:1883"
+
   influxdb:
     image: influxdb
     # user: "${UID}:${GID}"
