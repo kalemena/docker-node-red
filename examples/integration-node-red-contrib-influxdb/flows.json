@@ -46,6 +46,27 @@
         "rejectUnauthorized": false
     },
     {
+        "id": "d699fffa.d07df",
+        "type": "mqtt-broker",
+        "name": "mqtt",
+        "broker": "mqtt",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
         "id": "e2d21338.ab7f58",
         "type": "inject",
         "z": "ee322aa5.04059",
@@ -79,7 +100,7 @@
         "type": "debug",
         "z": "ee322aa5.04059",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -153,7 +174,7 @@
         "org": "",
         "bucket": "",
         "x": 660,
-        "y": 240,
+        "y": 580,
         "wires": []
     },
     {
@@ -166,8 +187,8 @@
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 380,
-        "y": 240,
+        "x": 400,
+        "y": 580,
         "wires": [
             [
                 "bf874566.5d9478",
@@ -180,7 +201,7 @@
         "type": "debug",
         "z": "ee322aa5.04059",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -189,7 +210,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 590,
-        "y": 280,
+        "y": 620,
         "wires": []
     },
     {
@@ -213,7 +234,7 @@
         "y": 240,
         "wires": [
             [
-                "7849c874.0141d8"
+                "e5ffc698.bbd6f"
             ]
         ]
     },
@@ -329,7 +350,7 @@
         "y": 280,
         "wires": [
             [
-                "7849c874.0141d8"
+                "e5ffc698.bbd6f"
             ]
         ]
     },
@@ -354,8 +375,48 @@
         "y": 320,
         "wires": [
             [
+                "e5ffc698.bbd6f"
+            ]
+        ]
+    },
+    {
+        "id": "363803a4.b81044",
+        "type": "mqtt in",
+        "z": "ee322aa5.04059",
+        "name": "sensors/temperature",
+        "topic": "sensors/temperature",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "d699fffa.d07df",
+        "x": 210,
+        "y": 580,
+        "wires": [
+            [
                 "7849c874.0141d8"
             ]
         ]
+    },
+    {
+        "id": "e5ffc698.bbd6f",
+        "type": "mqtt out",
+        "z": "ee322aa5.04059",
+        "name": "",
+        "topic": "sensors/temperature",
+        "qos": "",
+        "retain": "",
+        "broker": "d699fffa.d07df",
+        "x": 420,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "716819cb.d00088",
+        "type": "comment",
+        "z": "ee322aa5.04059",
+        "name": "insert - events",
+        "info": "",
+        "x": 190,
+        "y": 540,
+        "wires": []
     }
 ]
