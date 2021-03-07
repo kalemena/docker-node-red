@@ -43,10 +43,16 @@ services:
     ports:
       - "${GRAFANA_PORT:-3000}:3000"
     volumes:
+      # - ./etc/grafana:/etc/grafana
+      # - ./var/lib/grafana:/var/lib/grafana
+      # - ./var/log/grafana:/var/log/grafana
       - grafana-data:/var/lib/grafana
+      - ./etc/grafana/provisioning/:/etc/grafana/provisioning/
     environment:
       GF_SECURITY_ADMIN_USER: ${GRAFANA_ADMIN_USER:-default}
       GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:-password}
+    env_file:
+      - .env
 
   nodered:
     #image: kalemena/node-red:latest

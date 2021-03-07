@@ -1,0 +1,21 @@
+# config file version
+apiVersion: 1
+
+# list of datasources that should be deleted from the database
+deleteDatasources:
+  - name: InfluxDB
+    orgId: 1
+
+# list of datasources to insert/update depending
+# whats available in the database
+datasources:
+  - name: 'InfluxDB-Sensors'
+    org_id: 1
+    type: 'influxdb'
+    access: 'proxy'
+    editable: true
+    is_default: true
+    url: 'http://influxdb:8086'
+    database: 'sensors'
+    version: 1
+
