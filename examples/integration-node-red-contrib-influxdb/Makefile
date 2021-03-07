@@ -14,7 +14,7 @@ init-influxdb:
 	echo "Initialize: Setup InfluxDB ..."
 	# For information only
 	mkdir -p etc/influxdb
-	docker run --rm influxdb influxd config | tee etc/influxdb/influxdb-default.conf > /dev/null
+	docker run --rm influxdb:1.8.4 influxd config | tee etc/influxdb/influxdb-default.conf > /dev/null
 	cp -n etc/influxdb/influxdb-default.conf etc/influxdb/influxdb.conf
 	# Volumes
 	# mkdir -p var/lib/influxdb
