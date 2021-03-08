@@ -178,25 +178,6 @@
         "wires": []
     },
     {
-        "id": "7849c874.0141d8",
-        "type": "function",
-        "z": "ee322aa5.04059",
-        "name": "Sensors",
-        "func": "// TEMP, HUMI, LIGHT, PRESSURE, BATTERY, RAIN\n\nvar msgres =  {\n    payload: [\n        { \"value\": Number(msg.payload) },\n        { \"type\": \"temp\", \"location\": \"office\" }\n    ],\n    measurement: \"sensors\"\n}\n\nreturn msgres;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "x": 400,
-        "y": 580,
-        "wires": [
-            [
-                "bf874566.5d9478",
-                "2b444ab.4ee2eb6"
-            ]
-        ]
-    },
-    {
         "id": "2b444ab.4ee2eb6",
         "type": "debug",
         "z": "ee322aa5.04059",
@@ -209,7 +190,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 590,
+        "x": 410,
         "y": 620,
         "wires": []
     },
@@ -234,7 +215,7 @@
         "y": 240,
         "wires": [
             [
-                "e5ffc698.bbd6f"
+                "3c5faf57.888f4"
             ]
         ]
     },
@@ -350,7 +331,7 @@
         "y": 280,
         "wires": [
             [
-                "e5ffc698.bbd6f"
+                "3c5faf57.888f4"
             ]
         ]
     },
@@ -375,7 +356,7 @@
         "y": 320,
         "wires": [
             [
-                "e5ffc698.bbd6f"
+                "3c5faf57.888f4"
             ]
         ]
     },
@@ -386,13 +367,14 @@
         "name": "sensors/temperature",
         "topic": "sensors/temperature",
         "qos": "2",
-        "datatype": "auto",
+        "datatype": "json",
         "broker": "d699fffa.d07df",
         "x": 210,
         "y": 580,
         "wires": [
             [
-                "7849c874.0141d8"
+                "2b444ab.4ee2eb6",
+                "7e3ea563.cfecfc"
             ]
         ]
     },
@@ -405,7 +387,7 @@
         "qos": "",
         "retain": "",
         "broker": "d699fffa.d07df",
-        "x": 420,
+        "x": 640,
         "y": 240,
         "wires": []
     },
@@ -417,6 +399,60 @@
         "info": "",
         "x": 190,
         "y": 540,
+        "wires": []
+    },
+    {
+        "id": "3c5faf57.888f4",
+        "type": "function",
+        "z": "ee322aa5.04059",
+        "name": "Sensors",
+        "func": "// TEMP, HUMI, LIGHT, PRESSURE, BATTERY, RAIN\n\nvar msgres =  {\n    payload: {\n        payload: [\n            { \"value\": Number(msg.payload) },\n            { \"type\": \"temp\", \"location\": \"office\" }\n        ],\n        measurement: \"sensors\"\n    }\n}\n\nreturn msgres;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 400,
+        "y": 240,
+        "wires": [
+            [
+                "e5ffc698.bbd6f"
+            ]
+        ]
+    },
+    {
+        "id": "7e3ea563.cfecfc",
+        "type": "function",
+        "z": "ee322aa5.04059",
+        "name": "Sensors",
+        "func": "var msgres = msg.payload\nreturn msgres;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 420,
+        "y": 580,
+        "wires": [
+            [
+                "bf874566.5d9478",
+                "1dcfd422.bd14fc"
+            ]
+        ]
+    },
+    {
+        "id": "1dcfd422.bd14fc",
+        "type": "debug",
+        "z": "ee322aa5.04059",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 620,
         "wires": []
     }
 ]
