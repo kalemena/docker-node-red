@@ -289,7 +289,7 @@
         "id": "7ad1b802.d1df98",
         "type": "inject",
         "z": "ee322aa5.04059",
-        "name": "",
+        "name": "From Hour",
         "props": [
             {
                 "p": "query",
@@ -302,7 +302,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 170,
+        "x": 180,
         "y": 460,
         "wires": [
             [
@@ -454,5 +454,30 @@
         "x": 590,
         "y": 620,
         "wires": []
+    },
+    {
+        "id": "ea4448b9.c62a4",
+        "type": "inject",
+        "z": "ee322aa5.04059",
+        "name": "From Month",
+        "props": [
+            {
+                "p": "query",
+                "v": "SELECT * FROM \"one_month\".\"downsampled_sensors\"",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 190,
+        "y": 500,
+        "wires": [
+            [
+                "f9ad7f8e.736a08"
+            ]
+        ]
     }
 ]
