@@ -66,12 +66,19 @@
       "steppedLine": false,
       "targets": [
         {
+          "alias": "$tag_location",
           "groupBy": [
             {
               "params": [
                 "$__interval"
               ],
               "type": "time"
+            },
+            {
+              "params": [
+                "location"
+              ],
+              "type": "tag"
             },
             {
               "params": [
@@ -198,7 +205,15 @@
       "steppedLine": false,
       "targets": [
         {
-          "groupBy": [],
+          "alias": "$tag_location",
+          "groupBy": [
+            {
+              "params": [
+                "location"
+              ],
+              "type": "tag"
+            }
+          ],
           "measurement": "downsampled_sensors",
           "orderByTime": "ASC",
           "policy": "one_month",
@@ -313,12 +328,19 @@
       "steppedLine": false,
       "targets": [
         {
+          "alias": "$tag_location",
           "groupBy": [
             {
               "params": [
                 "$__interval"
               ],
               "type": "time"
+            },
+            {
+              "params": [
+                "location"
+              ],
+              "type": "tag"
             },
             {
               "params": [
@@ -445,7 +467,15 @@
       "steppedLine": false,
       "targets": [
         {
-          "groupBy": [],
+          "alias": "$tag_location",
+          "groupBy": [
+            {
+              "params": [
+                "location"
+              ],
+              "type": "tag"
+            }
+          ],
           "measurement": "downsampled_sensors",
           "orderByTime": "ASC",
           "policy": "one_month",
