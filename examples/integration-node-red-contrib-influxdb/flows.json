@@ -174,7 +174,7 @@
         "org": "",
         "bucket": "",
         "x": 660,
-        "y": 580,
+        "y": 760,
         "wires": []
     },
     {
@@ -182,7 +182,7 @@
         "type": "debug",
         "z": "ee322aa5.04059",
         "name": "",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -191,7 +191,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 410,
-        "y": 620,
+        "y": 800,
         "wires": []
     },
     {
@@ -251,7 +251,7 @@
         "retentionPolicy": "",
         "org": "organisation",
         "x": 440,
-        "y": 460,
+        "y": 640,
         "wires": [
             [
                 "fe17bda8.2a07a8"
@@ -265,7 +265,7 @@
         "name": "SELECT * FROM \"sensors\" WHERE \"value\" > 22",
         "info": "",
         "x": 300,
-        "y": 400,
+        "y": 580,
         "wires": []
     },
     {
@@ -282,7 +282,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 710,
-        "y": 460,
+        "y": 640,
         "wires": []
     },
     {
@@ -303,7 +303,7 @@
         "onceDelay": 0.1,
         "topic": "",
         "x": 180,
-        "y": 460,
+        "y": 640,
         "wires": [
             [
                 "f9ad7f8e.736a08"
@@ -364,13 +364,13 @@
         "id": "363803a4.b81044",
         "type": "mqtt in",
         "z": "ee322aa5.04059",
-        "name": "sensors/temperature",
-        "topic": "sensors/temperature",
+        "name": "sensors",
+        "topic": "sensors",
         "qos": "2",
         "datatype": "json",
         "broker": "d699fffa.d07df",
-        "x": 210,
-        "y": 580,
+        "x": 170,
+        "y": 760,
         "wires": [
             [
                 "2b444ab.4ee2eb6",
@@ -383,11 +383,11 @@
         "type": "mqtt out",
         "z": "ee322aa5.04059",
         "name": "",
-        "topic": "sensors/temperature",
+        "topic": "sensors",
         "qos": "",
         "retain": "",
         "broker": "d699fffa.d07df",
-        "x": 640,
+        "x": 600,
         "y": 240,
         "wires": []
     },
@@ -398,7 +398,7 @@
         "name": "insert - events",
         "info": "",
         "x": 190,
-        "y": 540,
+        "y": 720,
         "wires": []
     },
     {
@@ -430,7 +430,7 @@
         "initialize": "",
         "finalize": "",
         "x": 420,
-        "y": 580,
+        "y": 760,
         "wires": [
             [
                 "bf874566.5d9478",
@@ -452,7 +452,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 590,
-        "y": 620,
+        "y": 800,
         "wires": []
     },
     {
@@ -473,10 +473,103 @@
         "onceDelay": 0.1,
         "topic": "",
         "x": 190,
-        "y": 500,
+        "y": 680,
         "wires": [
             [
                 "f9ad7f8e.736a08"
+            ]
+        ]
+    },
+    {
+        "id": "6e57069e.e874c",
+        "type": "inject",
+        "z": "ee322aa5.04059",
+        "name": "~50 @ 1s",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "50 + 25 * $random()",
+        "payloadType": "jsonata",
+        "x": 190,
+        "y": 400,
+        "wires": [
+            [
+                "9f2f33a4.243408"
+            ]
+        ]
+    },
+    {
+        "id": "a57e50bf.ab516",
+        "type": "inject",
+        "z": "ee322aa5.04059",
+        "name": "~60 @ 5s",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "60 + 25 * $random()",
+        "payloadType": "jsonata",
+        "x": 190,
+        "y": 440,
+        "wires": [
+            [
+                "9f2f33a4.243408"
+            ]
+        ]
+    },
+    {
+        "id": "e7479fed.f7d67",
+        "type": "inject",
+        "z": "ee322aa5.04059",
+        "name": "~70 @ 10s",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "10",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "70 + 25 * $random()",
+        "payloadType": "jsonata",
+        "x": 190,
+        "y": 480,
+        "wires": [
+            [
+                "9f2f33a4.243408"
+            ]
+        ]
+    },
+    {
+        "id": "9f2f33a4.243408",
+        "type": "function",
+        "z": "ee322aa5.04059",
+        "name": "Sensors",
+        "func": "// TEMP, HUMI, LIGHT, PRESSURE, BATTERY, RAIN\n\nvar msgres =  {\n    payload: {\n        payload: [\n            { \"value\": Number(msg.payload) },\n            { \"type\": \"humi\", \"location\": \"living-room\" }\n        ],\n        measurement: \"sensors\"\n    }\n}\n\nreturn msgres;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 400,
+        "y": 400,
+        "wires": [
+            [
+                "e5ffc698.bbd6f"
             ]
         ]
     }
