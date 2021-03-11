@@ -24,6 +24,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "InfluxDB-Sensors",
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -117,7 +118,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
+      "timeFrom": "1h",
       "timeRegions": [],
       "timeShift": null,
       "title": "Temperatures (h)",
@@ -379,7 +380,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
+      "timeFrom": "1h",
       "timeRegions": [],
       "timeShift": null,
       "title": "Humidity (h)",
@@ -551,12 +552,12 @@
     "list": []
   },
   "time": {
-    "from": "now-3h",
+    "from": "now-12h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Dashboard Default",
   "uid": "mZjQcZUGz",
-  "version": 1
+  "version": 3
 }
