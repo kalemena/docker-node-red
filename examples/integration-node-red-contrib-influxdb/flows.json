@@ -182,7 +182,7 @@
         "type": "debug",
         "z": "ee322aa5.04059",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -215,7 +215,7 @@
         "y": 240,
         "wires": [
             [
-                "3c5faf57.888f4"
+                "26b163fc.3928ec"
             ]
         ]
     },
@@ -331,7 +331,7 @@
         "y": 280,
         "wires": [
             [
-                "3c5faf57.888f4"
+                "26b163fc.3928ec"
             ]
         ]
     },
@@ -356,7 +356,7 @@
         "y": 320,
         "wires": [
             [
-                "3c5faf57.888f4"
+                "26b163fc.3928ec"
             ]
         ]
     },
@@ -387,7 +387,7 @@
         "qos": "",
         "retain": "",
         "broker": "d699fffa.d07df",
-        "x": 600,
+        "x": 840,
         "y": 240,
         "wires": []
     },
@@ -405,13 +405,13 @@
         "id": "3c5faf57.888f4",
         "type": "function",
         "z": "ee322aa5.04059",
-        "name": "Sensors",
-        "func": "// TEMP, HUMI, LIGHT, PRESSURE, BATTERY, RAIN\n\nvar msgres =  {\n    payload: {\n        payload: [\n            { \"value\": Number(msg.payload) },\n            { \"type\": \"temp\", \"location\": \"office\" }\n        ],\n        measurement: \"sensors\"\n    }\n}\n\nreturn msgres;\n",
+        "name": "Query Temperature",
+        "func": "// TEMP, HUMI, LIGHT, PRESSURE, BATTERY, RAIN\n\nvar msgres =  {\n    payload: {\n        payload: [\n            { \"value\": Number(msg.payload.value) },\n            { \"type\": \"temp\", \"location\": msg.payload.location }\n        ],\n        measurement: \"sensors\"\n    }\n}\n\nreturn msgres;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
-        "x": 400,
+        "x": 630,
         "y": 240,
         "wires": [
             [
@@ -501,7 +501,7 @@
         "y": 400,
         "wires": [
             [
-                "9f2f33a4.243408"
+                "898f3619.1ca42"
             ]
         ]
     },
@@ -526,7 +526,7 @@
         "y": 440,
         "wires": [
             [
-                "9f2f33a4.243408"
+                "898f3619.1ca42"
             ]
         ]
     },
@@ -551,7 +551,7 @@
         "y": 480,
         "wires": [
             [
-                "9f2f33a4.243408"
+                "898f3619.1ca42"
             ]
         ]
     },
@@ -559,8 +559,45 @@
         "id": "9f2f33a4.243408",
         "type": "function",
         "z": "ee322aa5.04059",
-        "name": "Sensors",
-        "func": "// TEMP, HUMI, LIGHT, PRESSURE, BATTERY, RAIN\n\nvar msgres =  {\n    payload: {\n        payload: [\n            { \"value\": Number(msg.payload) },\n            { \"type\": \"humi\", \"location\": \"living-room\" }\n        ],\n        measurement: \"sensors\"\n    }\n}\n\nreturn msgres;\n",
+        "name": "Query Humidity",
+        "func": "// TEMP, HUMI, LIGHT, PRESSURE, BATTERY, RAIN\n\nvar msgres =  {\n    payload: {\n        payload: [\n            { \"value\": Number(msg.payload.value) },\n            { \"type\": \"humi\", \"location\": msg.payload.location }\n        ],\n        measurement: \"sensors\"\n    }\n}\n\nreturn msgres;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 620,
+        "y": 400,
+        "wires": [
+            [
+                "e5ffc698.bbd6f"
+            ]
+        ]
+    },
+    {
+        "id": "26b163fc.3928ec",
+        "type": "function",
+        "z": "ee322aa5.04059",
+        "name": "Room ?",
+        "func": "const MIN = 1;\nconst MAX = 10;\n//The maximum is exclusive and the minimum is inclusive\n \nmin = Math.ceil(MIN);\nmax = Math.floor(MAX);\nlocation = \"room-\" + Math.floor(Math.random() * (max - min)) + min;\n\nmsg.payload = {\n    \"value\": msg.payload,\n    \"location\": location\n}\n\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 400,
+        "y": 240,
+        "wires": [
+            [
+                "3c5faf57.888f4",
+                "77734c8e.df664c"
+            ]
+        ]
+    },
+    {
+        "id": "898f3619.1ca42",
+        "type": "function",
+        "z": "ee322aa5.04059",
+        "name": "Room ?",
+        "func": "const MIN = 1;\nconst MAX = 10;\n//The maximum is exclusive and the minimum is inclusive\n \nmin = Math.ceil(MIN);\nmax = Math.floor(MAX);\nlocation = \"room-\" + Math.floor(Math.random() * (max - min)) + min;\n\nmsg.payload = {\n    \"value\": msg.payload,\n    \"location\": location\n}\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -569,8 +606,25 @@
         "y": 400,
         "wires": [
             [
-                "e5ffc698.bbd6f"
+                "9f2f33a4.243408"
             ]
         ]
+    },
+    {
+        "id": "77734c8e.df664c",
+        "type": "debug",
+        "z": "ee322aa5.04059",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 300,
+        "wires": []
     }
 ]
