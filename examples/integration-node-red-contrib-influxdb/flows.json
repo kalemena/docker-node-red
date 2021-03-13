@@ -174,7 +174,7 @@
         "org": "",
         "bucket": "",
         "x": 660,
-        "y": 600,
+        "y": 420,
         "wires": []
     },
     {
@@ -182,7 +182,7 @@
         "type": "debug",
         "z": "ee322aa5.04059",
         "name": "",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -191,7 +191,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 410,
-        "y": 640,
+        "y": 460,
         "wires": []
     },
     {
@@ -225,8 +225,8 @@
         "precision": "",
         "retentionPolicy": "",
         "org": "organisation",
-        "x": 440,
-        "y": 480,
+        "x": 780,
+        "y": 640,
         "wires": [
             [
                 "fe17bda8.2a07a8"
@@ -237,10 +237,10 @@
         "id": "266e0143.d568d6",
         "type": "comment",
         "z": "ee322aa5.04059",
-        "name": "SELECT * FROM \"sensors\" WHERE \"value\" > 22",
+        "name": "Selects",
         "info": "",
-        "x": 300,
-        "y": 420,
+        "x": 170,
+        "y": 580,
         "wires": []
     },
     {
@@ -256,15 +256,15 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 710,
-        "y": 480,
+        "x": 1050,
+        "y": 640,
         "wires": []
     },
     {
         "id": "7ad1b802.d1df98",
         "type": "inject",
         "z": "ee322aa5.04059",
-        "name": "From Hour",
+        "name": "SELECT * FROM \"sensors\" WHERE \"value\" > 22",
         "props": [
             {
                 "p": "query",
@@ -277,8 +277,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 180,
-        "y": 480,
+        "x": 300,
+        "y": 640,
         "wires": [
             [
                 "f9ad7f8e.736a08"
@@ -295,7 +295,7 @@
         "datatype": "json",
         "broker": "d699fffa.d07df",
         "x": 170,
-        "y": 600,
+        "y": 420,
         "wires": [
             [
                 "2b444ab.4ee2eb6",
@@ -323,7 +323,7 @@
         "name": "insert - events",
         "info": "",
         "x": 190,
-        "y": 560,
+        "y": 380,
         "wires": []
     },
     {
@@ -337,7 +337,7 @@
         "initialize": "",
         "finalize": "",
         "x": 420,
-        "y": 600,
+        "y": 420,
         "wires": [
             [
                 "bf874566.5d9478",
@@ -350,7 +350,7 @@
         "type": "debug",
         "z": "ee322aa5.04059",
         "name": "",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -359,14 +359,14 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 590,
-        "y": 640,
+        "y": 460,
         "wires": []
     },
     {
         "id": "ea4448b9.c62a4",
         "type": "inject",
         "z": "ee322aa5.04059",
-        "name": "From Month",
+        "name": "SELECT * FROM \"one_month\".\"downsampled_sensors\"",
         "props": [
             {
                 "p": "query",
@@ -379,8 +379,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 190,
-        "y": 520,
+        "x": 320,
+        "y": 680,
         "wires": [
             [
                 "f9ad7f8e.736a08"
