@@ -182,7 +182,7 @@
         "type": "debug",
         "z": "ee322aa5.04059",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -225,7 +225,7 @@
         "precision": "",
         "retentionPolicy": "",
         "org": "organisation",
-        "x": 780,
+        "x": 840,
         "y": 640,
         "wires": [
             [
@@ -256,7 +256,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1050,
+        "x": 1110,
         "y": 640,
         "wires": []
     },
@@ -264,11 +264,11 @@
         "id": "7ad1b802.d1df98",
         "type": "inject",
         "z": "ee322aa5.04059",
-        "name": "SELECT * FROM \"sensors\" WHERE \"value\" > 22",
+        "name": "SELECT * FROM \"sensors\" WHERE \"type\" = 'temp' AND \"value\" > 22",
         "props": [
             {
                 "p": "query",
-                "v": "SELECT * FROM \"sensors\" WHERE \"value\" > 22",
+                "v": "SELECT * FROM \"sensors\" WHERE \"type\" = 'temp' AND \"value\" > 22",
                 "vt": "str"
             }
         ],
@@ -277,7 +277,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 300,
+        "x": 370,
         "y": 640,
         "wires": [
             [
@@ -350,7 +350,7 @@
         "type": "debug",
         "z": "ee322aa5.04059",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
