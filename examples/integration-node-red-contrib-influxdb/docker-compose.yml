@@ -1,16 +1,21 @@
 version: '3.7'
 
+networks: 
+  default: 
+    external: 
+      name: external-ti-dhome 
+
 volumes:
   influxdb-data:
   grafana-data:
 
 services:  
 
-  mqtt:
-    image: eclipse-mosquitto:1.6
-    restart: always
-    ports:
-      - "1883:1883"
+  # mqtt:
+  #   image: eclipse-mosquitto:1.6
+  #   restart: always
+  #   ports:
+  #     - "1883:1883"
 
   influxdb:
     image: influxdb:1.8.4
