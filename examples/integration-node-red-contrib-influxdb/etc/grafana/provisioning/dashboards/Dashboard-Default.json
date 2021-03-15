@@ -16,8 +16,31 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 1,
+  "iteration": 1616615445518,
   "links": [],
   "panels": [
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 11,
+      "panels": [],
+      "repeat": "type",
+      "scopedVars": {
+        "type": {
+          "selected": true,
+          "text": "humidity",
+          "value": "humidity"
+        }
+      },
+      "title": "Details $type",
+      "type": "row"
+    },
     {
       "aliasColors": {},
       "bars": false,
@@ -37,7 +60,7 @@
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 0
+        "y": 1
       },
       "hiddenSeries": false,
       "id": 2,
@@ -63,6 +86,13 @@
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
+      "scopedVars": {
+        "type": {
+          "selected": true,
+          "text": "humidity",
+          "value": "humidity"
+        }
+      },
       "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
@@ -113,8 +143,8 @@
           "tags": [
             {
               "key": "type",
-              "operator": "=",
-              "value": "temperature"
+              "operator": "=~",
+              "value": "/^$type$/"
             }
           ]
         }
@@ -123,7 +153,7 @@
       "timeFrom": "1h",
       "timeRegions": [],
       "timeShift": null,
-      "title": "Temperatures (h)",
+      "title": "$type (h)",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -178,7 +208,7 @@
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 0
+        "y": 1
       },
       "hiddenSeries": false,
       "id": 3,
@@ -204,6 +234,13 @@
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
+      "scopedVars": {
+        "type": {
+          "selected": true,
+          "text": "humidity",
+          "value": "humidity"
+        }
+      },
       "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
@@ -238,8 +275,8 @@
           "tags": [
             {
               "key": "type",
-              "operator": "=",
-              "value": "temperature"
+              "operator": "=~",
+              "value": "/^$type$/"
             }
           ]
         }
@@ -248,7 +285,182 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Temperatures (15m)",
+      "title": "$type (15m)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "14",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 10
+      },
+      "id": 12,
+      "panels": [],
+      "repeatIteration": 1616615445518,
+      "repeatPanelId": 11,
+      "scopedVars": {
+        "type": {
+          "selected": true,
+          "text": "lights",
+          "value": "lights"
+        }
+      },
+      "title": "Details $type",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "InfluxDB-Sensors",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 11
+      },
+      "hiddenSeries": false,
+      "id": 13,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.4.3",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "repeatIteration": 1616615445518,
+      "repeatPanelId": 2,
+      "repeatedByRow": true,
+      "scopedVars": {
+        "type": {
+          "selected": true,
+          "text": "lights",
+          "value": "lights"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "$tag_location",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "location"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "sensors",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "queryType": "randomWalk",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "type",
+              "operator": "=~",
+              "value": "/^$type$/"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": "1h",
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$type (h)",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -302,11 +514,11 @@
       "gridPos": {
         "h": 9,
         "w": 12,
-        "x": 0,
-        "y": 9
+        "x": 12,
+        "y": 11
       },
       "hiddenSeries": false,
-      "id": 4,
+      "id": 14,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -329,6 +541,175 @@
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
+      "repeatIteration": 1616615445518,
+      "repeatPanelId": 3,
+      "repeatedByRow": true,
+      "scopedVars": {
+        "type": {
+          "selected": true,
+          "text": "lights",
+          "value": "lights"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "$tag_location",
+          "groupBy": [
+            {
+              "params": [
+                "location"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "downsampled_sensors",
+          "orderByTime": "ASC",
+          "policy": "one_month",
+          "queryType": "randomWalk",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "mean_value"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "type",
+              "operator": "=~",
+              "value": "/^$type$/"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$type (15m)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "14",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 20
+      },
+      "id": 15,
+      "panels": [],
+      "repeatIteration": 1616615445518,
+      "repeatPanelId": 11,
+      "scopedVars": {
+        "type": {
+          "selected": true,
+          "text": "presence",
+          "value": "presence"
+        }
+      },
+      "title": "Details $type",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "InfluxDB-Sensors",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 21
+      },
+      "hiddenSeries": false,
+      "id": 16,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.4.3",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "repeatIteration": 1616615445518,
+      "repeatPanelId": 2,
+      "repeatedByRow": true,
+      "scopedVars": {
+        "type": {
+          "selected": true,
+          "text": "presence",
+          "value": "presence"
+        }
+      },
       "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
@@ -379,8 +760,8 @@
           "tags": [
             {
               "key": "type",
-              "operator": "=",
-              "value": "humidity"
+              "operator": "=~",
+              "value": "/^$type$/"
             }
           ]
         }
@@ -389,7 +770,7 @@
       "timeFrom": "1h",
       "timeRegions": [],
       "timeShift": null,
-      "title": "Humidity (h)",
+      "title": "$type (h)",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -409,7 +790,7 @@
           "label": null,
           "logBase": 1,
           "max": null,
-          "min": null,
+          "min": "14",
           "show": true
         },
         {
@@ -444,10 +825,10 @@
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 9
+        "y": 21
       },
       "hiddenSeries": false,
-      "id": 5,
+      "id": 17,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -470,6 +851,16 @@
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
+      "repeatIteration": 1616615445518,
+      "repeatPanelId": 3,
+      "repeatedByRow": true,
+      "scopedVars": {
+        "type": {
+          "selected": true,
+          "text": "presence",
+          "value": "presence"
+        }
+      },
       "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
@@ -504,8 +895,8 @@
           "tags": [
             {
               "key": "type",
-              "operator": "=",
-              "value": "humidity"
+              "operator": "=~",
+              "value": "/^$type$/"
             }
           ]
         }
@@ -514,7 +905,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Humidity (15m)",
+      "title": "$type (15m)",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -534,7 +925,7 @@
           "label": null,
           "logBase": 1,
           "max": null,
-          "min": null,
+          "min": "14",
           "show": true
         },
         {
@@ -552,11 +943,35 @@
       }
     },
     {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 30
+      },
+      "id": 18,
+      "panels": [],
+      "repeatIteration": 1616615445518,
+      "repeatPanelId": 11,
+      "scopedVars": {
+        "type": {
+          "selected": true,
+          "text": "pressure",
+          "value": "pressure"
+        }
+      },
+      "title": "Details $type",
+      "type": "row"
+    },
+    {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
       "datasource": "InfluxDB-Sensors",
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -569,10 +984,10 @@
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 18
+        "y": 31
       },
       "hiddenSeries": false,
-      "id": 8,
+      "id": 19,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -595,6 +1010,16 @@
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
+      "repeatIteration": 1616615445518,
+      "repeatPanelId": 2,
+      "repeatedByRow": true,
+      "scopedVars": {
+        "type": {
+          "selected": true,
+          "text": "pressure",
+          "value": "pressure"
+        }
+      },
       "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
@@ -645,8 +1070,8 @@
           "tags": [
             {
               "key": "type",
-              "operator": "=",
-              "value": "pressure"
+              "operator": "=~",
+              "value": "/^$type$/"
             }
           ]
         }
@@ -655,7 +1080,7 @@
       "timeFrom": "1h",
       "timeRegions": [],
       "timeShift": null,
-      "title": "Pressure (h)",
+      "title": "$type (h)",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -675,7 +1100,7 @@
           "label": null,
           "logBase": 1,
           "max": null,
-          "min": null,
+          "min": "14",
           "show": true
         },
         {
@@ -710,10 +1135,10 @@
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 18
+        "y": 31
       },
       "hiddenSeries": false,
-      "id": 9,
+      "id": 20,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -736,6 +1161,16 @@
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
+      "repeatIteration": 1616615445518,
+      "repeatPanelId": 3,
+      "repeatedByRow": true,
+      "scopedVars": {
+        "type": {
+          "selected": true,
+          "text": "pressure",
+          "value": "pressure"
+        }
+      },
       "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
@@ -770,8 +1205,8 @@
           "tags": [
             {
               "key": "type",
-              "operator": "=",
-              "value": "pressure"
+              "operator": "=~",
+              "value": "/^$type$/"
             }
           ]
         }
@@ -780,7 +1215,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Pressure (15m)",
+      "title": "$type (15m)",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -800,7 +1235,7 @@
           "label": null,
           "logBase": 1,
           "max": null,
-          "min": null,
+          "min": "14",
           "show": true
         },
         {
@@ -818,11 +1253,35 @@
       }
     },
     {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 40
+      },
+      "id": 21,
+      "panels": [],
+      "repeatIteration": 1616615445518,
+      "repeatPanelId": 11,
+      "scopedVars": {
+        "type": {
+          "selected": true,
+          "text": "temperature",
+          "value": "temperature"
+        }
+      },
+      "title": "Details $type",
+      "type": "row"
+    },
+    {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
       "datasource": "InfluxDB-Sensors",
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -835,19 +1294,20 @@
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 27
+        "y": 41
       },
       "hiddenSeries": false,
-      "id": 6,
+      "id": 22,
       "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
         "rightSide": true,
         "show": true,
         "total": false,
-        "values": false
+        "values": true
       },
       "lines": true,
       "linewidth": 1,
@@ -860,6 +1320,16 @@
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
+      "repeatIteration": 1616615445518,
+      "repeatPanelId": 2,
+      "repeatedByRow": true,
+      "scopedVars": {
+        "type": {
+          "selected": true,
+          "text": "temperature",
+          "value": "temperature"
+        }
+      },
       "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
@@ -910,8 +1380,8 @@
           "tags": [
             {
               "key": "type",
-              "operator": "=",
-              "value": "power"
+              "operator": "=~",
+              "value": "/^$type$/"
             }
           ]
         }
@@ -920,7 +1390,7 @@
       "timeFrom": "1h",
       "timeRegions": [],
       "timeShift": null,
-      "title": "Power (h)",
+      "title": "$type (h)",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -940,7 +1410,7 @@
           "label": null,
           "logBase": 1,
           "max": null,
-          "min": null,
+          "min": "14",
           "show": true
         },
         {
@@ -975,19 +1445,20 @@
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 27
+        "y": 41
       },
       "hiddenSeries": false,
-      "id": 7,
+      "id": 23,
       "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
         "rightSide": true,
         "show": true,
         "total": false,
-        "values": false
+        "values": true
       },
       "lines": true,
       "linewidth": 1,
@@ -1000,6 +1471,16 @@
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
+      "repeatIteration": 1616615445518,
+      "repeatPanelId": 3,
+      "repeatedByRow": true,
+      "scopedVars": {
+        "type": {
+          "selected": true,
+          "text": "temperature",
+          "value": "temperature"
+        }
+      },
       "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
@@ -1034,8 +1515,8 @@
           "tags": [
             {
               "key": "type",
-              "operator": "=",
-              "value": "power"
+              "operator": "=~",
+              "value": "/^$type$/"
             }
           ]
         }
@@ -1044,7 +1525,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Power (15m)",
+      "title": "$type (15m)",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1064,7 +1545,7 @@
           "label": null,
           "logBase": 1,
           "max": null,
-          "min": null,
+          "min": "14",
           "show": true
         },
         {
@@ -1087,7 +1568,49 @@
   "style": "dark",
   "tags": [],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "tags": [],
+          "text": [
+            "humidity",
+            "presence",
+            "pressure",
+            "temperature",
+            "lights"
+          ],
+          "value": [
+            "humidity",
+            "presence",
+            "pressure",
+            "temperature",
+            "lights"
+          ]
+        },
+        "datasource": "InfluxDB-Sensors",
+        "definition": "SHOW TAG VALUES WITH KEY = \"type\"",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "",
+        "multi": true,
+        "name": "type",
+        "options": [],
+        "query": "SHOW TAG VALUES WITH KEY = \"type\"",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
   },
   "time": {
     "from": "now-2d",
@@ -1097,5 +1620,5 @@
   "timezone": "",
   "title": "Dashboard Default",
   "uid": "mZjQcZUGz",
-  "version": 8
+  "version": 12
 }
