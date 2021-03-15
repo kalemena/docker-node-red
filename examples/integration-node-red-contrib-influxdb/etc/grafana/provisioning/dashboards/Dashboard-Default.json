@@ -16,7 +16,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 1,
-  "iteration": 1616615445518,
+  "iteration": 1616659415502,
   "links": [],
   "panels": [
     {
@@ -173,7 +173,7 @@
           "label": null,
           "logBase": 1,
           "max": null,
-          "min": "14",
+          "min": null,
           "show": true
         },
         {
@@ -333,7 +333,7 @@
       },
       "id": 12,
       "panels": [],
-      "repeatIteration": 1616615445518,
+      "repeatIteration": 1616659415502,
       "repeatPanelId": 11,
       "scopedVars": {
         "type": {
@@ -390,7 +390,7 @@
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1616615445518,
+      "repeatIteration": 1616659415502,
       "repeatPanelId": 2,
       "repeatedByRow": true,
       "scopedVars": {
@@ -480,7 +480,7 @@
           "label": null,
           "logBase": 1,
           "max": null,
-          "min": "14",
+          "min": null,
           "show": true
         },
         {
@@ -541,7 +541,7 @@
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1616615445518,
+      "repeatIteration": 1616659415502,
       "repeatPanelId": 3,
       "repeatedByRow": true,
       "scopedVars": {
@@ -643,7 +643,7 @@
       },
       "id": 15,
       "panels": [],
-      "repeatIteration": 1616615445518,
+      "repeatIteration": 1616659415502,
       "repeatPanelId": 11,
       "scopedVars": {
         "type": {
@@ -700,7 +700,7 @@
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1616615445518,
+      "repeatIteration": 1616659415502,
       "repeatPanelId": 2,
       "repeatedByRow": true,
       "scopedVars": {
@@ -790,7 +790,7 @@
           "label": null,
           "logBase": 1,
           "max": null,
-          "min": "14",
+          "min": null,
           "show": true
         },
         {
@@ -851,7 +851,7 @@
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1616615445518,
+      "repeatIteration": 1616659415502,
       "repeatPanelId": 3,
       "repeatedByRow": true,
       "scopedVars": {
@@ -953,7 +953,7 @@
       },
       "id": 18,
       "panels": [],
-      "repeatIteration": 1616615445518,
+      "repeatIteration": 1616659415502,
       "repeatPanelId": 11,
       "scopedVars": {
         "type": {
@@ -1010,7 +1010,7 @@
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1616615445518,
+      "repeatIteration": 1616659415502,
       "repeatPanelId": 2,
       "repeatedByRow": true,
       "scopedVars": {
@@ -1100,7 +1100,7 @@
           "label": null,
           "logBase": 1,
           "max": null,
-          "min": "14",
+          "min": null,
           "show": true
         },
         {
@@ -1161,7 +1161,7 @@
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1616615445518,
+      "repeatIteration": 1616659415502,
       "repeatPanelId": 3,
       "repeatedByRow": true,
       "scopedVars": {
@@ -1263,7 +1263,7 @@
       },
       "id": 21,
       "panels": [],
-      "repeatIteration": 1616615445518,
+      "repeatIteration": 1616659415502,
       "repeatPanelId": 11,
       "scopedVars": {
         "type": {
@@ -1320,7 +1320,7 @@
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1616615445518,
+      "repeatIteration": 1616659415502,
       "repeatPanelId": 2,
       "repeatedByRow": true,
       "scopedVars": {
@@ -1410,7 +1410,7 @@
           "label": null,
           "logBase": 1,
           "max": null,
-          "min": "14",
+          "min": null,
           "show": true
         },
         {
@@ -1471,7 +1471,7 @@
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1616615445518,
+      "repeatIteration": 1616659415502,
       "repeatPanelId": 3,
       "repeatedByRow": true,
       "scopedVars": {
@@ -1576,17 +1576,17 @@
           "tags": [],
           "text": [
             "humidity",
+            "lights",
             "presence",
             "pressure",
-            "temperature",
-            "lights"
+            "temperature"
           ],
           "value": [
             "humidity",
+            "lights",
             "presence",
             "pressure",
-            "temperature",
-            "lights"
+            "temperature"
           ]
         },
         "datasource": "InfluxDB-Sensors",
@@ -1620,5 +1620,5 @@
   "timezone": "",
   "title": "Dashboard Default",
   "uid": "mZjQcZUGz",
-  "version": 12
+  "version": 14
 }
