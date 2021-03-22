@@ -16,7 +16,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 1,
-  "iteration": 1616659415502,
+  "iteration": 1617087747234,
   "links": [],
   "panels": [
     {
@@ -58,7 +58,7 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 9,
-        "w": 12,
+        "w": 7,
         "x": 0,
         "y": 1
       },
@@ -206,8 +206,8 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 9,
-        "w": 12,
-        "x": 12,
+        "w": 17,
+        "x": 7,
         "y": 1
       },
       "hiddenSeries": false,
@@ -333,7 +333,7 @@
       },
       "id": 12,
       "panels": [],
-      "repeatIteration": 1616659415502,
+      "repeatIteration": 1617087747234,
       "repeatPanelId": 11,
       "scopedVars": {
         "type": {
@@ -362,7 +362,7 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 9,
-        "w": 12,
+        "w": 7,
         "x": 0,
         "y": 11
       },
@@ -390,7 +390,7 @@
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1616659415502,
+      "repeatIteration": 1617087747234,
       "repeatPanelId": 2,
       "repeatedByRow": true,
       "scopedVars": {
@@ -513,8 +513,8 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 9,
-        "w": 12,
-        "x": 12,
+        "w": 17,
+        "x": 7,
         "y": 11
       },
       "hiddenSeries": false,
@@ -541,7 +541,7 @@
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1616659415502,
+      "repeatIteration": 1617087747234,
       "repeatPanelId": 3,
       "repeatedByRow": true,
       "scopedVars": {
@@ -643,13 +643,13 @@
       },
       "id": 15,
       "panels": [],
-      "repeatIteration": 1616659415502,
+      "repeatIteration": 1617087747234,
       "repeatPanelId": 11,
       "scopedVars": {
         "type": {
           "selected": true,
-          "text": "presence",
-          "value": "presence"
+          "text": "power",
+          "value": "power"
         }
       },
       "title": "Details $type",
@@ -672,7 +672,7 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 9,
-        "w": 12,
+        "w": 7,
         "x": 0,
         "y": 21
       },
@@ -700,14 +700,14 @@
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1616659415502,
+      "repeatIteration": 1617087747234,
       "repeatPanelId": 2,
       "repeatedByRow": true,
       "scopedVars": {
         "type": {
           "selected": true,
-          "text": "presence",
-          "value": "presence"
+          "text": "power",
+          "value": "power"
         }
       },
       "seriesOverrides": [],
@@ -823,8 +823,8 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 9,
-        "w": 12,
-        "x": 12,
+        "w": 17,
+        "x": 7,
         "y": 21
       },
       "hiddenSeries": false,
@@ -851,14 +851,14 @@
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1616659415502,
+      "repeatIteration": 1617087747234,
       "repeatPanelId": 3,
       "repeatedByRow": true,
       "scopedVars": {
         "type": {
           "selected": true,
-          "text": "presence",
-          "value": "presence"
+          "text": "power",
+          "value": "power"
         }
       },
       "seriesOverrides": [],
@@ -953,7 +953,317 @@
       },
       "id": 18,
       "panels": [],
-      "repeatIteration": 1616659415502,
+      "repeatIteration": 1617087747234,
+      "repeatPanelId": 11,
+      "scopedVars": {
+        "type": {
+          "selected": true,
+          "text": "presence",
+          "value": "presence"
+        }
+      },
+      "title": "Details $type",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "InfluxDB-Sensors",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 7,
+        "x": 0,
+        "y": 31
+      },
+      "hiddenSeries": false,
+      "id": 19,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.4.3",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "repeatIteration": 1617087747234,
+      "repeatPanelId": 2,
+      "repeatedByRow": true,
+      "scopedVars": {
+        "type": {
+          "selected": true,
+          "text": "presence",
+          "value": "presence"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "$tag_location",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "location"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "sensors",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "queryType": "randomWalk",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "type",
+              "operator": "=~",
+              "value": "/^$type$/"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": "1h",
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$type (h)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "InfluxDB-Sensors",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 17,
+        "x": 7,
+        "y": 31
+      },
+      "hiddenSeries": false,
+      "id": 20,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.4.3",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "repeatIteration": 1617087747234,
+      "repeatPanelId": 3,
+      "repeatedByRow": true,
+      "scopedVars": {
+        "type": {
+          "selected": true,
+          "text": "presence",
+          "value": "presence"
+        }
+      },
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "$tag_location",
+          "groupBy": [
+            {
+              "params": [
+                "location"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "downsampled_sensors",
+          "orderByTime": "ASC",
+          "policy": "one_month",
+          "queryType": "randomWalk",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "mean_value"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "type",
+              "operator": "=~",
+              "value": "/^$type$/"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "$type (15m)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "14",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 40
+      },
+      "id": 21,
+      "panels": [],
+      "repeatIteration": 1617087747234,
       "repeatPanelId": 11,
       "scopedVars": {
         "type": {
@@ -982,12 +1292,12 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 9,
-        "w": 12,
+        "w": 7,
         "x": 0,
-        "y": 31
+        "y": 41
       },
       "hiddenSeries": false,
-      "id": 19,
+      "id": 22,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -1010,7 +1320,7 @@
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1616659415502,
+      "repeatIteration": 1617087747234,
       "repeatPanelId": 2,
       "repeatedByRow": true,
       "scopedVars": {
@@ -1133,12 +1443,12 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 9,
-        "w": 12,
-        "x": 12,
-        "y": 31
+        "w": 17,
+        "x": 7,
+        "y": 41
       },
       "hiddenSeries": false,
-      "id": 20,
+      "id": 23,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -1161,7 +1471,7 @@
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1616659415502,
+      "repeatIteration": 1617087747234,
       "repeatPanelId": 3,
       "repeatedByRow": true,
       "scopedVars": {
@@ -1259,11 +1569,11 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 40
+        "y": 50
       },
-      "id": 21,
+      "id": 24,
       "panels": [],
-      "repeatIteration": 1616659415502,
+      "repeatIteration": 1617087747234,
       "repeatPanelId": 11,
       "scopedVars": {
         "type": {
@@ -1292,12 +1602,12 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 9,
-        "w": 12,
+        "w": 7,
         "x": 0,
-        "y": 41
+        "y": 51
       },
       "hiddenSeries": false,
-      "id": 22,
+      "id": 25,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -1320,7 +1630,7 @@
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1616659415502,
+      "repeatIteration": 1617087747234,
       "repeatPanelId": 2,
       "repeatedByRow": true,
       "scopedVars": {
@@ -1443,12 +1753,12 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 9,
-        "w": 12,
-        "x": 12,
-        "y": 41
+        "w": 17,
+        "x": 7,
+        "y": 51
       },
       "hiddenSeries": false,
-      "id": 23,
+      "id": 26,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -1471,7 +1781,7 @@
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
-      "repeatIteration": 1616659415502,
+      "repeatIteration": 1617087747234,
       "repeatPanelId": 3,
       "repeatedByRow": true,
       "scopedVars": {
@@ -1577,6 +1887,7 @@
           "text": [
             "humidity",
             "lights",
+            "power",
             "presence",
             "pressure",
             "temperature"
@@ -1584,6 +1895,7 @@
           "value": [
             "humidity",
             "lights",
+            "power",
             "presence",
             "pressure",
             "temperature"
@@ -1620,5 +1932,5 @@
   "timezone": "",
   "title": "Dashboard Default",
   "uid": "mZjQcZUGz",
-  "version": 14
+  "version": 16
 }
