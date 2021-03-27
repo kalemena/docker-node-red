@@ -1,9 +1,9 @@
 CREATE DATABASE sensors;
-CREATE RETENTION POLICY "one_hour" ON "sensors" DURATION 1h REPLICATION 1 DEFAULT;
-CREATE RETENTION POLICY "one_month" ON "sensors" DURATION 4w REPLICATION 1;
-CREATE CONTINUOUS QUERY "cq_15m" ON "sensors" BEGIN SELECT mean("value") AS "mean_value" INTO "one_month"."downsampled_sensors" FROM "sensors" GROUP BY time(15m), type, location END;
+CREATE RETENTION POLICY "one_day" ON "sensors" DURATION 24h REPLICATION 1 DEFAULT;
+CREATE RETENTION POLICY "one_year" ON "sensors" DURATION 52w REPLICATION 1;
+CREATE CONTINUOUS QUERY "cq_15m" ON "sensors" BEGIN SELECT mean("value") AS "mean_value" INTO "one_year"."downsampled_sensors" FROM "sensors" GROUP BY time(15m), type, location END;
 
-# ALTER RETENTION POLICY “default” ON "sensors" DURATION 1h DURATION 1d DEFAULT;
+# ALTER RETENTION POLICY "one_hour" ON "sensors" DURATION 1h DURATION 1d DEFAULT;
 # group by entity_id tz('Europe/Moscow')
 
 # Example
