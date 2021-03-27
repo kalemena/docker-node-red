@@ -1,0 +1,24 @@
+= node-red-contrib-flow-manager
+
+// image:node-red-contrib-flow-manager.png[]
+
+== Environment
+
+Build the few dependencies:
+
+    $ docker-compose build
+
+Start the flow:
+
+    $ docker-compose up -d
+
+Stop everything:
+
+    $ docker-compose stop
+
+Cleanup everything (including database):
+
+    $ docker-compose down -v
+
+== Resources
+
