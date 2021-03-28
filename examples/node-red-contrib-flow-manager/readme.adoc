@@ -22,3 +22,4 @@ Cleanup everything (including database):
 
 == Resources
 
+* link:https://flows.nodered.org/node/node-red-contrib-flow-manager[]
