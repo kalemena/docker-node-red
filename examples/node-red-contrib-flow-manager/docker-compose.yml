@@ -10,6 +10,7 @@ services:
      - "${NODERED_PORT:-3880}:1880"
     volumes:
      - .:/data
+     - ./etc/node-red:/home/nodered/.node-red
      # - ./workspace/nodered:/home/nodered/.node-red
      # - ./workspace/log:/var/log
     environment:
