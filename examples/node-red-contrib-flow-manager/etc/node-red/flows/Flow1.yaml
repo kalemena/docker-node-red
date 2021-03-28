@@ -1,0 +1,38 @@
+- id: 89f933d.eb5c85
+  type: tab
+  label: Flow1
+  disabled: false
+  info: ''
+- id: e427edd9.6a2d6
+  type: inject
+  z: 89f933d.eb5c85
+  name: ''
+  props:
+    - p: payload
+    - p: topic
+      vt: str
+  repeat: ''
+  crontab: ''
+  once: false
+  onceDelay: 0.1
+  topic: ''
+  payload: ''
+  payloadType: date
+  x: 310
+  'y': 160
+  wires:
+    - - 50d9478e.fc554
+- id: 50d9478e.fc554
+  type: debug
+  z: 89f933d.eb5c85
+  name: ''
+  active: true
+  tosidebar: true
+  console: false
+  tostatus: false
+  complete: 'false'
+  statusVal: ''
+  statusType: auto
+  x: 620
+  'y': 160
+  wires: []

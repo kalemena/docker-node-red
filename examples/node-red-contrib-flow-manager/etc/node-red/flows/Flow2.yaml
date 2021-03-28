@@ -1,0 +1,38 @@
+- id: c7ec8cd1.cc7c
+  type: tab
+  label: Flow2
+  disabled: false
+  info: ''
+- id: 907f858c.cdb1e8
+  type: inject
+  z: c7ec8cd1.cc7c
+  name: ''
+  props:
+    - p: payload
+    - p: topic
+      vt: str
+  repeat: ''
+  crontab: ''
+  once: false
+  onceDelay: 0.1
+  topic: ''
+  payload: ''
+  payloadType: date
+  x: 310
+  'y': 220
+  wires:
+    - - 3a525176.46c7a6
+- id: 3a525176.46c7a6
+  type: debug
+  z: c7ec8cd1.cc7c
+  name: ''
+  active: true
+  tosidebar: true
+  console: false
+  tostatus: false
+  complete: 'false'
+  statusVal: ''
+  statusType: auto
+  x: 560
+  'y': 240
+  wires: []
