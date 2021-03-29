@@ -18,8 +18,8 @@
   topic: ''
   payload: ''
   payloadType: date
-  x: 310
-  'y': 160
+  x: 160
+  'y': 80
   wires:
     - - 50d9478e.fc554
 - id: 50d9478e.fc554
@@ -33,6 +33,6 @@
   complete: 'false'
   statusVal: ''
   statusType: auto
-  x: 620
+  x: 330
   'y': 160
   wires: []

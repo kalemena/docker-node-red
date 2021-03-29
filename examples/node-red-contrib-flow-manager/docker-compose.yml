@@ -9,8 +9,11 @@ services:
     ports:
      - "${NODERED_PORT:-3880}:1880"
     volumes:
-     - .:/data
      - ./etc/node-red:/home/nodered/.node-red
+    #  - ./etc/node-red/flows:/home/nodered/.node-red/flows
+    #  - ./etc/node-red/config-nodes.yaml:/home/nodered/.node-red/config-nodes.yaml
+    #  - ./etc/node-red/flow-manager-cfg.json:/home/nodered/.node-red/flow-manager-cfg.json
+    #  - ./etc/node-red/settings.js:/home/nodered/.node-red/settings.js
      # - ./workspace/nodered:/home/nodered/.node-red
      # - ./workspace/log:/var/log
     environment:

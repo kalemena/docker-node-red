@@ -18,8 +18,8 @@
   topic: ''
   payload: ''
   payloadType: date
-  x: 310
-  'y': 220
+  x: 120
+  'y': 100
   wires:
     - - 3a525176.46c7a6
 - id: 3a525176.46c7a6
@@ -33,6 +33,6 @@
   complete: 'false'
   statusVal: ''
   statusType: auto
-  x: 560
-  'y': 240
+  x: 370
+  'y': 100
   wires: []
