@@ -13,3 +13,4 @@ session.default
 *.bkp
 
 private
+flow-manager-nodes-order.json
