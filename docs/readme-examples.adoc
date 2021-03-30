@@ -46,6 +46,9 @@ image:/examples/integration-gateways-zigbee/screenshot-zigbee-nodered.png[link="
 .node-red-node-feedparser
 image:/examples/node-red-contrib-feedparser/node-red-contrib-feedparser.png[link="/examples/node-red-contrib-feedparser", 640]
 
+.node-red-contrib-flow-manager
+link:/examples/node-red-contrib-flow-manager[node-red-contrib-flow-manager]
+
 .Integration flows - Telegram - France Attestation COVID 19
 image:/examples/integration-telegram-attestation-covid19/telegram-attestation-covid19.png[link="/examples/integration-telegram-attestation-covid19", 640]
 
