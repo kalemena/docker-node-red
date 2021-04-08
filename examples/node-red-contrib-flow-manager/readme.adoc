@@ -1,5 +1,7 @@
 = node-red-contrib-flow-manager
 
+*node-red-contrib-flow-manager* allows to save each Flow tab independantly, hence ease the maintainability of projects.
+
 // image:node-red-contrib-flow-manager.png[]
 
 == Environment
