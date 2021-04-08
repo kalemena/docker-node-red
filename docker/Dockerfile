@@ -2,9 +2,9 @@ FROM ubuntu:20.04
 
 MAINTAINER Kalemena
 
-ARG NODERED_VERSION=1.2.9
+ARG NODERED_VERSION=1.3.0
 
- # Build-time metadata as defined at http://label-schema.org
+# Build-time metadata as defined at http://label-schema.org
 ARG BUILD_DATE
 ARG VCS_REF
 ARG VERSION
