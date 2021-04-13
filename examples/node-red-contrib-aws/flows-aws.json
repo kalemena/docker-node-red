@@ -1,0 +1,59 @@
+[
+    {
+        "id": "59fae695.418c9",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "2a9a20b6.f6c448",
+        "type": "amazon config",
+        "name": "AWS",
+        "region": "us-east-1",
+        "proxyRequired": false,
+        "proxy": ""
+    },
+    {
+        "id": "5083f195.76975",
+        "type": "AWS S3",
+        "z": "59fae695.418c9",
+        "aws": "2a9a20b6.f6c448",
+        "operation": "PutObject",
+        "Bucket": "",
+        "Key": "",
+        "UploadId": "",
+        "CopySource": "",
+        "Id": "",
+        "Delete": "",
+        "AccelerateConfiguration": "",
+        "AnalyticsConfiguration": "",
+        "CORSConfiguration": "",
+        "ServerSideEncryptionConfiguration": "",
+        "IntelligentTieringConfiguration": "",
+        "InventoryConfiguration": "",
+        "BucketLoggingStatus": "",
+        "MetricsConfiguration": "",
+        "NotificationConfiguration": "",
+        "OwnershipControls": "",
+        "Policy": "",
+        "ReplicationConfiguration": "",
+        "RequestPaymentConfiguration": "",
+        "Tagging": "",
+        "VersioningConfiguration": "",
+        "WebsiteConfiguration": "",
+        "PublicAccessBlockConfiguration": "",
+        "Expression": "",
+        "ExpressionType": "",
+        "InputSerialization": "",
+        "OutputSerialization": "",
+        "PartNumber": "",
+        "name": "",
+        "x": 580,
+        "y": 240,
+        "wires": [
+            [],
+            []
+        ]
+    }
+]
