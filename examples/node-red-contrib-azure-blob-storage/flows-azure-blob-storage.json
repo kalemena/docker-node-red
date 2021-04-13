@@ -1,0 +1,109 @@
+[
+    {
+        "id": "df775e1d.4e0098",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "ead7871a.8172c8",
+        "type": "inject",
+        "z": "df775e1d.4e0098",
+        "name": "Payload",
+        "props": [
+            {
+                "p": "payload",
+                "v": "DocumentTest.txt",
+                "vt": "str"
+            },
+            {
+                "p": "topic",
+                "v": "",
+                "vt": "string"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "topic": "",
+        "payload": "DocumentTest.txt",
+        "payloadType": "str",
+        "x": 360,
+        "y": 200,
+        "wires": [
+            [
+                "b0dbc35f.28665"
+            ]
+        ]
+    },
+    {
+        "id": "fdab4f1f.0cab",
+        "type": "debug",
+        "z": "df775e1d.4e0098",
+        "name": "Log",
+        "active": true,
+        "console": "false",
+        "complete": "true",
+        "x": 770,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "f65e9c4e.e7afb",
+        "type": "debug",
+        "z": "df775e1d.4e0098",
+        "name": "Log",
+        "active": true,
+        "console": "false",
+        "complete": "true",
+        "x": 770,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "b3f32ebe.8a2ee",
+        "type": "inject",
+        "z": "df775e1d.4e0098",
+        "name": "Payload",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "topic": "",
+        "payload": "DocumentTest.txt",
+        "payloadType": "str",
+        "x": 360,
+        "y": 260,
+        "wires": [
+            [
+                "e6748f3.2163b7"
+            ]
+        ]
+    },
+    {
+        "id": "b0dbc35f.28665",
+        "type": "Save Blob",
+        "z": "df775e1d.4e0098",
+        "name": "Azure Save Blob Storage",
+        "x": 570,
+        "y": 201,
+        "wires": [
+            [
+                "fdab4f1f.0cab"
+            ]
+        ]
+    },
+    {
+        "id": "e6748f3.2163b7",
+        "type": "Get Blob",
+        "z": "df775e1d.4e0098",
+        "name": "Azure Get Blob Storage",
+        "x": 571,
+        "y": 260,
+        "wires": [
+            [
+                "f65e9c4e.e7afb"
+            ]
+        ]
+    }
+]
