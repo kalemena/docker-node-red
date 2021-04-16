@@ -1,0 +1,253 @@
+[
+    {
+        "id": "3af86bc9.b3226c",
+        "type": "tab",
+        "label": "WebDAV",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "4e4d2882.ba9a88",
+        "type": "webdav-credentials",
+        "cname": "",
+        "address": "http://webdav:80",
+        "basePath": "",
+        "insecure": false
+    },
+    {
+        "id": "6456eb2e.b52cb4",
+        "type": "webdav-list",
+        "z": "3af86bc9.b3226c",
+        "wname": "",
+        "server": "4e4d2882.ba9a88",
+        "directory": "testdir",
+        "x": 350,
+        "y": 80,
+        "wires": [
+            [
+                "f533c7b.7cd4bb8"
+            ]
+        ]
+    },
+    {
+        "id": "59b340a6.cc70c",
+        "type": "webdav-write",
+        "z": "3af86bc9.b3226c",
+        "uname": "",
+        "server": "4e4d2882.ba9a88",
+        "filename": "test.txt",
+        "overwrite": true,
+        "format": "text",
+        "directory": "testdir",
+        "x": 350,
+        "y": 120,
+        "wires": [
+            [
+                "5e1b62b7.bc6224"
+            ]
+        ]
+    },
+    {
+        "id": "46859708.198d58",
+        "type": "inject",
+        "z": "3af86bc9.b3226c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 80,
+        "wires": [
+            [
+                "6456eb2e.b52cb4"
+            ]
+        ]
+    },
+    {
+        "id": "f533c7b.7cd4bb8",
+        "type": "debug",
+        "z": "3af86bc9.b3226c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 550,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "13a9b837.d7bfc",
+        "type": "inject",
+        "z": "3af86bc9.b3226c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "this is a test",
+        "payloadType": "str",
+        "x": 150,
+        "y": 120,
+        "wires": [
+            [
+                "59b340a6.cc70c"
+            ]
+        ]
+    },
+    {
+        "id": "5e1b62b7.bc6224",
+        "type": "debug",
+        "z": "3af86bc9.b3226c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 550,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "8c09001e.4f434",
+        "type": "webdav-mkdir",
+        "z": "3af86bc9.b3226c",
+        "wname": "",
+        "server": "4e4d2882.ba9a88",
+        "directory": "testdir",
+        "x": 350,
+        "y": 40,
+        "wires": [
+            [
+                "cd7f350f.9f54b8"
+            ]
+        ]
+    },
+    {
+        "id": "7adf0026.7feeb8",
+        "type": "inject",
+        "z": "3af86bc9.b3226c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 40,
+        "wires": [
+            [
+                "8c09001e.4f434"
+            ]
+        ]
+    },
+    {
+        "id": "cd7f350f.9f54b8",
+        "type": "debug",
+        "z": "3af86bc9.b3226c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 550,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "72336c2b.3e2bec",
+        "type": "webdav-read",
+        "z": "3af86bc9.b3226c",
+        "wname": "",
+        "server": "4e4d2882.ba9a88",
+        "filename": "testdir/test.txt",
+        "output": "text",
+        "x": 350,
+        "y": 160,
+        "wires": [
+            [
+                "8980fe4d.81b058"
+            ]
+        ]
+    },
+    {
+        "id": "aa4ee22c.ccd2a",
+        "type": "inject",
+        "z": "3af86bc9.b3226c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 160,
+        "wires": [
+            [
+                "72336c2b.3e2bec"
+            ]
+        ]
+    },
+    {
+        "id": "8980fe4d.81b058",
+        "type": "debug",
+        "z": "3af86bc9.b3226c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 550,
+        "y": 160,
+        "wires": []
+    }
+]
