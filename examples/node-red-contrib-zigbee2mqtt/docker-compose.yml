@@ -5,6 +5,23 @@ volumes:
 
 services:  
 
+  zigbee2mqtt:
+    image: koenkk/zigbee2mqtt
+    restart: always
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./data:/app/data
+      - /run/udev:/run/udev:ro
+    devices:
+      - /dev/ttyACM1:/dev/ttyACM1
+    privileged: true
+    environment:
+      - TZ=Europe/Paris
+    networks:
+      default:
+        aliases:
+          - zigbee2mqtt.tidhome.local
+
   nodered:
     build: .
     restart: always
