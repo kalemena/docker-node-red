@@ -5,6 +5,10 @@ volumes:
 
 services:  
 
+  mqtt:
+    image: eclipse-mosquitto:1.6
+    restart: always
+
   zigbee2mqtt:
     image: koenkk/zigbee2mqtt
     restart: always
