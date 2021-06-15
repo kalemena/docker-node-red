@@ -7,17 +7,150 @@
         "info": ""
     },
     {
+        "id": "1038f6fe.66d569",
+        "type": "zigbee2mqtt-server",
+        "name": "",
+        "host": "mqtt",
+        "mqtt_port": "1883",
+        "mqtt_username": "",
+        "mqtt_password": "",
+        "tls": "",
+        "usetls": false,
+        "base_topic": "zigbee2mqtt"
+    },
+    {
         "id": "f62c26bd.0fd7c8",
         "type": "zigbee2mqtt-in",
         "z": "aedecf94.b977e8",
         "name": "",
-        "friendly_name": "",
-        "device_id": null,
-        "state": "",
+        "server": "1038f6fe.66d569",
+        "friendly_name": "SW01-OnOff-Damien",
+        "device_id": "0x5c0272fffed47e36",
+        "state": "0",
         "outputAtStartup": true,
-        "x": 350,
-        "y": 200,
+        "x": 260,
+        "y": 220,
         "wires": [
+            [
+                "26e696f3.001c2a",
+                "ef058655.f3202"
+            ]
+        ]
+    },
+    {
+        "id": "ef058655.f3202",
+        "type": "debug",
+        "z": "aedecf94.b977e8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 530,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "c05f05f2.493d8",
+        "type": "zigbee2mqtt-out",
+        "z": "aedecf94.b977e8",
+        "name": "",
+        "server": "1038f6fe.66d569",
+        "friendly_name": "P01-220v-Damien",
+        "device_id": "0xbc33acfffe2ab54a",
+        "command": "state",
+        "commandType": "z2m_cmd",
+        "payload": "toggle",
+        "payloadType": "z2m_payload",
+        "transition": 0,
+        "x": 770,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "12fdd482.2b1953",
+        "type": "inject",
+        "z": "aedecf94.b977e8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 500,
+        "y": 300,
+        "wires": [
+            [
+                "c05f05f2.493d8"
+            ]
+        ]
+    },
+    {
+        "id": "26e696f3.001c2a",
+        "type": "switch",
+        "z": "aedecf94.b977e8",
+        "name": "",
+        "property": "payload.action",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "on",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "off",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "brightness_move_up",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "brightness_move_down",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "brightness_stop",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 6,
+        "x": 510,
+        "y": 220,
+        "wires": [
+            [
+                "c05f05f2.493d8"
+            ],
+            [
+                "c05f05f2.493d8"
+            ],
+            [],
+            [],
+            [],
             []
         ]
     }
