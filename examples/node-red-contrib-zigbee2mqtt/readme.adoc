@@ -1,4 +1,10 @@
 = What is this example?
 :hardbreaks:
 
+This example shows a basic usage of Node-RED Zigbee 2 MQTT.
+
+image:node-red-contrib-zigbee2mqtt.png[]
+
+
+
 
