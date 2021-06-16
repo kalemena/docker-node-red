@@ -8,3 +8,5 @@ serial:
   adapter: deconz
 frontend:
   port: 8181
+advanced:
+  log_level: debug
