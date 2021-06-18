@@ -28,3 +28,17 @@ services:
       # Retention
       DOCKER_INFLUXDB_INIT_RETENTION: ${DOCKER_INFLUXDB_INIT_RETENTION:-4w}
 
+  nodered:
+    #image: kalemena/node-red:latest
+    build: .
+    restart: always
+    ports:
+     - "${NODERED_PORT:-1880}:1880"
+    volumes:
+     - .:/data
+     # - ./workspace/nodered:/home/nodered/.node-red
+     # - ./workspace/log:/var/log
+    environment:
+     FLOWS: /data/flows.json
+     NODERED_CREDENTIAL_SECRETS: ${NODERED_CREDENTIAL_SECRETS:-xoxoxoxo}
+     
