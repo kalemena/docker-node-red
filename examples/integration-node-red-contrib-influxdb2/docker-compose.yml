@@ -1,0 +1,30 @@
+version: '3.7'
+
+
+volumes:
+  influxdb-data:
+  grafana-data:
+
+services:  
+
+  influxdb2:
+    image: influxdb:2.0.7
+    # user: "${UID}:${GID}"
+    restart: always
+    ports:
+      - "${INFLUXDB_PORT:-8086}:8086"
+    volumes: 
+      - influxdb2-data:/var/lib/influxdb2:rw
+      - ./etc/influxdb2:/etc/influxdb2
+      - ./etc/influxdb2/scripts:/docker-entrypoint-initdb.d
+    environment:
+      DOCKER_INFLUXDB_INIT_MODE: setup
+      # Creds
+      DOCKER_INFLUXDB_INIT_USERNAME: ${DOCKER_INFLUXDB_INIT_USERNAME:-default}
+      DOCKER_INFLUXDB_INIT_PASSWORD: ${DOCKER_INFLUXDB_INIT_PASSWORD:-password}
+      DOCKER_INFLUXDB_INIT_ORG: ${DOCKER_INFLUXDB_INIT_ORG:-tidhome-org}
+      DOCKER_INFLUXDB_INIT_BUCKET: ${DOCKER_INFLUXDB_INIT_BUCKET:-tidhome-bucket}
+      DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: ${DOCKER_INFLUXDB_INIT_ADMIN_TOKEN:-secret-auth-token}
+      # Retention
+      DOCKER_INFLUXDB_INIT_RETENTION: ${DOCKER_INFLUXDB_INIT_RETENTION:-4w}
+
