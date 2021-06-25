@@ -8,3 +8,25 @@ image:node-red-contrib-zigbee2mqtt.png[]
 
 
 
+
+== Flow
+
+=== How-To
+
+==== Environment
+
+Build the few dependencies:
+
+    $ docker-compose build
+
+Start the flow:
+
+    $ docker-compose up -d
+
+Stop everything:
+
+    $ docker-compose stop
+
+Cleanup everything (including database):
+
+    $ docker-compose down -v
