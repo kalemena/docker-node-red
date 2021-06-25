@@ -1,7 +1,5 @@
 FROM ubuntu:20.04
 
-MAINTAINER Kalemena
-
 ARG NODERED_VERSION=1.3.5
 
 # Build-time metadata as defined at http://label-schema.org
@@ -32,10 +30,10 @@ RUN \
     wget curl \
     unzip \
 # ZWave
-    build-essential \
-    libudev-dev \
-    openzwave libopenzwave1.5-dev \
-    software-properties-common \
+#    build-essential \
+#    libudev-dev \
+#    openzwave libopenzwave1.5-dev \
+#    software-properties-common \
 # Cleanup (reduce size)
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -67,11 +65,11 @@ RUN npm i \
       node-red-node-ping \
       node-red-node-suncalc \
       node-red-contrib-simpletime \
-      node-red-contrib-credentials \
+      node-red-contrib-credentials
 # ZWAVE https://github.com/OpenZWave/node-openzwave-shared
 # RUN git clone https://github.com/OpenZWave/node-openzwave-shared.git
 #      openzwave-shared \
-      node-red-contrib-openzwave-am
+#      node-red-contrib-openzwave-am
     
 EXPOSE 1880
 
