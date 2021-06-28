@@ -38,9 +38,6 @@ RUN \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# BUG with npm < 4 ==> https://github.com/npm/npm/issues/9863
-RUN npm install -g npm@5.1.0
-
 #########
 ### NODE-RED
 RUN \
