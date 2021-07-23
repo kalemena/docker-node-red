@@ -24,11 +24,12 @@ RUN \
   apt-get update -y \
   && apt-get install -y \
     tzdata \
-# Node-Red pre-requisits
-    nodejs npm \
     git-core \
     wget curl \
     unzip \
+# Node-Red 12+ pre-requisits
+  && curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - \
+  && apt-get install -y nodejs \
 # ZWave
 #    build-essential \
 #    libudev-dev \
