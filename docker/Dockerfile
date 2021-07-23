@@ -30,11 +30,6 @@ RUN \
 # Node-Red 12+ pre-requisits
   && curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - \
   && apt-get install -y nodejs \
-# ZWave
-#    build-essential \
-#    libudev-dev \
-#    openzwave libopenzwave1.5-dev \
-#    software-properties-common \
 # Cleanup (reduce size)
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -64,10 +59,6 @@ RUN npm i \
       node-red-node-suncalc \
       node-red-contrib-simpletime \
       node-red-contrib-credentials
-# ZWAVE https://github.com/OpenZWave/node-openzwave-shared
-# RUN git clone https://github.com/OpenZWave/node-openzwave-shared.git
-#      openzwave-shared \
-#      node-red-contrib-openzwave-am
     
 EXPOSE 1880
 
