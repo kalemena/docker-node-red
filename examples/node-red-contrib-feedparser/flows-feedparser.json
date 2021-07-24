@@ -7,26 +7,6 @@
         "info": ""
     },
     {
-        "id": "c38452a5.4f84e8",
-        "type": "mqtt-broker",
-        "name": "mqtt",
-        "broker": "mqtt",
-        "port": "1883",
-        "clientid": "",
-        "usetls": false,
-        "compatmode": true,
-        "keepalive": "15",
-        "cleansession": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthPayload": "",
-        "closeTopic": "",
-        "closePayload": "",
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": ""
-    },
-    {
         "id": "54735d85.15fdcc",
         "type": "feedparse",
         "z": "d877de31.cff2e",
@@ -54,7 +34,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1010,
+        "x": 990,
         "y": 120,
         "wires": []
     },
