@@ -1,4 +1,9 @@
-examples
+.github
+docs
+examples*
+.gitignore
+LICENSE
+Makefile
+readme.adoc
 data
 .env
-.github
