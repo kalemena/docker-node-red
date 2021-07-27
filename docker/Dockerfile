@@ -6,14 +6,18 @@ ARG NODERED_VERSION=2.0.3
 ARG BUILD_DATE
 ARG VCS_REF
 ARG VERSION
-LABEL org.label-schema.build-date=$BUILD_DATE \
-      org.label-schema.name="Kalemena NodeRed" \
-      org.label-schema.description="Kalemena NodeRed for use in home automation" \
+LABEL org.label-schema.build-date=${BUILD_DATE} \
+      org.label-schema.docker.dockerfile="docker/Dockerfile" \
+      org.label-schema.license="MIT" \
+      org.label-schema.name="Kalemena Node-RED" \
+      org.label-schema.description="Kalemena packaged Node-RED used in home automation" \
       org.label-schema.url="private" \
-      org.label-schema.vcs-ref=$VCS_REF \
+      org.label-schema.vcs-ref=${VCS_REF} \
+      org.label-schema.vcs-type="Git" \
       org.label-schema.vcs-url="https://github.com/kalemena/docker-node-red" \
       org.label-schema.vendor="Kalemena" \
-      org.label-schema.version=$NODERED_VERSION \
+      org.label-schema.version=${NODERED_VERSION} \
+      org.label-schema.arch="amd64" \
       org.label-schema.schema-version="1.0"
 
 ENV DEBIAN_FRONTEND=noninteractive
