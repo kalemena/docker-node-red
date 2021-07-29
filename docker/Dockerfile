@@ -31,6 +31,7 @@ RUN \
     git-core \
     wget curl \
     unzip \
+    openssl openssh-client ca-certificates \
 # Node-Red 12+ pre-requisits
   && curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - \
   && apt-get install -y nodejs \
