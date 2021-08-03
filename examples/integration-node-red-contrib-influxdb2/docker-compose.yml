@@ -1,11 +1,21 @@
 version: '3.7'
 
+# networks: 
+#   default: 
+#     external: 
+#       name: external-ti-dhome 
 
 volumes:
   influxdb-data:
   grafana-data:
 
 services:  
+
+  # mqtt:
+  #   image: eclipse-mosquitto:1.6
+  #   restart: always
+  #   ports:
+  #     - "1883:1883"
 
   influxdb2:
     image: influxdb:2.0.7
@@ -27,6 +37,24 @@ services:
       DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: ${DOCKER_INFLUXDB_INIT_ADMIN_TOKEN:-secret-auth-token}
       # Retention
       DOCKER_INFLUXDB_INIT_RETENTION: ${DOCKER_INFLUXDB_INIT_RETENTION:-4w}
+
+  # grafana:
+  #   image: grafana/grafana
+  #   # user: "${UID}:${GID}"
+  #   restart: always
+  #   ports:
+  #     - "${GRAFANA_PORT:-3000}:3000"
+  #   volumes:
+  #     # - ./etc/grafana:/etc/grafana
+  #     # - ./var/lib/grafana:/var/lib/grafana
+  #     # - ./var/log/grafana:/var/log/grafana
+  #     - grafana-data:/var/lib/grafana
+  #     - ./etc/grafana/provisioning/:/etc/grafana/provisioning/
+  #   environment:
+  #     GF_SECURITY_ADMIN_USER: ${GRAFANA_ADMIN_USER:-default}
+  #     GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:-password}
+  #   env_file:
+  #     - .env
 
   nodered:
     #image: kalemena/node-red:latest
