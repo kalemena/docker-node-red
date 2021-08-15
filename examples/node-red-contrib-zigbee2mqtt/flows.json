@@ -58,7 +58,7 @@
         "expiry": "",
         "broker": "a899f03.9c7ef1",
         "x": 630,
-        "y": 1400,
+        "y": 1580,
         "wires": []
     },
     {
@@ -79,7 +79,7 @@
         "payload": "P01220vDamien",
         "payloadType": "str",
         "x": 200,
-        "y": 1400,
+        "y": 1580,
         "wires": [
             [
                 "9ca901d8.cada3"
@@ -91,7 +91,7 @@
         "type": "debug",
         "z": "aedecf94.b977e8",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -99,7 +99,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 510,
-        "y": 880,
+        "y": 1060,
         "wires": []
     },
     {
@@ -116,7 +116,7 @@
         "payloadType": "z2m_payload",
         "transition": 0,
         "x": 850,
-        "y": 940,
+        "y": 1120,
         "wires": []
     },
     {
@@ -215,7 +215,7 @@
         "repair": false,
         "outputs": 17,
         "x": 490,
-        "y": 1040,
+        "y": 1220,
         "wires": [
             [
                 "91ffdb36.36bf88"
@@ -267,7 +267,7 @@
         "payloadType": "num",
         "transition": 0,
         "x": 850,
-        "y": 1060,
+        "y": 1240,
         "wires": []
     },
     {
@@ -284,7 +284,7 @@
         "payloadType": "num",
         "transition": 0,
         "x": 860,
-        "y": 1100,
+        "y": 1280,
         "wires": []
     },
     {
@@ -301,7 +301,7 @@
         "payloadType": "num",
         "transition": 0,
         "x": 860,
-        "y": 980,
+        "y": 1160,
         "wires": []
     },
     {
@@ -318,7 +318,7 @@
         "payloadType": "num",
         "transition": 0,
         "x": 850,
-        "y": 1020,
+        "y": 1200,
         "wires": []
     },
     {
@@ -326,7 +326,7 @@
         "type": "debug",
         "z": "aedecf94.b977e8",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -334,7 +334,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 830,
-        "y": 1200,
+        "y": 1380,
         "wires": []
     },
     {
@@ -351,7 +351,7 @@
         "payloadType": "z2m_payload",
         "transition": 0,
         "x": 850,
-        "y": 1240,
+        "y": 1420,
         "wires": []
     },
     {
@@ -377,7 +377,7 @@
         "repair": false,
         "outputs": 2,
         "x": 490,
-        "y": 1240,
+        "y": 1420,
         "wires": [
             [
                 "7e51037b.f8d9dc",
@@ -402,7 +402,7 @@
         "payloadType": "z2m_payload",
         "transition": 0,
         "x": 860,
-        "y": 1280,
+        "y": 1460,
         "wires": []
     },
     {
@@ -410,7 +410,7 @@
         "type": "debug",
         "z": "aedecf94.b977e8",
         "name": "Listen All",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -419,7 +419,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 720,
-        "y": 380,
+        "y": 560,
         "wires": []
     },
     {
@@ -465,7 +465,7 @@
         "repair": false,
         "outputs": 6,
         "x": 730,
-        "y": 460,
+        "y": 640,
         "wires": [
             [
                 "45bde824.3f4e9"
@@ -499,7 +499,7 @@
         "to": "",
         "reg": false,
         "x": 1290,
-        "y": 420,
+        "y": 600,
         "wires": [
             [
                 "a5b16dc9.3e9c2"
@@ -526,7 +526,7 @@
         "to": "",
         "reg": false,
         "x": 1290,
-        "y": 460,
+        "y": 640,
         "wires": [
             [
                 "a5b16dc9.3e9c2"
@@ -538,7 +538,7 @@
         "type": "debug",
         "z": "aedecf94.b977e8",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -547,7 +547,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1550,
-        "y": 580,
+        "y": 760,
         "wires": []
     },
     {
@@ -568,7 +568,7 @@
         "payload": "{\"state\":\"OPEN\"}",
         "payloadType": "json",
         "x": 1150,
-        "y": 400,
+        "y": 580,
         "wires": [
             [
                 "45bde824.3f4e9"
@@ -593,7 +593,7 @@
         "payload": "{\"state\":\"CLOSE\"}",
         "payloadType": "json",
         "x": 1150,
-        "y": 440,
+        "y": 620,
         "wires": [
             [
                 "763189c9.22eca"
@@ -615,7 +615,7 @@
         "expiry": "",
         "broker": "a899f03.9c7ef1",
         "x": 1540,
-        "y": 440,
+        "y": 620,
         "wires": []
     },
     {
@@ -700,7 +700,7 @@
         "property": "payload.move",
         "name": "",
         "x": 1260,
-        "y": 540,
+        "y": 720,
         "wires": [
             [
                 "1e34b1a2.0f6a7e"
@@ -727,7 +727,7 @@
         "to": "",
         "reg": false,
         "x": 1360,
-        "y": 680,
+        "y": 860,
         "wires": [
             [
                 "eed0b2d.6021dd"
@@ -768,7 +768,7 @@
         "to": "",
         "reg": false,
         "x": 1400,
-        "y": 540,
+        "y": 720,
         "wires": [
             [
                 "e464c701.bc0e78"
@@ -808,7 +808,7 @@
         "rap": true,
         "rh": 0,
         "x": 250,
-        "y": 640,
+        "y": 820,
         "wires": [
             [
                 "aeae78c0fd162aa8",
@@ -839,7 +839,7 @@
         "repair": false,
         "outputs": 2,
         "x": 1100,
-        "y": 640,
+        "y": 820,
         "wires": [
             [],
             []
@@ -850,7 +850,7 @@
         "type": "debug",
         "z": "aedecf94.b977e8",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -859,7 +859,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 490,
-        "y": 700,
+        "y": 880,
         "wires": []
     },
     {
@@ -880,7 +880,7 @@
         ],
         "passthrough": false,
         "x": 510,
-        "y": 640,
+        "y": 820,
         "wires": [
             [
                 "fb2fd3b5f46ed89c"
@@ -910,7 +910,7 @@
         "repair": false,
         "outputs": 2,
         "x": 690,
-        "y": 640,
+        "y": 820,
         "wires": [
             [
                 "af31db8938ad8f94"
@@ -926,7 +926,7 @@
         "type": "debug",
         "z": "aedecf94.b977e8",
         "name": "Not changed",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -935,7 +935,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 890,
-        "y": 740,
+        "y": 920,
         "wires": []
     },
     {
@@ -958,7 +958,7 @@
         "to": "",
         "reg": false,
         "x": 910,
-        "y": 640,
+        "y": 820,
         "wires": [
             [
                 "b2c8645.17f2098"
@@ -985,7 +985,7 @@
         "to": "",
         "reg": false,
         "x": 1140,
-        "y": 680,
+        "y": 860,
         "wires": [
             [
                 "f6eee8a9.4c192"
@@ -1015,7 +1015,7 @@
         "repair": false,
         "outputs": 2,
         "x": 910,
-        "y": 680,
+        "y": 860,
         "wires": [
             [
                 "a7147d044c9370ba"
@@ -1030,7 +1030,7 @@
         "type": "debug",
         "z": "aedecf94.b977e8",
         "name": "Not changed",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -1039,7 +1039,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1110,
-        "y": 740,
+        "y": 920,
         "wires": []
     },
     {
@@ -1076,7 +1076,7 @@
         "name": "Actioning a remote button",
         "info": "",
         "x": 210,
-        "y": 340,
+        "y": 520,
         "wires": []
     },
     {
@@ -1086,7 +1086,7 @@
         "name": "Actioning the magic cube",
         "info": "",
         "x": 210,
-        "y": 580,
+        "y": 760,
         "wires": []
     },
     {
@@ -1102,7 +1102,7 @@
         "rap": true,
         "rh": 0,
         "x": 260,
-        "y": 880,
+        "y": 1060,
         "wires": [
             [
                 "c2d7ca0e.2f321",
@@ -1117,7 +1117,7 @@
         "name": "Actioning lights",
         "info": "",
         "x": 180,
-        "y": 840,
+        "y": 1020,
         "wires": []
     },
     {
@@ -1133,7 +1133,7 @@
         "rap": true,
         "rh": 0,
         "x": 250,
-        "y": 380,
+        "y": 560,
         "wires": [
             [
                 "691ae13e.0fbcd8",
@@ -1154,7 +1154,7 @@
         "rap": true,
         "rh": 0,
         "x": 250,
-        "y": 1240,
+        "y": 1420,
         "wires": [
             [
                 "de7340.babcbcc"
@@ -1168,7 +1168,217 @@
         "name": "Grouping",
         "info": "",
         "x": 160,
-        "y": 1360,
+        "y": 1540,
+        "wires": []
+    },
+    {
+        "id": "2456c2691e63550a",
+        "type": "mqtt in",
+        "z": "aedecf94.b977e8",
+        "name": "",
+        "topic": "zigbee2mqtt/+",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "a899f03.9c7ef1",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 190,
+        "y": 280,
+        "wires": [
+            [
+                "b6fd908abe276544"
+            ]
+        ]
+    },
+    {
+        "id": "ddb8710aa56ed040",
+        "type": "debug",
+        "z": "aedecf94.b977e8",
+        "name": "Remotes",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 820,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "b6fd908abe276544",
+        "type": "switch",
+        "z": "aedecf94.b977e8",
+        "name": "",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "zigbee2mqtt/R",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "zigbee2mqtt/S",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "zigbee2mqtt/V",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "zigbee2mqtt/P",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "zigbee2mqtt/M",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "zigbee2mqtt/L",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 7,
+        "x": 450,
+        "y": 320,
+        "wires": [
+            [
+                "ddb8710aa56ed040"
+            ],
+            [
+                "923c4846e1b8fe6b"
+            ],
+            [
+                "ee7e2c6ce4d5f682"
+            ],
+            [
+                "7f312adc3f3731da"
+            ],
+            [
+                "64068aa48df46475"
+            ],
+            [
+                "1941175f91fc712b"
+            ],
+            [
+                "ba73181e7cd92862"
+            ]
+        ]
+    },
+    {
+        "id": "923c4846e1b8fe6b",
+        "type": "debug",
+        "z": "aedecf94.b977e8",
+        "name": "Sensors",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 820,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "ee7e2c6ce4d5f682",
+        "type": "debug",
+        "z": "aedecf94.b977e8",
+        "name": "Volets",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 810,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "7f312adc3f3731da",
+        "type": "debug",
+        "z": "aedecf94.b977e8",
+        "name": "Plugs",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 810,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "ba73181e7cd92862",
+        "type": "debug",
+        "z": "aedecf94.b977e8",
+        "name": "Others",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 810,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "64068aa48df46475",
+        "type": "debug",
+        "z": "aedecf94.b977e8",
+        "name": "Motion",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 810,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "1941175f91fc712b",
+        "type": "debug",
+        "z": "aedecf94.b977e8",
+        "name": "Lights",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 810,
+        "y": 460,
         "wires": []
     }
 ]
