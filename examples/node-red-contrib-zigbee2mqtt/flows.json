@@ -103,23 +103,6 @@
         "wires": []
     },
     {
-        "id": "91ffdb36.36bf88",
-        "type": "zigbee2mqtt-out",
-        "z": "aedecf94.b977e8",
-        "name": "ChBas Light toggle",
-        "server": "1038f6fe.66d569",
-        "friendly_name": "G65289~ChBas~LitA",
-        "device_id": "65289",
-        "command": "state",
-        "commandType": "z2m_cmd",
-        "payload": "toggle",
-        "payloadType": "z2m_payload",
-        "transition": 0,
-        "x": 850,
-        "y": 1120,
-        "wires": []
-    },
-    {
         "id": "f47136f4.cfc5e8",
         "type": "switch",
         "z": "aedecf94.b977e8",
@@ -218,108 +201,52 @@
         "y": 1220,
         "wires": [
             [
-                "91ffdb36.36bf88"
+                "5ace2d7833aaa81a"
             ],
             [
-                "58f83ca.1a29dc4",
-                "43833751.45a738"
+                "20a8eb66c7b164d6",
+                "2a460924b2c99903"
             ],
-            [
-                "91ffdb36.36bf88"
-            ],
-            [
-                "91ffdb36.36bf88"
-            ],
-            [
-                "2bafd068.092378"
-            ],
-            [
-                "2bafd068.092378"
-            ],
+            [],
             [],
             [
-                "bc142573.007cd"
+                "9c0a7a0d38cf2393"
             ],
             [
-                "bc142573.007cd"
+                "9c0a7a0d38cf2393"
             ],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
+            [
+                "c46a202eadd4858a"
+            ],
+            [
+                "0f930bf774018404"
+            ],
+            [
+                "0f930bf774018404"
+            ],
+            [
+                "c46a202eadd4858a"
+            ],
+            [
+                "1d2fc6ed2a554e0d"
+            ],
+            [
+                "1d2fc6ed2a554e0d"
+            ],
+            [
+                "8c8cc38585db1f8e"
+            ],
+            [
+                "465695b265c30ea1"
+            ],
+            [
+                "465695b265c30ea1"
+            ],
+            [
+                "8c8cc38585db1f8e"
+            ],
             []
         ]
-    },
-    {
-        "id": "2bafd068.092378",
-        "type": "zigbee2mqtt-out",
-        "z": "aedecf94.b977e8",
-        "name": "ChBas Light B.up",
-        "server": "1038f6fe.66d569",
-        "friendly_name": "G65289~ChBas~LitA",
-        "device_id": "65289",
-        "command": "brightness_step",
-        "commandType": "z2m_cmd",
-        "payload": "20",
-        "payloadType": "num",
-        "transition": 0,
-        "x": 850,
-        "y": 1240,
-        "wires": []
-    },
-    {
-        "id": "bc142573.007cd",
-        "type": "zigbee2mqtt-out",
-        "z": "aedecf94.b977e8",
-        "name": "ChBas Light B.down",
-        "server": "1038f6fe.66d569",
-        "friendly_name": "G65289~ChBas~LitA",
-        "device_id": "65289",
-        "command": "brightness_step",
-        "commandType": "z2m_cmd",
-        "payload": "-20",
-        "payloadType": "num",
-        "transition": 0,
-        "x": 860,
-        "y": 1280,
-        "wires": []
-    },
-    {
-        "id": "58f83ca.1a29dc4",
-        "type": "zigbee2mqtt-out",
-        "z": "aedecf94.b977e8",
-        "name": "ChBas Light B. max",
-        "server": "1038f6fe.66d569",
-        "friendly_name": "G65289~ChBas~LitA",
-        "device_id": "65289",
-        "command": "brightness",
-        "commandType": "z2m_cmd",
-        "payload": "255",
-        "payloadType": "num",
-        "transition": 0,
-        "x": 860,
-        "y": 1160,
-        "wires": []
-    },
-    {
-        "id": "43833751.45a738",
-        "type": "zigbee2mqtt-out",
-        "z": "aedecf94.b977e8",
-        "name": "ChBas Light C.max",
-        "server": "1038f6fe.66d569",
-        "friendly_name": "G65289~ChBas~LitA",
-        "device_id": "65289",
-        "command": "color_temp",
-        "commandType": "z2m_cmd",
-        "payload": "400",
-        "payloadType": "num",
-        "transition": 0,
-        "x": 850,
-        "y": 1200,
-        "wires": []
     },
     {
         "id": "316d492a.809c86",
@@ -333,8 +260,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 830,
-        "y": 1380,
+        "x": 790,
+        "y": 1460,
         "wires": []
     },
     {
@@ -350,8 +277,8 @@
         "payload": "toggle",
         "payloadType": "z2m_payload",
         "transition": 0,
-        "x": 850,
-        "y": 1420,
+        "x": 810,
+        "y": 1500,
         "wires": []
     },
     {
@@ -401,8 +328,8 @@
         "payload": "toggle",
         "payloadType": "z2m_payload",
         "transition": 0,
-        "x": 860,
-        "y": 1460,
+        "x": 820,
+        "y": 1540,
         "wires": []
     },
     {
@@ -1380,5 +1307,266 @@
         "x": 810,
         "y": 460,
         "wires": []
+    },
+    {
+        "id": "02bbdf648c2d971c",
+        "type": "mqtt out",
+        "z": "aedecf94.b977e8",
+        "name": "",
+        "topic": "zigbee2mqtt/G65289~ChBas~LitA/set",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "a899f03.9c7ef1",
+        "x": 1250,
+        "y": 1220,
+        "wires": []
+    },
+    {
+        "id": "5ace2d7833aaa81a",
+        "type": "change",
+        "z": "aedecf94.b977e8",
+        "name": "TOGGLE",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"state\":\"TOGGLE\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 780,
+        "y": 1080,
+        "wires": [
+            [
+                "02bbdf648c2d971c"
+            ]
+        ]
+    },
+    {
+        "id": "20a8eb66c7b164d6",
+        "type": "change",
+        "z": "aedecf94.b977e8",
+        "name": "brightness=254",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"brightness\":254}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 800,
+        "y": 1120,
+        "wires": [
+            [
+                "02bbdf648c2d971c"
+            ]
+        ]
+    },
+    {
+        "id": "2a460924b2c99903",
+        "type": "change",
+        "z": "aedecf94.b977e8",
+        "name": "color_temp=500",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"color_temp\":500}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 800,
+        "y": 1160,
+        "wires": [
+            [
+                "02bbdf648c2d971c"
+            ]
+        ]
+    },
+    {
+        "id": "9c0a7a0d38cf2393",
+        "type": "change",
+        "z": "aedecf94.b977e8",
+        "name": "brightness_move: 40",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"brightness_move\":40}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 820,
+        "y": 1200,
+        "wires": [
+            [
+                "02bbdf648c2d971c"
+            ]
+        ]
+    },
+    {
+        "id": "c46a202eadd4858a",
+        "type": "change",
+        "z": "aedecf94.b977e8",
+        "name": "brightness_move: 0",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"brightness_move\":0}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 810,
+        "y": 1240,
+        "wires": [
+            [
+                "02bbdf648c2d971c"
+            ]
+        ]
+    },
+    {
+        "id": "0f930bf774018404",
+        "type": "change",
+        "z": "aedecf94.b977e8",
+        "name": "brightness_move: -40",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"brightness_move\":-40}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 820,
+        "y": 1280,
+        "wires": [
+            [
+                "02bbdf648c2d971c"
+            ]
+        ]
+    },
+    {
+        "id": "1d2fc6ed2a554e0d",
+        "type": "change",
+        "z": "aedecf94.b977e8",
+        "name": "color_temp_move: 40",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"color_temp_move\":40}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 820,
+        "y": 1320,
+        "wires": [
+            [
+                "02bbdf648c2d971c"
+            ]
+        ]
+    },
+    {
+        "id": "8c8cc38585db1f8e",
+        "type": "change",
+        "z": "aedecf94.b977e8",
+        "name": "color_temp_move: 0",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"color_temp_move\":0}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 820,
+        "y": 1360,
+        "wires": [
+            [
+                "02bbdf648c2d971c"
+            ]
+        ]
+    },
+    {
+        "id": "465695b265c30ea1",
+        "type": "change",
+        "z": "aedecf94.b977e8",
+        "name": "color_temp_move: -40",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"color_temp_move\":-40}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 820,
+        "y": 1400,
+        "wires": [
+            [
+                "02bbdf648c2d971c"
+            ]
+        ]
     }
 ]
