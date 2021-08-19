@@ -228,23 +228,15 @@
                 "c46a202eadd4858a"
             ],
             [
-                "1d2fc6ed2a554e0d"
+                "bca9a79f76badd78"
             ],
+            [],
+            [],
             [
-                "1d2fc6ed2a554e0d"
+                "c058044724e95186"
             ],
-            [
-                "8c8cc38585db1f8e"
-            ],
-            [
-                "465695b265c30ea1"
-            ],
-            [
-                "465695b265c30ea1"
-            ],
-            [
-                "8c8cc38585db1f8e"
-            ],
+            [],
+            [],
             []
         ]
     },
@@ -1294,15 +1286,15 @@
         "correl": "",
         "expiry": "",
         "broker": "a899f03.9c7ef1",
-        "x": 1250,
-        "y": 1220,
+        "x": 1530,
+        "y": 1140,
         "wires": []
     },
     {
         "id": "5ace2d7833aaa81a",
         "type": "change",
         "z": "aedecf94.b977e8",
-        "name": "TOGGLE",
+        "name": "state=TOGGLE",
         "rules": [
             {
                 "t": "set",
@@ -1317,7 +1309,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 780,
+        "x": 800,
         "y": 1080,
         "wires": [
             [
@@ -1401,9 +1393,7 @@
         "x": 820,
         "y": 1200,
         "wires": [
-            [
-                "02bbdf648c2d971c"
-            ]
+            []
         ]
     },
     {
@@ -1428,9 +1418,7 @@
         "x": 810,
         "y": 1240,
         "wires": [
-            [
-                "02bbdf648c2d971c"
-            ]
+            []
         ]
     },
     {
@@ -1455,9 +1443,7 @@
         "x": 820,
         "y": 1280,
         "wires": [
-            [
-                "02bbdf648c2d971c"
-            ]
+            []
         ]
     },
     {
@@ -1479,12 +1465,10 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 820,
-        "y": 1320,
+        "x": 1840,
+        "y": 1700,
         "wires": [
-            [
-                "02bbdf648c2d971c"
-            ]
+            []
         ]
     },
     {
@@ -1506,12 +1490,10 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 820,
-        "y": 1360,
+        "x": 1840,
+        "y": 1740,
         "wires": [
-            [
-                "02bbdf648c2d971c"
-            ]
+            []
         ]
     },
     {
@@ -1533,19 +1515,17 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 820,
-        "y": 1400,
+        "x": 1840,
+        "y": 1780,
         "wires": [
-            [
-                "02bbdf648c2d971c"
-            ]
+            []
         ]
     },
     {
         "id": "aa34e397ccb2f840",
         "type": "change",
         "z": "aedecf94.b977e8",
-        "name": "TOGGLE",
+        "name": "state=TOGGLE",
         "rules": [
             {
                 "t": "set",
@@ -1560,7 +1540,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 780,
+        "x": 800,
         "y": 1520,
         "wires": [
             [
@@ -1590,7 +1570,7 @@
         "id": "7cc05e4a48c65d31",
         "type": "change",
         "z": "aedecf94.b977e8",
-        "name": "TOGGLE",
+        "name": "state=TOGGLE",
         "rules": [
             {
                 "t": "set",
@@ -1605,7 +1585,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 780,
+        "x": 800,
         "y": 1560,
         "wires": [
             [
@@ -1630,5 +1610,349 @@
         "x": 1250,
         "y": 1560,
         "wires": []
+    },
+    {
+        "id": "bca9a79f76badd78",
+        "type": "change",
+        "z": "aedecf94.b977e8",
+        "name": "color up",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.color",
+                "pt": "msg",
+                "to": "color",
+                "tot": "global"
+            },
+            {
+                "t": "set",
+                "p": "payload.color",
+                "pt": "msg",
+                "to": "$min([6, payload.color+1])",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "color",
+                "pt": "global",
+                "to": "payload.color",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 780,
+        "y": 1360,
+        "wires": [
+            [
+                "8612bf684130cdef"
+            ]
+        ]
+    },
+    {
+        "id": "c058044724e95186",
+        "type": "change",
+        "z": "aedecf94.b977e8",
+        "name": "color down",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.color",
+                "pt": "msg",
+                "to": "color",
+                "tot": "global"
+            },
+            {
+                "t": "set",
+                "p": "payload.color",
+                "pt": "msg",
+                "to": "$max([0, payload.color-1])",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "color",
+                "pt": "global",
+                "to": "payload.color",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 790,
+        "y": 1400,
+        "wires": [
+            [
+                "8612bf684130cdef"
+            ]
+        ]
+    },
+    {
+        "id": "8612bf684130cdef",
+        "type": "switch",
+        "z": "aedecf94.b977e8",
+        "name": "Color ?",
+        "property": "payload.color",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "5",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "6",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 7,
+        "x": 960,
+        "y": 1380,
+        "wires": [
+            [
+                "c231b013fcda34a5"
+            ],
+            [
+                "fbf9c61b8d2c67d7"
+            ],
+            [
+                "b349f7e0829deb5e"
+            ],
+            [
+                "fb70da609b52e6a0"
+            ],
+            [
+                "b19f5eb568101ca2"
+            ],
+            [
+                "940c0ac61b0296fb"
+            ],
+            [
+                "d40cebcb61b5459e"
+            ]
+        ]
+    },
+    {
+        "id": "fbf9c61b8d2c67d7",
+        "type": "change",
+        "z": "aedecf94.b977e8",
+        "name": "Red",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"color\":{\"rgb\":\"255,0,0\"}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1150,
+        "y": 1220,
+        "wires": [
+            [
+                "02bbdf648c2d971c"
+            ]
+        ]
+    },
+    {
+        "id": "b349f7e0829deb5e",
+        "type": "change",
+        "z": "aedecf94.b977e8",
+        "name": "Green",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"color\":{\"rgb\":\"0,255,0\"}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1150,
+        "y": 1260,
+        "wires": [
+            [
+                "02bbdf648c2d971c"
+            ]
+        ]
+    },
+    {
+        "id": "fb70da609b52e6a0",
+        "type": "change",
+        "z": "aedecf94.b977e8",
+        "name": "Blue",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"color\":{\"rgb\":\"0,0,255\"}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1150,
+        "y": 1300,
+        "wires": [
+            [
+                "02bbdf648c2d971c"
+            ]
+        ]
+    },
+    {
+        "id": "b19f5eb568101ca2",
+        "type": "change",
+        "z": "aedecf94.b977e8",
+        "name": "White",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"color\":{\"rgb\":\"255,255,255\"}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1150,
+        "y": 1340,
+        "wires": [
+            [
+                "02bbdf648c2d971c"
+            ]
+        ]
+    },
+    {
+        "id": "940c0ac61b0296fb",
+        "type": "change",
+        "z": "aedecf94.b977e8",
+        "name": "Yellow",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"color\":{\"rgb\":\"255,255,0\"}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1150,
+        "y": 1380,
+        "wires": [
+            [
+                "02bbdf648c2d971c"
+            ]
+        ]
+    },
+    {
+        "id": "d40cebcb61b5459e",
+        "type": "change",
+        "z": "aedecf94.b977e8",
+        "name": "Cyan",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"color\":{\"rgb\":\"0,255,255\"}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1150,
+        "y": 1420,
+        "wires": [
+            [
+                "02bbdf648c2d971c"
+            ]
+        ]
+    },
+    {
+        "id": "c231b013fcda34a5",
+        "type": "change",
+        "z": "aedecf94.b977e8",
+        "name": "Magenta",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"color\":{\"rgb\":\"255,0,255\"}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1160,
+        "y": 1180,
+        "wires": [
+            [
+                "02bbdf648c2d971c"
+            ]
+        ]
     }
 ]
