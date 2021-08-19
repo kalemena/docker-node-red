@@ -58,7 +58,7 @@
         "expiry": "",
         "broker": "a899f03.9c7ef1",
         "x": 630,
-        "y": 1580,
+        "y": 1680,
         "wires": []
     },
     {
@@ -79,7 +79,7 @@
         "payload": "P01220vDamien",
         "payloadType": "str",
         "x": 200,
-        "y": 1580,
+        "y": 1680,
         "wires": [
             [
                 "9ca901d8.cada3"
@@ -260,24 +260,7 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 790,
-        "y": 1460,
-        "wires": []
-    },
-    {
-        "id": "7e51037b.f8d9dc",
-        "type": "zigbee2mqtt-out",
-        "z": "aedecf94.b977e8",
-        "name": "",
-        "server": "1038f6fe.66d569",
-        "friendly_name": "P02~Celier~OnOff",
-        "device_id": "0xf0d1b8000015d8d5",
-        "command": "state",
-        "commandType": "z2m_cmd",
-        "payload": "toggle",
-        "payloadType": "z2m_payload",
-        "transition": 0,
-        "x": 810,
+        "x": 510,
         "y": 1500,
         "wires": []
     },
@@ -298,39 +281,27 @@
                 "t": "eq",
                 "v": "2_single",
                 "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "3_single",
+                "vt": "str"
             }
         ],
         "checkall": "true",
         "repair": false,
-        "outputs": 2,
+        "outputs": 3,
         "x": 490,
-        "y": 1420,
+        "y": 1560,
         "wires": [
             [
-                "7e51037b.f8d9dc",
-                "316d492a.809c86"
+                "aa34e397ccb2f840"
             ],
             [
-                "d97588be.3d13d"
-            ]
+                "7cc05e4a48c65d31"
+            ],
+            []
         ]
-    },
-    {
-        "id": "d97588be.3d13d",
-        "type": "zigbee2mqtt-out",
-        "z": "aedecf94.b977e8",
-        "name": "",
-        "server": "1038f6fe.66d569",
-        "friendly_name": "P03~Salon~OnOff01",
-        "device_id": "0xbc33acfffe6d7c38",
-        "command": "state",
-        "commandType": "z2m_cmd",
-        "payload": "toggle",
-        "payloadType": "z2m_payload",
-        "transition": 0,
-        "x": 820,
-        "y": 1540,
-        "wires": []
     },
     {
         "id": "9ba987c5.47051",
@@ -1081,10 +1052,11 @@
         "rap": true,
         "rh": 0,
         "x": 250,
-        "y": 1420,
+        "y": 1520,
         "wires": [
             [
-                "de7340.babcbcc"
+                "de7340.babcbcc",
+                "316d492a.809c86"
             ]
         ]
     },
@@ -1095,7 +1067,7 @@
         "name": "Grouping",
         "info": "",
         "x": 160,
-        "y": 1540,
+        "y": 1640,
         "wires": []
     },
     {
@@ -1568,5 +1540,95 @@
                 "02bbdf648c2d971c"
             ]
         ]
+    },
+    {
+        "id": "aa34e397ccb2f840",
+        "type": "change",
+        "z": "aedecf94.b977e8",
+        "name": "TOGGLE",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"state\":\"TOGGLE\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 780,
+        "y": 1520,
+        "wires": [
+            [
+                "63d7515fbbc3960d"
+            ]
+        ]
+    },
+    {
+        "id": "63d7515fbbc3960d",
+        "type": "mqtt out",
+        "z": "aedecf94.b977e8",
+        "name": "",
+        "topic": "zigbee2mqtt/P02~Celier~OnOff/set",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "a899f03.9c7ef1",
+        "x": 1240,
+        "y": 1520,
+        "wires": []
+    },
+    {
+        "id": "7cc05e4a48c65d31",
+        "type": "change",
+        "z": "aedecf94.b977e8",
+        "name": "TOGGLE",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"state\":\"TOGGLE\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 780,
+        "y": 1560,
+        "wires": [
+            [
+                "a88ec3c1e344f76b"
+            ]
+        ]
+    },
+    {
+        "id": "a88ec3c1e344f76b",
+        "type": "mqtt out",
+        "z": "aedecf94.b977e8",
+        "name": "",
+        "topic": "zigbee2mqtt/P03~Salon~OnOff01/set",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "a899f03.9c7ef1",
+        "x": 1250,
+        "y": 1560,
+        "wires": []
     }
 ]
