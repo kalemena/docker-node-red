@@ -58,7 +58,7 @@
         "expiry": "",
         "broker": "a899f03.9c7ef1",
         "x": 630,
-        "y": 1680,
+        "y": 1780,
         "wires": []
     },
     {
@@ -79,7 +79,7 @@
         "payload": "P01220vDamien",
         "payloadType": "str",
         "x": 200,
-        "y": 1680,
+        "y": 1780,
         "wires": [
             [
                 "9ca901d8.cada3"
@@ -1059,7 +1059,7 @@
         "name": "Grouping",
         "info": "",
         "x": 160,
-        "y": 1640,
+        "y": 1740,
         "wires": []
     },
     {
@@ -1465,8 +1465,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1840,
-        "y": 1700,
+        "x": 1600,
+        "y": 1400,
         "wires": [
             []
         ]
@@ -1490,8 +1490,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1840,
-        "y": 1740,
+        "x": 1600,
+        "y": 1440,
         "wires": [
             []
         ]
@@ -1515,8 +1515,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 1840,
-        "y": 1780,
+        "x": 1600,
+        "y": 1480,
         "wires": [
             []
         ]
@@ -1608,7 +1608,7 @@
         "expiry": "",
         "broker": "a899f03.9c7ef1",
         "x": 1250,
-        "y": 1560,
+        "y": 1580,
         "wires": []
     },
     {
@@ -1954,5 +1954,120 @@
                 "02bbdf648c2d971c"
             ]
         ]
+    },
+    {
+        "id": "1b704c3fc0a53f62",
+        "type": "debug",
+        "z": "aedecf94.b977e8",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 1640,
+        "wires": []
+    },
+    {
+        "id": "7bed067cc327218f",
+        "type": "switch",
+        "z": "aedecf94.b977e8",
+        "name": "",
+        "property": "payload.action",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "on",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "off",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 490,
+        "y": 1700,
+        "wires": [
+            [
+                "221bb5a44b871cba"
+            ],
+            [
+                "221bb5a44b871cba"
+            ]
+        ]
+    },
+    {
+        "id": "29209256b63b7414",
+        "type": "mqtt in",
+        "z": "aedecf94.b977e8",
+        "name": "",
+        "topic": "zigbee2mqtt/R01~ChD~OnOff",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "a899f03.9c7ef1",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 240,
+        "y": 1660,
+        "wires": [
+            [
+                "1b704c3fc0a53f62",
+                "7bed067cc327218f"
+            ]
+        ]
+    },
+    {
+        "id": "221bb5a44b871cba",
+        "type": "change",
+        "z": "aedecf94.b977e8",
+        "name": "state=TOGGLE",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"state\":\"TOGGLE\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 800,
+        "y": 1700,
+        "wires": [
+            [
+                "929826d3ac31cad4"
+            ]
+        ]
+    },
+    {
+        "id": "929826d3ac31cad4",
+        "type": "mqtt out",
+        "z": "aedecf94.b977e8",
+        "name": "",
+        "topic": "zigbee2mqtt/P01~ChD~Lit/set",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "a899f03.9c7ef1",
+        "x": 1230,
+        "y": 1700,
+        "wires": []
     }
 ]
