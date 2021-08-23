@@ -1960,7 +1960,7 @@
         "type": "debug",
         "z": "aedecf94.b977e8",
         "name": "",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -2000,7 +2000,7 @@
                 "221bb5a44b871cba"
             ],
             [
-                "221bb5a44b871cba"
+                "294af72d9ac1e3fe"
             ]
         ]
     },
@@ -2029,13 +2029,13 @@
         "id": "221bb5a44b871cba",
         "type": "change",
         "z": "aedecf94.b977e8",
-        "name": "state=TOGGLE",
+        "name": "state=ON",
         "rules": [
             {
                 "t": "set",
                 "p": "payload",
                 "pt": "msg",
-                "to": "{\"state\":\"TOGGLE\"}",
+                "to": "{\"state\":\"ON\"}",
                 "tot": "json"
             }
         ],
@@ -2044,7 +2044,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 800,
+        "x": 780,
         "y": 1700,
         "wires": [
             [
@@ -2069,5 +2069,84 @@
         "x": 1230,
         "y": 1700,
         "wires": []
+    },
+    {
+        "id": "2073e76de9ee0f4e",
+        "type": "inject",
+        "z": "aedecf94.b977e8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "P01220vDam",
+        "payloadType": "str",
+        "x": 790,
+        "y": 1660,
+        "wires": [
+            [
+                "5772f6b7f7e15595"
+            ]
+        ]
+    },
+    {
+        "id": "294af72d9ac1e3fe",
+        "type": "change",
+        "z": "aedecf94.b977e8",
+        "name": "state=OFF",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"state\":\"OFF\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 790,
+        "y": 1740,
+        "wires": [
+            [
+                "929826d3ac31cad4"
+            ]
+        ]
+    },
+    {
+        "id": "5772f6b7f7e15595",
+        "type": "change",
+        "z": "aedecf94.b977e8",
+        "name": "state=TOGGLE",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"state\":\"TOGGLE\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 980,
+        "y": 1660,
+        "wires": [
+            [
+                "929826d3ac31cad4"
+            ]
+        ]
     }
 ]
