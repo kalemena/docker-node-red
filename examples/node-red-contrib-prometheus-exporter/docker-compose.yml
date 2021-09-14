@@ -1,7 +1,26 @@
 version: '3.7'
 
+
+volumes:
+  prometheus-data:
+  grafana-data:
+
 services:  
 
+
+  prometheus:
+    image: prom/prometheus:v2.4.3
+    restart: always
+    volumes:
+      - ./etc/prometheus/:/etc/prometheus/
+      - prometheus-data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+    ports:
+      - ${PROMETHEUS_PORT:-9090}:9090
 
   nodered:
     #image: kalemena/node-red:latest

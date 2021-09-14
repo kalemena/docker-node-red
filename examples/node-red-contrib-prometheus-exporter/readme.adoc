@@ -1,0 +1,6 @@
+= node-red-contrib-prometheus-exporter
+
+This is a sample of using node-red-contrib-prometheus-exporter to expose metrics to Prometheus.
+
+// image:node-red-contrib-prometheus-exporter.png[]
+
