@@ -1,0 +1,52 @@
+[
+    {
+        "id": "b2d48ac3313e5fcd",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "c6b284fed295a958",
+        "type": "prometheus-metric-config",
+        "name": "testCounter",
+        "help": "This is a test Counter",
+        "labels": "tag_1",
+        "mtype": "counter"
+    },
+    {
+        "id": "a6981f7cdb26a557",
+        "type": "prometheus-exporter",
+        "z": "b2d48ac3313e5fcd",
+        "name": "",
+        "metric": "c6b284fed295a958",
+        "x": 550,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "a349ba3c1a38b3d3",
+        "type": "inject",
+        "z": "b2d48ac3313e5fcd",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "4",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"op\":\"inc\",\"val\":5,\"labels\":{\"tag_1\":\"computer_123\"}}",
+        "payloadType": "json",
+        "x": 160,
+        "y": 100,
+        "wires": [
+            [
+                "a6981f7cdb26a557"
+            ]
+        ]
+    }
+]
