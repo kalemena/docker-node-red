@@ -24,3 +24,18 @@ Stop everything:
 Cleanup everything (including database):
 
     $ docker-compose down -v
+
+== Troubleshoot
+
+Here are few command to troubleshoot the environment.
+
+.Curl the metrics manually
+[source,bash]
+----
+$ curl http://localhost:2880/metrics
+# HELP testCounter This is a test Counter
+# TYPE testCounter counter
+testCounter{tag_1="computer_123"} 20
+----
+
+
