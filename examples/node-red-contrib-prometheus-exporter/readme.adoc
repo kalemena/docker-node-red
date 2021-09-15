@@ -4,3 +4,23 @@ This is a sample of using node-red-contrib-prometheus-exporter to expose metrics
 
 // image:node-red-contrib-prometheus-exporter.png[]
 
+== Environment
+
+Edit a *.env* file based on *.env-example* and setup your credentials.
+
+Build the few dependencies:
+
+    $ cp .env-example .env
+    $ docker-compose build
+
+Start the flow:
+
+    $ docker-compose up -d
+
+Stop everything:
+
+    $ docker-compose stop
+
+Cleanup everything (including database):
+
+    $ docker-compose down -v
