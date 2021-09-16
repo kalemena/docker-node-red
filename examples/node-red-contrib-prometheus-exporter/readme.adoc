@@ -25,6 +25,16 @@ Cleanup everything (including database):
 
     $ docker-compose down -v
 
+== Usage
+
+Once started, few things can be done.
+
+The environment contains link:https://prometheus.io/docs/guides/cadvisor/[cAdvisor].
+
+* Browsing to link:http://localhost:8080[] shows cAdvisor where you can see recent metrics.
+* Browse to link:http://localhost:9090[] to look into prometheus data and query for metrics.
+
+
 == Troubleshoot
 
 Here are few command to troubleshoot the environment.
