@@ -15,7 +15,7 @@
     "editable": true,
     "gnetId": null,
     "graphTooltip": 0,
-    "id": 2,
+    "id": 3,
     "links": [],
     "panels": [
       {
@@ -71,12 +71,12 @@
           "overrides": []
         },
         "gridPos": {
-          "h": 16,
-          "w": 9,
+          "h": 11,
+          "w": 13,
           "x": 0,
           "y": 0
         },
-        "id": 2,
+        "id": 6,
         "options": {
           "legend": {
             "calcs": [],
@@ -90,13 +90,94 @@
         "targets": [
           {
             "exemplar": true,
-            "expr": "container_start_time_seconds{name=\"node-red-contrib-prometheus-exporter_nodered_1\"}",
+            "expr": "testGauge",
             "interval": "",
             "legendFormat": "",
             "refId": "A"
           }
         ],
-        "title": "Start Time",
+        "title": "Node-RED test Gauge",
+        "type": "timeseries"
+      },
+      {
+        "datasource": null,
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 11,
+          "w": 13,
+          "x": 0,
+          "y": 11
+        },
+        "id": 4,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "testCounter",
+            "interval": "",
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "title": "Node-RED test Counter",
         "type": "timeseries"
       }
     ],
@@ -112,7 +193,7 @@
     },
     "timepicker": {},
     "timezone": "",
-    "title": "Dashboard - Dummy Copy",
+    "title": "Dashboard - Dummy",
     "uid": "EbCIGHdnk",
-    "version": 1
+    "version": 4
   }

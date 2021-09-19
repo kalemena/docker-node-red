@@ -35,3 +35,11 @@ down:
 
 clean:
 	docker-compose down --volumes
+
+############################
+# Troubleshoot
+############################
+
+logs:
+	docker logs -f node-red-contrib-prometheus-exporter_nodered_1
+
