@@ -1,6 +1,6 @@
 FROM ubuntu:20.04
 
-ARG NODERED_VERSION=2.0.6
+ARG NODERED_VERSION=2.1.0
 
 # Build-time metadata as defined at http://label-schema.org
 ARG BUILD_DATE
@@ -32,6 +32,7 @@ RUN \
     wget curl \
     unzip \
     openssl openssh-client ca-certificates \
+    build-essential python-dev python3 \
 # Node-Red 12+ pre-requisits
   && curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - \
   && apt-get install -y nodejs \
@@ -59,12 +60,10 @@ RUN \
   npm install -g node-red-nodegen api-spec-converter
 
 RUN npm i \
-      node-red-node-serialport \
-      node-red-node-ping \
-      node-red-node-suncalc \
-      node-red-contrib-simpletime \
-      node-red-contrib-credentials
-    
+  node-red-node-serialport \
+  node-red-node-ping \
+  node-red-contrib-credentials
+
 EXPOSE 1880
 
 ENV TZ=Europe/Paris
