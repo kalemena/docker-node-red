@@ -167,6 +167,16 @@ time                 mean_temp
 2021-01-03T14:15:00Z 20.87110412555589
 2021-01-03T14:30:00Z 20.909856013475363
 2021-01-03T14:45:00Z 20.820308042018944
+-----
+
+> SHOW series;
+key
+-----
+sensors,location=cc-0-Chauffage,type=power-inst
+sensors,location=cc-1-Bureau,type=power-inst
+sensors,location=cc-3-Celier~Lavage,type=power-inst
+sensors,location=cc-4-Celier-Séchage,type=power-inst
+...
 ----
 
 == Resources
