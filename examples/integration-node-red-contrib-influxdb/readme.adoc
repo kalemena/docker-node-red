@@ -177,6 +177,12 @@ sensors,location=cc-1-Bureau,type=power-inst
 sensors,location=cc-3-Celier~Lavage,type=power-inst
 sensors,location=cc-4-Celier-Séchage,type=power-inst
 ...
+-----
+
+# Other queries
+> DROP SERIES FROM "sensors_15m" WHERE location='';
+> SELECT * from "five_years"."sensors_1h" WHERE type='battery' AND location='';
+
 ----
 
 == Resources
