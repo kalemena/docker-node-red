@@ -1,6 +1,6 @@
 FROM ubuntu:20.04
 
-ARG NODERED_VERSION=2.1.4
+ARG NODERED_VERSION=2.1.5
 
 # Build-time metadata as defined at http://label-schema.org
 ARG BUILD_DATE
