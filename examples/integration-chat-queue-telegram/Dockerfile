@@ -1,4 +1,4 @@
-FROM kalemena/node-red:1.0.2
+FROM kalemena/node-red:2.1.6
 
 RUN npm i   node-red-contrib-redis \
             node-red-contrib-uuid \
