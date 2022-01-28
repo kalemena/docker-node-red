@@ -1,4 +1,4 @@
-FROM kalemena/node-red:latest
+FROM kalemena/node-red:2.1.6
 
 USER root
 
