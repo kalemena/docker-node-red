@@ -5,5 +5,4 @@ pull:
 
 build: 
 	cd docker \
-	&& docker pull ubuntu:20.04 \
-	&& docker build -t kalemena/node-red:latest -f Dockerfile .
+	&& docker build --pull -t kalemena/node-red:latest -f Dockerfile .
