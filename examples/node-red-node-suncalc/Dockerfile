@@ -1,4 +1,4 @@
-FROM kalemena/node-red:2.1.6
+FROM kalemena/node-red:latest
 
 RUN npm i \
       node-red-node-suncalc
