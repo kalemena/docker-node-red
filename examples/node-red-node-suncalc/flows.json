@@ -5,6 +5,18 @@
         "label": "Flow 1"
     },
     {
+        "id": "ff3a52597496aa85",
+        "type": "junction",
+        "z": "b9afddb.4a0a82",
+        "x": 360,
+        "y": 80,
+        "wires": [
+            [
+                "d9dc3ad7.7390d"
+            ]
+        ]
+    },
+    {
         "id": "fa38add9.6dba5",
         "type": "inject",
         "z": "b9afddb.4a0a82",
@@ -19,7 +31,7 @@
         "y": 80,
         "wires": [
             [
-                "d9dc3ad7.7390d"
+                "ff3a52597496aa85"
             ]
         ]
     },
@@ -33,7 +45,7 @@
         "console": false,
         "tostatus": false,
         "complete": "true",
-        "x": 390,
+        "x": 470,
         "y": 80,
         "wires": []
     },
@@ -52,10 +64,10 @@
         "y": 120,
         "wires": [
             [
-                "d9dc3ad7.7390d"
+                "ff3a52597496aa85"
             ],
             [
-                "d9dc3ad7.7390d"
+                "ff3a52597496aa85"
             ]
         ]
     },
