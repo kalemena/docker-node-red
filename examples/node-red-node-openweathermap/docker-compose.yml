@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:  
+
+  nodered:
+    build: .
+    # image: kalemena/node-red:latest
+    restart: always
+    ports:
+     - "${NODERED_PORT:-2880}:1880"
+    volumes:
+     - .:/data
+    environment:
+     - NODERED_FLOWS=/data/flows.json
+     - NODERED_USERDIR=/home/nodered/.node-red
+     - NODERED_SETTINGS=/home/nodered/.node-red/settings.js
+     - NODERED_CREDENTIAL_SECRETS=changeme
