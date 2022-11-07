@@ -1,0 +1,52 @@
+[
+    {
+        "id": "b9afddb.4a0a82",
+        "type": "tab",
+        "label": "Flow 1"
+    },
+    {
+        "id": "ff3a52597496aa85",
+        "type": "junction",
+        "z": "b9afddb.4a0a82",
+        "x": 360,
+        "y": 80,
+        "wires": [
+            [
+                "d9dc3ad7.7390d"
+            ]
+        ]
+    },
+    {
+        "id": "d9dc3ad7.7390d",
+        "type": "debug",
+        "z": "b9afddb.4a0a82",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 470,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "99590ca2f376cd85",
+        "type": "openweathermap in",
+        "z": "b9afddb.4a0a82",
+        "name": "Brest,France",
+        "wtype": "current",
+        "lon": "",
+        "lat": "",
+        "city": "Brest",
+        "country": "FR",
+        "language": "fr",
+        "x": 190,
+        "y": 80,
+        "wires": [
+            [
+                "ff3a52597496aa85"
+            ]
+        ]
+    }
+]
