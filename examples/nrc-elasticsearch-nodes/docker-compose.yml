@@ -1,0 +1,32 @@
+version: '3.7'
+
+volumes:
+  es-data:
+
+services:  
+
+  elasticsearch:
+    image: elasticsearch:8.8.0
+    ports:
+      - 9200:9200
+      - 9300:9300
+    environment:
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - es-data:/usr/share/elasticsearch/data
+
+  nodered:
+    build: .
+    restart: always
+    ports:
+     - "1880:1880"
+    volumes:
+     - .:/data
+    environment:
+     - FLOWS=/data/flows.json
