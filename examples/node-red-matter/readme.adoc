@@ -1,0 +1,25 @@
+= What is this example?
+:hardbreaks:
+
+This example shows a basic usage of Node-RED Matter.
+== Flow
+
+=== How-To
+
+==== Environment
+
+Build the few dependencies:
+
+    $ docker-compose build
+
+Start the flow:
+
+    $ docker-compose up -d
+
+Stop everything:
+
+    $ docker-compose stop
+
+Cleanup everything (including database):
+
+    $ docker-compose down -v
