@@ -2,6 +2,11 @@
 :hardbreaks:
 
 This example shows a basic usage of Node-RED Matter.
+== Links
+
+* link:https://project-chip.github.io/connectedhomeip-doc/index.html[Matter @ project-chip]
+* link:https://mattercoder.com/[Matter Coder]
+
 == Flow
 
 === How-To
