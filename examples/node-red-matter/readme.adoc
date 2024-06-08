@@ -2,6 +2,9 @@
 :hardbreaks:
 
 This example shows a basic usage of Node-RED Matter.
+
+image:node-red-matter.png[]
+
 == Links
 
 * link:https://project-chip.github.io/connectedhomeip-doc/index.html[Matter @ project-chip]
