@@ -9,6 +9,7 @@ image:node-red-matter.png[]
 
 * link:https://project-chip.github.io/connectedhomeip-doc/index.html[Matter @ project-chip]
 * link:https://mattercoder.com/[Matter Coder]
+* link:https://canonical-matter.readthedocs-hosted.com/_/downloads/en/latest/pdf/[PDF - Ubuntu setup tutorial guide]
 
 == Flow
 
