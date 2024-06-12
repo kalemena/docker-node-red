@@ -1,4 +1,6 @@
-version: '3.7'
+
+volumes:
+  nodered:
 
 services:  
 
@@ -8,6 +10,7 @@ services:
     ports:
      - "3880:1880"
     volumes:
-     - .:/data
+     - nodered:/data
+     - ./flows.json:/data/flows.json
     environment:
      - FLOWS=/data/flows.json
