@@ -1,0 +1,573 @@
+[
+    {
+        "id": "df568367a0db7caf",
+        "type": "tab",
+        "label": "Node-RED Matter - On/Off",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "d2058fcf6d2d4382",
+        "type": "group",
+        "z": "df568367a0db7caf",
+        "name": "Matter Light 1",
+        "style": {
+            "fill": "#dbcbe7",
+            "label": true,
+            "color": "#6f2fa0"
+        },
+        "nodes": [
+            "dec7271b92591a18",
+            "d6a41f938f12bd8a",
+            "589e9b2890f4549b",
+            "500ad5e3438f09bf",
+            "39a0207be09771f6"
+        ],
+        "x": 394,
+        "y": 139,
+        "w": 412,
+        "h": 242
+    },
+    {
+        "id": "f4f5c22e843c5657",
+        "type": "group",
+        "z": "df568367a0db7caf",
+        "name": "Matter Outlet 1",
+        "style": {
+            "label": true,
+            "color": "#001f60",
+            "fill": "#bfc7d7"
+        },
+        "nodes": [
+            "ebe9df65470f5a22",
+            "5f272ae264c19657",
+            "c5b7ffe70ce2272a",
+            "47e77aa534a048d7",
+            "36b1071665e2244a",
+            "b7484b38b0a37f33",
+            "ed4ce3d9aefbefc9",
+            "dd05132cf47e62e9"
+        ],
+        "x": 844,
+        "y": 419,
+        "w": 622,
+        "h": 362
+    },
+    {
+        "id": "f7e9a9751d6a80d1",
+        "type": "group",
+        "z": "df568367a0db7caf",
+        "name": "Global Matter Controls",
+        "style": {
+            "fill": "#bfdbef",
+            "label": true,
+            "color": "#0070c0"
+        },
+        "nodes": [
+            "d7599f0cd09e447e",
+            "1b94b78816909ff2",
+            "7921eba77a96fda8",
+            "5c014d2566d196f0",
+            "3106480b74de4e15",
+            "b26136e53f3236bc"
+        ],
+        "x": 394,
+        "y": 419,
+        "w": 432,
+        "h": 282
+    },
+    {
+        "id": "b5050975b9e1e3d1",
+        "type": "group",
+        "z": "df568367a0db7caf",
+        "name": "Matter Light 2",
+        "style": {
+            "fill": "#dbcbe7",
+            "label": true,
+            "color": "#6f2fa0"
+        },
+        "nodes": [
+            "b022df774d8d9ecb",
+            "7c64ee1eea1a73ac",
+            "b86b2f5f3dde2201",
+            "4339565c2ec6b305",
+            "0d2f2b6e840db858"
+        ],
+        "x": 854,
+        "y": 139,
+        "w": 412,
+        "h": 242
+    },
+    {
+        "id": "206e145982b938d8",
+        "type": "matter-device",
+        "name": "Light 1",
+        "server": "3646c2d03ad32af0",
+        "devicetype": "OnOffLightDevice",
+        "port": "0",
+        "discriminator": "470",
+        "productid": "0x8000"
+    },
+    {
+        "id": "0d95935a3715df28",
+        "type": "matter-device",
+        "name": "Light 2",
+        "server": "3646c2d03ad32af0",
+        "devicetype": "OnOffLightDevice",
+        "port": "0",
+        "discriminator": "2906",
+        "productid": "0x8000"
+    },
+    {
+        "id": "e36fddd5083cfc44",
+        "type": "matter-device",
+        "name": "Outlet 1",
+        "server": "3646c2d03ad32af0",
+        "devicetype": "OnOffPluginUnitDevice",
+        "port": "0",
+        "discriminator": "2111",
+        "productid": "0x8000"
+    },
+    {
+        "id": "3646c2d03ad32af0",
+        "type": "matter-server",
+        "name": "Matter Server 1"
+    },
+    {
+        "id": "dec7271b92591a18",
+        "type": "matter-device-status",
+        "z": "df568367a0db7caf",
+        "g": "d2058fcf6d2d4382",
+        "name": "Light 1 Status",
+        "device": "206e145982b938d8",
+        "x": 490,
+        "y": 180,
+        "wires": [
+            [
+                "d6a41f938f12bd8a"
+            ]
+        ]
+    },
+    {
+        "id": "d6a41f938f12bd8a",
+        "type": "debug",
+        "z": "df568367a0db7caf",
+        "g": "d2058fcf6d2d4382",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "589e9b2890f4549b",
+        "type": "matter-device-control",
+        "z": "df568367a0db7caf",
+        "g": "d2058fcf6d2d4382",
+        "name": "Light 1 Control",
+        "device": "206e145982b938d8",
+        "x": 700,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "500ad5e3438f09bf",
+        "type": "inject",
+        "z": "df568367a0db7caf",
+        "g": "d2058fcf6d2d4382",
+        "name": "On",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"on\":true}",
+        "payloadType": "json",
+        "x": 490,
+        "y": 260,
+        "wires": [
+            [
+                "589e9b2890f4549b"
+            ]
+        ]
+    },
+    {
+        "id": "39a0207be09771f6",
+        "type": "inject",
+        "z": "df568367a0db7caf",
+        "g": "d2058fcf6d2d4382",
+        "name": "Off",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"on\":false}",
+        "payloadType": "json",
+        "x": 490,
+        "y": 340,
+        "wires": [
+            [
+                "589e9b2890f4549b"
+            ]
+        ]
+    },
+    {
+        "id": "d7599f0cd09e447e",
+        "type": "matter-device-control",
+        "z": "df568367a0db7caf",
+        "g": "f7e9a9751d6a80d1",
+        "name": "Light 1 Control",
+        "device": "206e145982b938d8",
+        "x": 720,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "1b94b78816909ff2",
+        "type": "matter-device-control",
+        "z": "df568367a0db7caf",
+        "g": "f7e9a9751d6a80d1",
+        "name": "Light 2 Control",
+        "device": "0d95935a3715df28",
+        "x": 720,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "7921eba77a96fda8",
+        "type": "inject",
+        "z": "df568367a0db7caf",
+        "g": "f7e9a9751d6a80d1",
+        "name": "On",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"on\":true}",
+        "payloadType": "json",
+        "x": 490,
+        "y": 480,
+        "wires": [
+            [
+                "d7599f0cd09e447e",
+                "1b94b78816909ff2",
+                "3106480b74de4e15"
+            ]
+        ]
+    },
+    {
+        "id": "5c014d2566d196f0",
+        "type": "inject",
+        "z": "df568367a0db7caf",
+        "g": "f7e9a9751d6a80d1",
+        "name": "Off",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"on\":false}",
+        "payloadType": "json",
+        "x": 490,
+        "y": 560,
+        "wires": [
+            [
+                "d7599f0cd09e447e",
+                "1b94b78816909ff2",
+                "3106480b74de4e15"
+            ]
+        ]
+    },
+    {
+        "id": "c5b7ffe70ce2272a",
+        "type": "matter-device-status",
+        "z": "df568367a0db7caf",
+        "g": "f4f5c22e843c5657",
+        "name": "Outlet 1 Status",
+        "device": "e36fddd5083cfc44",
+        "x": 950,
+        "y": 520,
+        "wires": [
+            [
+                "47e77aa534a048d7",
+                "36b1071665e2244a"
+            ]
+        ]
+    },
+    {
+        "id": "47e77aa534a048d7",
+        "type": "debug",
+        "z": "df568367a0db7caf",
+        "g": "f4f5c22e843c5657",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1160,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "ebe9df65470f5a22",
+        "type": "inject",
+        "z": "df568367a0db7caf",
+        "g": "f4f5c22e843c5657",
+        "name": "On",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"on\":true}",
+        "payloadType": "json",
+        "x": 950,
+        "y": 660,
+        "wires": [
+            [
+                "ed4ce3d9aefbefc9"
+            ]
+        ]
+    },
+    {
+        "id": "5f272ae264c19657",
+        "type": "inject",
+        "z": "df568367a0db7caf",
+        "g": "f4f5c22e843c5657",
+        "name": "Off",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"on\":false}",
+        "payloadType": "json",
+        "x": 950,
+        "y": 740,
+        "wires": [
+            [
+                "ed4ce3d9aefbefc9"
+            ]
+        ]
+    },
+    {
+        "id": "3106480b74de4e15",
+        "type": "matter-device-control",
+        "z": "df568367a0db7caf",
+        "g": "f7e9a9751d6a80d1",
+        "name": "Outlet 1 Control",
+        "device": "e36fddd5083cfc44",
+        "x": 720,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "36b1071665e2244a",
+        "type": "change",
+        "z": "df568367a0db7caf",
+        "g": "f4f5c22e843c5657",
+        "name": "Forward status",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.status",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1160,
+        "y": 520,
+        "wires": [
+            [
+                "dd05132cf47e62e9"
+            ]
+        ]
+    },
+    {
+        "id": "b26136e53f3236bc",
+        "type": "comment",
+        "z": "df568367a0db7caf",
+        "g": "f7e9a9751d6a80d1",
+        "name": "Turn or or off all the Matter devices",
+        "info": "",
+        "x": 600,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "b7484b38b0a37f33",
+        "type": "comment",
+        "z": "df568367a0db7caf",
+        "g": "f4f5c22e843c5657",
+        "name": "Make Light 1 reflect the Outlet 1 status changes",
+        "info": "",
+        "x": 1060,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "b022df774d8d9ecb",
+        "type": "matter-device-status",
+        "z": "df568367a0db7caf",
+        "g": "b5050975b9e1e3d1",
+        "name": "Light 2 Status",
+        "device": "0d95935a3715df28",
+        "x": 950,
+        "y": 180,
+        "wires": [
+            [
+                "7c64ee1eea1a73ac"
+            ]
+        ]
+    },
+    {
+        "id": "7c64ee1eea1a73ac",
+        "type": "debug",
+        "z": "df568367a0db7caf",
+        "g": "b5050975b9e1e3d1",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1160,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "b86b2f5f3dde2201",
+        "type": "inject",
+        "z": "df568367a0db7caf",
+        "g": "b5050975b9e1e3d1",
+        "name": "On",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"on\":true}",
+        "payloadType": "json",
+        "x": 950,
+        "y": 260,
+        "wires": [
+            [
+                "0d2f2b6e840db858"
+            ]
+        ]
+    },
+    {
+        "id": "4339565c2ec6b305",
+        "type": "inject",
+        "z": "df568367a0db7caf",
+        "g": "b5050975b9e1e3d1",
+        "name": "Off",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"on\":false}",
+        "payloadType": "json",
+        "x": 950,
+        "y": 340,
+        "wires": [
+            [
+                "0d2f2b6e840db858"
+            ]
+        ]
+    },
+    {
+        "id": "ed4ce3d9aefbefc9",
+        "type": "matter-device-control",
+        "z": "df568367a0db7caf",
+        "g": "f4f5c22e843c5657",
+        "name": "Outlet 1 Control",
+        "device": "e36fddd5083cfc44",
+        "x": 1160,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "dd05132cf47e62e9",
+        "type": "matter-device-control",
+        "z": "df568367a0db7caf",
+        "g": "f4f5c22e843c5657",
+        "name": "Light 1 Control",
+        "device": "206e145982b938d8",
+        "x": 1360,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "0d2f2b6e840db858",
+        "type": "matter-device-control",
+        "z": "df568367a0db7caf",
+        "g": "b5050975b9e1e3d1",
+        "name": "Light 2 Control",
+        "device": "0d95935a3715df28",
+        "x": 1160,
+        "y": 300,
+        "wires": []
+    }
+]
