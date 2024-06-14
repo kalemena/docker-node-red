@@ -1,9 +1,20 @@
 
 volumes:
   nodered:
+  matterbridge:
 
 services:  
 
+  # browse : http://localhost:8283
+  matterbridge:
+    image: luligu/matterbridge:latest
+    restart: always
+    volumes:
+      - matterbridge:/root
+    ports:
+      - 8283:8283
+
+  # browse : http://localhost:3880
   nodered:
     build: .
     restart: always
