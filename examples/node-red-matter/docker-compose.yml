@@ -9,10 +9,12 @@ services:
   matterbridge:
     image: luligu/matterbridge:latest
     restart: always
+    network_mode: host
     volumes:
       - matterbridge:/root
-    ports:
-      - 8283:8283
+      - ./matterbridge-zigbee2mqtt.config.json:/root/.matterbridge/matterbridge-zigbee2mqtt.config.json
+    # ports:
+    #   - 8283:8283
 
   # browse : http://localhost:3880
   nodered:
@@ -22,6 +24,6 @@ services:
      - "3880:1880"
     volumes:
      - nodered:/data
-     - ./flows.json:/data/flows.json
+     - ./flows.json:/data/flows.json:rw
     environment:
      - FLOWS=/data/flows.json

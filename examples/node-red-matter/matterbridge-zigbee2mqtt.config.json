@@ -1,0 +1,20 @@
+{
+  "name": "matterbridge-zigbee2mqtt",
+  "type": "DynamicPlatform",
+  "unregisterOnShutdown": false,
+  "host": "localhost",
+  "port": 1883,
+  "topic": "zigbee2mqtt",
+  "username": "",
+  "password": "",
+  "whiteList": [],
+  "blackList": [],
+  "switchList": [],
+  "lightList": [],
+  "outletList": [],
+  "featureBlackList": [],
+  "deviceFeatureBlackList": {},
+  "postfixHostname": true,
+  "debug": false,
+  "protocolVersion": 5
+}
