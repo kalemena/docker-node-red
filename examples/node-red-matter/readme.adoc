@@ -3,7 +3,11 @@
 
 This example shows a basic usage of Node-RED Matter.
 
+.Sample Flow - standalone
 image:node-red-matter.png[]
+
+.Sample Bridge Web App - display zigbee devices
+image:matterbridge-devices.png[]
 
 == Links
 
