@@ -15,11 +15,12 @@ image:matterbridge-devices.png[]
 * link:https://mattercoder.com/[Matter Coder]
 * link:https://canonical-matter.readthedocs-hosted.com/_/downloads/en/latest/pdf/[PDF - Ubuntu setup tutorial guide]
 
-== Flow
+* link:https://github.com/Luligu/matterbridge[Matter Bridge]
 
-=== How-To
 
-==== Environment
+== How-To
+
+=== Environment
 
 Build the few dependencies:
 
@@ -36,3 +37,16 @@ Stop everything:
 Cleanup everything (including database):
 
     $ docker-compose down -v
+
+=== Matterbridge
+
+IMPORTANT: Below assumes zigbee2mqtt is installed, and that mqtt is setup on localhost:1883
+
+NOTE: Matterbridge configuration file is mounted with matterbridge container
+
+* Browse to link:http://localhost:8283[] to open UI
+* Install and register plugins, in this case matterbridge-zigbee2mqtt
+* Switch to device list
+
+.Sample Bridge Web App - display zigbee devices
+image:matterbridge-devices.png[]
