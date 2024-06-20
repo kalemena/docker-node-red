@@ -47,3 +47,5 @@ NOTE: Matterbridge configuration file is mounted with matterbridge container
 
 .Sample Bridge Web App - display zigbee devices
 image:matterbridge-devices.png[]
+
+* When going to *settings*, set the logs to *Debug* level to see Zigbee devices activities
