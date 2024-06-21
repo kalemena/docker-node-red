@@ -13,6 +13,7 @@ image:node-red-matter.png[]
 * link:https://canonical-matter.readthedocs-hosted.com/_/downloads/en/latest/pdf/[PDF - Ubuntu setup tutorial guide]
 
 * link:https://github.com/Luligu/matterbridge[Matter Bridge]
+** link:https://github.com/Luligu/matterbridge-zigbee2mqtt[MAtter Bridge Zigbee2mqtt]
 
 
 == How-To
